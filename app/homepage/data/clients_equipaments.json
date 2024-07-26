@@ -1,5 +1,4 @@
-{
-    "clients": [
+[
         {"name": "(Não identificado)", "equipments": []},
         {"name": "ADAO  (+55 98 8303-3406/Adao)", "equipments": []},
         {"name": "ADRIANO (970298025)", "equipments": []},
@@ -83,4 +82,3 @@
         {"name":"ZIRANLOG TRANSPORTES  (559192006731/Maurício)" , "equipments":[]},
         {"name":"ZORTEA CONSTRUÇÕES LTDA (talita.santos@zortea.com.br / Talita)" , "equipments":[]}
     ]
-}
