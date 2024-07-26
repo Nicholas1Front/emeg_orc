@@ -1,5 +1,6 @@
+const clientName = document.querySelector("#client-name")
 
-async function importClientsData(){
+async function getClientsData(){
     try{
         const response = await fetch("data/clients_equipaments.json");
 
@@ -8,7 +9,7 @@ async function importClientsData(){
         }
 
         const clients = await response.json();
-        
+
         return clients;
     }
 
@@ -17,5 +18,16 @@ async function importClientsData(){
     }
 }
 
-const data = importClientsData();
+getClientsData().then(clients =>{
+    const data = clients;
 
+    console.log(data);
+
+    data.forEach(client => {
+        if (client.name == "ZORTEA"){
+            console.log(client.name)
+        }
+    });
+}).catch(error => {
+    console.log(error)
+})
