@@ -19,15 +19,14 @@ async function getClientsData(){
 }
 
 getClientsData().then(clients =>{
-    const data = clients;
 
-    console.log(data);
+    let clientSearched = 0;
 
-    data.forEach(client => {
-        if (client.name == "ZORTEA"){
-            console.log(client.name)
-        }
-    });
+    clientSearched = clients[81];
+
+    console.log(clientSearched);
+
+    console.log(clientSearched.name.includes("ZORTEA"))
 }).catch(error => {
     console.log(error)
 })
