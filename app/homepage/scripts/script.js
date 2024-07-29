@@ -1,4 +1,5 @@
-const clientName = document.querySelector("#client-name")
+//elements
+const clientNameList = document.querySelector("#client-name-list");
 
 async function getClientsData(){
     try{
@@ -18,15 +19,24 @@ async function getClientsData(){
     }
 }
 
-getClientsData().then(clients =>{
+async function createList(){
+    getClientsData().then(clients =>{
 
-    let clientSearched = 0;
+        let clientsData = clients;
 
-    clientSearched = clients[81];
+        for(let i = 0; i < clientsData.lenght ; i++){
+            let option = document.createElement("option");
 
-    console.log(clientSearched);
+            option.text = clientsData.name[i];
 
-    console.log(clientSearched.name.includes("ZORTEA"))
-}).catch(error => {
-    console.log(error)
-})
+            clientNameList.add(option);
+        }
+    }).catch(error =>{
+        console.error(`An error occured : ${error}`);
+    })
+}
+
+//testing
+
+createList();
+
