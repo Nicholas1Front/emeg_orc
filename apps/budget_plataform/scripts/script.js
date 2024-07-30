@@ -1,9 +1,11 @@
 //elements
 const clientSelectList = document.querySelector("#client-select-list");
 
+
+//functions 
 async function getClientsData(){
     try{
-        const response = await fetch("data/clients_equipaments.json");
+        const response = await fetch("../data/clients_equipaments.json");
 
         if (!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
@@ -19,16 +21,14 @@ async function getClientsData(){
     }
 }
 
-function createList(){
+function createSelectList(){
     getClientsData().then(clients =>{
 
         let clientsData = [];
     
         clients.forEach(client =>{
-            clientsData.push(client.name);
-        })
-
-        console.log(clientsData);
+            clientsData.push(client.name.toUpperCase());
+        });
 
         clientsData.forEach(clients => {
             let option = document.createElement("option");
@@ -45,5 +45,5 @@ function createList(){
 
 //testing
 
-createList();
+createSelectList();
 

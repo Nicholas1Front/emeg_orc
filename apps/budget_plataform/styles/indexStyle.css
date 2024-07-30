@@ -5,7 +5,9 @@
 }
 
 body{
-    max-width:1280px;
+    /* Medidas da página == folha A4 na horizontal */
+    max-width:3508px;
+    max-height: 2480px;
 }
 
 .select-control{
