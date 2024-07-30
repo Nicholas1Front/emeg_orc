@@ -38,6 +38,8 @@ function createSelectList(){
             clientSelectList.add(option);
         })
 
+        return clientsData;
+
     }).catch(error =>{
         console.error(`An error occured : ${error}`);
     })
