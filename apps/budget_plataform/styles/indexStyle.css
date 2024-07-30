@@ -8,7 +8,7 @@
 body{
     /* Medidas da página == folha A4 na horizontal */
     max-width:3508px;
-    max-height: 2480px;
+    min-height: 2480px;
 }
 
 .container{
@@ -31,7 +31,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    margin-bottom:8px;
 }
 
 .header-logo-control{
@@ -39,12 +39,11 @@ header{
     display:flex;
     align-items: center;
     justify-content: center;
-    margin-bottom:12px;
 }
 
 .header-logo-control img{
     width:100%;
-    height:100px;
+    height:80px;
 }
 
 .header-title-control{
@@ -57,3 +56,65 @@ header{
     font-size:25px;
 }
 
+/* back-home-control */
+
+.back-home-control{
+    position:fixed;
+    margin-left:-83%;
+    width:fit-content;
+    display: flex;
+    justify-content: center;
+    padding:8px;
+}
+
+.back-home-control a{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    transition:0.2s;
+}
+
+.back-home-control a > i {
+    font-size:30px;
+}
+
+.back-home-control a > span{
+    font-size:12px;
+    padding-top:6px;
+}
+
+/* clients-equipaments-section */
+
+.informations-section{
+    width:100%;
+    padding:10px 0;
+}
+
+.informations-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clients-equipaments-container{
+    width:48%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vertical-line-container{
+    width:4%;
+    height:300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-line{
+    width:2px;
+    height:100%;
+    background-color: #d61e1e;
+}
