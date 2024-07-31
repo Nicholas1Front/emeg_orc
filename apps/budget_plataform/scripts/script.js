@@ -1,5 +1,5 @@
 //elements
-const clientSelectList = document.querySelector("#client-select-list");
+const clientsSelectList = document.querySelector("#clients-select-list");
 
 
 //functions 
@@ -35,7 +35,7 @@ function createSelectList(){
 
             option.text = clients;
 
-            clientSelectList.add(option);
+            clientsSelectList.add(option);
         })
 
         return clientsData;
