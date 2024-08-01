@@ -33,25 +33,25 @@
             
             <div class="container">
                 <div class="informations-container">
+
+                    <div class="informations-title-container">
+                        <h2>DADOS PARA PREENCHIMENTO</h2>
+                    </div>
                     <div class="clients-equipaments-container">
 
                         <div class="clients-select-control">
-                            <h3><i class="fa-solid fa-user-tie"></i>Selecione o cliente :</h3>
+                            <h3><i class="fa-solid fa-user-tie"></i>Cliente</h3>
 
     
                             <select name="client-select-list" id="clients-select-list"></select>
                         </div>
     
                         <div class="equipaments-select-control">
-                            <h3><i class="fa-solid fa-truck"></i>Selecione o equipamento :</h3>
+                            <h3><i class="fa-solid fa-truck"></i>Equipamento</h3>
     
                             <select name="equipament-select-list" id="equipaments-select-list"></select>
                         </div>
     
-                    </div>
-
-                    <div class="horizontal-line-container">
-                        <div class="horizontal-line"></div>
                     </div>
     
                     <div class="general-information-container">
@@ -59,31 +59,37 @@
                         <div class="general-information-control">
 
                             <div class="date-control">
-                                <h3><i class="fa-solid fa-calendar-days"></i>Insira a data de entrada :</h3>
+                                <h3><i class="fa-solid fa-calendar-days"></i>Data de entrada</h3>
         
                                 <input type="date" name="date-input" id="date-input">
                             </div>
         
                             <div class="completion-deadline-control">
-                                <h3><i class="fa-solid fa-stopwatch"></i>Insira o prazo estimado :</h3>
+                                <h3><i class="fa-solid fa-stopwatch"></i>Prazo estimado</h3>
         
-                                <input type="text" name="completion-deadline-input" id="completion-deadline-input">
+                                <input type="text" name="completion-deadline-input" id="completion-deadline-input" placeholder="7 DIAS...">
                             </div>
 
                             <div class="payment-terms-control">
-                                <h3><i class="fa-solid fa-coins"></i>Insira a condição de pagamento :</h3>
+                                <h3><i class="fa-solid fa-coins"></i>Condição de pagamento</h3>
         
-                                <input type="text" name="payment-terms-input" id="payment-terms-input">
+                                <input type="text" name="payment-terms-input" id="payment-terms-input" placeholder="21 DIAS...">
                             </div>
 
                             <div class="guarantee-control">
-                                <h3><i class="fa-solid fa-shield"></i>Insira a garantia :</h3>
+                                <h3><i class="fa-solid fa-award"></i>Garantia</h3>
         
-                                <input type="text" name="guarantee-input" id="guarantee-input">
+                                <input type="text" name="guarantee-input" id="guarantee-input" placeholder="30 DIAS...">
                             </div>
 
                         </div>
     
+                    </div>
+
+                    <div class="next-step-container">
+                        <div class="next-step-control">
+                            <button id="informations-next-btn">Próximo passo</button>
+                        </div>
                     </div>
                 </div>
             </div>

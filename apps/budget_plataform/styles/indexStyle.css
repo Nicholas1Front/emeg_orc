@@ -59,7 +59,7 @@ header{
 /* back-home-control */
 
 .back-home-control{
-    position:fixed;
+    position:absolute;
     margin-left:-83%;
     width:fit-content;
     display: flex;
@@ -98,20 +98,47 @@ header{
     align-items: center;
 }
 
+.informations-title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:8px 0;
+}
+
+.informations-title-container h2{
+    font-size:25px;
+}
+
 .clients-equipaments-container{
     width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom:10px;
 }
 
-.clients-equipaments-container > .clients-select-control , 
-.clients-equipaments-container > .equipaments-select-control{
+.clients-select-control, 
+.equipaments-select-control{
     width:50%;
     display: flex;
     flex-direction:column;
     align-items: center;
     margin:10px 0;
+}
+
+.clients-select-control h3, 
+.equipaments-select-control h3{
+    font-size:19px;
+    margin-bottom:8px;
+    display: flex;
+    align-items: center;
+}
+
+.clients-select-control i, 
+.equipaments-select-control i{
+    font-size: 25px;
+    margin-right:7px;
+    color:#d61e1e;
 }
 
 #clients-select-list,
@@ -126,6 +153,11 @@ header{
     border : 1px solid #969696;
 }
 
+#clients-select-list:focus,
+#equipaments-select-list:focus{
+    border-color:#d61e1e;
+    outline-color: #d61e1e;
+}
 
 .general-information-container{
     width:100%;
@@ -151,6 +183,19 @@ header{
     align-items: center;
 }
 
+.general-information-control h3{
+    font-size:19px;
+    margin-bottom:8px;
+    display: flex;
+    align-items: center;
+}
+
+.general-information-control i{
+    font-size: 25px;
+    margin-right:7px;
+    color:#d61e1e;
+}
+
 .date-control input,
 .completion-deadline-control input,
 .payment-terms-control input,
@@ -163,4 +208,40 @@ header{
     border-radius:25px;
     margin-top:5px;
     border : 1px solid #969696;
+}
+
+.date-control input:focus,
+.completion-deadline-control input:focus,
+.payment-terms-control input:focus,
+.guarantee-control input:focus{
+    border-color:#d61e1e;
+    outline-color: #d61e1e;
+}
+
+.next-step-container{
+    width:100%;
+    display: flex;
+    justify-content: right;
+    margin-top:15px;
+}
+
+.next-step-control{
+    width:15%;
+}
+
+#informations-next-btn{
+    width:100%;
+    border-radius:25px;
+    color:#d61e1e;
+    background-color: transparent;
+    border: 1px solid #d61e1e;
+    font-size:19px;
+    padding:4px;
+    transition:0.2s;
+}
+
+#informations-next-btn:hover{
+    background-color: #d61e1e;
+    color: white;
+    transition: 0.2s;
 }
