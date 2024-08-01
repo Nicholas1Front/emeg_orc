@@ -238,10 +238,38 @@ header{
     font-size:19px;
     padding:4px;
     transition:0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #informations-next-btn:hover{
     background-color: #d61e1e;
     color: white;
     transition: 0.2s;
+}
+
+#informations-next-btn i{
+    padding:0 3px;
+}
+
+/* parts-section */
+
+.parts-section{
+    width: 100%;
+    padding:10px 0;
+}
+
+.parts-container{
+    width:100%;
+}
+
+.parts-title-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.parts-title-container h2{
+    font-size:25px;
 }
