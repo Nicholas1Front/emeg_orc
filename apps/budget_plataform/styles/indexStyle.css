@@ -273,3 +273,41 @@ header{
 .parts-title-container h2{
     font-size:25px;
 }
+
+.parts-control{
+    display:flex;
+    align-items : center;
+    justify-content: center;
+}
+
+.quant-control{
+    width:5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.part-description-control,
+.unit-value-control,
+.add-item-control{
+    width:25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parts-control input{
+    width:90%;
+    font-size:15px;
+    padding:5px 0;
+    text-align: center;
+    padding-left:5px;
+    border-radius:25px;
+    margin-top:5px;
+    border : 1px solid #969696;
+}
+
+.parts-control input:focus{
+    border-color:#d61e1e;
+    outline-color:#d61e1e;
+}
