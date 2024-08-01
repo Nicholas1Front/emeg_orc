@@ -274,30 +274,31 @@ header{
     font-size:25px;
 }
 
-.parts-control{
+.parts-input-control{
     display:flex;
     align-items : center;
     justify-content: center;
+    margin-top:25px;
 }
 
-.quant-control{
-    width:5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.part-description-control,
+.quant-control,
 .unit-value-control,
 .add-item-control{
-    width:25%;
+    width:10%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.parts-control input{
-    width:90%;
+.part-description-control{
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parts-input-control input{
+    width:95%;
     font-size:15px;
     padding:5px 0;
     text-align: center;
@@ -307,7 +308,52 @@ header{
     border : 1px solid #969696;
 }
 
-.parts-control input:focus{
+.parts-input-control input:focus{
     border-color:#d61e1e;
     outline-color:#d61e1e;
+}
+
+.add-item-control button{
+    width:95%;
+    border-radius:25px;
+    padding: 5px 0;
+    margin-top:5px;
+    background-color: #07bf04;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+.add-item-control button:hover{
+    background-color: #059303;
+    transition:0.2s;
+}
+
+/* services-section */
+
+.services-section{
+    width:100%;
+    padding:10px 0;
+}
+
+.services-container{
+    width:100%;
+}
+
+.services-title-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-title-container h2{
+    font-size:25px;
+}
+
+.services-input-control{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
