@@ -369,20 +369,25 @@ header{
 }
 
 .parts-added-items-control{
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.parts-item{
+.parts-added-items-title-control{
     width:100%;
-    padding:10px 0;
-}
-
-.parts-item-title{
+    margin-top:2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid #d61e1e;
+    border-radius: 25px;
+    padding:5px;
+}
+
+.parts-added-items-title-control h3{
+    font-style: italic;
 }
 
 .quant-title-control,
@@ -402,6 +407,50 @@ header{
     justify-content: center;
     align-items: center;
 }
+
+.parts-item{
+    width:100%;
+    padding:10px 0;
+}
+
+.parts-item-content{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quant-span,
+.unit-value-span,
+.total-value-span,
+.edit-btn-control,
+.delete-btn-control{
+    width:14%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size:15px;
+}
+
+.edit-btn-control button{
+    width:50%;
+    padding:4px;
+    
+}
+
+.delete-btn-control button{
+    width:50%;
+    padding:4px;
+}
+
+.description-span{
+    width:30%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size:15px;
+}
+
 
 /* services-section */
 
