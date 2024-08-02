@@ -99,14 +99,36 @@ header{
 }
 
 .informations-title-container{
+    width:100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin:8px 0;
+    margin:20px 0;
 }
 
-.informations-title-container h2{
-    font-size:25px;
+.horizontal-line-control{
+    width:20%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    margin: 0 12px;
+}
+
+.title-control{
+    width:fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-control h2{
+    font-size: 25px;
+}
+
+.horizontal-line-control > .horizontal-line{
+    width:100%;
+    height:1px;
+    background-color: #d61e1e;
 }
 
 .clients-equipaments-container{
@@ -268,6 +290,8 @@ header{
     width:100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin:20px 0;
 }
 
 .parts-title-container h2{
@@ -288,6 +312,13 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.quant-control h3,
+.unit-value-control h3,
+.part-description-control h3,
+.add-item-control h3{
+    padding: 4px 0;
 }
 
 .part-description-control{
@@ -329,11 +360,15 @@ header{
     transition:0.2s;
 }
 
+.add-item-control button > i{
+    font-size: 15px;
+}
+
 /* services-section */
 
 .services-section{
     width:100%;
-    margin-top:8rem;
+    margin-top:11rem;
     padding:10px 0;
 }
 
@@ -346,6 +381,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin:20px 0;
 }
 
 .services-title-container h2{
@@ -354,6 +390,7 @@ header{
 
 .services-input-control{
     width:100%;
+    margin-top:15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -374,3 +411,5 @@ header{
     border-color:#d61e1e;
     outline-color:#d61e1e;
 }
+
+/* observations-section */
