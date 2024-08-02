@@ -364,6 +364,45 @@ header{
     font-size: 15px;
 }
 
+.parts-added-items-container{
+    width:100%;
+}
+
+.parts-added-items-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.parts-item{
+    width:100%;
+    padding:10px 0;
+}
+
+.parts-item-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quant-title-control,
+.unit-value-title-control,
+.total-value-title-control,
+.edit-title-control,
+.delete-title-control{
+    width:14%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.description-title-control{
+    width:30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* services-section */
 
 .services-section{
