@@ -396,14 +396,14 @@ header{
 .total-value-title-control,
 .edit-title-control,
 .delete-title-control{
-    width:14%;
+    width:12%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .description-title-control{
-    width:30%;
+    width:40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -430,7 +430,7 @@ header{
 .total-value-span,
 .edit-btn-control,
 .delete-btn-control{
-    width:14%;
+    width:12%;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -438,7 +438,7 @@ header{
 
 .edit-btn-control button,
 .delete-btn-control button{
-    width:30%;
+    width:40%;
     padding:6px 4px;
     font-size: 15px;
     border-radius:25px;
@@ -447,17 +447,29 @@ header{
 }
 
 .edit-btn-control button{
-    background-color: #046bbf;
+    background-color: #0079dc;
     color:white;
+    transition:0.2s;
+}
+
+.edit-btn-control button:hover{
+    background-color: #024b87;
+    transition:0.2s;
 }
 
 .delete-btn-control button{
     background-color: #d61e1e;
     color: white;
+    transition:0.2s;
+}
+
+.delete-btn-control button:hover{
+    background-color: #a11616;
+    transition:0.2s;
 }
 
 .description-span{
-    width:30%;
+    width:40%;
     display: flex;
     justify-content: center;
     align-items:center;
@@ -478,7 +490,7 @@ header{
 
 .parts-item-total h3,
 .parts-item-total span{
-    width:20%;
+    width:30%;
     font-size:1.17em;
     text-align: center;
 }
@@ -487,7 +499,7 @@ header{
 
 .services-section{
     width:100%;
-    margin-top:11rem;
+    margin-top:5rem;
     padding:10px 0;
 }
 
@@ -531,11 +543,142 @@ header{
     outline-color:#d61e1e;
 }
 
+.services-added-items-container{
+    width:100%;
+}
+
+.services-added-items-control{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.services-added-items-title-control{
+    width:100%;
+    margin-top:2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d61e1e;
+    color: white;
+    border-radius: 25px;
+    padding:5px;
+}
+
+.services-added-items-title-control h3{
+    font-style: italic;
+}
+
+.quant-title-control,
+.unit-value-title-control,
+.total-value-title-control,
+.edit-title-control,
+.delete-title-control{
+    width:12%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.description-title-control{
+    width:40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-item{
+    width:100%;
+    padding:10px 0;
+}
+
+.services-item-content{
+    width:100%;
+    padding: 1rem 0;
+    margin-bottom: 0.3rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e7e7e7;
+}
+
+.quant-span,
+.unit-value-span,
+.total-value-span,
+.edit-btn-control,
+.delete-btn-control{
+    width:12%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.edit-btn-control button,
+.delete-btn-control button{
+    width:40%;
+    padding:6px 4px;
+    font-size: 15px;
+    border-radius:25px;
+    border:none;
+    cursor : pointer;
+}
+
+.edit-btn-control button{
+    background-color: #0079dc;
+    color:white;
+    transition:0.2s;
+}
+
+.edit-btn-control button:hover{
+    background-color: #024b87;
+    transition:0.2s;
+}
+
+.delete-btn-control button{
+    background-color: #d61e1e;
+    color: white;
+    transition:0.2s;
+}
+
+.delete-btn-control button:hover{
+    background-color: #a11616;
+    transition:0.2s;
+}
+
+.description-span{
+    width:40%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size:15px;
+}
+
+.services-item-total{
+    width:100%;
+    margin-top:0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d61e1e;
+    color:white;
+    border-radius: 25px;
+    padding:5px;
+}
+
+.services-item-total h3,
+.services-item-total span{
+    width:30%;
+    font-size:1.17em;
+    text-align: center;
+}
+
 /* observations-section */
 
 .observations-section{
     width:100%;
-    margin-top:11rem;
+    margin-top:5rem;
     padding:10px 0;
 }
 
@@ -606,15 +749,33 @@ header{
     border-radius:25px;
     border:none;
     padding:8px 10px;
-    margin: 0 0.5rem;
+    margin: 0 0.8rem;
+    cursor:pointer;
+}
+
+.generate-budget-control button > i{
+    font-size:1.20em;
+    margin-right:8px;
 }
 
 #generate-budget-btn{
     background-color: #07bf04;
     color:white;
+    transition:0.2s;
+}
+
+#generate-budget-btn:hover{
+    background-color: #059303;
+    transition:0.2s;
 }
 
 #clear-budget-btn{
     background-color: #d61e1e;
     color: white;
+    transition:0.2s;
+}
+
+#clear-budget-btn:hover{
+    background-color: #a11616;
+    transition:0.2s;
 }
