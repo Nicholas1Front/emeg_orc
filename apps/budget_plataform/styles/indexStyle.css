@@ -581,3 +581,40 @@ header{
     border-color:#d61e1e;
     outline-color: #d61e1e;
 }
+
+/* generate-budget-section */
+
+.generate-budget-section{
+    width: 100%;
+    padding:10px 0;
+}
+
+.generate-budget-control{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:1rem 0;
+}
+
+.generate-budget-control button{
+    width:25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.17em;
+    border-radius:25px;
+    border:none;
+    padding:8px 10px;
+    margin: 0 0.5rem;
+}
+
+#generate-budget-btn{
+    background-color: #07bf04;
+    color:white;
+}
+
+#clear-budget-btn{
+    background-color: #d61e1e;
+    color: white;
+}
