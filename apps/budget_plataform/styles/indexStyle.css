@@ -163,8 +163,11 @@ header{
     color:#d61e1e;
 }
 
+#not-identified-input{display: none;}
+
 #clients-select-list,
-#equipaments-select-list{
+#equipaments-select-list,
+#not-identified-input{
     width:90%;
     font-size:15px;
     text-align: center;
@@ -176,7 +179,8 @@ header{
 }
 
 #clients-select-list:focus,
-#equipaments-select-list:focus{
+#equipaments-select-list:focus,
+#not-identified-input:focus{
     border-color:#d61e1e;
     outline-color: #d61e1e;
 }

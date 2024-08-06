@@ -1,6 +1,7 @@
 //elements
 const clientsSelectList = document.querySelector("#clients-select-list");
-const equipamentsSelectList = document.querySelector("#equipaments-select-list")
+const equipamentsSelectList = document.querySelector("#equipaments-select-list");
+const notIdentifiedInput = document.querySelector("#not-identified-input");
 
 //functions 
 async function getClientsData(){
@@ -45,14 +46,25 @@ function createClientsList(){
     })
 }
 
-function testClient(){
+function createEquipamentsList(){
     getClientsData().then(clients =>{
 
         let equipamentsData = [];
 
         clients.forEach(client =>{
-            if(clientsSelectList.value === client.name.toUpperCase()){
-                equipamentsData.push(client.equipaments);
+            if(clientsSelectList.value === "(NÃO IDENTIFICADO)" || clientsSelectList.value === ""){
+                equipamentsSelectList.style.display = "none";
+                notIdentifiedInput.style.display = "block";
+
+                return notIdentifiedInput.value;
+            }
+            else if(clientsSelectList.value === client.name.toUpperCase()){
+                equipamentsData = equipamentsData.concat(client.equipaments);
+
+                equipamentsSelectList.style.display = "block";
+                notIdentifiedInput.style.display = "none";
+
+                equipamentsSelectList.innerHTML = "";
 
                 equipamentsData.forEach(equipament =>{
                     let option = document.createElement("option");
@@ -60,12 +72,12 @@ function testClient(){
                     option.text = equipament;
 
                     equipamentsSelectList.add(option); 
+
                 })
+
+                return equipamentsSelectList.value;
             }
         })
-
-        
-
     }).catch(error =>{
         console.error("An error occurred !" + error);
     })
@@ -77,6 +89,6 @@ createClientsList();
 //event listeners
 
 clientsSelectList.addEventListener("change", function(){
-    testClient();
+    createEquipamentsList();
 })
 
