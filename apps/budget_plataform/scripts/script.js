@@ -1,6 +1,6 @@
 //elements
 const clientsSelectList = document.querySelector("#clients-select-list");
-
+const equipamentsSelectList = document.querySelector("#equipaments-select-list")
 
 //functions 
 async function getClientsData(){
@@ -21,7 +21,7 @@ async function getClientsData(){
     }
 }
 
-function createSelectList(){
+function createClientsList(){
     getClientsData().then(clients =>{
 
         let clientsData = [];
@@ -45,7 +45,38 @@ function createSelectList(){
     })
 }
 
+function testClient(){
+    getClientsData().then(clients =>{
+
+        let equipamentsData = [];
+
+        clients.forEach(client =>{
+            if(clientsSelectList.value === client.name.toUpperCase()){
+                equipamentsData.push(client.equipaments);
+
+                equipamentsData.forEach(equipament =>{
+                    let option = document.createElement("option");
+
+                    option.text = equipament;
+
+                    equipamentsSelectList.add(option); 
+                })
+            }
+        })
+
+        
+
+    }).catch(error =>{
+        console.error("An error occurred !" + error);
+    })
+}
 //testing
 
-createSelectList();
+createClientsList();
+
+//event listeners
+
+clientsSelectList.addEventListener("change", function(){
+    testClient();
+})
 
