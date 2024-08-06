@@ -22,6 +22,60 @@ body{
     width:100%;
 }
 
+/* error-message-control */
+
+.error-msg-control{
+    margin-top:40%;
+    margin-left:77%;
+    position:fixed;
+    width:20%;
+    border-radius:10px;
+    background-color:#000;
+    color:white;
+    padding:10px;
+    padding-bottom:20px;
+}
+
+.error-msg-close-control{
+    width:100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.error-msg-close-control button{
+    background-color: transparent;
+    border:none;
+    cursor:pointer;
+    color: white;
+    opacity:0.8;
+    transition:0.2s;
+    font-size:1rem;
+    margin-right:0.3rem;
+}
+
+.error-msg-close-control button:hover{
+    opacity: 1;
+    transition:0.2s;
+}
+
+.error-msg-content{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-msg-content i{
+    font-size:3rem;
+    margin-bottom:0.5rem;
+}
+
+.error-msg-content span{
+    font-weight: 700;
+    font-size:17px;
+}
+
 /* header */
 
 header{

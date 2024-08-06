@@ -82,6 +82,11 @@ function createEquipamentsList(){
         console.error("An error occurred !" + error);
     })
 }
+
+function popupErrorMsg(message){
+    
+}
+
 //testing
 
 createClientsList();
