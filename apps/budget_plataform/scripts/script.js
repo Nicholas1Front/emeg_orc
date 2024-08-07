@@ -23,18 +23,35 @@ async function getClientsData(){
 // header
 
 //elements
-const errorMsgControl = document.querySelector(".error-msg-control");
-const closeErrorMsgBtn = document.querySelector("#close-error-msg-btn");
-const errorMsgSpan = document.querySelector(".error-msg-span");
+const MsgControl = document.querySelector(".msg-control");
+const closeMsgBtn = document.querySelector("#close-msg-btn");
+const MsgSpan = document.querySelector(".-msg-span");
 
 const clientsSelectList = document.querySelector("#clients-select-list");
 const equipamentsSelectList = document.querySelector("#equipaments-select-list");
 const notIdentifiedInput = document.querySelector("#not-identified-input");
+const dateInput = document.querySelector("#date-input");
+const completionDeadlineInput = document.querySelector("#completion-deadline-input");
+const paymentTermsInput = document.querySelector("#payment-terms-input");
+const guaranteeInput = document.querySelector("#guarantee-input");
 const infosNextStepBtn = document.querySelector("#infos-next-step-btn");
 
 const partsSection = document.querySelector(".parts-section");
 const servicesSection = document.querySelector(".services-section");
 const observationsSection = document.querySelector(".observations-section");
+const generateBudgetSection = document.querySelector(".generate-budget-section");
+
+// todo : fazer function para pegar a data no formato BR , adendo : função com parametros para que seja reutilizada várias vezes 
+
+/*dateInput.addEventListener("change", ()=>{
+    let date = dateInput.value;
+
+    let dateArray = date.split("-");
+
+    let newDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`;
+
+    console.log(newDate);
+}) */
 
 //functions 
 
@@ -101,38 +118,50 @@ function createEquipamentsList(){
 
 function validateSelects(){
     if(clientsSelectList.value === ""){
-        showpopupErrorMsg("Selecione um cliente !");
+        showPopupMsg("Selecione um cliente !", "errorMsg");
         return;
     }else if(equipamentsSelectList.value === ""){
-        showpopupErrorMsg("Selecione um equipamento !");
+        showPopupMsg("Selecione um equipamento !", "errorMsg");
         return;
     }else if(clientsSelectList.value === "(NÃO IDENTIFICADO)" && notIdentifiedInput.value === ""){
-        showpopupErrorMsg("Digite o modelo do equipamento !");
+        showPopupMsg("Digite o modelo do equipamento !", "errorMsg");
         return;
     }else{
+        if(dateInput.value === "" || completionDeadlineInput.value === "" || paymentTermsInput.value === "" || guaranteeInput.value === ""){
+            showPopupMsg("Alguns campos estão vazios !", "adviceMsg");
+        }
         showOtherSections();
     }
 }
 
-function showpopupErrorMsg(message){
-    errorMsgSpan.innerHTML = "";
-    errorMsgSpan.innerText = message;
+function showPopupMsg(message , messageType){
+    MsgSpan.innerHTML = "";
+    MsgSpan.innerText = message;
 
-    errorMsgControl.style.display = "block";
-    errorMsgControl.style.transition = "0.5s";
-    errorMsgControl.style.marginTop = "40%";
+    if(messageType === "errorMsg"){
+        MsgControl.style.backgroundColor = "#000";
+        MsgSpan.style.color = "white"; //black color
+    }else if (messageType === "adviceMsg"){
+        MsgControl.style.backgroundColor = "#d6ca1e";  //yellow color
+        MsgControl.style.color = "black";
+    }
+
+    MsgControl.style.display = "block";
+    MsgControl.style.transition = "0.5s";
+    MsgControl.style.marginTop = "40%";
 }
 
 function closePopupErrorMsg(){
-    errorMsgControl.style.margintTop = "43%";
-    errorMsgControl.style.transition = "0.5s";
-    errorMsgControl.style.display = "none";
+    MsgControl.style.margintTop = "43%";
+    MsgControl.style.transition = "0.5s";
+    MsgControl.style.display = "none";
 }
 
 function showOtherSections(){
     partsSection.style.display = "block";
     servicesSection.style.display = "block";
     observationsSection.style.display = "block";
+    generateBudgetSection.style.display = "block";
 }
 
 //testing
@@ -149,7 +178,26 @@ infosNextStepBtn.addEventListener("click", ()=>{
     validateSelects();
 });
 
-closeErrorMsgBtn.addEventListener("click", ()=>{
+closeMsgBtn.addEventListener("click", ()=>{
     closePopupErrorMsg();
 })
 
+
+
+//parts section
+
+//elements
+
+const partsAddedItemsControl = document.querySelector(".parts-added-items-control")
+
+//init
+showOtherSections();
+
+//functions
+
+function createPartItem(quant, description, unitvalue){
+    let itemHtml = 
+    `
+    
+    `
+}

@@ -24,7 +24,7 @@ body{
 
 /* error-msg-control */
 
-.error-msg-control{
+.msg-control{
     display: none;
     margin-top:43%;
     margin-left:74%;
@@ -37,14 +37,14 @@ body{
     padding-bottom:20px;
 }
 
-.error-msg-close-control{
+.msg-close-control{
     width:100%;
     display: flex;
     justify-content: right;
     align-items: center;
 }
 
-.error-msg-close-control button{
+.msg-close-control button{
     background-color: transparent;
     border:none;
     cursor:pointer;
@@ -55,24 +55,24 @@ body{
     margin-right:0.3rem;
 }
 
-.error-msg-close-control button:hover{
+.msg-close-control button:hover{
     opacity: 1;
     transition:0.2s;
 }
 
-.error-msg-content{
+.msg-content{
     width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.error-msg-content i{
+.msg-content i{
     font-size:3rem;
     margin-bottom:0.5rem;
 }
 
-.error-msg-content span{
+.msg-content span{
     font-weight: 700;
     font-size:17px;
 }
@@ -792,6 +792,7 @@ header{
 .generate-budget-section{
     width: 100%;
     padding:10px 0;
+    display: none;
 }
 
 .generate-budget-control{
