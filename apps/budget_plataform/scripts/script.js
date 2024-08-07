@@ -41,7 +41,7 @@ const servicesSection = document.querySelector(".services-section");
 const observationsSection = document.querySelector(".observations-section");
 const generateBudgetSection = document.querySelector(".generate-budget-section");
 
-// todo : fazer function para pegar a data no formato BR , adendo : função com parametros para que seja reutilizada várias vezes 
+// todo : fazer function para pegar a data no formato BR , adendo : função com parametros para que seja reutilizada várias vezes
 
 /*dateInput.addEventListener("change", ()=>{
     let date = dateInput.value;
@@ -53,13 +53,13 @@ const generateBudgetSection = document.querySelector(".generate-budget-section")
     console.log(newDate);
 }) */
 
-//functions 
+//functions
 
 function createClientsList(){
     getClientsData().then(clients =>{
 
         let clientsData = [];
-    
+
         clients.forEach(client =>{
             clientsData.push(client.name.toUpperCase());
         });
@@ -104,7 +104,7 @@ function createEquipamentsList(){
 
                     option.text = equipament;
 
-                    equipamentsSelectList.add(option); 
+                    equipamentsSelectList.add(option);
 
                 })
 
@@ -188,16 +188,88 @@ closeMsgBtn.addEventListener("click", ()=>{
 
 //elements
 
-const partsAddedItemsControl = document.querySelector(".parts-added-items-control")
+const partsAddedItemsControl = document.querySelector(".parts-added-items-control");
+const partQuantInput = document.querySelector("#part-quant-input");
+const partDescriptionInput = document.querySelector("#part-description-input");
+const partUnitValueInput = document.querySelector("#part-unit-value-input");
+const partAddItemBtn = document.querySelector("#part-add-item-btn");
+
+const partsItemTotalSpan = document.querySelector(".parts-item-total-span")
 
 //init
 showOtherSections();
 
+//testing
+
+const totalValueSpan = document.querySelectorAll(".total-value-span");
+
+let totalNumber = parseInt(totalValueSpan);
+
+console.log(totalNumber);
+
 //functions
 
 function createPartItem(quant, description, unitvalue){
-    let itemHtml = 
+    const itemString =
     `
-    
-    `
+    <div class="parts-item">
+
+                                <div class="parts-item-content">
+                                    <span class="quant-span">${quant}</span>
+
+                                    <span class="description-span">${description.toUpperCase()}</span>
+
+                                    <span class="unit-value-span">R$ ${unitvalue}</span>
+
+                                    <span class="total-value-span">R$ ${quant * unitvalue}</span>
+
+                                    <div class="edit-btn-control">
+                                        <button class="edit-btn-of-parts">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="delete-btn-control">
+                                        <button class="delete-btn-of-parts">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+    </div>
+    `;
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(itemString, 'text/html');
+
+    const itemHtml  = doc.body.firstChild;
+
+    partsAddedItemsControl.appendChild(itemHtml);
+};
+
+function updatePartsTotal(){
+    const totalValueSpan = document.querySelectorAll(".total-value-span");
 }
+
+function addPartItemProcess(){
+    //input validation
+    if (partQuantInput.value ===""){
+        showPopupMsg("Insira a quantidade de peças !", "errorMsg");
+        return;
+    }else if(partDescriptionInput.value ===""){
+        showPopupMsg("Insira a descrição da peça !", "errorMsg");
+        return;
+    }else if(partUnitValueInput.value ===""){
+        showPopupMsg("Insira um valor unitário !" , "errorMsg");
+        return;
+    }else{
+        createPartItem(partQuantInput.value, partDescriptionInput.value, partUnitValueInput.value)
+    }
+}
+
+// event listerers
+
+partAddItemBtn.addEventListener("click", ()=>{
+    addPartItemProcess();
+});
