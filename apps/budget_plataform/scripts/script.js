@@ -1,9 +1,4 @@
-//elements
-const clientsSelectList = document.querySelector("#clients-select-list");
-const equipamentsSelectList = document.querySelector("#equipaments-select-list");
-const notIdentifiedInput = document.querySelector("#not-identified-input");
-
-//functions 
+// clients_equipaments.json
 async function getClientsData(){
     try{
         const response = await fetch("../data/clients_equipaments.json");
@@ -21,6 +16,24 @@ async function getClientsData(){
         console.log(`Failed to load json : ${error}`);
     }
 }
+
+
+//budget-production
+
+// header
+
+//elements
+const errorMsgControl = document.querySelector(".error-msg-control");
+const closeErrorMsgBtn = document.querySelector("#close-error-msg-btn");
+const errorMsgSpan = document.querySelector(".error-msg-span");
+
+const clientsSelectList = document.querySelector("#clients-select-list");
+const equipamentsSelectList = document.querySelector("#equipaments-select-list");
+const notIdentifiedInput = document.querySelector("#not-identified-input");
+const infosNextStepBtn = document.querySelector("#infos-next-step-btn");
+
+
+//functions 
 
 function createClientsList(){
     getClientsData().then(clients =>{
@@ -52,7 +65,7 @@ function createEquipamentsList(){
         let equipamentsData = [];
 
         clients.forEach(client =>{
-            if(clientsSelectList.value === "(NÃO IDENTIFICADO)" || clientsSelectList.value === ""){
+            if(clientsSelectList.value === "(NÃO IDENTIFICADO)"){
                 equipamentsSelectList.style.display = "none";
                 notIdentifiedInput.style.display = "block";
 
@@ -83,8 +96,36 @@ function createEquipamentsList(){
     })
 }
 
-function popupErrorMsg(message){
-    
+function validateSelects(){
+    if(clientsSelectList.value === ""){
+        showpopupErrorMsg("Selecione um cliente !");
+        return;
+    }
+
+    if (equipamentsSelectList.value === ""){
+        showpopupErrorMsg("Selecione um equipamento !");
+        return;
+    }
+
+    if(clientsSelectList.value === "(NÃO IDENTIFICADO)" && notIdentifiedInput.value === ""){
+        showpopupErrorMsg("Digite o modelo do equipamento !");
+        return;
+    }
+}
+
+function showpopupErrorMsg(message){
+    errorMsgSpan.innerHTML = "";
+    errorMsgSpan.innerText = message;
+
+    errorMsgControl.style.display = "block";
+    errorMsgControl.style.transition = "0.5s";
+    errorMsgControl.style.marginTop = "40%";
+}
+
+function closePopupErrorMsg(){
+    errorMsgControl.style.margintTop = "43%";
+    errorMsgControl.style.transition = "0.5s";
+    errorMsgControl.style.display = "none";
 }
 
 //testing

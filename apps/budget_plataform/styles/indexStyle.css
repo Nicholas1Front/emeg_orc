@@ -22,13 +22,13 @@ body{
     width:100%;
 }
 
-/* error-message-control */
+/* error-msg-control */
 
 .error-msg-control{
     margin-top:40%;
-    margin-left:77%;
+    margin-left:74%;
     position:fixed;
-    width:20%;
+    width:23%;
     border-radius:10px;
     background-color:#000;
     color:white;
@@ -309,7 +309,7 @@ header{
     width:15%;
 }
 
-#informations-next-btn{
+#infos-next-step-btn{
     width:100%;
     border-radius:25px;
     color:#d61e1e;
@@ -323,13 +323,13 @@ header{
     align-items: center;
 }
 
-#informations-next-btn:hover{
+#infos-next-step-btn:hover{
     background-color: #d61e1e;
     color: white;
     transition: 0.2s;
 }
 
-#informations-next-btn i{
+#infos-next-step-btn i{
     padding:0 3px;
 }
 
