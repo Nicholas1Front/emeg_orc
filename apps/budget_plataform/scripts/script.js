@@ -32,6 +32,9 @@ const equipamentsSelectList = document.querySelector("#equipaments-select-list")
 const notIdentifiedInput = document.querySelector("#not-identified-input");
 const infosNextStepBtn = document.querySelector("#infos-next-step-btn");
 
+const partsSection = document.querySelector(".parts-section");
+const servicesSection = document.querySelector(".services-section");
+const observationsSection = document.querySelector(".observations-section");
 
 //functions 
 
@@ -100,16 +103,14 @@ function validateSelects(){
     if(clientsSelectList.value === ""){
         showpopupErrorMsg("Selecione um cliente !");
         return;
-    }
-
-    if (equipamentsSelectList.value === ""){
+    }else if(equipamentsSelectList.value === ""){
         showpopupErrorMsg("Selecione um equipamento !");
         return;
-    }
-
-    if(clientsSelectList.value === "(NÃO IDENTIFICADO)" && notIdentifiedInput.value === ""){
+    }else if(clientsSelectList.value === "(NÃO IDENTIFICADO)" && notIdentifiedInput.value === ""){
         showpopupErrorMsg("Digite o modelo do equipamento !");
         return;
+    }else{
+        showOtherSections();
     }
 }
 
@@ -128,13 +129,27 @@ function closePopupErrorMsg(){
     errorMsgControl.style.display = "none";
 }
 
+function showOtherSections(){
+    partsSection.style.display = "block";
+    servicesSection.style.display = "block";
+    observationsSection.style.display = "block";
+}
+
 //testing
 
 createClientsList();
 
 //event listeners
 
-clientsSelectList.addEventListener("change", function(){
+clientsSelectList.addEventListener("change", ()=>{
     createEquipamentsList();
+})
+
+infosNextStepBtn.addEventListener("click", ()=>{
+    validateSelects();
+});
+
+closeErrorMsgBtn.addEventListener("click", ()=>{
+    closePopupErrorMsg();
 })
 

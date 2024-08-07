@@ -25,7 +25,8 @@ body{
 /* error-msg-control */
 
 .error-msg-control{
-    margin-top:40%;
+    display: none;
+    margin-top:43%;
     margin-left:74%;
     position:fixed;
     width:23%;
@@ -336,6 +337,7 @@ header{
 /* parts-section */
 
 .parts-section{
+    display:none;
     width: 100%;
     padding:10px 0;
 }
@@ -556,6 +558,7 @@ header{
 /* services-section */
 
 .services-section{
+    display:none;
     width:100%;
     margin-top:5rem;
     padding:10px 0;
@@ -735,6 +738,7 @@ header{
 /* observations-section */
 
 .observations-section{
+    display:none;
     width:100%;
     margin-top:5rem;
     padding:10px 0;
