@@ -194,18 +194,31 @@ const partDescriptionInput = document.querySelector("#part-description-input");
 const partUnitValueInput = document.querySelector("#part-unit-value-input");
 const partAddItemBtn = document.querySelector("#part-add-item-btn");
 
-const partsItemTotalSpan = document.querySelector(".parts-item-total-span")
-
 //init
 showOtherSections();
 
 //testing
 
-const totalValueSpan = document.querySelectorAll(".total-value-span");
+function updateTotalSpan(spanGroupHtml, spanResultHtml){
+    const allSpansHtml = document.querySelectorAll(`.${spanGroupHtml}`);
 
-let totalNumber = parseInt(totalValueSpan);
+    let totalValue = null;
 
-console.log(totalNumber);
+    for(let i = 0 ; i < allSpansHtml.length ; i++){
+        let string = allSpansHtml[i].innerText.slice(2);
+
+        let number = parseInt(string);
+
+        totalValue += number;
+    }
+
+    const resultSpan = document.querySelector(`.${spanResultHtml}`);
+
+    resultSpan.innerText = `R$ ${totalValue}`;
+
+}
+
+updateTotalSpan("total-value-span", "parts-item-total-span");
 
 //functions
 
@@ -248,9 +261,6 @@ function createPartItem(quant, description, unitvalue){
     partsAddedItemsControl.appendChild(itemHtml);
 };
 
-function updatePartsTotal(){
-    const totalValueSpan = document.querySelectorAll(".total-value-span");
-}
 
 function addPartItemProcess(){
     //input validation
