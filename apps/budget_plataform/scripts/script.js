@@ -361,7 +361,7 @@ function createServiceItem(quant , description , unitValue){
 
                                     <span class="service-unit-value-span">R$ ${unitValue}</span>
 
-                                    <span class="service-total-value-span">R$ ${quant * untiValue}</span>
+                                    <span class="service-total-value-span">R$ ${quant * unitValue}</span>
 
                                     <div class="edit-btn-control">
                                         <button class="edit-btn-of-services">
@@ -391,5 +391,62 @@ function createServiceItem(quant , description , unitValue){
 function addServiceItemProcess(){
     //validation inputs
 
-    
+    if(serviceQuantInput.value === "" && serviceDescriptionInput.value === "" && serviceUnitValueInput.value === ""){
+        showPopupMsg("Insira as informações do serviços executados antes de prosseguir !" , "errorMsg")
+        return;
+    }else if(serviceQuantInput.value === ""){
+        showPopupMsg("Insira a quantidade de serviços executados !", "errorMsg");
+        return;
+    }else if(serviceDescriptionInput.value === ""){
+        showPopupMsg("Insira a descrição dos serviços executados !", "errorMsg");
+        return;
+    }else if(serviceUnitValueInput.value === ""){
+        showPopupMsg("Insira o valor unitário do serviço executado !", "errorMsg");
+        return
+    }else{
+        createServiceItem(serviceQuantInput.value, serviceDescriptionInput.value , serviceUnitValueInput.value);
+        updateTotalSpan("service-total-value-span", "services-item-total-span");
+        clearServicesInputs();
+
+        let servicesItem = document.querySelectorAll(".services-item");
+        let editBtnOfServices = document.querySelectorAll(".edit-btn-of-services");
+        let deleteBtnOfServices = document.querySelectorAll(".delete-btn-of-services");
+
+        for(let i = 0 ; i < servicesItem.length ; i++){
+            deleteBtnOfServices[i].addEventListener('click', ()=>{
+                servicesItem[i].remove();
+                updateTotalSpan("service-total-value-span", "services-item-total-span");
+            });
+        }
+
+        for(let i = 0 ; i < servicesItem.length ; i++){
+            editBtnOfServices[i].addEventListener("click", ()=>{
+                let serviceQuantSpan = document.querySelectorAll(".service-quant-span");
+                let serviceDescriptionSpan = document.querySelectorAll(".service-description-span");
+                let serviceUnitValueSpan = document.querySelectorAll(".service-unit-value-span");
+
+                let unitValue = serviceUnitValueSpan[i].innerText.slice(2);
+
+                serviceQuantInput.value = serviceQuantSpan[i].innerText;
+                serviceDescriptionInput.value = serviceDescriptionSpan[i].innerText;
+                serviceUnitValueInput.value = unitValue;
+
+                servicesItem[i].remove();
+
+                updateTotalSpan("service-total-value-span", "services-item-total-span");
+            })
+        }
+    }
 }
+
+function clearServicesInputs(){
+    serviceQuantInput.value = "";
+    serviceDescriptionInput.value = "";
+    serviceUnitValueInput.value = "";
+}
+
+// event listeners
+
+serviceAddItemBtn.addEventListener("click", ()=>{
+    addServiceItemProcess();
+})
