@@ -450,3 +450,9 @@ function clearServicesInputs(){
 serviceAddItemBtn.addEventListener("click", ()=>{
     addServiceItemProcess();
 })
+
+serviceUnitValueInput.addEventListener('input', (event)=>{
+    const updateValue = validateOnlyNumbers(event.target.value);
+
+    event.target.value = updateValue;
+})
