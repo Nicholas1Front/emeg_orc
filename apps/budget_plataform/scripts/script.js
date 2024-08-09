@@ -199,6 +199,8 @@ showOtherSections();
 
 //testing
 
+//functions
+
 function updateTotalSpan(spanGroupHtml, spanResultHtml){
     const allSpansHtml = document.querySelectorAll(`.${spanGroupHtml}`);
 
@@ -214,13 +216,11 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
 
     const resultSpan = document.querySelector(`.${spanResultHtml}`);
 
+    resultSpan.innerHTML = "";
+
     resultSpan.innerText = `R$ ${totalValue}`;
 
 }
-
-updateTotalSpan("total-value-span", "parts-item-total-span");
-
-//functions
 
 function createPartItem(quant, description, unitvalue){
     const itemString =
@@ -275,6 +275,37 @@ function addPartItemProcess(){
         return;
     }else{
         createPartItem(partQuantInput.value, partDescriptionInput.value, partUnitValueInput.value)
+        updateTotalSpan("total-value-span", "parts-item-total-span");
+
+        /*get itens all time this function is called*/
+
+        let partsItem = document.querySelectorAll(".parts-item");
+        let editBtnOfParts = document.querySelectorAll(".edit-btn-of-parts");
+        let deleteBtnOfParts = document.querySelectorAll('.delete-btn-of-parts');
+        let partsQuantSpan = document.querySelectorAll(".parts-quant-span");
+        let partsDescriptionSpan = document.querySelectorAll(".parts-description-span");
+        let partsUnitValueSpan = document.querySelectorAll(".parts-unit-value-span");    
+
+        //event listeners to delete itens
+        for(let i = 0 ; i < partsItem.length ; i++){
+            deleteBtnOfParts[i].addEventListener("click", ()=>{
+                partsItem[i].remove();
+            })   
+        };
+
+        //event listeners to edit itens
+
+        for(let i = 0 ; i < partsItem.length ; i++){
+           editBtnOfParts[i].addEventListener("click", ()=>{
+                partQuantInput.value = partsQuantSpan[i].innerText;
+                partDescriptionInput.value = partsDescriptionSpan[i].innerText;
+                partUnitValueInput.value = partsUnitValueSpan[i].innerText;
+
+                partsItem[i].remove();
+           })   
+        };
+
+
     }
 }
 
@@ -282,4 +313,8 @@ function addPartItemProcess(){
 
 partAddItemBtn.addEventListener("click", ()=>{
     addPartItemProcess();
+    partQuantInput.innerHTML = "";
+    partDescriptionInput.innerHTML = "";
+    partUnitValueInput.innerHTML = "";
 });
+

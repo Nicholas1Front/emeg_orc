@@ -485,11 +485,11 @@ header{
     background-color: #e7e7e7;
 }
 
-.quant-span,
-.unit-value-span,
-.total-value-span,
-.edit-btn-control,
-.delete-btn-control{
+.parts-quant-span,
+.parts-unit-value-span,
+.parts-total-value-span,
+.parts-edit-btn-control,
+.parts-delete-btn-control{
     width:12%;
     display: flex;
     justify-content: center;
@@ -528,7 +528,7 @@ header{
     transition:0.2s;
 }
 
-.description-span{
+.parts-description-span{
     width:40%;
     display: flex;
     justify-content: center;
