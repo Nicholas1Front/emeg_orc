@@ -25,7 +25,7 @@ async function getClientsData(){
 //elements
 const MsgControl = document.querySelector(".msg-control");
 const closeMsgBtn = document.querySelector("#close-msg-btn");
-const MsgSpan = document.querySelector(".-msg-span");
+const MsgSpan = document.querySelector(".msg-span");
 
 const clientsSelectList = document.querySelector("#clients-select-list");
 const equipamentsSelectList = document.querySelector("#equipaments-select-list");
@@ -272,7 +272,10 @@ function createPartItem(quant, description, unitvalue){
 
 function addPartItemProcess(){
     //input validation
-    if (partQuantInput.value ===""){
+    if(partQuantInput.value === "" && partDescriptionInput.value === "" && partUnitValueInput.value === ""){
+        showPopupMsg("Insira as informações das peças aplicadas antes de prosseguir !" , "errorMsg")
+    }
+    else if(partQuantInput.value ===""){
         showPopupMsg("Insira a quantidade de peças !", "errorMsg");
         return;
     }else if(partDescriptionInput.value ===""){
@@ -337,3 +340,56 @@ partUnitValueInput.addEventListener('input', (event)=>{
     event.target.value = updateValue;
 })
 
+//services section 
+
+//elements
+
+const servicesAddedItemsControl = document.querySelector(".services-added-items-control");
+const serviceQuantInput = document.querySelector("#service-quant-input");
+const serviceDescriptionInput = document.querySelector("#service-description-input");
+const serviceUnitValueInput = document.querySelector("#service-unit-value-input");
+const serviceAddItemBtn = document.querySelector("#service-add-item-btn");
+
+function createServiceItem(quant , description , unitValue){
+    const itemString = `
+    <div class="services-item">
+
+                                <div class="services-item-content">
+                                    <span class="service-quant-span">${quant}</span>
+
+                                    <span class="service-description-span">${description.toUpperCase()}</span>
+
+                                    <span class="service-unit-value-span">R$ ${unitValue}</span>
+
+                                    <span class="service-total-value-span">R$ ${quant * untiValue}</span>
+
+                                    <div class="edit-btn-control">
+                                        <button class="edit-btn-of-services">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="delete-btn-control">
+                                        <button class="delete-btn-of-services">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+    `;
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(itemString, 'text/html');
+
+    const itemHtml  = doc.body.firstChild;
+
+    servicesAddedItemsControl.appendChild(itemHtml);
+}
+
+function addServiceItemProcess(){
+    //validation inputs
+
+    
+}
