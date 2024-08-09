@@ -197,13 +197,17 @@ const partAddItemBtn = document.querySelector("#part-add-item-btn");
 //init
 showOtherSections();
 
-//testing
-
-let totalSpans = document.querySelectorAll(".total-value-span");
-
-console.log(totalSpans[0].innerHTML);
-
 //functions
+
+function validateOnlyNumbers(param){
+    return param.replace(/[^0-9,]/g,"")
+}
+
+function clearPartsInputs(){
+    partQuantInput.value = "";
+    partDescriptionInput.value = "";
+    partUnitValueInput.value = "";
+}
 
 function updateTotalSpan(spanGroupHtml, spanResultHtml){
     const allSpansHtml = document.querySelectorAll(`.${spanGroupHtml}`);
@@ -280,6 +284,7 @@ function addPartItemProcess(){
     }else{
         createPartItem(partQuantInput.value, partDescriptionInput.value, partUnitValueInput.value)
         updateTotalSpan("parts-total-value-span", "parts-item-total-span");
+        clearPartsInputs();
 
         /*get itens all time this function is called*/
 
@@ -305,7 +310,10 @@ function addPartItemProcess(){
 
                 partQuantInput.value = partsQuantSpan[i].innerText;
                 partDescriptionInput.value = partsDescriptionSpan[i].innerText;
-                partUnitValueInput.value = partsUnitValueSpan[i].innerText;
+                
+                let unitValueUpdated = partsUnitValueSpan[i].innerText.slice(2); // took off the R$
+
+                partUnitValueInput.value = unitValueUpdated;
 
                 partsItem[i].remove();
 
@@ -321,8 +329,11 @@ function addPartItemProcess(){
 
 partAddItemBtn.addEventListener("click", ()=>{
     addPartItemProcess();
-    partQuantInput.innerHTML = "";
-    partDescriptionInput.innerHTML = "";
-    partUnitValueInput.innerHTML = "";
 });
+
+partUnitValueInput.addEventListener('input', (event)=>{
+    const updateValue = validateOnlyNumbers(event.target.value);
+
+    event.target.value = updateValue;
+})
 
