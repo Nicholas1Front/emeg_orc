@@ -25,11 +25,11 @@ body{
 /* error-msg-control */
 
 .msg-control{
-    display: none;
-    margin-top:43%;
-    margin-left:74%;
+    display: block;
+    margin-top:37%;
+    margin-left:68%;
     position:fixed;
-    width:23%;
+    width:30%;
     border-radius:10px;
     background-color:#000;
     color:white;
@@ -60,19 +60,19 @@ body{
     transition:0.2s;
 }
 
-.msg-content{
+.msg-content-control{
     width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.msg-content i{
+.msg-content-control i{
     font-size:3rem;
     margin-bottom:0.5rem;
 }
 
-.msg-content span{
+.msg-content-control span{
     font-weight: 700;
     font-size:17px;
 }

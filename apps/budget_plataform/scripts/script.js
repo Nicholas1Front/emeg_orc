@@ -23,9 +23,9 @@ async function getClientsData(){
 // header
 
 //elements
-const MsgControl = document.querySelector(".msg-control");
+const msgControl = document.querySelector(".msg-control");
 const closeMsgBtn = document.querySelector("#close-msg-btn");
-const MsgSpan = document.querySelector(".msg-span");
+const msgSpan = document.querySelector(".msg-span");
 
 const clientsSelectList = document.querySelector("#clients-select-list");
 const equipamentsSelectList = document.querySelector("#equipaments-select-list");
@@ -134,27 +134,29 @@ function validateSelects(){
     }
 }
 
-function showPopupMsg(message , messageType){
-    MsgSpan.innerHTML = "";
-    MsgSpan.innerText = message;
+function showPopupMsg(message , messageType ){
+    msgSpan.innerHTML = "";
+    msgSpan.innerText = message;
 
     if(messageType === "errorMsg"){
-        MsgControl.style.backgroundColor = "#000";
-        MsgSpan.style.color = "white"; //black color
+        msgControl.style.backgroundColor = "#000";//black color
+        msgSpan.style.color = "white"; 
+        closeMsgBtn.style.color = "white";
     }else if (messageType === "adviceMsg"){
-        MsgControl.style.backgroundColor = "#d6ca1e";  //yellow color
-        MsgControl.style.color = "black";
+        msgControl.style.backgroundColor = "#fcba03";  //yellow color
+        msgControl.style.color = "black";
+        closeMsgBtn.style.color = "black";
     }
 
-    MsgControl.style.display = "block";
-    MsgControl.style.transition = "0.5s";
-    MsgControl.style.marginTop = "40%";
+    msgControl.style.display = "block";
+    msgControl.style.transition = "0.5s";
+    msgControl.style.marginTop = "37%";
 }
 
 function closePopupErrorMsg(){
-    MsgControl.style.margintTop = "43%";
-    MsgControl.style.transition = "0.5s";
-    MsgControl.style.display = "none";
+    msgControl.style.margintTop = "43%";
+    msgControl.style.transition = "0.5s";
+    msgControl.style.display = "none";
 }
 
 function showOtherSections(){
@@ -456,3 +458,37 @@ serviceUnitValueInput.addEventListener('input', (event)=>{
 
     event.target.value = updateValue;
 })
+
+//observations-section
+
+//elements
+
+const observationsTextarea = document.querySelector("#observations-textarea");
+
+//generate-budget-section
+
+//elements
+
+//testing
+
+function verifyPartsServiceItems(){
+    const partsItem = document.querySelector(".parts-item");
+    const servicesItems = document.querySelector(".services-item");
+
+    if(partsItem === null){
+        showPopupMsg("Não existem itens em peças aplicadas !" , "adviceMsg");
+        return false;
+    }else if(servicesItems === null){
+        showPopupMsg("Não existem itens em serviços executados!" , "adviceMsg")
+        return false;
+    }else{
+        return true;
+    }
+}
+
+const test1 = verifyPartsServiceItems();
+
+console.log(test1);
+
+/* todo : fazer um mecanismo que ao mesmo tempo gere uma mensagem de aviso como no caso acima , 
+prossiga em dar display nas informações do orçamento  */
