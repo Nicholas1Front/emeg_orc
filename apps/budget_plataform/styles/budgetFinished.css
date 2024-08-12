@@ -6,4 +6,22 @@
 
 #budget-finished{
     max-width: 210mm; 
+    margin : 0 auto;
+    padding-top : 2.5cm;
+    padding-bottom: 2.5cm;
+    padding-left: 3.5cm;
+    padding-right: 3.5cm;
+    display: flex;
+    flex-direction:column;
 }
+
+/* budget-finished-content-container */
+
+/* clients-equipaments-section */
+
+.clients-equipaments-section{
+    width:100%;
+    margin-top:2px;
+    margin-bottom:5px;
+}
+
