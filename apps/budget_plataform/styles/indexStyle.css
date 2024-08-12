@@ -22,10 +22,10 @@ body{
     width:100%;
 }
 
-/* error-msg-control */
+/* msg-control */
 
 .msg-control{
-    display: block;
+    display: none;
     margin-top:37%;
     margin-left:68%;
     position:fixed;

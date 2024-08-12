@@ -146,6 +146,10 @@ function showPopupMsg(message , messageType ){
         msgControl.style.backgroundColor = "#fcba03";  //yellow color
         msgControl.style.color = "black";
         closeMsgBtn.style.color = "black";
+    }else if(messageType === "successMsg"){
+        msgControl.style.backgroundColor = "#42f55a" //green color
+        msgControl.style.color = "white";
+        closeMsgBtn.style.color = "white";
     }
 
     msgControl.style.display = "block";
@@ -465,11 +469,14 @@ serviceUnitValueInput.addEventListener('input', (event)=>{
 
 const observationsTextarea = document.querySelector("#observations-textarea");
 
-//generate-budget-section
+//generate budget and display budget
 
 //elements
+const generateBudgetBtn = document.querySelector("#generate-budget-btn");
+const budgetProduction = document.querySelector("#budget-production");
+const budgetFinished = document.querySelector("#budget-finished");
 
-//testing
+//functions
 
 function verifyPartsServiceItems(){
     const partsItem = document.querySelector(".parts-item");
@@ -477,18 +484,20 @@ function verifyPartsServiceItems(){
 
     if(partsItem === null){
         showPopupMsg("Não existem itens em peças aplicadas !" , "adviceMsg");
-        return false;
+        return;
     }else if(servicesItems === null){
         showPopupMsg("Não existem itens em serviços executados!" , "adviceMsg")
-        return false;
+        return;
     }else{
-        return true;
+        
     }
 }
 
-const test1 = verifyPartsServiceItems();
+function displayBudgetProcess(){
+    //verify parts and services items are null 
+    verifyPartsServiceItems();
+}
 
-console.log(test1);
-
-/* todo : fazer um mecanismo que ao mesmo tempo gere uma mensagem de aviso como no caso acima , 
-prossiga em dar display nas informações do orçamento  */
+generateBudgetBtn.addEventListener("click", ()=>{
+    displayBudgetProcess();
+}) 
