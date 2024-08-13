@@ -2,6 +2,7 @@
     margin : 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 12pt;
 }
 
 #budget-finished{
@@ -25,6 +26,7 @@
     width:100%;
     margin-top:2px;
     margin-bottom:5px;
+    border:1px solid #000;
 }
 
 .header-logo-container{
@@ -37,10 +39,68 @@
 
 .header-logo-control{
     width:50%;
-}
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:0.8rem 0;
+    color: white;
+}    
 
 .header-logo-control img{
-    width:100%;
-    height:100px;
+    width:20%;
+    height: 20%;
+    margin-right:1rem;
 }
 
+.header-title-container{
+    width:100%;
+    padding: 8px 0;
+    background-color: #d61e1e;
+}
+
+.header.title-container > .header-title-control{
+    margin-left:5px;
+    color:#000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.line-control{
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    margin-top:0.1rem;
+    margin-left : 6rem;
+}
+
+.line{
+    width:100%;
+    height: 2px;
+    background-color: white;
+}
+
+.budget-data-inforamtions-control{
+    width:100%;
+}
+
+.client-and-equipament-control{
+    width:100%;
+    margin:5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-and-equipament-control h4{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    align-items: center;
+}
+
+.other-informations-control{
+    width:100%;
+    margin:5px 0;
+}
