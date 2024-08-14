@@ -12,6 +12,7 @@
     margin-bottom: 2.5cm;
     margin-left: 3.5cm;
     margin-right: 3.5cm; */
+    border: 1px solid #03c343;
 }
 
 /* budget-finished-content-container */
@@ -26,7 +27,6 @@
     width:100%;
     margin-top:2px;
     margin-bottom:5px;
-    border:1px solid #000;
 }
 
 .header-logo-container{
@@ -35,6 +35,7 @@
     align-items:center;
     width:100%;
     background-color: #d61e1e;
+    border-radius:25px;
 }
 
 .header-logo-control{
@@ -55,6 +56,8 @@
 .clients-equipaments-header-container > .header-title-container{
     width:100%;
     padding: 8px 0;
+    margin: 5px 0;
+    border-radius:25px;
     background-color: #d61e1e;
     color:white;
     width:100%;
@@ -89,21 +92,28 @@
     width:100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .client-and-equipament-container h4{
     display: flex;
-    flex-direction: column;
-    width:100%;
+    justify-content: center;
     align-items: center;
+    width:100%;
     background-color: #d61e1e;
     color: white;
+    border-radius:25px;
+    padding:2px 0;
 }
 
-.client-and-equipament-container h4 > span {
-    width:100%;
+.client-and-equipament-container span {
+    width:85%;
+    margin:2px 0;
+    padding:8px 0;
     font-weight: 500;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
     color: #000;
 }
@@ -111,25 +121,58 @@
 .other-informations-container{
     width:100%;
     display: flex;
+    margin-top:5px;
 }
 
 .other-informations-control{
     width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .other-informations-control h4{
     display: flex;
     flex-direction: column;
-    width:25%;
+    width:95%;
     align-items: center;
     background-color: #d61e1e;
     color: white;
+    border-radius:25px;
+    padding:2px 0;
 }
 
-.other-informations-control h4 > span{
-    width:100%;
+.other-informations-control span{
+    width:85%;
+    margin:2px 0;
+    padding:8px 0;
     font-weight: 500;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
     color: #000;
+}
+
+/* aplied-parts-section */
+
+.aplied-parts-section{
+    width: 100%;
+    margin-top:20px;
+
+}
+
+.aplied-parts-introduction-title-container{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d61e1e;
+    padding:8px 0;
+    margin-bottom:5px;
+}
+
+.aplied-parts-introduction-title-container h3{
+    width:fit-content;
+    color: white;
 }
