@@ -47,8 +47,8 @@
 }    
 
 .header-logo-control img{
-    width:20%;
-    height: 20%;
+    width:15%;
+    height: 15%;
     margin-right:1rem;
 }
 
@@ -57,11 +57,10 @@
     padding: 8px 0;
     margin: 5px 0;
     border-radius:25px;
-    background-color: #d61e1e;
-    color:white;
+    color:#000;
     width:100%;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -80,77 +79,71 @@
 .line{
     width:100%;
     height: 2px;
-    background-color: white;
+    background-color: #d61e1e;
 }
 
-.budget-data-inforamtions-control{
+.budget-data-informations-container{
     width:100%;
+    display: flex;
+    align-items: center;
 }
 
 .client-and-equipament-container{
-    width:100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.client-and-equipament-container h4{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:100%;
-    background-color: #d61e1e;
-    color: white;
-    border-radius:25px;
-    padding:2px 0;
-}
-
-.client-and-equipament-container span {
-    width:85%;
-    margin:2px 0;
-    padding:8px 0;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    color: #000;
-}
-
-.other-informations-container{
-    width:100%;
-    display: flex;
-    margin-top:5px;
-}
-
-.other-informations-control{
     width:50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-.other-informations-control h4{
+.client-and-equipament-control{
+    width:100%;
     display: flex;
     flex-direction: column;
-    width:95%;
-    align-items: center;
-    background-color: #d61e1e;
-    color: white;
-    border-radius:25px;
-    padding:2px 0;
 }
 
-.other-informations-control span{
-    width:85%;
-    margin:2px 0;
-    padding:8px 0;
-    font-weight: 500;
+.client-and-equipament-control h4{
+    width:100%;
+}
+
+.client-and-equipament-control span{
+    width:100%;
+    padding:20px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
-    color: #000;
+}
+
+.vertical-line-control{
+    margin-right:1rem;
+    width:1%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertical-line{
+    width:2px;
+    height: 100%;
+    background-color: #d61e1e;
+}
+
+.other-budget-informations-container{
+    width:49%;
+}
+
+.other-budget-informations-control{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.other-budget-informations-control h4{
+    width:60%;
+}
+
+.other-budget-informations-control span{
+    width:40%;
+    padding:10px 0;
+    text-align: center;
 }
 
 /* aplied-parts-section */
