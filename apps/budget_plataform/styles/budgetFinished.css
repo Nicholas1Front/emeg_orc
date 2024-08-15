@@ -368,4 +368,15 @@
 
 .observations-made-content-container{
     width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:15px 0;
+}
+
+.observations-made-content-container span{
+    width:90%;
+    height:200px;
+    border:1px solid #d61e1e; 
+    border-radius:25px;
 }
