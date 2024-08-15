@@ -100,10 +100,17 @@
 
 .client-and-equipament-control h4{
     width:100%;
+    color:#d61e1e;
+}
+
+.client-and-equipament-control h4 > i{
+    margin-right:5px;
 }
 
 .client-and-equipament-control span{
     width:100%;
+    font-weight: 500;
+    font-style: italic;
     padding:20px 0;
     display: flex;
     align-items: center;
@@ -138,10 +145,17 @@
 
 .other-budget-informations-control h4{
     width:60%;
+    color: #d61e1e;
+}
+
+.other-budget-informations-control h4 > i{
+    margin-right:5px;
 }
 
 .other-budget-informations-control span{
     width:40%;
+    font-weight: 500;
+    font-style: italic;
     padding:10px 0;
     text-align: center;
 }
@@ -163,6 +177,10 @@
     padding:8px 0;
     margin-bottom:10px;
     border-radius:25px;
+}
+
+.aplied-parts-introduction-title-container > .line-control > .line{
+    background-color: #fff;
 }
 
 .aplied-parts-introduction-title-container h3{
@@ -202,8 +220,6 @@
 }
 
 .aplied-parts-items-container{
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
     background-color: #e3e3e3;
 }
 
@@ -213,6 +229,7 @@
     align-items: center;
     width:100%;
     padding:12px 0;
+    font-style: italic;
 }
 
 #aplied-parts-number-item,
@@ -230,4 +247,24 @@
 #aplied-parts-total-value{
     width:20%;
     text-align: center;
+}
+
+.aplied-parts-items-total-container{
+    width:100%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #d61e1e;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.aplied-parts-items-total-container h4,
+.aplied-parts-items-total-container span{
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    padding:5px 0;
+    color: #fff;
 }
