@@ -232,19 +232,19 @@
     font-style: italic;
 }
 
-.aplied-parts-number-item,
-.aplied-parts-quant{
+.aplied-part-number-item-span,
+.aplied-part-quant-span{
     width:10%;
     text-align: center;
 }
 
-.aplied-parts-description{
+.aplied-part-description-span{
     width:40%;
     text-align: center;
 }
 
-.aplied-parts-unit-value,
-.aplied-parts-total-value{
+.aplied-part-unit-value-span,
+.aplied-part-total-value-span{
     width:20%;
     text-align: center;
 }
@@ -273,7 +273,7 @@
 
 .services-performed-section{
     width:100%;
-    margin-top:20px;
+    margin-top:30px;
 }
 
 .services-performed-introduction-title-container{
@@ -282,7 +282,72 @@
     justify-content: center;
     align-items: center;
     background-color: #d61e1e;
+    color:#fff;
     padding:8px 0;
     margin-bottom:10px;
     border-radius:25px;
+}
+
+.services-performed-introduction-title-container > .line-control > .line{
+    background-color: #fff;
+}
+
+.services-performed-item-title-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #d61e1e;
+    color: #fff;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.services-performed-items-container{
+    background-color: #e3e3e3;
+}
+
+.services-performed-item{
+    width:100%;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding:12px 0;
+}
+
+.serv-performed-number-item-span,
+.serv-performed-quant-span{
+    width:10%;
+    text-align: center;
+}
+
+.serv-performed-description-span{
+    width:40%;
+    text-align: center;
+}
+
+.serv-performed-unit-value-span,
+.serv-performed-total-value-span{
+    width:20%;
+    text-align:center;
+}
+
+.services-performed-items-total-container{
+    width:100%;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #d61e1e;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.services-performed-items-total-container h4,
+.services-performed-items-total-container span{
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    padding:5px 0;
+    color: #fff;
 }
