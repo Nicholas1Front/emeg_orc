@@ -2,13 +2,13 @@
     margin : 0;
     padding: 0;
     box-sizing: border-box;
-    font-size: 12pt;
 }
 
 #budget-finished{
     max-width: 210mm; 
     margin : 0 auto;
     display: none;
+    font-size: 12pt;
 }
 
 /* budget-finished-content-container */
@@ -34,7 +34,7 @@
     border-radius:25px;
 }
 
-.header-logo-control{
+.header-logo-control-of-budget-finished{
     width:50%;
     display:flex;
     justify-content: center;
@@ -43,7 +43,7 @@
     color: white;
 }    
 
-.header-logo-control img{
+.header-logo-control-of-budget-finished img{
     width:15%;
     height: 15%;
     margin-right:1rem;
@@ -327,6 +327,11 @@
 .serv-performed-total-value-span{
     width:20%;
     text-align:center;
+}
+
+.serv-performed-no-content-span{
+    width:100%;
+    text-align: center;
 }
 
 .services-performed-items-total-container{

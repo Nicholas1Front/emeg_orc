@@ -478,7 +478,7 @@ const budgetFinished = document.querySelector("#budget-finished");
 
 //functions
 
-function verifyPartsServiceItems(){
+function displayBudgetProcess(){
     const partsItem = document.querySelector(".parts-item");
     const servicesItems = document.querySelector(".services-item");
 
@@ -491,11 +491,6 @@ function verifyPartsServiceItems(){
     }else{
         
     }
-}
-
-function displayBudgetProcess(){
-    //verify parts and services items are null 
-    verifyPartsServiceItems();
 }
 
 generateBudgetBtn.addEventListener("click", ()=>{
