@@ -8,10 +8,7 @@
 #budget-finished{
     max-width: 210mm; 
     margin : 0 auto;
-    /* margin-top : 2.5cm;
-    margin-bottom: 2.5cm;
-    margin-left: 3.5cm;
-    margin-right: 3.5cm; */
+    display: none;
 }
 
 /* budget-finished-content-container */

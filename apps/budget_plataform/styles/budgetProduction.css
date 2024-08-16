@@ -14,7 +14,7 @@
 
 #budget-production{
     max-width:1920px;
-    display: none;
+    display: block;
 }
 
 /* msg-control */
@@ -729,6 +729,8 @@ header{
     font-size:1.17em;
     text-align: center;
 }
+
+/* total-budget-prod-section */
 
 /* observations-section */
 
