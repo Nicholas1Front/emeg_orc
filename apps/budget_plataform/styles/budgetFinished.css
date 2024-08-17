@@ -7,7 +7,7 @@
 #budget-finished{
     max-width: 210mm; 
     margin : 0 auto;
-    display: none;
+    display: block;
     font-size: 12pt;
 }
 
@@ -218,6 +218,9 @@
 
 .aplied-parts-items-container{
     background-color: #e3e3e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .aplied-parts-item{
@@ -238,6 +241,13 @@
 .aplied-part-description-span{
     width:40%;
     text-align: center;
+}
+
+.aplied-parts-no-content-span{
+    width: 100%;
+    text-align: center;
+    padding:12px 0;
+    font-weight:500;
 }
 
 .aplied-part-unit-value-span,
@@ -302,6 +312,9 @@
 
 .services-performed-items-container{
     background-color: #e3e3e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .services-performed-item{
@@ -332,6 +345,8 @@
 .serv-performed-no-content-span{
     width:100%;
     text-align: center;
+    font-weight: 500;
+    padding:12px 0;
 }
 
 .services-performed-items-total-container{

@@ -478,19 +478,28 @@ const budgetFinished = document.querySelector("#budget-finished");
 
 //functions
 
+function createPartItemFinished(numberItem, quant , description , unitValue , totalValue){
+    const itemString = 
+    `
+        
+    `
+}
+
+function addPartItemFinishedProcess(){}
+
 function displayBudgetProcess(){
     const partsItem = document.querySelector(".parts-item");
     const servicesItems = document.querySelector(".services-item");
 
     if(partsItem === null){
         showPopupMsg("Não existem itens em peças aplicadas !" , "adviceMsg");
-        return;
     }else if(servicesItems === null){
         showPopupMsg("Não existem itens em serviços executados!" , "adviceMsg")
-        return;
-    }else{
-        
+    }else if (partsItem === null && servicesItems === null){
+        showPopupMsg("Peças e serviço inexistentes !" , "adviceMsg")
     }
+
+    // budgetFinished.style.display = "block";
 }
 
 generateBudgetBtn.addEventListener("click", ()=>{
