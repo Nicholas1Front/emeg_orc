@@ -223,7 +223,7 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
     for(let i = 0 ; i < allSpansHtml.length ; i++){
         let string = allSpansHtml[i].innerText.slice(2);
 
-        let number = parseInt(string);
+        let number = parseFloat(string);
 
         totalValue += number;
     }
@@ -231,6 +231,10 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
     const resultSpan = document.querySelector(`.${spanResultHtml}`);
 
     resultSpan.innerHTML = "";
+
+    if(totalValue === null || totalValue === NaN){
+        return;
+    }
 
     resultSpan.innerText = `R$ ${totalValue}`;
 
@@ -290,7 +294,19 @@ function updateTotalSpans_BudgetProdSection(){
 
 }
 
+//testing 
+
+let numberTest = "34,500";
+console.log(numberTest);
+numberTest = numberTest.replace(",", ".");
+console.log(numberTest);
+
 function createPartItem(quant, description, unitvalue){
+
+    quant = parseInt(quant);
+
+    let totalValue =  quant * unitvalue.replace(",", ".");
+
     const itemString =
     `
     <div class="parts-item">
@@ -300,9 +316,9 @@ function createPartItem(quant, description, unitvalue){
 
                                     <span class="parts-description-span">${description.toUpperCase()}</span>
 
-                                    <span class="parts-unit-value-span">R$ ${unitvalue}</span>
+                                    <span class="parts-unit-value-span">R$ ${unitvalue.replace(".",",")}</span>
 
-                                    <span class="parts-total-value-span">R$ ${quant * unitvalue}</span>
+                                    <span class="parts-total-value-span">R$ ${totalValue.replace(".",",")}</span>
 
                                     <div class="edit-btn-control">
                                         <button class="edit-btn-of-parts">
@@ -360,6 +376,7 @@ function addPartItemProcess(){
             deleteBtnOfParts[i].addEventListener("click", ()=>{
                 partsItem[i].remove();
                 updateTotalSpan("parts-total-value-span", "parts-item-total-span");
+                updateTotalSpans_BudgetProdSection();
             })   
         };
 
@@ -381,6 +398,7 @@ function addPartItemProcess(){
                 partsItem[i].remove();
 
                 updateTotalSpan("parts-total-value-span", "parts-item-total-span");
+                updateTotalSpans_BudgetProdSection();
            })   
         };
 
@@ -477,7 +495,7 @@ function addServiceItemProcess(){
             deleteBtnOfServices[i].addEventListener('click', ()=>{
                 servicesItem[i].remove();
                 updateTotalSpan("service-total-value-span", "services-item-total-span");
-                
+                updateTotalSpans_BudgetProdSection();
             });
         }
 
@@ -496,6 +514,7 @@ function addServiceItemProcess(){
                 servicesItem[i].remove();
 
                 updateTotalSpan("service-total-value-span", "services-item-total-span");
+                updateTotalSpans_BudgetProdSection();
             })
         }
     }
