@@ -253,23 +253,40 @@ function updateTotalSpans_BudgetProdSection(){
     totalBudgetDisplaySpan.innerHTML = "";
 
     if(partsItemTotalSpan.innerText !== "" && servicesItemTotalSpan.innerText !== ""){
-        partsItemsValue = partsItemTotalSpan.innerText.splice(2);
-        servicesItemsValue = servicesItemTotalSpan.innerText.splice(2);
+        partsItemsValue = parseFloat(partsItemTotalSpan.innerText.slice(2));
+        servicesItemsValue = parseFloat(servicesItemTotalSpan.innerText.slice(2));
         
         totalBudgetValue = partsItemsValue + servicesItemsValue;
 
         totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
         totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
         totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
-    }else if(partsItemTotalSpan === "" && servicesItemTotalSpan !== ""){
-        servicesItemsValue = servicesItemTotalSpan.innerText.splice(2);
-        
-        
+
+        return;
+
+    }else if(partsItemTotalSpan.innerText === "" && servicesItemTotalSpan.innerText !== ""){
+        servicesItemsValue = parseFloat(servicesItemTotalSpan.innerText.slice(2));
+        partsItemsValue = 0;
+
+        totalBudgetValue = partsItemsValue + servicesItemsValue;
+
+        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
+        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
+        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
+
+        return;
+    }else if(servicesItemTotalSpan.innerText === "" && partsItemTotalSpan.innerText !== ""){
+        servicesItemsValue = 0;
+        partsItemsValue = parseFloat(partsItemTotalSpan.innerText.slice(2));
+
+        totalBudgetValue = partsItemsValue + servicesItemsValue;
+
+        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
+        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
+        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
+
+        return;
     }
-
-    
-
-
 
 }
 
