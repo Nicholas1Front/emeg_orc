@@ -236,6 +236,43 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
 
 }
 
+function updateTotalSpans_BudgetProdSection(){
+    const partsItemTotalSpan = document.querySelector(".parts-item-total-span");
+    const servicesItemTotalSpan = document.querySelector(".services-item-total-span");
+    let partsItemsValue = 0;
+    let servicesItemsValue = 0;
+    let totalBudgetValue = 0;
+
+    const totalPartsDisplaySpan = document.querySelector(".total-of-parts-display-span");
+    const totalServicesDisplaySpan = document.querySelector(".total-of-services-display-span");
+    const totalBudgetDisplaySpan = document.querySelector(".total-of-budget-display-span");
+
+    //clear inputs
+    totalPartsDisplaySpan.innerHTML = "";
+    totalServicesDisplaySpan.innerHTML = "";
+    totalBudgetDisplaySpan.innerHTML = "";
+
+    if(partsItemTotalSpan.innerText !== "" && servicesItemTotalSpan.innerText !== ""){
+        partsItemsValue = partsItemTotalSpan.innerText.splice(2);
+        servicesItemsValue = servicesItemTotalSpan.innerText.splice(2);
+        
+        totalBudgetValue = partsItemsValue + servicesItemsValue;
+
+        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
+        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
+        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
+    }else if(partsItemTotalSpan === "" && servicesItemTotalSpan !== ""){
+        servicesItemsValue = servicesItemTotalSpan.innerText.splice(2);
+        
+        
+    }
+
+    
+
+
+
+}
+
 function createPartItem(quant, description, unitvalue){
     const itemString =
     `
@@ -338,6 +375,7 @@ function addPartItemProcess(){
 
 partAddItemBtn.addEventListener("click", ()=>{
     addPartItemProcess();
+    updateTotalSpans_BudgetProdSection();
 });
 
 partUnitValueInput.addEventListener('input', (event)=>{
@@ -422,6 +460,7 @@ function addServiceItemProcess(){
             deleteBtnOfServices[i].addEventListener('click', ()=>{
                 servicesItem[i].remove();
                 updateTotalSpan("service-total-value-span", "services-item-total-span");
+                
             });
         }
 
@@ -455,6 +494,7 @@ function clearServicesInputs(){
 
 serviceAddItemBtn.addEventListener("click", ()=>{
     addServiceItemProcess();
+    updateTotalSpans_BudgetProdSection();
 })
 
 serviceUnitValueInput.addEventListener('input', (event)=>{
@@ -476,16 +516,34 @@ const generateBudgetBtn = document.querySelector("#generate-budget-btn");
 const budgetProduction = document.querySelector("#budget-production");
 const budgetFinished = document.querySelector("#budget-finished");
 
+const apliedPartsItemsContainer = document.querySelector(".aplied-parts-items-container");
+
 //functions
 
 function createPartItemFinished(numberItem, quant , description , unitValue , totalValue){
     const itemString = 
     `
-        
-    `
+        <div class="aplied-parts-item">
+            <span class ="aplied-part-number-item-span"></span>
+            <span class="aplied-part-quant-span"></span>
+            <span class="aplied-part-description-span"></span>
+            <span class="aplied-part-unit-value-span"></span>
+            <span class="aplied-part-total-value-span"></span>
+        </div>
+    `;
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(itemString, 'text/html');
+
+    const itemHtml  = doc.body.firstChild;
+
+    apliedPartsItemsContainer.appendChild(itemHtml);
 }
 
-function addPartItemFinishedProcess(){}
+function addPartItemFinishedProcess(){
+
+}
 
 function displayBudgetProcess(){
     const partsItem = document.querySelector(".parts-item");
