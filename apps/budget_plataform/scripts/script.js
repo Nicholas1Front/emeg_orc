@@ -234,7 +234,9 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
         return;
     }
 
-    resultSpan.innerText = `R$ ${totalValue.replace(".",",")}`;
+    let totalValueString = totalValue.toString();
+
+    resultSpan.innerText = `R$ ${totalValueString.replace(".",",")}`;
 
 }
 
@@ -296,24 +298,30 @@ function updateTotalSpans_BudgetProdSection(){
 
 }
 
-function createPartItem(quant, description, unitvalue){
+function createPartItem(quantString, descriptionString, unitValueString){
 
-    quant = parseInt(quant);
+    let quant = parseInt(quantString);
 
-    let totalValue =  quant * unitvalue.replace(",", ".");
+    let unitValue = parseFloat(unitValueString.replace(",", "."));
+
+    let totalValue =  quant * unitValue;
+
+    let totalValueString = totalValue.toString();
+
+    totalValueString = totalValueString.replace(".",",")
 
     const itemString =
     `
     <div class="parts-item">
 
                                 <div class="parts-item-content">
-                                    <span class="parts-quant-span">${quant}</span>
+                                    <span class="parts-quant-span">${quantString}</span>
 
-                                    <span class="parts-description-span">${description.toUpperCase()}</span>
+                                    <span class="parts-description-span">${descriptionString.toUpperCase()}</span>
 
-                                    <span class="parts-unit-value-span">R$ ${unitvalue.replace(".",",")}</span>
+                                    <span class="parts-unit-value-span">R$ ${unitValueString}</span>
 
-                                    <span class="parts-total-value-span">R$ ${totalValue.replace(".",",")}</span>
+                                    <span class="parts-total-value-span">R$ ${totalValueString}</span>
 
                                     <div class="edit-btn-control">
                                         <button class="edit-btn-of-parts">
@@ -555,7 +563,9 @@ const guaranteeSpanResult = document.querySelector("#guarantee-span-result");
 const dateSpanResult = document.querySelector("#date-span-result");
 
 const apliedPartsItemsContainer = document.querySelector(".aplied-parts-items-container");
+const totalOfPartsApliedItemsSpan = document.querySelector(".total-of-parts-aplied-span");
 const servicesPerformedItemsContainer = document.querySelector(".services-performed-items-container");
+const totalOfServicesPerformedItemsSpan = document.querySelector(".total-of-services-performed-items-span")
 
 const observationsMadeSpan = document.querySelector(".observations-made-span");
 
@@ -668,6 +678,12 @@ function addPartItemFinishedProcess(){
             partsTotalValueSpan[i].innerText,
         )
     }
+}
+
+function addPartItemTotalFinished(){
+    const partsItemTotalSpan = document.querySelector(".parts-item-total-span");
+
+
 }
 
 function addObservationsFinishedProcess(){
