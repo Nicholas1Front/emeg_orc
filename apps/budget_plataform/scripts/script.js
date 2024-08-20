@@ -555,6 +555,9 @@ const guaranteeSpanResult = document.querySelector("#guarantee-span-result");
 const dateSpanResult = document.querySelector("#date-span-result");
 
 const apliedPartsItemsContainer = document.querySelector(".aplied-parts-items-container");
+const servicesPerformedItemsContainer = document.querySelector(".services-performed-items-container");
+
+const observationsMadeSpan = document.querySelector(".observations-made-span");
 
 //functions
 
@@ -579,6 +582,27 @@ function createPartItemFinished(numberItem, quant , description , unitValue , to
     apliedPartsItemsContainer.appendChild(itemHtml);
 }
 
+function createServiceItemFinished(numberItem, quant , description , unitValue , totalValue){
+    const itemString = 
+    `
+    <div class="services-performed-item">
+        <span class="serv-performed-number-item-span">${numberItem}</span>
+        <span class="serv-performed-quant-span">${quant}</span>
+        <span class="serv-performed-description-span">${description}</span>
+        <span class="serv-performed-unit-value-span">${unitValue}</span>
+        <span class="serv-performed-total-value-span">${totalValue}</span>
+    </div>
+    `;
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(itemString, 'text/html');
+
+    const itemHtml  = doc.body.firstChild;
+
+    servicesPerformedItemsContainer.appendChild(itemHtml);
+}
+
 function createNoContentSpan(spanHTML, spanMsg){
     const itemString = 
     `
@@ -592,6 +616,32 @@ function createNoContentSpan(spanHTML, spanMsg){
     const itemHtml  = doc.body.firstChild;
 
     apliedPartsItemsContainer.appendChild(itemHtml);
+}
+
+function addServiceItemFinishedProcess(){
+   const servicesItem = document.querySelectorAll(".services-item");
+   const serviceQuantSpan = document.querySelectorAll(".service-quant-span");
+   const serviceDescriptionSpan = document.querySelectorAll(".service-description-span");
+   const serviceUnitValueSpan = document.querySelectorAll(".service-unit-value-span");
+   const serviceTotalValueSpan = document.querySelectorAll(".service-total-value-span");
+
+   servicesPerformedItemsContainer.innerHTML = "";
+   
+   if(servicesItem[0] === undefined){
+        createNoContentSpan("serv-performed-no-content-span","NÃO FORAM EXECUTADOS SERVIÇOS !");
+        return;
+   }
+
+   for(let i = 0; i < servicesItem.length ; i++){
+        let item = i + 1;
+        createServiceItemFinished(
+            item,
+            serviceQuantSpan[i].innerText,
+            serviceDescriptionSpan[i].innerText,
+            serviceUnitValueSpan[i].innerText,
+            serviceTotalValueSpan[i].innerText,
+        )
+   }
 }
 
 function addPartItemFinishedProcess(){
@@ -620,6 +670,17 @@ function addPartItemFinishedProcess(){
     }
 }
 
+function addObservationsFinishedProcess(){
+    observationsMadeSpan.innerHTML = "";
+
+    if(observationsTextarea.value === ""){
+        observationsMadeSpan.innerText = "SEM OBSERVAÇÕES !";
+        return;
+    }
+
+    observationsMadeSpan.innerText = observationsTextarea.value;
+}
+
 function displayBudgetProcess(){
     //display header informations
     /*clientSpanResult.innerHTML = "";
@@ -642,9 +703,14 @@ function displayBudgetProcess(){
     guaranteeSpanResult.innerText = guaranteeInput.value;
     dateSpanResult.innerText = reorganizeDateFormat(); */
 
-    //display parts informations
+    //display parts and services informations
 
     addPartItemFinishedProcess();
+    addServiceItemFinishedProcess();
+
+    //display observations informations
+
+    addObservationsFinishedProcess();
 }
 
 generateBudgetBtn.addEventListener("click", ()=>{
