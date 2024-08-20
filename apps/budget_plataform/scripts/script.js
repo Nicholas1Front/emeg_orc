@@ -257,16 +257,27 @@ function updateTotalSpans_BudgetProdSection(){
     totalBudgetDisplaySpan.innerHTML = "";
 
     if(partsItemTotalSpan.innerText !== "" && servicesItemTotalSpan.innerText !== ""){
-        servicesItemsValue = servicesItemTotalSpan.innerText.slice(2);
-        servicesItemsValue = parseFloat(servicesItemsValue.replace(",", "."));
-        partsItemsValue = partsItemTotalSpan.innerText.slice(2);
-        partsItemsValue = parseFloat(partsItemsValue.replace(",", "."));
-        
-        totalBudgetValue = partsItemsValue + servicesItemsValue;
+        let partsItemsValueString = partsItemTotalSpan.innerText.slice(2);
+        let servicesItemsValueString = servicesItemTotalSpan.innerText.slice(2);
 
-        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue.replace(".", ",")}`;
-        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue.replace(".", ",")}`;
-        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue.replace(".", ",")}`;
+        partsItemsValueString = partsItemsValueString.replace(",", "."); // comma  to dot
+        servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
+        
+        partsItemsValue = parseFloat(partsItemsValueString);
+        servicesItemsValue = parseFloat(servicesItemsValueString);
+
+        totalBudgetValue = partsItemsValue + servicesItemsValue;
+        
+        let totalBudgetValueString = totalBudgetValue.toString();
+        totalBudgetValueString = totalBudgetValueString.replace(".",","); //dot to comma
+
+        partsItemsValueString = partsItemsValue.toString();
+        partsItemsValueString = partsItemsValueString.replace(".",",") // dot to comma
+
+        servicesItemsValueString = servicesItemsValue.toString();
+        servicesItemsValueString = servicesItemsValueString.replace(".", ",");
+
+        totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
 
         return;
 
