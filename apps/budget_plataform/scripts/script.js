@@ -601,14 +601,17 @@ function addPartItemFinishedProcess(){
     const partsUnitValueSpan = document.querySelectorAll("#parts-unit-value-span");
     const partsTotalValueSpan = document.querySelectorAll("#parts-total-value-span"); 
 
-    if (partsItem === null){
+    apliedPartsItemsContainer.innerHTML = "";
+
+    if (partsItem[0] === undefined){
         createNoContentSpan("aplied-parts-no-content-span", "NÃO FORAM APLICADAS PEÇAS !");
         return;
     }
 
     for(let i = 0 ; i < partsItem.length ; i++){
+        let item = i+1;
         createPartItemFinished(
-            i+1,
+            item,
             partsQuantSpan[i].innerText,
             partsDescriptionSpan[i].innerText,
             partsUnitValueSpan[i].innerText,
