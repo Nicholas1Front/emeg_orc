@@ -562,11 +562,11 @@ function createPartItemFinished(numberItem, quant , description , unitValue , to
     const itemString = 
     `
         <div class="aplied-parts-item">
-            <span class ="aplied-part-number-item-span"></span>
-            <span class="aplied-part-quant-span"></span>
-            <span class="aplied-part-description-span"></span>
-            <span class="aplied-part-unit-value-span"></span>
-            <span class="aplied-part-total-value-span"></span>
+            <span class ="aplied-part-number-item-span">${numberItem}</span>
+            <span class="aplied-part-quant-span">${quant}</span>
+            <span class="aplied-part-description-span">${description}</span>
+            <span class="aplied-part-unit-value-span">${unitValue}</span>
+            <span class="aplied-part-total-value-span">${totalValue}</span>
         </div>
     `;
 
@@ -579,11 +579,53 @@ function createPartItemFinished(numberItem, quant , description , unitValue , to
     apliedPartsItemsContainer.appendChild(itemHtml);
 }
 
-//function addPartItemFinishedProcess(){}
+function createNoContentSpan(spanHTML, spanMsg){
+    const itemString = 
+    `
+    <span class="${spanHTML}">${spanMsg}</span>
+    `;
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(itemString, 'text/html');
+
+    const itemHtml  = doc.body.firstChild;
+
+    apliedPartsItemsContainer.appendChild(itemHtml);
+}
+
+function addPartItemFinishedProcess(){
+    const partsItem = document.querySelectorAll("#parts-item");
+    const partsQuantSpan = document.querySelectorAll(".parts-quant-span"); 
+    const partsDescriptionSpan = document.querySelectorAll("#parts-description-span");
+    const partsUnitValueSpan = document.querySelectorAll("#parts-unit-value-span");
+    const partsTotalValueSpan = document.querySelectorAll("#parts-total-value-span"); 
+
+    if (partsItem === null){
+        createNoContentSpan("aplied-parts-no-content-span", "NÃO FORAM APLICADAS PEÇAS !");
+        return;
+    }
+
+    for(let i = 0 ; i < partsItem.length ; i++){
+        createPartItemFinished(
+            i+1,
+            partsQuantSpan[i].innerText,
+            partsDescriptionSpan[i].innerText,
+            partsUnitValueSpan[i].innerText,
+            partsTotalValueSpan[i].innerText,
+        )
+    }
+}
 
 function displayBudgetProcess(){
-
     //display header informations
+    /*clientSpanResult.innerHTML = "";
+    equipamentSpanResult.innerHTML = "";
+    paymentTermsSpanResult.innerHTML = "";
+    guaranteeSpanResult.innerHTML = "";
+    dateSpanResult.innerHTML = "";
+    completionDeadlineSpanResult.innerHTML = "";    
+
     clientSpanResult.innerText = clientsSelectList.value;
 
     if(notIdentifiedInput.value === ""){
@@ -595,21 +637,11 @@ function displayBudgetProcess(){
     paymentTermsSpanResult.innerText = paymentTermsInput.value;
     completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
     guaranteeSpanResult.innerText = guaranteeInput.value;
+    dateSpanResult.innerText = reorganizeDateFormat(); */
 
+    //display parts informations
 
-
-    const partsItem = document.querySelector(".parts-item");
-    const servicesItems = document.querySelector(".services-item");
-
-    if(partsItem === null){
-        showPopupMsg("Não existem itens em peças aplicadas !" , "adviceMsg");
-    }else if(servicesItems === null){
-        showPopupMsg("Não existem itens em serviços executados!" , "adviceMsg")
-    }else if (partsItem === null && servicesItems === null){
-        showPopupMsg("Peças e serviço inexistentes !" , "adviceMsg")
-    }
-
-    // budgetFinished.style.display = "block";
+    addPartItemFinishedProcess();
 }
 
 generateBudgetBtn.addEventListener("click", ()=>{
