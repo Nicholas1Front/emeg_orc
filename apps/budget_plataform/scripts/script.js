@@ -235,8 +235,9 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
     }
 
     let totalValueString = totalValue.toString();
+    totalValueString = totalValueString.replace(".",",");
 
-    resultSpan.innerText = `R$ ${totalValueString.replace(".",",")}`;
+    resultSpan.innerText = `R$ ${totalValueString}`;
 
 }
 
@@ -278,31 +279,59 @@ function updateTotalSpans_BudgetProdSection(){
         servicesItemsValueString = servicesItemsValueString.replace(".", ",");
 
         totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
+        totalServicesDisplaySpan.innerHTML = `R$ ${servicesItemsValueString}`;
+        totalBudgetDisplaySpan.innerHTML = `R$ ${totalBudgetValueString}`;
 
         return;
 
     }else if(partsItemTotalSpan.innerText === "" && servicesItemTotalSpan.innerText !== ""){
-        servicesItemsValue = servicesItemTotalSpan.innerText.slice(2);
-        servicesItemsValue = parseFloat(servicesItemsValue.replace(",", "."));
-        partsItemsValue = 0;
+        let partsItemsValueString = 0;
+        let servicesItemsValueString = servicesItemTotalSpan.innerText.slice(2);
+
+        servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
+        
+        partsItemsValue = 0
+        servicesItemsValue = parseFloat(servicesItemsValueString);
 
         totalBudgetValue = partsItemsValue + servicesItemsValue;
+        
+        let totalBudgetValueString = totalBudgetValue.toString();
+        totalBudgetValueString = totalBudgetValueString.replace(".",","); //dot to comma
 
-        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue.replace(".", ",")}`;
-        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue.replace(".", ",")}`;
-        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue.replace(".", ",")}`;
+        partsItemsValueString = partsItemsValue.toString();
+        partsItemsValueString = partsItemsValueString.replace(".",",") // dot to comma
 
+        servicesItemsValueString = servicesItemsValue.toString();
+        servicesItemsValueString = servicesItemsValueString.replace(".", ",");
+
+        totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
+        totalServicesDisplaySpan.innerHTML = `R$ ${servicesItemsValueString}`;
+        totalBudgetDisplaySpan.innerHTML = `R$ ${totalBudgetValueString}`;
         return;
     }else if(servicesItemTotalSpan.innerText === "" && partsItemTotalSpan.innerText !== ""){
-        servicesItemsValue = 0;
-        partsItemsValue = partsItemTotalSpan.innerText.slice(2);
-        partsItemsValue = parseFloat(partsItemsValue.replace(",", "."));
+        let partsItemsValueString = partsItemTotalSpan.innerText.slice(2);
+        let servicesItemsValueString = 0;
+
+        partsItemsValueString = partsItemsValueString.replace(",", "."); // comma  to dot
+        servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
+        
+        partsItemsValue = parseFloat(partsItemsValueString);
+        servicesItemsValue = 0
 
         totalBudgetValue = partsItemsValue + servicesItemsValue;
+        
+        let totalBudgetValueString = totalBudgetValue.toString();
+        totalBudgetValueString = totalBudgetValueString.replace(".",","); //dot to comma
 
-        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue.replace(".", ",")}`;
-        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue.replace(".", ",")}`;
-        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue.replace(".", ",")}`;
+        partsItemsValueString = partsItemsValue.toString();
+        partsItemsValueString = partsItemsValueString.replace(".",",") // dot to comma
+
+        servicesItemsValueString = servicesItemsValue.toString();
+        servicesItemsValueString = servicesItemsValueString.replace(".", ",");
+
+        totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
+        totalServicesDisplaySpan.innerHTML = `R$ ${servicesItemsValueString}`;
+        totalBudgetDisplaySpan.innerHTML = `R$ ${totalBudgetValueString}`;
 
         return;
     }
