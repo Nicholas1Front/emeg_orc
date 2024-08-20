@@ -41,18 +41,6 @@ const servicesSection = document.querySelector(".services-section");
 const observationsSection = document.querySelector(".observations-section");
 const generateBudgetSection = document.querySelector(".generate-budget-section");
 
-// todo : fazer function para pegar a data no formato BR , adendo : função com parametros para que seja reutilizada várias vezes
-
-/*dateInput.addEventListener("change", ()=>{
-    let date = dateInput.value;
-
-    let dateArray = date.split("-");
-
-    let newDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`;
-
-    console.log(newDate);
-}) */
-
 //functions
 
 function createClientsList(){
@@ -90,8 +78,7 @@ function createEquipamentsList(){
                 notIdentifiedInput.style.display = "block";
 
                 return notIdentifiedInput.value;
-            }
-            else if(clientsSelectList.value === client.name.toUpperCase()){
+            } else if(clientsSelectList.value === client.name.toUpperCase()){
                 equipamentsData = equipamentsData.concat(client.equipaments);
 
                 equipamentsSelectList.style.display = "block";
@@ -114,6 +101,16 @@ function createEquipamentsList(){
     }).catch(error =>{
         console.error("An error occurred !" + error);
     })
+};
+
+function reorganizeDateFormat(){
+    let date = dateInput.value;
+
+    let dateArray = date.split("-");
+
+    let newDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`;
+
+    return newDate;    
 }
 
 function validateSelects(){
@@ -170,7 +167,7 @@ function showOtherSections(){
     generateBudgetSection.style.display = "block";
 }
 
-//testing
+//booting
 
 createClientsList();
 
@@ -222,6 +219,7 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
 
     for(let i = 0 ; i < allSpansHtml.length ; i++){
         let string = allSpansHtml[i].innerText.slice(2);
+        string = string.replace(",", ".");
 
         let number = parseFloat(string);
 
@@ -236,7 +234,7 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
         return;
     }
 
-    resultSpan.innerText = `R$ ${totalValue}`;
+    resultSpan.innerText = `R$ ${totalValue.replace(".",",")}`;
 
 }
 
@@ -257,49 +255,46 @@ function updateTotalSpans_BudgetProdSection(){
     totalBudgetDisplaySpan.innerHTML = "";
 
     if(partsItemTotalSpan.innerText !== "" && servicesItemTotalSpan.innerText !== ""){
-        partsItemsValue = parseFloat(partsItemTotalSpan.innerText.slice(2));
-        servicesItemsValue = parseFloat(servicesItemTotalSpan.innerText.slice(2));
+        servicesItemsValue = servicesItemTotalSpan.innerText.slice(2);
+        servicesItemsValue = parseFloat(servicesItemsValue.replace(",", "."));
+        partsItemsValue = partsItemTotalSpan.innerText.slice(2);
+        partsItemsValue = parseFloat(partsItemsValue.replace(",", "."));
         
         totalBudgetValue = partsItemsValue + servicesItemsValue;
 
-        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
-        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
-        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
+        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue.replace(".", ",")}`;
+        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue.replace(".", ",")}`;
+        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue.replace(".", ",")}`;
 
         return;
 
     }else if(partsItemTotalSpan.innerText === "" && servicesItemTotalSpan.innerText !== ""){
-        servicesItemsValue = parseFloat(servicesItemTotalSpan.innerText.slice(2));
+        servicesItemsValue = servicesItemTotalSpan.innerText.slice(2);
+        servicesItemsValue = parseFloat(servicesItemsValue.replace(",", "."));
         partsItemsValue = 0;
 
         totalBudgetValue = partsItemsValue + servicesItemsValue;
 
-        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
-        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
-        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
+        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue.replace(".", ",")}`;
+        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue.replace(".", ",")}`;
+        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue.replace(".", ",")}`;
 
         return;
     }else if(servicesItemTotalSpan.innerText === "" && partsItemTotalSpan.innerText !== ""){
         servicesItemsValue = 0;
-        partsItemsValue = parseFloat(partsItemTotalSpan.innerText.slice(2));
+        partsItemsValue = partsItemTotalSpan.innerText.slice(2);
+        partsItemsValue = parseFloat(partsItemsValue.replace(",", "."));
 
         totalBudgetValue = partsItemsValue + servicesItemsValue;
 
-        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue}`;
-        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue}`;
-        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue}`;
+        totalPartsDisplaySpan.innerText = `R$ ${partsItemsValue.replace(".", ",")}`;
+        totalServicesDisplaySpan.innerText = `R$ ${servicesItemsValue.replace(".", ",")}`;
+        totalBudgetDisplaySpan.innerText = `R$ ${totalBudgetValue.replace(".", ",")}`;
 
         return;
     }
 
 }
-
-//testing 
-
-let numberTest = "34,500";
-console.log(numberTest);
-numberTest = numberTest.replace(",", ".");
-console.log(numberTest);
 
 function createPartItem(quant, description, unitvalue){
 
@@ -552,6 +547,13 @@ const generateBudgetBtn = document.querySelector("#generate-budget-btn");
 const budgetProduction = document.querySelector("#budget-production");
 const budgetFinished = document.querySelector("#budget-finished");
 
+const clientSpanResult = document.querySelector("#client-span-result");
+const equipamentSpanResult = document.querySelector("#equipament-span-result");
+const paymentTermsSpanResult = document.querySelector("#payment-terms-span-result");
+const completionDeadlineSpanResult = document.querySelector("#completion-deadline-span-result");
+const guaranteeSpanResult = document.querySelector("#guarantee-span-result");
+const dateSpanResult = document.querySelector("#date-span-result");
+
 const apliedPartsItemsContainer = document.querySelector(".aplied-parts-items-container");
 
 //functions
@@ -577,11 +579,25 @@ function createPartItemFinished(numberItem, quant , description , unitValue , to
     apliedPartsItemsContainer.appendChild(itemHtml);
 }
 
-function addPartItemFinishedProcess(){
-
-}
+//function addPartItemFinishedProcess(){}
 
 function displayBudgetProcess(){
+
+    //display header informations
+    clientSpanResult.innerText = clientsSelectList.value;
+
+    if(notIdentifiedInput.value === ""){
+        equipamentSpanResult.innerText = equipamentsSelectList.value;
+    }else{
+        equipamentSpanResult.innerText = notIdentifiedInput.value;
+    }
+
+    paymentTermsSpanResult.innerText = paymentTermsInput.value;
+    completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
+    guaranteeSpanResult.innerText = guaranteeInput.value;
+
+
+
     const partsItem = document.querySelector(".parts-item");
     const servicesItems = document.querySelector(".services-item");
 
