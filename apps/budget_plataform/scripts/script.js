@@ -313,7 +313,6 @@ function updateTotalSpans_BudgetProdSection(){
         let servicesItemsValueString = 0;
 
         partsItemsValueString = partsItemsValueString.replace(",", "."); // comma  to dot
-        servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
         
         partsItemsValue = parseFloat(partsItemsValueString);
         servicesItemsValue = 0
@@ -607,6 +606,10 @@ const totalOfPartsApliedItemsSpan = document.querySelector(".total-of-parts-apli
 const servicesPerformedItemsContainer = document.querySelector(".services-performed-items-container");
 const totalOfServicesPerformedItemsSpan = document.querySelector(".total-of-services-performed-items-span")
 
+const totalOfPartsSpan = document.querySelector(".total-of-parts-span");
+const totalOfServicesSpan = document.querySelector(".total-of-services-span");
+const totalOfBudgetSpan = document.querySelector(".total-of-budget-span");
+
 const observationsMadeSpan = document.querySelector(".observations-made-span");
 
 //functions
@@ -720,10 +723,36 @@ function addPartItemFinishedProcess(){
     }
 }
 
-function addPartItemTotalFinished(){
+function addAllItemsTotalFinished(){
     const partsItemTotalSpan = document.querySelector(".parts-item-total-span");
+    const servicesItemTotalSpan = document.querySelector(".services-item-total-span");
+    const totalOfBudgetDisplaySpan = document.querySelector(".total-of-budget-display-span");
+
+    //clear inputs
+    totalOfPartsApliedItemsSpan.innerHTML = "";
+    totalOfPartsSpan.innerHTML = "";
+    totalOfServicesPerformedItemsSpan.innerHTML = "";
+    totalOfServicesSpan.innerHTML = "";
+    totalOfBudgetSpan.innerHTML = "";
+
+    //display informations
+
+    totalOfPartsApliedItemsSpan.innerText = partsItemTotalSpan.innerText;
+    totalOfServicesPerformedItemsSpan.innerText = servicesItemTotalSpan.innerText;
+    totalOfPartsSpan.innerText = partsItemTotalSpan.innerText;
+    totalOfServicesSpan.innerText = servicesItemTotalSpan.innerText;
+    totalOfBudgetSpan.innerText = totalOfBudgetDisplaySpan.innerText;
 
 
+    if (partsItemTotalSpan.innerText === ""){
+        totalOfPartsApliedItemsSpan.innerText = "R$ -";
+        totalOfPartsSpan.innerText = "R$ -";
+    }else if(servicesItemTotalSpan.innerText === ""){
+        totalOfServicesPerformedItemsSpan.innerText = "R$ -";
+        totalOfServicesSpan.innerText = "R$ -";
+    }else if (totalOfBudgetDisplaySpan.innerText === ""){
+        totalOfBudgetSpan.innerText = "R$ -";
+    }
 }
 
 function addObservationsFinishedProcess(){
