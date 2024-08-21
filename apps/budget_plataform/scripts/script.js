@@ -602,7 +602,7 @@ const guaranteeSpanResult = document.querySelector("#guarantee-span-result");
 const dateSpanResult = document.querySelector("#date-span-result");
 
 const apliedPartsItemsContainer = document.querySelector(".aplied-parts-items-container");
-const totalOfPartsApliedItemsSpan = document.querySelector(".total-of-parts-aplied-items-span");
+const totalOfPartsApliedItemsSpan = document.querySelector(".total-of-aplied-parts-span");
 const servicesPerformedItemsContainer = document.querySelector(".services-performed-items-container");
 const totalOfServicesPerformedItemsSpan = document.querySelector(".total-of-services-performed-items-span")
 
@@ -678,7 +678,7 @@ function createServiceItemFinished(numberItem, quant , description , unitValue ,
     servicesPerformedItemsContainer.appendChild(itemHtml);
 }
 
-function createNoContentSpan(spanHTML, spanMsg){
+function createNoContentPartsSpan(spanHTML, spanMsg){
     const itemString = 
     `
     <span class="${spanHTML}">${spanMsg}</span>
@@ -693,6 +693,21 @@ function createNoContentSpan(spanHTML, spanMsg){
     apliedPartsItemsContainer.appendChild(itemHtml);
 }
 
+function createNoContentServicesSpan(spanHTML, spanMsg){
+    const itemString = 
+    `
+    <span class="${spanHTML}">${spanMsg}</span>
+    `;
+
+    const parser = new DOMParser();
+
+    const doc = parser.parseFromString(itemString, 'text/html');
+
+    const itemHtml  = doc.body.firstChild;
+
+    servicesPerformedItemsContainer.appendChild(itemHtml);
+}
+
 function addServiceItemFinishedProcess(){
    const servicesItem = document.querySelectorAll(".services-item");
    const serviceQuantSpan = document.querySelectorAll(".service-quant-span");
@@ -703,7 +718,7 @@ function addServiceItemFinishedProcess(){
    servicesPerformedItemsContainer.innerHTML = "";
    
    if(servicesItem[0] === undefined){
-        createNoContentSpan("serv-performed-no-content-span","NÃO FORAM EXECUTADOS SERVIÇOS !");
+        createNoContentServicesSpan("serv-performed-no-content-span","NÃO FORAM EXECUTADOS SERVIÇOS !");
         return;
    }
 
@@ -729,7 +744,7 @@ function addPartItemFinishedProcess(){
     apliedPartsItemsContainer.innerHTML = "";
 
     if (partsItem[0] === undefined){
-        createNoContentSpan("aplied-parts-no-content-span", "NÃO FORAM APLICADAS PEÇAS !");
+        createNoContentPartsSpan("aplied-parts-no-content-span", "NÃO FORAM APLICADAS PEÇAS !");
         return;
     }
 
@@ -769,12 +784,16 @@ function addAllItemsTotalFinished(){
     if (partsItemTotalSpan.innerText === ""){
         totalOfPartsApliedItemsSpan.innerText = "R$ -";
         totalOfPartsSpan.innerText = "R$ -";
-    }else if(servicesItemTotalSpan.innerText === ""){
+    };
+    
+    if(servicesItemTotalSpan.innerText === ""){
         totalOfServicesPerformedItemsSpan.innerText = "R$ -";
         totalOfServicesSpan.innerText = "R$ -";
-    }else if (totalOfBudgetDisplaySpan.innerText === ""){
+    };
+
+    if (totalOfBudgetDisplaySpan.innerText === ""){
         totalOfBudgetSpan.innerText = "R$ -";
-    }
+    };
 }
 
 function addObservationsFinishedProcess(){
@@ -791,6 +810,7 @@ function addObservationsFinishedProcess(){
 function displayBudgetProcess(){
     //display header informations
     
+    addHeaderFinishedProcess();
 
     //display parts and services informations
 
