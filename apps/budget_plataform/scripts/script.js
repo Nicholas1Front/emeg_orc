@@ -602,7 +602,7 @@ const guaranteeSpanResult = document.querySelector("#guarantee-span-result");
 const dateSpanResult = document.querySelector("#date-span-result");
 
 const apliedPartsItemsContainer = document.querySelector(".aplied-parts-items-container");
-const totalOfPartsApliedItemsSpan = document.querySelector(".total-of-parts-aplied-span");
+const totalOfPartsApliedItemsSpan = document.querySelector(".total-of-parts-aplied-items-span");
 const servicesPerformedItemsContainer = document.querySelector(".services-performed-items-container");
 const totalOfServicesPerformedItemsSpan = document.querySelector(".total-of-services-performed-items-span")
 
@@ -613,6 +613,28 @@ const totalOfBudgetSpan = document.querySelector(".total-of-budget-span");
 const observationsMadeSpan = document.querySelector(".observations-made-span");
 
 //functions
+
+function addHeaderFinishedProcess(){
+    clientSpanResult.innerHTML = "";
+    equipamentSpanResult.innerHTML = "";
+    paymentTermsSpanResult.innerHTML = "";
+    guaranteeSpanResult.innerHTML = "";
+    dateSpanResult.innerHTML = "";
+    completionDeadlineSpanResult.innerHTML = "";    
+
+    clientSpanResult.innerText = clientsSelectList.value;
+
+    if(notIdentifiedInput.value === ""){
+        equipamentSpanResult.innerText = equipamentsSelectList.value;
+    }else{
+        equipamentSpanResult.innerText = notIdentifiedInput.value;
+    }
+
+    paymentTermsSpanResult.innerText = paymentTermsInput.value;
+    completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
+    guaranteeSpanResult.innerText = guaranteeInput.value;
+    dateSpanResult.innerText = reorganizeDateFormat();
+}
 
 function createPartItemFinished(numberItem, quant , description , unitValue , totalValue){
     const itemString = 
@@ -698,11 +720,11 @@ function addServiceItemFinishedProcess(){
 }
 
 function addPartItemFinishedProcess(){
-    const partsItem = document.querySelectorAll("#parts-item");
+    const partsItem = document.querySelectorAll(".parts-item");
     const partsQuantSpan = document.querySelectorAll(".parts-quant-span"); 
-    const partsDescriptionSpan = document.querySelectorAll("#parts-description-span");
-    const partsUnitValueSpan = document.querySelectorAll("#parts-unit-value-span");
-    const partsTotalValueSpan = document.querySelectorAll("#parts-total-value-span"); 
+    const partsDescriptionSpan = document.querySelectorAll(".parts-description-span");
+    const partsUnitValueSpan = document.querySelectorAll(".parts-unit-value-span");
+    const partsTotalValueSpan = document.querySelectorAll(".parts-total-value-span"); 
 
     apliedPartsItemsContainer.innerHTML = "";
 
@@ -768,30 +790,16 @@ function addObservationsFinishedProcess(){
 
 function displayBudgetProcess(){
     //display header informations
-    /*clientSpanResult.innerHTML = "";
-    equipamentSpanResult.innerHTML = "";
-    paymentTermsSpanResult.innerHTML = "";
-    guaranteeSpanResult.innerHTML = "";
-    dateSpanResult.innerHTML = "";
-    completionDeadlineSpanResult.innerHTML = "";    
-
-    clientSpanResult.innerText = clientsSelectList.value;
-
-    if(notIdentifiedInput.value === ""){
-        equipamentSpanResult.innerText = equipamentsSelectList.value;
-    }else{
-        equipamentSpanResult.innerText = notIdentifiedInput.value;
-    }
-
-    paymentTermsSpanResult.innerText = paymentTermsInput.value;
-    completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
-    guaranteeSpanResult.innerText = guaranteeInput.value;
-    dateSpanResult.innerText = reorganizeDateFormat(); */
+    
 
     //display parts and services informations
 
     addPartItemFinishedProcess();
     addServiceItemFinishedProcess();
+
+    //display total informations
+
+    addAllItemsTotalFinished();
 
     //display observations informations
 

@@ -396,6 +396,10 @@
     height:200px;
     border:1px solid #d61e1e; 
     border-radius:25px;
+    text-align:center;
+    padding-top:10px;
+    padding-right:12px;
+    padding-left:12px;
 }
 
 /* total-budget-section */
