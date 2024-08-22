@@ -20,7 +20,7 @@
 /* fullscren-popup */
 
 .fullscreen-popup{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position:fixed;
@@ -75,19 +75,28 @@
     border:1px solid #fff;
     background-color: transparent;
     color: #fff;
-    font-size:15px;
-    padding:3px 0;
+    font-size:17px;
+    padding:5px 0;
     cursor: pointer;
     transition:0.2s;
 }
 
 #confirm-button:hover{
     background-color: #d61e1e;
+    border-color:#d61e1e;
+    color: #fff;
+    transition:0.2s;
+}
+
+#cancel-button:hover{
+    background-color: #0079dc;
+    border-color: #0079dc;
     color: #fff;
     transition:0.2s;
 }
 
 .dark-background-overlay{
+    display:none;
     position: fixed;
     top: 0;
     left: 0;

@@ -20,6 +20,18 @@ async function getClientsData(){
 
 //budget-production
 
+//popup
+
+//elements
+const fullscreenPopup = document.querySelector(".fullscreen-popup");
+const confirmBtn = document.querySelector("#confirm-button");
+const cancelBtn = document.querySelector("#cancel-button");
+//functions
+
+
+//testing
+console.log(location);
+
 // header
 
 //elements
