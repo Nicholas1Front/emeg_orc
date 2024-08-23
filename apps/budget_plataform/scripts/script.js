@@ -858,7 +858,36 @@ function saveInPdfFormatProcess(){
 
 //testing
 
-document.title = "new test"; //alternate / edit the tag <title>
+//document.title = "new test"; //alternate / edit the tag <title>
+
+
+function createBudgetCode(){
+    let budgetCode = 0;
+    let dateToday = new Date();
+    let month = dateToday.getMonth() + 1;
+    let year = dateToday.getFullYear();
+    dateToday = `${month}${year}`;
+
+    function generateFourAleatoryNumbers(){
+        let digits = "";
+
+        for (let i = 1; i <= 4 ; i++){
+            let number = Math.floor(Math.random() * 9);
+
+            number = number.toString();
+
+            digits += number;
+        }
+
+        return digits; 
+    }
+    
+    budgetCode = `#${dateToday}${generateFourAleatoryNumbers()}`;
+
+    return budgetCode;
+}
+
+console.log(createBudgetCode());
 
 //event listerner
 
