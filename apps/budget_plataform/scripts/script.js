@@ -22,15 +22,12 @@ async function getClientsData(){
 
 //popup
 
-//elements
-const fullscreenPopup = document.querySelector(".fullscreen-popup");
-const confirmBtn = document.querySelector("#confirm-button");
-const cancelBtn = document.querySelector("#cancel-button");
-//functions
+//event listeners
 
-
-//testing
-console.log(location);
+/*window.addEventListener('beforeunload' , (event)=>{
+    event.preventDefault();
+    event.returnValue = '';
+}); */
 
 // header
 
@@ -624,6 +621,9 @@ const totalOfBudgetSpan = document.querySelector(".total-of-budget-span");
 
 const observationsMadeSpan = document.querySelector(".observations-made-span");
 
+const savePdfBtn = document.querySelector("#save-document-pdf-btn");
+const saveHtmlBtn = document.querySelector("#save-document-html-btn");
+const backBudgetBtn = document.querySelector("#back-budget-btn");
 //functions
 
 function addHeaderFinishedProcess(){
