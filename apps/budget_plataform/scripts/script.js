@@ -607,6 +607,8 @@ const budgetFinishedContent = document.querySelector(".budget-finished-content-c
 
 const clientSpanResult = document.querySelector("#client-span-result");
 const equipamentSpanResult = document.querySelector("#equipament-span-result");
+let budgetCodeValue = null;
+const budgetCodeSpan = document.querySelector("#budget-code-span"); 
 const paymentTermsSpanResult = document.querySelector("#payment-terms-span-result");
 const completionDeadlineSpanResult = document.querySelector("#completion-deadline-span-result");
 const guaranteeSpanResult = document.querySelector("#guarantee-span-result");
@@ -631,6 +633,7 @@ const backBudgetBtn = document.querySelector("#back-budget-btn");
 function addHeaderFinishedProcess(){
     clientSpanResult.innerHTML = "";
     equipamentSpanResult.innerHTML = "";
+    addBudgetCodeFinishedProcess(); // generate and add budget number in html code
     paymentTermsSpanResult.innerHTML = "";
     guaranteeSpanResult.innerHTML = "";
     dateSpanResult.innerHTML = "";
@@ -648,6 +651,41 @@ function addHeaderFinishedProcess(){
     completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
     guaranteeSpanResult.innerText = guaranteeInput.value;
     dateSpanResult.innerText = reorganizeDateFormat();
+}
+
+function addBudgetCodeFinishedProcess(){
+    if(budgetCodeValue.length == 10){
+        budgetCodeSpan.innerText = budgetCodeValue;
+        return;
+    }
+
+    budgetCodeValue = createBudgetCode();
+    budgetCodeSpan.innerText = budgetCodeValue;
+}
+
+function createBudgetCode(){
+    let dateToday = new Date();
+    let month = dateToday.getMonth() + 1;
+    let year = dateToday.getFullYear();
+    dateToday = `${month}${year}`;
+
+    function generateFourAleatoryNumbers(){
+        let digits = "";
+
+        for (let i = 1; i <= 4 ; i++){
+            let number = Math.floor(Math.random() * 9);
+
+            number = number.toString();
+
+            digits += number;
+        }
+
+        return digits; 
+    }
+    
+    budgetCodeValue = `#${dateToday}${generateFourAleatoryNumbers()}`;
+
+    return budgetCodeValue;
 }
 
 function createPartItemFinished(numberItem, quant , description , unitValue , totalValue){
@@ -861,33 +899,13 @@ function saveInPdfFormatProcess(){
 //document.title = "new test"; //alternate / edit the tag <title>
 
 
-function createBudgetCode(){
-    let budgetCode = 0;
-    let dateToday = new Date();
-    let month = dateToday.getMonth() + 1;
-    let year = dateToday.getFullYear();
-    dateToday = `${month}${year}`;
 
-    function generateFourAleatoryNumbers(){
-        let digits = "";
 
-        for (let i = 1; i <= 4 ; i++){
-            let number = Math.floor(Math.random() * 9);
+budgetCodeValue = createBudgetCode();
 
-            number = number.toString();
+console.log(budgetCodeValue.length);
 
-            digits += number;
-        }
-
-        return digits; 
-    }
-    
-    budgetCode = `#${dateToday}${generateFourAleatoryNumbers()}`;
-
-    return budgetCode;
-}
-
-console.log(createBudgetCode());
+budgetCodeSpan.innerText = budgetCodeValue;
 
 //event listerner
 
