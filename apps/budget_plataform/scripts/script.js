@@ -602,6 +602,7 @@ const observationsTextarea = document.querySelector("#observations-textarea");
 const generateBudgetBtn = document.querySelector("#generate-budget-btn");
 const budgetProduction = document.querySelector("#budget-production");
 const budgetFinished = document.querySelector("#budget-finished");
+const budgetFinishedContent = document.querySelector(".budget-finished-content-container");
 
 const clientSpanResult = document.querySelector("#client-span-result");
 const equipamentSpanResult = document.querySelector("#equipament-span-result");
@@ -838,6 +839,27 @@ function displayBudgetProcess(){
     addObservationsFinishedProcess();
 }
 
+function saveInPdfFormatProcess(){
+    const {jsPDF} = window.jspdf;
+    const doc = new jsPDF();
+
+    html2canvas(budgetFinishedContent).then(canvas => {
+        const imgData = canvas.toDataURL('image.png');
+        const imgWidth = 210;
+        const pageHeight = 295;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+        doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
+        doc.save('budget-finished.pdf');
+    })
+}
+
+//event listerner
+
 generateBudgetBtn.addEventListener("click", ()=>{
     displayBudgetProcess();
-}) 
+})
+
+savePdfBtn.addEventListener("click", ()=>{
+    saveInPdfFormatProcess();
+})
