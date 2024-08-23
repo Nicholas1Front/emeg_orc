@@ -1,3 +1,4 @@
+
 // clients_equipaments.json
 async function getClientsData(){
     try{
@@ -852,7 +853,12 @@ function saveInPdfFormatProcess(){
         doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
         doc.save('budget-finished.pdf');
     })
+
 }
+
+//testing
+
+document.title = "new test"; //alternate / edit the tag <title>
 
 //event listerner
 
@@ -861,5 +867,5 @@ generateBudgetBtn.addEventListener("click", ()=>{
 })
 
 savePdfBtn.addEventListener("click", ()=>{
-    saveInPdfFormatProcess();
+    window.print();
 })

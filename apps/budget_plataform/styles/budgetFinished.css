@@ -562,3 +562,9 @@
     margin-right:8px;
     font-size: 22px;
 }
+
+@media print {
+    body * { visibility: hidden; }
+    .budget-finished-content-container, .budget-finished-content-container * { visibility: visible; }
+    .budget-finished-content-container { position: absolute; top: 0; left: 0; }
+}
