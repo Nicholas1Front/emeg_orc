@@ -123,7 +123,7 @@ function reorganizeDateFormat(){
     return newDate;    
 }
 
-function validateSelects(){
+function validateSelectsProcess(){
     if(clientsSelectList.value === ""){
         showPopupMsg("Selecione um cliente !", "errorMsg");
         return;
@@ -136,8 +136,8 @@ function validateSelects(){
     }else{
         if(dateInput.value === "" || completionDeadlineInput.value === "" || paymentTermsInput.value === "" || guaranteeInput.value === ""){
             showPopupMsg("Alguns campos estão vazios !", "adviceMsg");
-        }
-        showOtherSections();
+        };
+        showHtmlElement(partsSection,servicesSection,observationsSection,generateBudgetSection)
     }
 }
 
@@ -170,11 +170,16 @@ function closePopupErrorMsg(){
     msgControl.style.display = "none";
 }
 
-function showOtherSections(){
-    partsSection.style.display = "block";
-    servicesSection.style.display = "block";
-    observationsSection.style.display = "block";
-    generateBudgetSection.style.display = "block";
+function showHtmlElement(...elements){
+    elements.forEach(element =>{
+        element.style.display = "block";
+    })
+}
+
+function hideHtmlElement(...elements){
+    elements.forEach(element =>{
+        element.style.display = "none";
+    })
 }
 
 //booting
@@ -188,7 +193,7 @@ clientsSelectList.addEventListener("change", ()=>{
 })
 
 infosNextStepBtn.addEventListener("click", ()=>{
-    validateSelects();
+    validateSelectsProcess();
 });
 
 closeMsgBtn.addEventListener("click", ()=>{
@@ -206,9 +211,6 @@ const partQuantInput = document.querySelector("#part-quant-input");
 const partDescriptionInput = document.querySelector("#part-description-input");
 const partUnitValueInput = document.querySelector("#part-unit-value-input");
 const partAddItemBtn = document.querySelector("#part-add-item-btn");
-
-//init
-showOtherSections();
 
 //functions
 

@@ -161,7 +161,7 @@
 
 .aplied-parts-section{
     width: 100%;
-    margin-top:20px;
+    margin-top:2rem;
 
 }
 
@@ -280,7 +280,7 @@
 
 .services-performed-section{
     width:100%;
-    margin-top:30px;
+    margin-top:2rem;
 }
 
 .services-performed-introduction-title-container{
@@ -373,7 +373,7 @@
 
 .observations-made-section{
     width:100%;
-    margin-top:20px;
+    margin-top:2.6rem;
 }
 
 .observations-made-title-container{
@@ -393,7 +393,7 @@
 
 .observations-made-content-container span{
     width:90%;
-    height:200px;
+    height:120px;
     border:1px solid #d61e1e; 
     border-radius:25px;
     text-align:center;
@@ -406,7 +406,7 @@
 
 .total-budget-section{
     width:100%;
-    margin:20px 0;
+    margin:2rem 0;
 }
 
 .total-budget-title-container{
