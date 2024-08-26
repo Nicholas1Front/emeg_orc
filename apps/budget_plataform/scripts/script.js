@@ -607,7 +607,8 @@ const budgetFinishedContent = document.querySelector(".budget-finished-content-c
 
 const clientSpanResult = document.querySelector("#client-span-result");
 const equipamentSpanResult = document.querySelector("#equipament-span-result");
-let budgetCodeValue = null;
+let budgetCodeValue = "";
+let budgetNameArchive = null;
 const budgetCodeSpan = document.querySelector("#budget-code-span"); 
 const paymentTermsSpanResult = document.querySelector("#payment-terms-span-result");
 const completionDeadlineSpanResult = document.querySelector("#completion-deadline-span-result");
@@ -653,7 +654,11 @@ function addHeaderFinishedProcess(){
     dateSpanResult.innerText = reorganizeDateFormat();
 }
 
+//testing 
+
 function addBudgetCodeFinishedProcess(){
+    budgetCodeSpan.innerHTML = "";
+
     if(budgetCodeValue.length == 10){
         budgetCodeSpan.innerText = budgetCodeValue;
         return;
@@ -687,6 +692,26 @@ function createBudgetCode(){
 
     return budgetCodeValue;
 }
+
+
+function createBudgetName(){
+    clientName = clientSpanResult.innerText;
+    clientName = clientName.split("(");
+    clientName = clientName[0].toLowerCase();
+
+    equipamentName = equipamentSpanResult.innerText;
+
+    budgetCodeValue = budgetCodeValue.replace("#","");
+
+    clientName = clientName.trim();
+    equipamentName = equipamentName.trim();
+    budgetCodeValue = budgetCodeValue.trim();
+
+    budgetNameArchive = `orçamento ${budgetCodeValue} ${clientName} ${equipamentName}`
+
+    return budgetNameArchive;
+}
+
 
 function createPartItemFinished(numberItem, quant , description , unitValue , totalValue){
     const itemString = 
@@ -878,40 +903,25 @@ function displayBudgetProcess(){
     addObservationsFinishedProcess();
 }
 
-function saveInPdfFormatProcess(){
-    const {jsPDF} = window.jspdf;
-    const doc = new jsPDF();
+function saveAsHtml(){
+    budgetNameArchive = createBudgetName();
 
-    html2canvas(budgetFinishedContent).then(canvas => {
-        const imgData = canvas.toDataURL('image.png');
-        const imgWidth = 210;
-        const pageHeight = 295;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-        doc.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
-        doc.save('budget-finished.pdf');
-    })
-
+    const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = budgetNameArchive;
+    link.click();
 }
-
-//testing
-
-//document.title = "new test"; //alternate / edit the tag <title>
-
-
-
-
-budgetCodeValue = createBudgetCode();
-
-console.log(budgetCodeValue.length);
-
-budgetCodeSpan.innerText = budgetCodeValue;
 
 //event listerner
 
 generateBudgetBtn.addEventListener("click", ()=>{
     displayBudgetProcess();
 })
+
+saveHtmlBtn.addEventListener("click", ()=>{
+    saveAsHtml();
+})   
 
 savePdfBtn.addEventListener("click", ()=>{
     window.print();
