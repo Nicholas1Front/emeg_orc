@@ -49,16 +49,60 @@
                 "Retroescavadeira 416E N° 05",
                 "Retroescavadeira 416E N° 07"
         ]},
-        {"name": "BRASIL LAU RENT (+55 11 91207-0462 / Jeferson)", "equipaments": []},
-        {"name": "CAMPOS MOVIMENTAÇÕES (+55 98 8247-0262 / Lucas)", "equipaments": []},
-        {"name": "CARLOS MAGNO", "equipaments": []},
-        {"name": "CERÂMICA SÃO JOSÉ (+55 98 8532-8348)", "equipaments": []},
-        {"name": "CLASI SEGURANÇA ( felipe.silva@grupoclasi.com.br / Felipe)", "equipaments": []},
-        {"name": "CONCRENORTE  (55639222-9064/ Taís)", "equipaments": []},
-        {"name": "COSMEPEÇAS ( Silvia)", "equipaments": []},
-        {"name": "CSS (Juliano/ 9885018952)", "equipaments": []},
-        {"name": "CTRL ENGENHARIA E MANUTENÇÃO (+55 98 8157-8519/ Mayara)", "equipaments": []},
-        {"name": "DESTAK  (Davi)", "equipaments": []},
+        {"name": "BRASIL LAU RENT (+55 11 91207-0462 / Jeferson)", "equipaments": [
+                "Guindaste Tadano RT",
+                "Panoramic P 720 MTC-003",
+                "Guindaste Sany 100 ton",
+                "Guindaste Sany QY50C EWR-2190",
+                "Caminhão Volkswagen 25.360 GHPTC06",
+                "Poliguindaste Volkswagen Worker 17-250 ETR-0253",
+                "Caminhão Volkswagen FNB5C53",
+                "Empilhadeira HLI 4.5 TON",
+                "Guindaste Sany 220",
+                "Caminhão Volkswagen 24.260 FGA5F37",
+                "Caminhão Volkswagen 24.260 FDX8H46",
+                "Guindaste Tadano GR-50",
+                "Guindaste Sany 55",
+                "Guindaste Tadano 50 TON"
+        ]},
+        {"name": "CAMPOS MOVIMENTAÇÕES (+55 98 8247-0262 / Lucas)", "equipaments": [
+
+        ]},
+        {"name": "CARLOS MAGNO", "equipaments": [
+                "Ford Ranger 2.8 Motor Power Stroke"
+        ]},
+        {"name": "CERÂMICA SÃO JOSÉ (+55 98 8532-8348)", "equipaments": [
+                "Carregadeira W20 E",
+                "Carregadeira W20 F"
+        ]},
+        {"name": "CLASI SEGURANÇA ( felipe.silva@grupoclasi.com.br / Felipe)", "equipaments": [
+                "Caminhão Mercedes Accelo PTR-6993"
+        ]},
+        {"name": "CONCRENORTE  (55639222-9064/ Taís)", "equipaments": [
+                "Guindaste Sany STC 50"
+        ]},
+        {"name": "COSMEPEÇAS ( Silvia)", "equipaments": [
+                "Motoniveladora New Holland",
+                "Caminhão Volkswagen HPL-2941",
+                "Ambulância Renault Master PTS5H81",
+                "Carregadeira Case SEMOSP",
+                "Caminhão Volkswagen HPL-7081 CAEMA",
+                "Caminhão Iveco NPM-2164",
+                "Caminhão Ford Cargo PTE-2347 CAEMA",
+                "Caminhão Volkswagen Worker HPO-9544",
+                "Caminhão Volkswagen HPL-2953",
+                "Caminhão Ford Cargo PTD-4354"
+        ]},
+        {"name": "CSS (Juliano/ 9885018952)", "equipaments": [
+                "Caminhão Ford Cargo 2423 NZW4F11"
+        ]},
+        {"name": "CTRL ENGENHARIA E MANUTENÇÃO (+55 98 8157-8519/ Mayara)", "equipaments": [
+                "Guincho Hidráulico Giratório com Cabo de Aço 900kg - LD-E04021W - STROM"
+        ]},
+        {"name": "DESTAK  (Davi)", "equipaments": [
+                "Empilhadeira Hyster",
+                "Caminhão OJQ-2221"
+        ]},
         {"name": "DÍNAMO ENGENHARIA  (Livio andrade)", "equipaments": []},
         {"name": "E G LIMA TRANSPORTES  ('+55 98 8404-2798/egmunck@gmail.com)", "equipaments": []},
         {"name": "EBES ENGENHARIA  (Lindi / +55 98 8784-4793)", "equipaments": []},
