@@ -5,7 +5,30 @@
         {"name": "ADRIANO (970298025)", "equipaments": ["Caminhão Volkswagen 15-190 PSP-0198"]},
         {"name":"ANDERSSON (SEM CONTATO)","equipaments": ["Guindauto Argos 20.5"]},
         {"name":"AGROSERRA (Vagner / +55 99 8155-1737)","equipaments":["Guindauto TKA 43700"]},
-        {"name": "AGROPECUÁRIA ANTAS LTDA  (presidencia@hospitalsaodomingos.com.br)", "equipaments": []},
+        {"name": "AGROPECUÁRIA ANTAS LTDA  (presidencia@hospitalsaodomingos.com.br)", "equipaments": [
+                "Mini Carregadeira MC85",
+                "Caminhão Ford Cargo 1119 PSQ-9647",
+                "Caminhão Volkswagen 15-180 AQA-6908",
+                "Caminhão Volkswagen 26-260 IQR-7880",
+                "Retroescavadeira 416 E",
+                "Toyota Bandeirantes BMG 9208",
+                "Toyota Hilux  OJK-8648",
+                "Carregadeira 924H",
+                "Trator Massey Fergusson 235",
+                "Toyota Hilux MAN-7479",
+                "Pálio PSX-4940",
+                "Trator massey 4275",
+                "Trator massey 4292",
+                "Trator Valmet",
+                "Caminhão Atron",
+                "Retroescavadeira Case 580N",
+                "Escavadeira PC318",
+                "Caminhão Mercedes OJP-5756",
+                "Retroesavadeira 416F2",
+                "Caminhonete Toyota Hilux OJJ-7335",
+                "Toyota Hilux PSW-5795",
+                "Toyota Hilux  PSK-5799"
+        ]},
         {"name": "ALPHA ENGENHARIA  (+55 32 9111-7076/Elder)", "equipaments": []},
         {"name": "AMPLA MANUTENÇÃO E SERVIÇOS LTDA", "equipaments": ["Caminhão Volkswagen 24.280 ; CM 003 ; KPO7D59"]},
         {"name": "ARAUJO GUINDASTES (gerencia@araujoguindastes.com.br/Dário)", "equipaments": [
@@ -103,28 +126,160 @@
                 "Empilhadeira Hyster",
                 "Caminhão OJQ-2221"
         ]},
-        {"name": "DÍNAMO ENGENHARIA  (Livio andrade)", "equipaments": []},
-        {"name": "E G LIMA TRANSPORTES  ('+55 98 8404-2798/egmunck@gmail.com)", "equipaments": []},
-        {"name": "EBES ENGENHARIA  (Lindi / +55 98 8784-4793)", "equipaments": []},
-        {"name": "ECO SUC (Jastel/ jastel@uol.com.br)", "equipaments": []},
-        {"name": "ECOLIMP (999935179/Flávio)", "equipaments": []},
-        {"name": "EDRO ENGENHARIA (+55 98 8704-5060/Eduardo)", "equipaments": []},
-        {"name": "ELIAS (+55 98 8404-2798)", "equipaments": []},
-        {"name": "ENERGOATO  (6230974171)", "equipaments": []},
-        {"name": "ENEVA  (fabienne.lopes@eneva.com.br /Fabienne)", "equipaments": []},
-        {"name": "ENGECOM ENG. (gilsonteixeira2216@gmail.com/(31) 3241-1834)", "equipaments": []},
-        {"name": "EQUIPAR (98970298025/Adriano)", "equipaments": []},
-        {"name": "ESTÊNIO", "equipaments": []},
-        {"name": "FARMER  SILOS E MONTAGENS (Erika / 9982852045)", "equipaments": []},
-        {"name": "FONTEK SERVICE ", "equipaments": []},
-        {"name": "FORMILOC LOCADORA DE VEÍCULOS  (fiscal@formiloc.com.br)", "equipaments": []},
-        {"name": "GALFLEX  (comercial@galflex.com.br/Claudemi)", "equipaments": []},
-        {"name": "HERMONT  (hermont@hermont.com.br/Hermes)", "equipaments": []},
-        {"name": "HOSPITAL SÃO DOMINGOS  (presidencia@hospitalsaodomingos.com.br/ Murilo)", "equipaments": []},
-        {"name": "ILUMINAR MATERIAIS ELÉTRICOS (+55 98 8815-5428 / Anderson)", "equipaments": []},
-        {"name": "IVAN", "equipaments": []},
-        {"name": "JARBAS  (+55 9888535609 / Jarbas)", "equipaments": []},
-        {"name": "JCA EMPREENDIMENTOS  (983345-1546)", "equipaments": []},
+        {"name": "DÍNAMO ENGENHARIA  (Livio andrade)", "equipaments": [
+               "Caminhão Volkswagen 15-190 PSW-1647",
+                "Guindaste Sany STC 30",
+                "Trator New Holland TM7040",
+                "Guindaste Mercedes Axor 0DA9F86",
+                "Caminhão Volkswagen 31.330 IWT-1772 / Guindaste Masal 40 ton.",
+                "Caminhão Volvo VM PSC-9750",
+                "Caminhão Ford Cargo OIU-3133"
+        ]},
+        {"name": "E G LIMA TRANSPORTES  ('+55 98 8404-2798/egmunck@gmail.com)", "equipaments": [
+                "Caminhão Ford Cargo NHH-2630"
+        ]},
+        {"name": "EBES ENGENHARIA  (Lindi / +55 98 8784-4793)", "equipaments": [
+                "Guindaste Zoomlion QY70"
+        ]},
+        {"name": "ECO SUC (Jastel/ jastel@uol.com.br)", "equipaments": [
+                "Caminhonete Dodge RAM HOH6E51",
+                "Caminhão Volkswagen Worker JWE-7051",
+                "Caminhão Ford Cargo 1517 HZAOG47"
+        ]},
+        {"name": "ECOLIMP (999935179/Flávio)", "equipaments": [
+                "Caminhão Ford Cargo OJH-7760"
+        ]},
+        {"name": "EDRO ENGENHARIA (+55 98 8704-5060/Eduardo)", "equipaments": [
+                "Caminhão Ford Cargo  1519 PMJ-9096",
+                "Retroescavadeira JCB",
+                "Rompedor T-Romper",
+                "Retroescavadeira Randon",
+                "Caminhão Volkswagen 24.280 0SH8I43",
+                "Van Sprinter POY-9510",
+                "Caminhonete Nissan Frontier P0K9E33"
+        ]},
+        {"name": "ELIAS (+55 98 8404-2798)", "equipaments": [
+                "Caminhão Ford Cargo NZM-6032"
+        ]},
+        {"name": "ENERGOATO  (6230974171)", "equipaments": [
+                "Caminhão Volkswagen 24-260 PRX-1328"
+        ]},
+        {"name": "ENEVA  (fabienne.lopes@eneva.com.br /Fabienne)", "equipaments": [
+                "Guindaste Sany STC 600",
+                "Empilhadeira Hyster modelo FT70E de 3.100 ton.",
+                "Empilhadeira Clark modelo C45 de 4.500 ton."
+        ]},
+        {"name": "ENGECOM ENG. (gilsonteixeira2216@gmail.com/(31) 3241-1834)", "equipaments": [
+                "Caminhão Volkswagen 13-190 OIV-6178 CM-19",
+                "Caminhão Volkswagen 24.260 OJL-8624",
+                "Caminhão Volkswagen 17-190 QDQ8A05 CM-08",
+                "Caminhonete Ford Ranger PWZ-7127",
+                "Caminhão Ford Cargo 2629 OJL-6418",
+                "Caminhonete Ford PWZ-1480",
+                "Mini Escavadeira Bobcat",
+                "Caminhão Volkswagen 24.260 NOROA7B42",
+                "Mini Escavadeira Bobcat MEHE-06",
+                "Máquina TG-02",
+                "Máquina TF-14",
+                "Máquina MTD-03",
+                "Micronibus Mascarello RNI6E90",
+                "Mini escavadeira Wacker Neuson MEHE-02",
+                "Caminhão Volkswagen CM-30 KRH-3642",
+                "Mini Escavadeira Bobcat MEHE-07",
+                "Mini escavadeira MEHE-03",
+                "Carregadeira Case PCE-02",
+                "Carregadeira W20F PCE-03",
+                "Mini escavadeira MEHE-04",
+                "Mini escavadeira MEHE-01"
+        ]},
+        {"name": "EQUIPAR (98970298025/Adriano)", "equipaments": [
+                "Caminhão Volkswagen 13.180 PSP-0198"
+        ]},
+        {"name": "ESTÊNIO", "equipaments": [
+                "Caminhão Mercedes Atron HOP-7882"
+        ]},
+        {"name": "FARMER  SILOS E MONTAGENS (Erika / 9982852045)", "equipaments": [
+                "Guindaste XCMG QY70"
+        ]},
+        {"name": "FONTEK SERVICE ", "equipaments": [
+                "Empilhadeira CMH",
+                "Caminhão Scania 112HW"
+        ]},
+        {"name": "FORMILOC LOCADORA DE VEÍCULOS  (fiscal@formiloc.com.br)", "equipaments": [
+                "Guindaste Madal MC23",
+                "Caminhão OJQ-2432",
+                "Caminhão Ford Cargo 1519 KPV-2238 CM-16",
+                "Caminhão Ford Cargo 1419 GCQ4G61 CM-21",
+                "Caminhão Iveco NXY-0190 CM-03",
+                "Caminhão Volkswagen 4-280 JJC-2999 CM-19",
+                "Caminhão Mercedes Atego GGC-9479 CM-22",
+                "Caminhão Volkswagen 24-280 FZP4A30 CM-24",
+                "Caminhão Volkswagen 24-280 OQL-5775 CM-20",
+                "Micronibus Volaire OQM8J66 ON-15",
+                "Caminhão Mercedes ORB-1904",
+                "Caminhão Iveco OWW2H91",
+                "Caminhão Volkswagen PWFG072",
+                "Micronibus Mascarello HNHGJ59",
+                "Guindauto Volkwagen OXJ1E90 LN 12 505 BR",
+                "Microonibus  Mascarello RNY3C00",
+                "Caminhão Volkswagen 24.280 KRH-3642",
+                "Caminhão Mercedes Atego RFW0E97"                
+        ]},
+        {"name": "GALFLEX  (comercial@galflex.com.br/Claudemi)", "equipaments": [
+                "Guindaste Sany STC 800"
+        ]},
+        {"name": "HERMONT  (hermont@hermont.com.br/Hermes)", "equipaments": [
+                "Caminhão Mercedes 2324  OXZ-1728",
+                "Guindaste Sany STC-75 MWV-8947",
+                "Plataforma elevatória",
+                "Caminhão Mercedes Atron NND-7433",
+                "Caminhão Mercedes L1620 NWR 4377 ",
+                "Caminhão Atron NNE2031",
+                "Caminhão Mercedes NXJ 8893",
+                "Caminhonete Mitsubishi HOX-5341",
+                "Guindaste Sany STC 75 OIV-6346",
+                "Caminhão Mercedes Atego PTN-8366"
+        ]},
+        {"name": "HOSPITAL SÃO DOMINGOS  (presidencia@hospitalsaodomingos.com.br/ Murilo)", "equipaments": [
+                "Mini Carregadeira MC85",
+                "Caminhão Ford Cargo 1119 PSQ-9647",
+                "Caminhão Volkswagen 15-180 AQA-6908",
+                "Caminhão Volkswagen 26-260 IQR-7880",
+                "Retroescavadeira 416 E",
+                "Toyota Bandeirantes BMG 9208",
+                "Toyota Hilux  OJK-8648",
+                "Carregadeira 924H",
+                "Trator Massey Fergusson 235",
+                "Toyota Hilux MAN-7479",
+                "Pálio PSX-4940",
+                "Trator massey 4275",
+                "Trator massey 4292",
+                "Trator Valmet",
+                "Caminhão Atron",
+                "Retroescavadeira Case 580N",
+                "Escavadeira PC318",
+                "Caminhão Mercedes OJP-5756",
+                "Retroesavadeira 416F2",
+                "Caminhonete Toyota Hilux OJJ-7335",
+                "Toyota Hilux PSW-5795",
+                "Toyota Hilux  PSK-5799"
+        ]},
+        {"name": "ILUMINAR MATERIAIS ELÉTRICOS (+55 98 8815-5428 / Anderson)", "equipaments": [
+                "Retroescavadeira JCB C+"                
+        ]},
+        {"name": "IVAN", "equipaments": [
+                "Caminhao Volvo CVP-1484"
+        ]},
+        {"name": "JARBAS  (+55 9888535609 / Jarbas)", "equipaments": [
+                "Caminhao Volkswagen NHS-2586"
+        ]},
+        {"name": "JCA EMPREENDIMENTOS  (983345-1546)", "equipaments": [
+                "Trator de esteira D6T",
+                "Retroescavadeira EH04",
+                "Retroescavadeira EH01",
+                "Escavadeira 320D2L",
+                "Escavadeira 320D2"
+        ]},
         {"name": "JOEL", "equipaments": []},
         {"name": "JOHNNY  (981150687)", "equipaments": []},
         {"name": "JPW ENGENHARIA", "equipaments": []},

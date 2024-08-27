@@ -1,13 +1,4 @@
-																																
-BRASIL LAU RENT	Guindaste Tadano RT	Panoramic P 720 MTC-003	Guindaste Sany 100 ton	Guindaste Sany QY50C ; EWR-2190 	Caminhão Volkswagen 25.360   ; GHPTC06	Poliguindaste Volkswagen Worker 17-250 ; ETR-0253	Caminhão Volkswagen FNB5C53	Empilhadeira HLI 4.5 TON	Guindaste Sany 220	Caminhão Volkswagen 24.260   ; FGA5F37	Caminhão Volkswagen 24.260   ; FDX8H46	Guindaste Tadano (PAT- 0109-007)	Guindaste Sany  (monitor 126-006)	Guindaste Tadano 50 TON.	Guindaste Sany 55 	Guindaste Tadano GR-50																									
-CARLOS MAGNO	Ford Ranger 2.8 Motor Power Stroke																																								
-CERÂMICA SÃO JOSÉ	Carregadeira W20 E	Carregadeira W20 F																																							
-CLASI SEGURANÇA 	Caminhão Mercedes Accelo PTR-6993																																								
-CONCRENORTE 	Guindaste Sany STC 50																																								
-COSMEPEÇAS	Motoniveladora New Holland 	Caminhão Volkswagen HPL-2941	Ambulância Renault Master PTS5H81	Carregadeira Case SEMOSP	Caminhão Volkswagen HPL-7081 CAEMA	Caminhão Iveco NPM-2164	Caminhão Ford Cargo PTE-2347 CAEMA	Caminhão Volkswagen Worker HPO-9544	Caminhão Volkswagen HPL-2953	Caminhão Ford Cargo PTD-4354																															
-CSS	Caminhão Ford Cargo 2423 NZW4F11																																								
-CTRL ENGENHARIA E MANUTENÇÃO	Guincho Hidráulico Giratório com Cabo de Aço 900kg - LD-E04021W - STROM																																								
-DESTAK	Empilhadeira Hyster 	Caminhão OJQ-2221																																							
+																																							
 DÍNAMO ENGENHARIA	Caminhão Volkswagen 15-190 ; PSW-1647	Guindaste Sany STC 30	Trator New Holland TM7040	Caminhão Mercedes Axor 0DA9F86	Caminhão Volkswagen 31.330 IWT-1772 / Guindaste Masal 40 ton.	Caminhão Volvo VM PSC-9750	Caminhão Ford Cargo OIU-3133	Guindaste Mercedes Axor 0DA9F86																																	
 ECO SUC 	Caminhonete Dodge RAM HOH6E51	Caminhão Volkswagen Worker JWE-7051	Caminhão Ford Cargo 1517 HZAOG47																																						
 ECOLIMP	Caminhão Ford Cargo OJH-7760																																								
