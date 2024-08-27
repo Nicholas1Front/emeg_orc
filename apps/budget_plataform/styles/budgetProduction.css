@@ -317,6 +317,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #infos-next-step-btn:hover{
@@ -733,6 +734,7 @@ header{
 /* total-budget-prod-section */
 
 .total-budget-prod-section{
+    display:none;
     width:100%;
     margin-top:5rem;
 }

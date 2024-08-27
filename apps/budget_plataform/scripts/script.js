@@ -44,6 +44,7 @@ const dateInput = document.querySelector("#date-input");
 const completionDeadlineInput = document.querySelector("#completion-deadline-input");
 const paymentTermsInput = document.querySelector("#payment-terms-input");
 const guaranteeInput = document.querySelector("#guarantee-input");
+const NextStepContainer = document.querySelector(".next-step-container");
 const infosNextStepBtn = document.querySelector("#infos-next-step-btn");
 
 const partsSection = document.querySelector(".parts-section");
@@ -127,17 +128,18 @@ function validateSelectsProcess(){
     if(clientsSelectList.value === ""){
         showPopupMsg("Selecione um cliente !", "errorMsg");
         return;
-    }else if(equipamentsSelectList.value === ""){
+    }else if(equipamentsSelectList.style.display === "block" && equipamentsSelectList.value === ""){
         showPopupMsg("Selecione um equipamento !", "errorMsg");
         return;
-    }else if(clientsSelectList.value === "(NÃO IDENTIFICADO)" && notIdentifiedInput.value === ""){
+    }else if(clientsSelectList.value === "(NÃO IDENTIFICADO)" && notIdentifiedInput.style.display === "block" && notIdentifiedInput.value === ""){
         showPopupMsg("Digite o modelo do equipamento !", "errorMsg");
         return;
     }else{
         if(dateInput.value === "" || completionDeadlineInput.value === "" || paymentTermsInput.value === "" || guaranteeInput.value === ""){
             showPopupMsg("Alguns campos estão vazios !", "adviceMsg");
         };
-        showHtmlElement(partsSection,servicesSection,observationsSection,generateBudgetSection)
+        showHtmlElement(partsSection,servicesSection,totalBudgetProdSecion,observationsSection,generateBudgetSection);
+        hideHtmlElement(NextStepContainer);
     }
 }
 
@@ -147,7 +149,7 @@ function showPopupMsg(message , messageType ){
 
     if(messageType === "errorMsg"){
         msgControl.style.backgroundColor = "#000";//black color
-        msgSpan.style.color = "white"; 
+        msgControl.style.color = "white"; 
         closeMsgBtn.style.color = "white";
     }else if (messageType === "adviceMsg"){
         msgControl.style.backgroundColor = "#fcba03";  //yellow color
@@ -162,9 +164,14 @@ function showPopupMsg(message , messageType ){
     msgControl.style.display = "block";
     msgControl.style.transition = "0.5s";
     msgControl.style.marginTop = "37%";
+
+    setTimeout(() => {
+        closePopupMsg();
+    }, 4000);
+
 }
 
-function closePopupErrorMsg(){
+function closePopupMsg(){
     msgControl.style.margintTop = "43%";
     msgControl.style.transition = "0.5s";
     msgControl.style.display = "none";
@@ -197,10 +204,8 @@ infosNextStepBtn.addEventListener("click", ()=>{
 });
 
 closeMsgBtn.addEventListener("click", ()=>{
-    closePopupErrorMsg();
+    closePopupMsg();
 })
-
-
 
 //parts section
 
@@ -525,7 +530,7 @@ function addServiceItemProcess(){
     //validation inputs
 
     if(serviceQuantInput.value === "" && serviceDescriptionInput.value === "" && serviceUnitValueInput.value === ""){
-        showPopupMsg("Insira as informações do serviços executados antes de prosseguir !" , "errorMsg")
+        showPopupMsg("Insira as informações do serviços executados antes de prosseguir !" , "errorMsg");
         return;
     }else if(serviceQuantInput.value === ""){
         showPopupMsg("Insira a quantidade de serviços executados !", "errorMsg");
@@ -593,6 +598,11 @@ serviceUnitValueInput.addEventListener('input', (event)=>{
     event.target.value = updateValue;
 })
 
+//total-budget-prod-section
+
+//elements
+const totalBudgetProdSecion = document.querySelector(".total-budget-prod-section");
+
 //observations-section
 
 //elements
@@ -631,6 +641,7 @@ const observationsMadeSpan = document.querySelector(".observations-made-span");
 const savePdfBtn = document.querySelector("#save-document-pdf-btn");
 const saveHtmlBtn = document.querySelector("#save-document-html-btn");
 const backBudgetBtn = document.querySelector("#back-budget-btn");
+
 //functions
 
 function addHeaderFinishedProcess(){
@@ -655,8 +666,6 @@ function addHeaderFinishedProcess(){
     guaranteeSpanResult.innerText = guaranteeInput.value;
     dateSpanResult.innerText = reorganizeDateFormat();
 }
-
-//testing 
 
 function addBudgetCodeFinishedProcess(){
     budgetCodeSpan.innerHTML = "";
@@ -887,6 +896,9 @@ function addObservationsFinishedProcess(){
 }
 
 function displayBudgetProcess(){
+    //show budget finished and hide budget production
+    showHtmlElement(budgetFinished);
+    hideHtmlElement(budgetProduction)
     //display header informations
     
     addHeaderFinishedProcess();
@@ -928,3 +940,8 @@ saveHtmlBtn.addEventListener("click", ()=>{
 savePdfBtn.addEventListener("click", ()=>{
     window.print();
 })
+
+backBudgetBtn.addEventListener("click", ()=>{
+    showHtmlElement(budgetProduction);
+    hideHtmlElement(budgetFinished);
+}) 
