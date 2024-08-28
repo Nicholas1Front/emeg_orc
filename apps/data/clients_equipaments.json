@@ -280,28 +280,117 @@
                 "Escavadeira 320D2L",
                 "Escavadeira 320D2"
         ]},
-        {"name": "JOEL", "equipaments": []},
-        {"name": "JOHNNY  (981150687)", "equipaments": []},
-        {"name": "JPW ENGENHARIA", "equipaments": []},
-        {"name": "JR  (+55 98 9976-5324/Barbosa)", "equipaments": []},
-        {"name": "LIDER GUINDASTES (+55 98 9142-8991 / Bernardo)", "equipaments": []},
-        {"name": "LOCAR (fg.andrioli@locar.com.br /Adriano)", "equipaments": []},
-        {"name": "LOCARES LOCAÇOES LTDA  (manutencao@locares.com.br / Wagner)", "equipaments": []},
-        {"name": "LUA NOVA LTDA (+55 98 84288690 / Paulo)", "equipaments": []},
-        {"name": "MACTRON SERVIÇOS (988551699 / Sandro)", "equipaments": []},
-        {"name": "MAMUTH TRANSPORTES DE MÁQUINAS LTDA (Gerson / manutencao@mamuth.com.br)", "equipaments": []},
-        {"name": "MAXXUM (monike.lopes@maxxumma.com/Monike lopes)", "equipaments": []},
+        {"name": "JOEL", "equipaments": [
+                "Caminhao Ford 1519 PS0OJ58",
+                "Caminhao Volkswagen MSL-0688"
+        ]},
+        {"name": "JOHNNY  (981150687)", "equipaments": [
+                "Caminhao Volkswagen HWT-6019"
+        ]},
+        {"name": "JPW ENGENHARIA", "equipaments": [
+                "Guindauto Argos 20.6"
+        ]},
+        {"name": "JR  (+55 98 9976-5324/Barbosa)", "equipaments": [
+                "Caminhão Volkswagen 19-320 GZV-6950",
+                "Caminhão Mercedes 2425",
+                "Guindaste XCMG QY70"
+        ]},
+        {"name": "LIDER GUINDASTES (+55 98 9142-8991 / Bernardo)", "equipaments": [
+                "Guindaste Sany PGF-0870"                
+        ]},
+        {"name": "LOCAR (fg.andrioli@locar.com.br /Adriano)", "equipaments": [
+                "Guindaste XCMG QY70",
+                "Guindaste Zoomlion QY60",
+                "Guindaste Sany STC 80",
+                "Guindaste Sany STC 800",
+                "Plataforma elevatória JLG"
+        ]},
+        {"name": "LOCARES LOCAÇOES LTDA  (manutencao@locares.com.br / Wagner)", "equipaments": [
+                "Manipulador New Holland LM1745 TAG 12"
+        ]},
+        {"name": "LUA NOVA LTDA (+55 98 84288690 / Paulo)", "equipaments": [
+                "Guindaste XCMG 25 TON.",
+                "Caminhao Ford OJE-5242",
+                "Caminhão Volkswagen Worker NND-9558",
+                "Manipulador JCB 540160",
+                "Trator TL 85E New Holland",
+                "Guindaste XCMG QY25",
+                "Manipulador JCB 540170"
+        ]},
+        {"name": "MACTRON SERVIÇOS (988551699 / Sandro)", "equipaments": [
+                "Caminhão Volkwagen 13.190 PWQ5H92",
+                "Renault Logan RFU5C87",
+                "Micronibus Volare FUB2I13",
+                "Caminhão Volkswagen 26.260 RQQ0F24",
+                "Micronibus Volaire FUB2I13"
+        ]},
+        {"name": "MAMUTH TRANSPORTES DE MÁQUINAS LTDA (Gerson / manutencao@mamuth.com.br)", "equipaments": [
+                "Guindaste Groove 220",
+                "Guindaste XCMG 220 FFN-7963"
+        ]},
+        {"name": "MAXXUM (monike.lopes@maxxumma.com/Monike lopes)", "equipaments": [
+                "Guindaste XCMG QY70",
+                "Empilhadeira Yale 2.5 TON",
+                "Caminhão Volkswagen Worker 24-220 HMR-7340",
+                "Guindauto  Volkswagen 17-190 Frota 20-04-0112",
+                "Guindaste Tadano GT600 HEW-4196"
+        ]},
         {"name": "MC COMÉRCIO E LOCAÇÃO (+55 99 9203-8661/Romário)", "equipaments": []},
-        {"name": "MECBRUN INDUSTRIAL (katiarocha@mecbrun.com.br)", "equipaments": []},
-        {"name": "METAL MS (deivid.dias@metalurgicams.com / Deivid)", "equipaments": []},
-        {"name": "METAL PRATA (9998189-2111)", "equipaments": []},
+        {"name": "MECBRUN INDUSTRIAL (katiarocha@mecbrun.com.br)", "equipaments": [
+                "Caminhão Mercedes Axor 3131 QXF-1740"
+        ]},
+        {"name": "METAL MS (deivid.dias@metalurgicams.com / Deivid)", "equipaments": [
+                "Caminhão Volkswagen 24.280 MLD-9788"
+        ]},
+        {"name": "METAL PRATA (9998189-2111)", "equipaments": [
+                "Guindauto Ford Cargo 2422 NVN-2374"
+        ]},
         {"name": "MINEIRO (+55 63 8405-8007)", "equipaments": []},
-        {"name": "MIP ENGENHARIA (dionleno.nunes@mip.com.br/Dion Lenon)", "equipaments": []},
-        {"name": "MONTCALM (fernanda.dias@montcalm.com.br/Fernanda dias)", "equipaments": []},
-        {"name": "MONTEC SILOS E MONTAGENS LTDA ( )", "equipaments": []},
-        {"name": "ÔMEGA (karla.sanches@omegaservice.com.br / Karla)", "equipaments": []},
-        {"name": "P.A.D MONTAGENS E MANUTENÇÃO INDUSTRIAL ", "equipaments": []},
-        {"name": "PELICANO CONSTRUÇÕES S.A (edinaldo.oliveira@pelicano.eng.br)", "equipaments": []},
+        {"name": "MIP ENGENHARIA (dionleno.nunes@mip.com.br/Dion Lenon)", "equipaments": [
+                "Caminhão Volkswagen 24-280 QPH-8027",
+                "Caminhão Volkswagen 24-250 GZB-5598 Frota 20.04.0056"
+        ]},
+        {"name": "MONTCALM (fernanda.dias@montcalm.com.br/Fernanda dias)", "equipaments": [
+                "Guindaste Sany STC 800"
+        ]},
+        {"name": "MONTEC SILOS E MONTAGENS LTDA ()", "equipaments": [
+                "Guindaste XCMG QY70K"
+        ]},
+        {"name": "NORTE CARGAS ()", "equipaments": [
+                "Empilhadeira Hyster H50CT- BR"
+        ]},
+        {"name": "ÔMEGA (karla.sanches@omegaservice.com.br / Karla)", "equipaments": [
+                "Guindaste Sany STC 300 OTU-8815",
+                "Guindaste Bantan Telekruiser 18 ton.",
+                "Empilhadeira Yale GLP050VXYVSE084",
+                "Guindaste Sany STC300 QDE-8571",
+                "Manipulador LM1745 TURBO",
+                "Empilhadeira Hyster 155 TAG 09",
+                "Caminhão Mercedes Atego 2426 PTY6J77",
+                "Caminhão Volkswagen 26-320 QDJ-3788",
+                "Caminhao OTM-3896",
+                "Caminhão Volkswagen 26-320 PUV-0773",
+                "Empilhadeira Hyundai"
+        ]},
+        {"name": "P.A.D MONTAGENS E MANUTENÇÃO INDUSTRIAL ", "equipaments": [
+                "Guindaste TEREX LT 1070"
+        ]},
+        {"name": "PAVIRROL", "equipaments" : [
+                "Caminhão Ford OXS-4994"
+        ]},
+        {"name": "PELICANO CONSTRUÇÕES S.A (edinaldo.oliveira@pelicano.eng.br)", "equipaments": [
+                "Caminhão Volkswagen 24-250 Frota CM 225",
+                "Guindauto NRR1291 Frota 101003",
+                "Caminhão Mercedes L1620 Frota 101003",
+                "Guindauto Luna 16.200 Frota 101005",
+                "Guindauto OCU-7024 Frota 101006",
+                "Guindauto Luna Suprema 16.5 OCV-7024",
+                "Caminhão Mercedes Atego ODG-5971 Frota 101008",
+                "Guindauto Argos AGI16.5 ODH3451 Frota 101009",
+                "Caminhão  Volkswagen 25-370 ODH-5961 Frota 101010",
+                "Guindauto Argos AGI 9.5 Frota 101012",
+                "Caminhão Ford 1519 ODI-1479 Frota 101012"
+        ]},
         {"name": "PETROSUC  (98988712811)", "equipaments": []},
         {"name": "PHM MECÂNICA  (phm.ma@phm.mecanica.com.br/Andreia)", "equipaments": []},
         {"name": "PREFEITURA DUQUE BACELAR (Emanuelle )", "equipaments": []},

@@ -1,26 +1,4 @@
-																																							
-DÍNAMO ENGENHARIA	Caminhão Volkswagen 15-190 ; PSW-1647	Guindaste Sany STC 30	Trator New Holland TM7040	Caminhão Mercedes Axor 0DA9F86	Caminhão Volkswagen 31.330 IWT-1772 / Guindaste Masal 40 ton.	Caminhão Volvo VM PSC-9750	Caminhão Ford Cargo OIU-3133	Guindaste Mercedes Axor 0DA9F86																																	
-ECO SUC 	Caminhonete Dodge RAM HOH6E51	Caminhão Volkswagen Worker JWE-7051	Caminhão Ford Cargo 1517 HZAOG47																																						
-ECOLIMP	Caminhão Ford Cargo OJH-7760																																								
-EDRO ENGENHARIA	Caminhão Ford Cargo  1519 ; PMJ-9096	Retroescavadeira JCB	Rompedor T-Romper	Retroescavadeira Randon	Caminhão Volkswagen 24.280 0SH8I43	Van Sprinter POY-9510	Caminhonete Nissan Frontier P0K9E33																																		
-ELIAS	Caminhão Ford Cargo NZM-6032																																								
-ENERGOATO	Caminhão Volkswagen 24-260; PRX-1328																																								
-E G LIMA TRANSPORTES	Caminhão Ford Cargo NHH-2630																																								
-EBES ENGENHARIA	Guindaste Zoomlion QY70																																								
-ENEVA	Guindaste Sany STC 600	Empilhadeira Hyster modelo FT70E de 3.100 ton.	Empilhadeira Clark modelo C45 de 4.500 ton.																																						
-ENGECOM	Caminhão Volkswagen 13-190 ; OIV-6178 ; CM-19	Caminhão Volkswagen 24.260 ; OJL-8624	Caminhão Volkswagen 17-190 ; QDQ8A05 ; CM-08	PTC 	Caminhonete Ford Ranger PWZ-7127	Caminhão Ford Cargo 2629 ; OJL-6418	Caminhonete Ford PWZ-1480	Mini Escavadeira Bobcat	Caminhão Volkswagen 24.260 ; NOROA7B42	Mini Escavadeira Bobcat MEHE-06	Máquina TG-02	Máquina TF-14	Máquina MTD-03	Micronibus Mascarello RNI6E90	Mini escavadeira Wacker Neuson MEHE-02	Caminhão Volkswagen CM-30 KRH-3642	Mini Escavadeira Bobcat MEHE-07	Mini escavadeira MEHE-03	Carregadeira Case PCE-02	Carregadeira W20F PCE-03	Mini escavadeira MEHE-04	Mini escavadeira MEHE-01																			
-EQUIPAR	Guindauto Volkswagen 	Caminhão Volkswagen 13.180 PSP-0198																																							
-ESTÊNIO	Caminhão Mercedes Atron ; HOP-7882																																								
-FARMER	Guindaste XCMG QY70																																								
-FONTEK SERVICE	Empilhadeira CMH	Caminhão Scania 112HW 																																							
-FORMILOC LOCADORA DE VEÍCULOS	Guindaste Madal MC23	Caminhão OJQ-2432	Caminhão Ford Cargo 1519 ; KPV-2238 ; CM-16	Caminhão Ford Cargo 1419 ; GCQ4G61 ; CM-21	Caminhão Iveco ; NXY-0190 ; CM-03	Caminhão Volkswagen 4-280 ;JJC-2999;CM-19	Caminhão Mercedes Atego ; GGC-9479 ; CM-22	Caminhão Volkswagen 24-280 ; FZP4A30;  CM-24 	Caminhão Volkswagen 24-280 ; OQL-5775;  CM-20 	Micronibus Volaire OQM8J66 ; ON-15	Caminhão Mercedes ; ORB-1904	Caminhão Iveco ; OWW2H91	Caminhão Volkswagen PWFG072	Micronibus Mascarello HNHGJ59	Guindauto Volkwagen OXJ1E90 ; LN 12 505 BR	Microonibus  Mascarello RNY3C00	Caminhão Volkswagen 24.280 KRH-3642	Caminhão Mercedes Atego RFW0E97																							
-GALFLEX	Guindaste Sany STC 800																																								
-HERMONT	Caminhão Mercedes 2324  OXZ-1728	Guindaste Sany STC 75	Plataforma elevatória	Caminhão Mercedes Atron NND-7433	Guindaste Sany STC-75 MWV-8947	Caminhão Mercedes L1620 NWR 4377 	Caminhão Atron NNE2031	Caminhão Mercedes NXJ 8893 	Caminhonete Mitsubishi ; HOX-5341	Guindaste Sany STC75 OIV-6346	Caminhão Mercedes Atego PTN-8366																														
-HOSPITAL SÃO DOMINGOS / AGROPECUÁRIA ANTAS LTDA	Mini Carregadeira MC85	Caminhão Ford Cargo 1119 PSQ-9647	Caminhão Ford Cargo 1119 PSD-9647	Caminhão Volkswagen 15-180 AQA-6908	Caminhão Volkswagen 26-260 IQR-7880	Retroescavadeira 416 E	Toyota Bandeirantes BMG 9208	Toyota Hilux  OJK-8648	Carregadeira 924H	Trator Massey Fergusson 235	Gerador	Toyota Hilux MAN 7479	Pálio PSX-4940	Trator massey 4275	Trator massei 4292	Trator Valmet	Caminhão Atron	Retroescavadeira Case 580N	Escavadeira PC318	Caminhão Mercedes OJP-5756	Retroesavadeira 416F2	Caminhonete Toyota Hilux OJJ-7335	Toyota Hilux PSW-5795	Toyota Hilux  PSK-5799																	
-ILUMINAR MATERIAIS ELÉTRICOS	Retroescavadeira JCB C+																																								
-IVAN 	Caminhao Volvo CVP-1484																																								
-JARBAS	Caminhao Volkswagen NHS-2586																																								
-JCA EMPREENDIMENTOS	Trator de esteira D6T	Retroescavadeira EH04	Retroescavadeira EH01	Escavadeira 320D2L	Escavadeira 320D2																																				
+																		
 JOEL (PINDARÉ)	Caminhao Ford 1519 PS0OJ58	Caminhao Volkswagen MSL-0688																																							
 JOHNNY	Caminhao Volkswagen HWT-6019																																								
 JPW	Guindauto Argos 20.6																																								
