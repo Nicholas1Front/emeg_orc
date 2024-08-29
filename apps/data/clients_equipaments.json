@@ -1,6 +1,4 @@
 [
-        {"name":"","equipaments":[""]},
-        {"name": "Não identificado"},
         {"name": "ADAO (+55 98 8303-3406/Adao)", "equipaments": [
                 "Caminhão Volkswagen 15-190 PSP-0198"
         ]},
@@ -370,7 +368,7 @@
         {"name": "NORTE CARGAS (Roberto Nascimento / +55 98 8300-0136)", "equipaments": [
                 "Empilhadeira Hyster H50CT- BR"
         ]},
-        {"name": "ÔMEGA (karla.sanches@omegaservice.com.br / Karla)", "equipaments": [
+        {"name": "OMEGA (karla.sanches@omegaservice.com.br / Karla)", "equipaments": [
                 "Guindaste Sany STC 300 OTU-8815",
                 "Guindaste Bantan Telekruiser 18 ton.",
                 "Empilhadeira Yale GLP050VXYVSE084",

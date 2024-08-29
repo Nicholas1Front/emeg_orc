@@ -63,13 +63,15 @@ function createClientsList(){
             clientsData.push(client.name.toUpperCase());
         });
 
+        clientsData = clientsData.sort();
+
         clientsData.forEach(clients => {
             let option = document.createElement("option");
 
             option.text = clients;
 
             clientsSelectList.add(option);
-        })
+        });
 
         return clientsData;
 
@@ -100,7 +102,7 @@ function createEquipamentsList(){
                 equipamentsData.forEach(equipament =>{
                     let option = document.createElement("option");
 
-                    option.text = equipament;
+                    option.text = equipament.toUpperCase();
 
                     equipamentsSelectList.add(option);
 
