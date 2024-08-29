@@ -2,7 +2,7 @@
 // clients_equipaments.json
 async function getClientsData(){
     try{
-        const response = await fetch("https://nicholas1front.github.io/emeg_orc/data/clients_equipaments.json");
+        const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/data/clients_equipaments.json");
 
         if (!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
