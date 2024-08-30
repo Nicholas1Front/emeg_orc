@@ -667,10 +667,30 @@ function addHeaderFinishedProcess(){
     completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
     guaranteeSpanResult.innerText = guaranteeInput.value;
     dateSpanResult.innerText = reorganizeDateFormat();
+
+    if(paymentTermsInput.value === ""){
+        paymentTermsSpanResult.innerText = "###"
+    }
+
+    if(guaranteeSpanResult.innerText === ""){
+        guaranteeSpanResult.innerText = "###"
+    }
+
+    if(completionDeadlineSpanResult.innerText === ""){
+        completionDeadlineSpanResult.innerText = "###"
+    }
+
+    if(dateSpanResult.innerText === "undefined/undefined/undefined"){
+        dateSpanResult.innerText = "###"
+    }
+
+    let budgetName = createBudgetName();
+
+    document.querySelector("title").textContent = budgetName;
 }
 
 function addBudgetCodeFinishedProcess(){
-    budgetCodeSpan.innerHTML = "";
+    budgetCodeSpan.innerText = "";
 
     if(budgetCodeValue.length == 10){
         budgetCodeSpan.innerText = budgetCodeValue;
@@ -946,4 +966,5 @@ savePdfBtn.addEventListener("click", ()=>{
 backBudgetBtn.addEventListener("click", ()=>{
     showHtmlElement(budgetProduction);
     hideHtmlElement(budgetFinished);
+    document.querySelector("title").textContent = "Criar orçamento"
 }) 
