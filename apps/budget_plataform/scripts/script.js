@@ -668,7 +668,7 @@ function addHeaderFinishedProcess(){
     guaranteeSpanResult.innerText = guaranteeInput.value;
     dateSpanResult.innerText = reorganizeDateFormat();
 
-    if(paymentTermsInput.value === ""){
+    if(paymentTermsInput.innerText === ""){
         paymentTermsSpanResult.innerText = "###"
     }
 
@@ -680,7 +680,7 @@ function addHeaderFinishedProcess(){
         completionDeadlineSpanResult.innerText = "###"
     }
 
-    if(dateSpanResult.innerText === "undefined/undefined/undefined"){
+    if(dateSpanResult.innerText === "undefined/undefined/"){
         dateSpanResult.innerText = "###"
     }
 
