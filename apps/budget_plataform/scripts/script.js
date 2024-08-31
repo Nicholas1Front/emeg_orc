@@ -732,7 +732,8 @@ function createBudgetCode(){
 function createBudgetName(){
     clientName = clientSpanResult.innerText;
     clientName = clientName.split("(");
-    clientName = clientName[0].toLowerCase();
+    clientName = clientName.split("");
+    clientName = clientName[0];
 
     equipamentName = equipamentSpanResult.innerText;
 
@@ -742,7 +743,7 @@ function createBudgetName(){
     equipamentName = equipamentName.trim();
     budgetCodeValue = budgetCodeValue.trim();
 
-    budgetNameArchive = `orçamento ${budgetCodeValue} ${clientName} ${equipamentName}`
+    budgetNameArchive = `ORÇAMENTO ${budgetCodeValue} ${clientName} ${equipamentName} .html`
 
     return budgetNameArchive;
 }
@@ -968,5 +969,5 @@ savePdfBtn.addEventListener("click", ()=>{
 backBudgetBtn.addEventListener("click", ()=>{
     showHtmlElement(budgetProduction);
     hideHtmlElement(budgetFinished);
-    document.querySelector("title").textContent = "Criar orçamento"
+    document.querySelector("title").textContent = "Criar orçamento EMEG"
 }) 
