@@ -670,7 +670,7 @@ function addHeaderFinishedProcess(){
     guaranteeSpanResult.innerText = guaranteeInput.value;
     dateSpanResult.innerText = reorganizeDateFormat();
 
-    if(paymentTermsInput.innerText === ""){
+    if(paymentTermsSpanResult.innerText === ""){
         paymentTermsSpanResult.innerText = "###"
     }
 
