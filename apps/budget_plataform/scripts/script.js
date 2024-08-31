@@ -30,9 +30,10 @@ async function getClientsData(){
     event.returnValue = '';
 }); */
 
-// header
+//header
 
 //elements
+const budgetProduction = document.querySelector("#budget-production");
 const msgControl = document.querySelector(".msg-control");
 const closeMsgBtn = document.querySelector("#close-msg-btn");
 const msgSpan = document.querySelector(".msg-span");
@@ -46,11 +47,6 @@ const paymentTermsInput = document.querySelector("#payment-terms-input");
 const guaranteeInput = document.querySelector("#guarantee-input");
 const NextStepContainer = document.querySelector(".next-step-container");
 const infosNextStepBtn = document.querySelector("#infos-next-step-btn");
-
-const partsSection = document.querySelector(".parts-section");
-const servicesSection = document.querySelector(".services-section");
-const observationsSection = document.querySelector(".observations-section");
-const generateBudgetSection = document.querySelector(".generate-budget-section");
 
 //functions
 
@@ -212,7 +208,7 @@ closeMsgBtn.addEventListener("click", ()=>{
 //parts section
 
 //elements
-
+const partsSection = document.querySelector(".parts-section");
 const partsAddedItemsControl = document.querySelector(".parts-added-items-control");
 const partQuantInput = document.querySelector("#part-quant-input");
 const partDescriptionInput = document.querySelector("#part-description-input");
@@ -484,6 +480,7 @@ partUnitValueInput.addEventListener('input', (event)=>{
 
 //elements
 
+const servicesSection = document.querySelector(".services-section");
 const servicesAddedItemsControl = document.querySelector(".services-added-items-control");
 const serviceQuantInput = document.querySelector("#service-quant-input");
 const serviceDescriptionInput = document.querySelector("#service-description-input");
@@ -609,13 +606,18 @@ const totalBudgetProdSecion = document.querySelector(".total-budget-prod-section
 
 //elements
 
+const observationsSection = document.querySelector(".observations-section");
 const observationsTextarea = document.querySelector("#observations-textarea");
 
-//generate budget and display budget
+//generate budget section
 
 //elements
+const generateBudgetSection = document.querySelector(".generate-budget-section");
 const generateBudgetBtn = document.querySelector("#generate-budget-btn");
-const budgetProduction = document.querySelector("#budget-production");
+
+//budget finished 
+
+//elements
 const budgetFinished = document.querySelector("#budget-finished");
 const budgetFinishedContent = document.querySelector(".budget-finished-content-container");
 
