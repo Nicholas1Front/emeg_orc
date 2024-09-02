@@ -65,7 +65,7 @@
 .main-hub-section{
     width:100%;
     margin:1.5rem 0;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 }
@@ -85,6 +85,17 @@
     margin:0 1rem;
 }
 
+.main-hub-control h3{
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    margin-bottom:0.8rem;
+}
+
+.main-hub-control h3 > i{
+    margin-left: 5px;
+}
+
 .main-hub-control a{
     display: block;
     display: flex;
@@ -93,14 +104,66 @@
     width:100%;
     border-radius:25px;
     padding:10px 0;
-    background-color: #d61e1e;
+    background-color: #a91818;
     color: #fff;
     margin-bottom:0.7rem;
     text-decoration:none;
     font-size: 19px;
+    transition:0.2s;
+}
+
+.main-hub-control a:hover{
+    background-color: #d61e1e;
+    transition:0.2s;
 }
 
 .main-hub-control i{
     margin-right:7px;
     font-size:22px;
+}
+
+/* add-client-section */
+
+.add-client-section{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:1.5rem 0;
+}
+
+.add-client-section > div {
+    width:100%;
+}
+
+.back-home-control{
+    margin-left:1rem;
+}
+
+.back-home-control > button{
+    width:18%;
+    font-size: 15px;
+    padding:8px 0;
+    background-color: #a91818;
+    color: #fff;
+    border-radius: 25px;
+    border:none;
+    transition:0.2s;
+    cursor:pointer;
+}
+
+.back-home-control > button:hover{
+    background-color: #d61e1e;
+    transition: 0.2s;
+}
+
+.add-client-container > .title-container{
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-client-container > .title-container h2{
+    font-size: 22px;
 }
