@@ -2,4 +2,105 @@
     margin: 0;
     padding:0;
     box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+/* customer-base-plataform-container */
+.customer-base-plataform-container{
+    max-width: 1920px;
+}
+
+.customer-base-plataform-header{
+    padding:12px 0;
+    width:100%;
+    background-color: #d61e1e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:8px;
+}
+
+.customer-base-plataform-header img{
+    width:81px;
+    height:70px;
+}
+
+.customer-base-plataform-header h2{
+    margin-left:15px;
+    font-size:25px;
+}
+
+/* back-hub-apps-control */
+
+.back-hub-apps-control{
+    position:absolute;
+    margin-left:-83%;
+    width:fit-content;
+    display: flex;
+    justify-content: center;
+    padding:8px;
+}
+
+.back-hub-apps-control a{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    transition:0.2s;
+}
+
+.back-hub-apps-control a > i {
+    font-size:30px;
+}
+
+.back-hub-apps-control a > span{
+    font-size:12px;
+    padding-top:6px;
+}
+
+/* main-hub-section */
+
+.main-hub-section{
+    width:100%;
+    margin:1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-hub-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:80%;
+}
+
+.main-hub-control{
+    width:33.3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 1rem;
+}
+
+.main-hub-control a{
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    border-radius:25px;
+    padding:10px 0;
+    background-color: #d61e1e;
+    color: #fff;
+    margin-bottom:0.7rem;
+    text-decoration:none;
+    font-size: 19px;
+}
+
+.main-hub-control i{
+    margin-right:7px;
+    font-size:22px;
 }

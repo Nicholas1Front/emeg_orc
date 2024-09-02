@@ -106,9 +106,9 @@ header{
     font-size:25px;
 }
 
-/* back-home-control */
+/* back-hub-apps-control */
 
-.back-home-control{
+.back-hub-apps-control{
     position:absolute;
     margin-left:-83%;
     width:fit-content;
@@ -117,7 +117,7 @@ header{
     padding:8px;
 }
 
-.back-home-control a{
+.back-hub-apps-control a{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -126,11 +126,11 @@ header{
     transition:0.2s;
 }
 
-.back-home-control a > i {
+.back-hub-apps-control a > i {
     font-size:30px;
 }
 
-.back-home-control a > span{
+.back-hub-apps-control a > span{
     font-size:12px;
     padding-top:6px;
 }
