@@ -11,9 +11,98 @@ button{
     border-radius: 25px;
 }
 
+.overlay{
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index:1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+}
+
+.confirmation-popup{
+    background-color: #000;
+    width:50%;
+    border-radius:25px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.confirmation-popup > #close-confirmation-popup-btn{
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border:none;
+    margin-left:85%;
+    margin-top:0.8rem;
+}
+
+.confirmation-popup > .title-control{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation-popup > .title-control i{
+    font-size:75px;
+    color: #d61e1e;
+}
+
+.confirmation-popup > .title-control h2{
+    font-size:25px;
+    margin-top:0.2rem;
+    color:#fff;
+}
+
+.confirmation-popup > .input-control{
+    margin-top:1.2rem;
+    margin-bottom:1rem;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.confirmation-popup > .input-control input{
+    width:35%;
+    background-color: #fff;
+    border:none;
+    border-radius:25px;
+    font-size: 15px;
+    padding:8px 0;
+    text-align: center;
+    transition:0.2s;
+}
+
+.confirmation-popup > .input-control input:focus{
+    outline: none;
+    box-shadow: 0px 0px 9px 4px #d61e1e;
+    transition:0.2s;
+}
+
+.confirmation-popup > .input-control button{
+    width:fit-content;
+    background-color: #d61e1e;
+    border:none;
+    border-radius:25px;
+    font-size:15px;
+    font-weight: 500;
+    padding:5px 15px;
+    margin-top:0.9rem ;
+}
+
+
 /* customer-base-plataform-container */
 .customer-base-plataform-container{
     max-width: 1920px;
+    filter: blur(9px);
 }
 
 .customer-base-plataform-header{
