@@ -18,11 +18,13 @@ button{
     height: 100%;
     position: fixed;
     z-index:1000;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background: rgba(0,0,0,0.7);
 }
+
+/* confirmation-popup */
 
 .confirmation-popup{
     background-color: #000;
@@ -102,7 +104,7 @@ button{
 /* customer-base-plataform-container */
 .customer-base-plataform-container{
     max-width: 1920px;
-    filter: blur(9px);
+    /* filter: blur(9px); */
 }
 
 .customer-base-plataform-header{
@@ -173,7 +175,7 @@ button{
 }
 
 .main-hub-control{
-    width:33.3%;
+    width:25%;
     display: flex;
     flex-direction: column;
     align-items: center;
