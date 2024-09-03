@@ -25,7 +25,7 @@ function formatToBrl(value){
     }).format(value);
 };
 
-let value = 310.10;
+let value = 0 + 3;
 console.log(value);
 
 value = formatToBrl(value);
@@ -268,10 +268,8 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
         return;
     }
 
-    let totalValueString = totalValue.toString();
-    totalValueString = totalValueString.replace(".",",");
-
-    resultSpan.innerText = `R$ ${totalValueString}`;
+    let totalValueString = formatToBrl(totalValue);
+    resultSpan.innerText = totalValueString;
 
 }
 
@@ -291,83 +289,26 @@ function updateTotalSpans_BudgetProdSection(){
     totalServicesDisplaySpan.innerHTML = "";
     totalBudgetDisplaySpan.innerHTML = "";
 
-    if(partsItemTotalSpan.innerText !== "" && servicesItemTotalSpan.innerText !== ""){
-        let partsItemsValueString = partsItemTotalSpan.innerText.slice(2);
-        let servicesItemsValueString = servicesItemTotalSpan.innerText.slice(2);
+    let partsItemsValueString = partsItemTotalSpan.innerText.slice(2);
+    let servicesItemsValueString = servicesItemTotalSpan.innerText.slice(2);
 
-        partsItemsValueString = partsItemsValueString.replace(",", "."); // comma  to dot
-        servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
+    partsItemsValueString = partsItemsValueString.replace(",", "."); // comma  to dot
+    servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
         
-        partsItemsValue = parseFloat(partsItemsValueString);
-        servicesItemsValue = parseFloat(servicesItemsValueString);
+    partsItemsValue = parseFloat(partsItemsValueString);
+    servicesItemsValue = parseFloat(servicesItemsValueString);
 
-        totalBudgetValue = partsItemsValue + servicesItemsValue;
+    totalBudgetValue = partsItemsValue + servicesItemsValue;
         
-        let totalBudgetValueString = totalBudgetValue.toString();
-        totalBudgetValueString = totalBudgetValueString.replace(".",","); //dot to comma
+    let totalBudgetValueString = formatToBrl(totalBudgetValue);
+    partsItemsValueString = formatToBrl(partsItemsValue);
+    servicesItemsValueString = formatToBrl(servicesItemsValue);
 
-        partsItemsValueString = partsItemsValue.toString();
-        partsItemsValueString = partsItemsValueString.replace(".",",") // dot to comma
+    totalPartsDisplaySpan.innerHTML = partsItemsValueString;
+    totalServicesDisplaySpan.innerHTML = servicesItemsValueString
+    totalBudgetDisplaySpan.innerHTML = totalBudgetValueString;
 
-        servicesItemsValueString = servicesItemsValue.toString();
-        servicesItemsValueString = servicesItemsValueString.replace(".", ",");
-
-        totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
-        totalServicesDisplaySpan.innerHTML = `R$ ${servicesItemsValueString}`;
-        totalBudgetDisplaySpan.innerHTML = `R$ ${totalBudgetValueString}`;
-
-        return;
-
-    }else if(partsItemTotalSpan.innerText === "" && servicesItemTotalSpan.innerText !== ""){
-        let partsItemsValueString = 0;
-        let servicesItemsValueString = servicesItemTotalSpan.innerText.slice(2);
-
-        servicesItemsValueString = servicesItemsValueString.replace(",",".") // comma to dot
-        
-        partsItemsValue = 0
-        servicesItemsValue = parseFloat(servicesItemsValueString);
-
-        totalBudgetValue = partsItemsValue + servicesItemsValue;
-        
-        let totalBudgetValueString = totalBudgetValue.toString();
-        totalBudgetValueString = totalBudgetValueString.replace(".",","); //dot to comma
-
-        partsItemsValueString = partsItemsValue.toString();
-        partsItemsValueString = partsItemsValueString.replace(".",",") // dot to comma
-
-        servicesItemsValueString = servicesItemsValue.toString();
-        servicesItemsValueString = servicesItemsValueString.replace(".", ",");
-
-        totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
-        totalServicesDisplaySpan.innerHTML = `R$ ${servicesItemsValueString}`;
-        totalBudgetDisplaySpan.innerHTML = `R$ ${totalBudgetValueString}`;
-        return;
-    }else if(servicesItemTotalSpan.innerText === "" && partsItemTotalSpan.innerText !== ""){
-        let partsItemsValueString = partsItemTotalSpan.innerText.slice(2);
-        let servicesItemsValueString = 0;
-
-        partsItemsValueString = partsItemsValueString.replace(",", "."); // comma  to dot
-        
-        partsItemsValue = parseFloat(partsItemsValueString);
-        servicesItemsValue = 0
-
-        totalBudgetValue = partsItemsValue + servicesItemsValue;
-        
-        let totalBudgetValueString = totalBudgetValue.toString();
-        totalBudgetValueString = totalBudgetValueString.replace(".",","); //dot to comma
-
-        partsItemsValueString = partsItemsValue.toString();
-        partsItemsValueString = partsItemsValueString.replace(".",",") // dot to comma
-
-        servicesItemsValueString = servicesItemsValue.toString();
-        servicesItemsValueString = servicesItemsValueString.replace(".", ",");
-
-        totalPartsDisplaySpan.innerHTML = `R$ ${partsItemsValueString}`;
-        totalServicesDisplaySpan.innerHTML = `R$ ${servicesItemsValueString}`;
-        totalBudgetDisplaySpan.innerHTML = `R$ ${totalBudgetValueString}`;
-
-        return;
-    }
+    return;
 
 }
 
@@ -376,12 +317,11 @@ function createPartItem(quantString, descriptionString, unitValueString){
     let quant = parseInt(quantString);
 
     let unitValue = parseFloat(unitValueString.replace(",", "."));
+    let unitValueString = formatToBrl(unitValue);
 
     let totalValue =  quant * unitValue;
 
-    let totalValueString = totalValue.toString();
-
-    totalValueString = totalValueString.replace(".",",")
+    let totalValueString = formatToBrl(totalValue);    
 
     const itemString =
     `
@@ -392,9 +332,9 @@ function createPartItem(quantString, descriptionString, unitValueString){
 
                                     <span class="parts-description-span">${descriptionString.toUpperCase()}</span>
 
-                                    <span class="parts-unit-value-span">R$ ${unitValueString}</span>
+                                    <span class="parts-unit-value-span">${unitValueString}</span>
 
-                                    <span class="parts-total-value-span">R$ ${totalValueString}</span>
+                                    <span class="parts-total-value-span">${totalValueString}</span>
 
                                     <div class="edit-btn-control">
                                         <button class="edit-btn-of-parts">
@@ -507,6 +447,15 @@ const serviceUnitValueInput = document.querySelector("#service-unit-value-input"
 const serviceAddItemBtn = document.querySelector("#service-add-item-btn");
 
 function createServiceItem(quant , description , unitValue){
+    let quant = parseInt(quantString);
+
+    let unitValue = parseFloat(unitValueString.replace(",", "."));
+    let unitValueString = formatToBrl(unitValue);
+
+    let totalValue =  quant * unitValue;
+
+    let totalValueString = formatToBrl(totalValue);
+
     const itemString = `
     <div class="services-item">
 
@@ -515,9 +464,9 @@ function createServiceItem(quant , description , unitValue){
 
                                     <span class="service-description-span">${description.toUpperCase()}</span>
 
-                                    <span class="service-unit-value-span">R$ ${unitValue}</span>
+                                    <span class="service-unit-value-span">${unitValueString}</span>
 
-                                    <span class="service-total-value-span">R$ ${quant * unitValue}</span>
+                                    <span class="service-total-value-span">${totalValueString}</span>
 
                                     <div class="edit-btn-control">
                                         <button class="edit-btn-of-services">
