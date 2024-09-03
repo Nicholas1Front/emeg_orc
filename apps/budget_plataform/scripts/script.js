@@ -18,6 +18,25 @@ async function getClientsData(){
     }
 }
 
+function formatToBrl(value){
+    return new Intl.NumberFormat("pt-BR", {
+        style : "currency",
+        currency : "BRL",
+    }).format(value);
+};
+
+let value = 310.10;
+console.log(value);
+
+value = formatToBrl(value);
+console.log(value);
+
+value = value.slice(2);
+value = value.replace(',','.'); 
+value = parseFloat(value);
+
+console.log(value);
+
 
 //budget-production
 
@@ -732,8 +751,7 @@ function createBudgetCode(){
 function createBudgetName(){
     clientName = clientSpanResult.innerText;
     clientName = clientName.split("(");
-    clientName = clientName.split("");
-    clientName = clientName[0];
+    clientName = clientName[0].trim();
 
     equipamentName = equipamentSpanResult.innerText;
 
