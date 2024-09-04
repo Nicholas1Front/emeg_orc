@@ -254,14 +254,25 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
 
     resultSpan.innerHTML = "";
 
-    if(totalValue === null || totalValue === NaN){
-        return;
+    let totalValueString = formatToBrl(totalValue);
+
+    if (totalValueString === "R$ NaN"){
+        totalValueString = "R$ 0,00";
     }
 
-    let totalValueString = formatToBrl(totalValue);
     resultSpan.innerText = totalValueString;
 
 }
+
+let test = 0;
+
+test = formatToBrl(test);
+
+console.log(test);
+
+test = currencyToFloatNum(test);
+
+console.log(test);
 
 function updateTotalSpans_BudgetProdSection(){
     const partsItemTotalSpan = document.querySelector(".parts-item-total-span");
@@ -278,6 +289,14 @@ function updateTotalSpans_BudgetProdSection(){
     totalPartsDisplaySpan.innerHTML = "";
     totalServicesDisplaySpan.innerHTML = "";
     totalBudgetDisplaySpan.innerHTML = "";
+
+    if (partsItemTotalSpan.innerText === ""){
+        partsItemTotalSpan.innerText = "R$ 0,00";
+    }
+
+    if(servicesItemTotalSpan.innerText === ""){
+        servicesItemTotalSpan.innerText = "R$ 0,00"
+    }
 
     let partsItemsValueString = currencyToFloatNum(partsItemTotalSpan.innerText)
     let servicesItemsValueString = currencyToFloatNum(servicesItemTotalSpan.innerText);
