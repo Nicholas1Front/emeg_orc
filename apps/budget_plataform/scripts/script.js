@@ -264,16 +264,6 @@ function updateTotalSpan(spanGroupHtml, spanResultHtml){
 
 }
 
-let test = 0;
-
-test = formatToBrl(test);
-
-console.log(test);
-
-test = currencyToFloatNum(test);
-
-console.log(test);
-
 function updateTotalSpans_BudgetProdSection(){
     const partsItemTotalSpan = document.querySelector(".parts-item-total-span");
     const servicesItemTotalSpan = document.querySelector(".services-item-total-span");
@@ -441,6 +431,12 @@ partUnitValueInput.addEventListener('input', (event)=>{
     event.target.value = updateValue;
 })
 
+partUnitValueInput.addEventListener('keydown',(event)=>{
+    if(event.key === "Enter"){
+        addPartItemProcess();
+    }
+})
+
 //services section 
 
 //elements
@@ -569,6 +565,12 @@ serviceUnitValueInput.addEventListener('input', (event)=>{
     const updateValue = validateOnlyNumbers(event.target.value);
 
     event.target.value = updateValue;
+})
+
+serviceUnitValueInput.addEventListener('keydown',(event)=>{
+    if(event.key === "Enter"){
+        addServiceItemProcess();
+    }
 })
 
 //total-budget-prod-section
