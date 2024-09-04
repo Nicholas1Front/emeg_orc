@@ -169,31 +169,39 @@ button{
 
 .main-hub-container{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    width:80%;
+    width:100%;
 }
 
-.main-hub-control{
-    width:25%;
+.button-container{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 85%;
+    margin:0.8rem 0;
+}
+
+.button-control{
+    width:33.3%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin:0 1rem;
 }
 
-.main-hub-control h3{
+.button-control h3{
     width: 100%;
     text-align: center;
     font-size: 22px;
     margin-bottom:0.8rem;
 }
 
-.main-hub-control h3 > i{
+.button-control h3 > i{
     margin-left: 5px;
 }
 
-.main-hub-control a{
+.button-control a{
     display: block;
     display: flex;
     justify-content: center;
@@ -209,12 +217,12 @@ button{
     transition:0.2s;
 }
 
-.main-hub-control a:hover{
+.button-control a:hover{
     background-color: #d61e1e;
     transition:0.2s;
 }
 
-.main-hub-control i{
+.button-control i{
     margin-right:7px;
     font-size:22px;
 }
