@@ -157,6 +157,31 @@ button{
     padding-top:6px;
 }
 
+/* message-popup */
+
+.message-popup{
+    background-color: #0079dc;
+    position: fixed;
+    width:30%;
+    border-radius:15px;
+}
+
+.message-popup > #close-message-popup-btn{
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    border:none;
+    margin-left:92%;
+    margin-top:0.3rem;
+}
+
+.message-popup > .message-popup-control{
+    width:100%;
+    display: flex;
+    
+}
+
 /* main-hub-section */
 
 .main-hub-section{
