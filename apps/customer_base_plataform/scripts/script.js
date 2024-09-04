@@ -23,6 +23,49 @@ async function getClientsData(){
 
 getClientsData();
 
+// customer-base-plataform-container
+
+// elements
+const customerBasePlataformContainer  = document.querySelector(".customer-base-plataform-container");
+
+// confirmation popup
+
+// elements
+const overlay = document.querySelector(".overlay");
+const closeConfirmationPopupBtn = document.querySelector("#close-confirmation-popup-btn");
+const confirmationPasswordInput = document.querySelector("#confirmation-password-input");
+const confirmationPopupBtn = document.querySelector("#confirmation-popup-btn");
+const confirmationPassword = "88320940";
+
+function showConfirmationPopup(){
+    overlay.style.display = "flex";
+    customerBasePlataformContainer.style.filter = "blur(9px)";
+}
+
+function closeConfirmationPopup(){
+    overlay.style.display="none";
+    customerBasePlataformContainer.style.filter = "blur(0)"
+}
+
+function confirmationProcess(...functionToBeExecuted){
+    confirmationPopupBtn.addEventListener('click',()=>{
+        if(confirmationPasswordInput.value === confirmationPassword){
+            functionToBeExecuted.forEach(code =>{
+                code();
+            })
+            
+            closeConfirmationPopup();
+        }else{
+            console.log("Senha incorreta tente novamente");
+            closeConfirmationPopup();
+        }
+    })
+}
+
+closeConfirmationPopupBtn.addEventListener("click", ()=>{
+    closeConfirmationPopup()
+})
+
 //add-client-section
 
 //elements
@@ -32,18 +75,24 @@ const addClientBtn = document.querySelector("#add-client-btn");
 
 function addClientProcess(){
 
-    console.log(clients_equipaments_array);
+    showConfirmationPopup();
 
-    const newClient = {
-        name : addClientInput.value,
-        equipaments : []
-    }
+    function addClient(){
+        console.log(clients_equipaments_array);
 
-    clients_equipaments_array.push(newClient);
+            const newClient = {
+                name : addClientInput.value,
+                equipaments : []
+            }
 
-    console.log(clients_equipaments_array);
-    
-    return clients_equipaments_array;
+            clients_equipaments_array.push(newClient);
+
+            console.log(clients_equipaments_array);
+            
+            return clients_equipaments_array;
+    };
+
+    confirmationProcess(addClient);
 }
 
 // event listerner
