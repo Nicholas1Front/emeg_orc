@@ -927,6 +927,22 @@ function saveAsHtml(){
     link.click();
 }
 
+//testing
+
+const dateInputTest = document.querySelector("#date-input");
+
+let dateBrTest = "21/10/2024"
+
+function brDate_to_UsaDate(dateElement){
+    let dateString = dateElement.replace(/\//g,"-"); // all occurrences of the bar
+    let dateArray = dateString.split("-");
+    dateString = `${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`
+
+    return dateString;
+}
+
+console.log(brDate_to_UsaDate(dateBrTest));
+
 //event listerner
 
 generateBudgetBtn.addEventListener("click", ()=>{
