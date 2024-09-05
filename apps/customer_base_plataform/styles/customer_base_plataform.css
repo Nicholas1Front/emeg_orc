@@ -160,26 +160,40 @@ button{
 /* message-popup */
 
 .message-popup{
-    background-color: #0079dc;
+    background-color: #000;
     position: fixed;
     width:30%;
     border-radius:15px;
+    color: #fff;
+    margin-left:69%;
+    margin-top:33%;
 }
 
-.message-popup > #close-message-popup-btn{
+.message-popup > .close-message-popup-btn{
+    font-size: 16px;
     color: #fff;
-    font-size: 15px;
     cursor: pointer;
     background-color: transparent;
     border:none;
     margin-left:92%;
-    margin-top:0.3rem;
+    margin-top:0.5rem;
 }
 
 .message-popup > .message-popup-control{
     width:100%;
     display: flex;
-    
+    flex-direction: column;
+    align-items: center;
+}
+
+.message-popup > .message-popup-control i{
+    font-size: 65px;
+    margin:0.3rem 0;
+}
+
+.message-popup > .message-popup-control  > .message-popup-span{
+    font-size: 17px;
+    margin-bottom:0.8rem;
 }
 
 /* main-hub-section */
