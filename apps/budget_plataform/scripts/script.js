@@ -18,19 +18,6 @@ async function getClientsData(){
     }
 }
 
-function formatToBrl(value){
-    return new Intl.NumberFormat("pt-BR", {
-        style : "currency",
-        currency : "BRL",
-    }).format(value);
-};
-
-function currencyToFloatNum(value){
-    const number = value.replace(/[^\d,-]/g, '').replace('.', '').replace(',', '.');
-
-    return parseFloat(number);
-}
-
 //budget-production
 
 //popup
@@ -76,9 +63,10 @@ function createClientsList(){
         clientsData.forEach(clients => {
             let option = document.createElement("option");
 
-            option.text = clients;
+            option.textContent = clients;
+            option.value = clients;
 
-            clientsSelectList.add(option);
+            clientsSelectList.appendChild(option);
         });
 
         return clientsData;
@@ -124,7 +112,7 @@ function createEquipamentsList(){
     })
 };
 
-function reorganizeDateFormat(){
+function JsDate_to_BrDate(){
     let date = dateInput.value;
 
     let dateArray = date.split("-");
@@ -132,6 +120,28 @@ function reorganizeDateFormat(){
     let newDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`;
 
     return newDate;    
+}
+
+
+function brDate_to_JsDate(dateElement){
+    let dateString = dateElement.replace(/\//g,"-"); // all occurrences of the bar
+    let dateArray = dateString.split("-");
+    dateString = `${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`
+
+    return dateString;
+}
+
+function formatToBrl(value){
+    return new Intl.NumberFormat("pt-BR", {
+        style : "currency",
+        currency : "BRL",
+    }).format(value);
+};
+
+function currencyToFloatNum(value){
+    const number = value.replace(/[^\d,-]/g, '').replace('.', '').replace(',', '.');
+
+    return parseFloat(number);
 }
 
 function validateSelectsProcess(){
@@ -201,7 +211,9 @@ function hideHtmlElement(...elements){
 
 //booting
 
-createClientsList();
+window.addEventListener("DOMContentLoaded",()=>{
+    createClientsList();
+})
 
 //event listeners
 
@@ -644,7 +656,7 @@ function addHeaderFinishedProcess(){
     paymentTermsSpanResult.innerText = paymentTermsInput.value;
     completionDeadlineSpanResult.innerText = completionDeadlineInput.value;
     guaranteeSpanResult.innerText = guaranteeInput.value;
-    dateSpanResult.innerText = reorganizeDateFormat();
+    dateSpanResult.innerText = JsDate_to_BrDate();
 
     if(paymentTermsSpanResult.innerText === ""){
         paymentTermsSpanResult.innerText = "###"
@@ -927,21 +939,36 @@ function saveAsHtml(){
     link.click();
 }
 
-//testing
+function backHomeProcess(){
+    clientsSelectList.value = clientSpanResult.innerText;
+    equipamentsSelectList.value = equipamentsSpanResult.innerText;
+    paymentTermsInput.value = paymentTermsSpanResult.innerText;
+    completionDeadlineInput.value = completionDeadlineSpanResult.innerText;
+    guaranteeInput.value = guaranteeSpanResult.innerText;
 
-const dateInputTest = document.querySelector("#date-input");
+    if(dateSpanResult.innerText !== "###"){
+        dateInput.value = brDate_to_JsDate(dateSpanResult.innerText);
+    }else{
+        dateInput.value = "";
+    }
+    
+    if(paymentTermsInput.value === "###"){
+        paymentTermsInput.value = "";
+    }
 
-let dateBrTest = "21/10/2024"
+    if(completionDeadlineInput.value === "###"){
+        completionDeadlineInput.value = "";
+    }
 
-function brDate_to_UsaDate(dateElement){
-    let dateString = dateElement.replace(/\//g,"-"); // all occurrences of the bar
-    let dateArray = dateString.split("-");
-    dateString = `${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`
+    if(guaranteeInput.value === "###"){
+        guaranteeInput.value = "";
+    }
 
-    return dateString;
+    showHtmlElement(budgetProduction);
+    hideHtmlElement(budgetFinished);
+    document.querySelector("title").textContent = "Criar orçamento EMEG"
 }
 
-console.log(brDate_to_UsaDate(dateBrTest));
 
 //event listerner
 
@@ -958,7 +985,5 @@ savePdfBtn.addEventListener("click", ()=>{
 })
 
 backBudgetBtn.addEventListener("click", ()=>{
-    showHtmlElement(budgetProduction);
-    hideHtmlElement(budgetFinished);
-    document.querySelector("title").textContent = "Criar orçamento EMEG"
+    backHomeProcess();
 }) 
