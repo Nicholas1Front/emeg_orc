@@ -66,6 +66,26 @@ closeConfirmationPopupBtn.addEventListener("click", ()=>{
     closeConfirmationPopup()
 })
 
+//message popup
+
+//elements
+const messagePopup = document.querySelector(".message-popup");
+const closeMessagePopupBtn= document.querySelector(".close-message-popup-btn");
+const messagePopupSpan = document.querySelector(".message-popup-span");
+
+//functions
+
+function showMessagePopup(messageType, messageSpan){
+    if(messageType === "errorMsg"){
+        messagePopup.style.backgroundColor = "#000";
+        messagePopup.style.color = "#fff";
+    }
+
+    if(messageType === "sucessMsg"){
+        messagePopup.style.backgroundColor = "";
+    }
+}   
+
 //add-client-section
 
 //elements

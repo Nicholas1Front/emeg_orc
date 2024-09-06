@@ -446,6 +446,7 @@ partUnitValueInput.addEventListener('input', (event)=>{
 partUnitValueInput.addEventListener('keydown',(event)=>{
     if(event.key === "Enter"){
         addPartItemProcess();
+        updateTotalSpans_BudgetProdSection();
     }
 })
 
@@ -647,10 +648,10 @@ function addHeaderFinishedProcess(){
 
     clientSpanResult.innerText = clientsSelectList.value;
 
-    if(notIdentifiedInput.value === ""){
-        equipamentSpanResult.innerText = equipamentsSelectList.value;
-    }else{
+    if(clientsSelectList.value === "(NÃO IDENTIFICADO)"){
         equipamentSpanResult.innerText = notIdentifiedInput.value;
+    }else{
+        equipamentSpanResult.innerText = equipamentsSelectList.value;
     }
 
     paymentTermsSpanResult.innerText = paymentTermsInput.value;
@@ -941,7 +942,6 @@ function saveAsHtml(){
 
 function backHomeProcess(){
     clientsSelectList.value = clientSpanResult.innerText;
-    equipamentsSelectList.value = equipamentsSpanResult.innerText;
     paymentTermsInput.value = paymentTermsSpanResult.innerText;
     completionDeadlineInput.value = completionDeadlineSpanResult.innerText;
     guaranteeInput.value = guaranteeSpanResult.innerText;
@@ -967,6 +967,11 @@ function backHomeProcess(){
     showHtmlElement(budgetProduction);
     hideHtmlElement(budgetFinished);
     document.querySelector("title").textContent = "Criar orçamento EMEG"
+
+    paymentTermsSpanResult.innerHTML = "";
+    completionDeadlineSpanResult.innerHTML = "";
+    dateSpanResult.innerHTML = "";
+    guaranteeSpanResult.innerHTML= "";
 }
 
 
