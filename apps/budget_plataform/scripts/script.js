@@ -732,7 +732,10 @@ function createBudgetName(){
     equipamentName = equipamentName.trim();
     budgetCodeValue = budgetCodeValue.trim();
 
-    budgetNameArchive = `ORÇAMENTO ${budgetCodeValue} ${clientName} ${equipamentName} .html`
+    clientName = clientName.split(" ");
+    clientName = clientName[0];
+
+    budgetNameArchive = `ORÇAMENTO ${budgetCodeValue} ${clientName} ${equipamentName}`
 
     return budgetNameArchive;
 }
@@ -937,7 +940,7 @@ function saveAsHtml(){
     const blob = new Blob([document.documentElement.outerHTML], { type: 'text/html' });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = budgetNameArchive;
+    link.download = `${budgetNameArchive} .html`;
     link.click();
 }
 
