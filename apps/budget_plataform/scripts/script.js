@@ -583,6 +583,7 @@ serviceUnitValueInput.addEventListener('input', (event)=>{
 serviceUnitValueInput.addEventListener('keydown',(event)=>{
     if(event.key === "Enter"){
         addServiceItemProcess();
+        updateTotalSpans_BudgetProdSection();
     }
 })
 
