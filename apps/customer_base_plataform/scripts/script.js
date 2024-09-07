@@ -10,7 +10,22 @@ async function getClientsData(){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
         }
 
-        clients_equipaments_array = await response.json();
+        let clients_equipaments = await response.json();
+
+        let clientToPush = null;
+
+        clients_equipaments.forEach((client)=>{
+            clientToPush = {
+                name : client.name.toUpperCase(),
+                equipaments : client.equipaments, 
+            };
+
+            clientToPush.equipaments.forEach((equipament)=>{
+                clientToPush.equipaments = equipament.toUpperCase();
+            })
+
+            clients_equipaments_array.push(clientToPush);
+        })
 
         console.log(clients_equipaments_array);
 
@@ -34,12 +49,14 @@ const customerBasePlataformContainer  = document.querySelector(".customer-base-p
 const overlay = document.querySelector(".overlay");
 const closeConfirmationPopupBtn = document.querySelector("#close-confirmation-popup-btn");
 const confirmationPasswordInput = document.querySelector("#confirmation-password-input");
+const wrongPasswordSpan = document.querySelector(".wrong-password-span");
 const confirmationPopupBtn = document.querySelector("#confirmation-popup-btn");
 const confirmationPassword = "88320940";
 
 function showConfirmationPopup(){
     overlay.style.display = "flex";
     customerBasePlataformContainer.style.filter = "blur(9px)";
+    wrongPasswordSpan.style.display = "none";
 }
 
 function closeConfirmationPopup(){
@@ -48,6 +65,8 @@ function closeConfirmationPopup(){
 }
 
 function confirmationProcess(...functionToBeExecuted){
+    showConfirmationPopup();
+
     confirmationPopupBtn.addEventListener('click',()=>{
         if(confirmationPasswordInput.value === confirmationPassword){
             functionToBeExecuted.forEach(code =>{
@@ -56,8 +75,15 @@ function confirmationProcess(...functionToBeExecuted){
             
             closeConfirmationPopup();
         }else{
-            console.log("Senha incorreta tente novamente");
-            closeConfirmationPopup();
+            wrongPasswordSpan.style.display = "block";
+
+            setTimeout(()=>{
+                wrongPasswordSpan.style.display = "none";
+            },10000);
+
+            confirmationPasswordInput.addEventListener("focus",()=>{
+                wrongPasswordSpan.style.display = "none";
+            })
         }
     })
 }
@@ -82,9 +108,21 @@ function showMessagePopup(messageType, messageSpan){
     }
 
     if(messageType === "sucessMsg"){
-        messagePopup.style.backgroundColor = "";
+        messagePopup.style.backgroundColor = "#42f55a"; //green color
+        messagePopup.style.color = "#fff"
     }
-}   
+
+    messagePopupSpan.innerText = messageSpan;
+
+    messagePopup.style.display = "block";
+
+    setTimeout(closeConfirmationPopup,4000);
+}
+
+function closeMessagePopup(){
+    messagePopupSpan.innerText = "";
+    messagePopup.style.display = "none";
+}
 
 //add-client-section
 
@@ -94,9 +132,6 @@ const addClientBtn = document.querySelector("#add-client-btn");
 //functions
 
 function addClientProcess(){
-
-    showConfirmationPopup();
-
     function addClient(){
         console.log(clients_equipaments_array);
 
@@ -108,6 +143,8 @@ function addClientProcess(){
             clients_equipaments_array.push(newClient);
 
             console.log(clients_equipaments_array);
+
+            showMessagePopup("sucessMsg", "Cliente adicionado com sucesso ! ")
             
             return clients_equipaments_array;
     };
@@ -120,3 +157,24 @@ function addClientProcess(){
 addClientBtn.addEventListener("click", (event)=>{
     addClientProcess();
 });
+
+//testing
+
+let clientNameTest = "AGROPECUÁRIA ANTAS LTDA (presidencia@hospitalsaodomingos.com.br)";
+
+function consultClient(){
+    let clientConsult = null;
+
+    console.log(clients_equipaments_array);
+
+    clients_equipaments_array.forEach(client => {
+        if (clientNameTest == client.name){
+            clientConsult = {
+                name : client.name,
+                equipaments : client.equipaments,
+            }
+        }
+    })
+
+    console.log(clientConsult);
+}

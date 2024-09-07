@@ -18,7 +18,7 @@ button{
     height: 100%;
     position: fixed;
     z-index:1000;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     background: rgba(0,0,0,0.7);
@@ -72,6 +72,15 @@ button{
     align-items: center;
 }
 
+.confirmation-popup > .input-control > .wrong-password-span{
+    color:#000;
+    margin-top:0.5rem;
+    padding: 2px 8px;
+    background-color: #d61e1e;
+    font-size: 13px;
+    display: none;
+}
+
 .confirmation-popup > .input-control input{
     width:35%;
     background-color: #fff;
@@ -98,6 +107,7 @@ button{
     font-weight: 500;
     padding:5px 15px;
     margin-top:0.9rem ;
+    cursor: pointer;
 }
 
 
