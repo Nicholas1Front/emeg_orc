@@ -18,7 +18,7 @@ button{
     height: 100%;
     position: fixed;
     z-index:1000;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     background: rgba(0,0,0,0.7);
@@ -281,7 +281,7 @@ button{
 
 .add-client-section{
     width:100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin:1.5rem 0;
@@ -335,14 +335,14 @@ button{
     margin-left:7rem;
 }
 
-.add-client-control{
+.add-client-input-control{
     margin-top:1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.add-client-control input{
+.add-client-input-control input{
     border:1px solid #969696;
     padding:8px 0;
     font-size:15px;
@@ -351,7 +351,7 @@ button{
     border-radius: 25px;
 }
 
-.add-client-control button{
+.add-client-input-control button{
     margin-top:1rem;
     padding:8px 0;
     width:20%;
@@ -362,6 +362,66 @@ button{
     border:none;
 }
 
-.add-client-control button > i{
+.add-client-input-control button > i{
     margin-right:7px;
+}
+
+/* add-equipament-section */
+
+.add-equipament-section{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:1.5rem 0;
+}
+
+.add-equipament-section > div{
+    width:100%;
+}
+
+.add-equipament-container > .title-container{
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-equipament-container > .title-container h2{
+    font-size: 25px;
+}
+
+.add-equipament-container > .title-container > .line{
+    width:150px;
+    background-color: #d61e1e;
+    height: 2px;
+    margin-top:0.2rem;
+    margin-left:7rem;
+}
+
+.add-equipament-container > .client-select-control{
+    margin-top:1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-equipament-container > .client-select-control select{
+    border:1px solid #969696;
+    padding:8px 0;
+    font-size:15px;
+    padding-left:4px;
+    width: 45%;
+    border-radius: 25px;
+}
+
+.add-equipament-container > .client-select-control select:focus{
+    outline:1px solid #d61e1e;
+}
+
+.add-equipament-container > .add-equipament-input-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:1.5rem;
 }
