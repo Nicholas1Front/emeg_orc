@@ -38,10 +38,19 @@ async function getClientsData(){
 
 getClientsData();
 
-// customer-base-plataform-container
+//show and hide elements functions
 
-// elements
-const customerBasePlataformContainer  = document.querySelector(".customer-base-plataform-container");
+function showHtmlElement([...elements], displayType){
+    elements.forEach(element => {
+        element.style.display = displayType;
+    });
+}
+
+function hideHtmlElement(...elements){
+    elements.forEach(element => {
+        element.style.display="none";
+    })
+};
 
 // confirmation popup
 
@@ -124,11 +133,30 @@ function closeMessagePopup(){
     messagePopup.style.display = "none";
 }
 
+// customer-base-plataform-container
+
+// elements
+const customerBasePlataformContainer  = document.querySelector(".customer-base-plataform-container");
+
+
+//main-hub-section
+
+//elements
+const mainHubSection = document.querySelector(".main-hub-section");
+const addClientLink = document.querySelector("#add-client-link");
+const addEquipamentLink = document.querySelector("#add-equipament-link");
+const editClientLink = document.querySelector("#edit-client-link");
+const editEquipamentLink = document.querySelector("#edit-equipament-link");
+const deleteClientLink = document.querySelector("#delete-client-link");
+const deleteEquipamentLink = document.querySelector("#delete-equipament-link");
+const consultInfosLink = document.querySelector("#consult-infos-link");
+
 //add-client-section
 
 //elements
 const addClientInput = document.querySelector("#add-client-input");
 const addClientBtn = document.querySelector("#add-client-btn");
+
 //functions
 
 function addClientProcess(){
@@ -158,7 +186,16 @@ addClientBtn.addEventListener("click", (event)=>{
     addClientProcess();
 });
 
-//testing
+//add-equipament-section
+
+//elements
+const addEquipamentInput = document.querySelector("#add-equipament-input");
+const addEquipamentBtn = document.querySelector("#add-equipament-btn");
+const addEquipamentControl = document.querySelector(".add-equipament-control");
+
+//functions
+
+//to do consult logic
 
 let clientNameTest = "AGROPECUÁRIA ANTAS LTDA (presidencia@hospitalsaodomingos.com.br)";
 
