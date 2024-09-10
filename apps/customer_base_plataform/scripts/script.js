@@ -17,12 +17,16 @@ async function getClientsData(){
         clients_equipaments.forEach((client)=>{
             clientToPush = {
                 name : client.name.toUpperCase(),
-                equipaments : client.equipaments, 
+                equipaments : null, 
             };
 
-            clientToPush.equipaments.forEach((equipament)=>{
-                clientToPush.equipaments = equipament.toUpperCase();
-            })
+            let clientEquipamentsArray = [];
+
+            for(let i= 0 ; i < client.equipaments.length ; i++){
+                clientEquipamentsArray.push(client.equipaments[i].toUpperCase());
+            }
+
+            clientToPush.equipaments = clientEquipamentsArray;
 
             clients_equipaments_array.push(clientToPush);
         })
@@ -133,11 +137,20 @@ function closeMessagePopup(){
     messagePopup.style.display = "none";
 }
 
+function backHomeProcess(){
+    const allSections = document.querySelectorAll("section");
+
+    allSections.forEach(section => {
+        section.style.display = "none"
+    })
+
+    mainHubSection.style.display = "flex";
+}
+
 // customer-base-plataform-container
 
 // elements
 const customerBasePlataformContainer  = document.querySelector(".customer-base-plataform-container");
-
 
 //main-hub-section
 
@@ -182,18 +195,79 @@ function addClientProcess(){
 
 // event listerner
 
-addClientBtn.addEventListener("click", (event)=>{
+addClientBtn.addEventListener("click", ()=>{
     addClientProcess();
 });
 
 //add-equipament-section
 
 //elements
+const addEquipament_clientSelectList = document.querySelector("#add-equipament_client-select-list")
 const addEquipamentInput = document.querySelector("#add-equipament-input");
 const addEquipamentBtn = document.querySelector("#add-equipament-btn");
 const addEquipamentControl = document.querySelector(".add-equipament-control");
 
 //functions
+
+function createSelectList_addEquipamentSection(){
+    let clientsArray = [];
+    clients_equipaments_array.forEach((client)=>{
+        clientsArray.push(client.name);  
+    })
+
+    clientsArray.forEach((client)=>{
+        let option = document.createElement("option");
+
+        option.value = client;
+        option.textContent = client;
+
+        addEquipament_clientSelectList.add(option);
+    })
+
+    console.log("Lista de clientes criada")
+}
+
+setTimeout(createSelectList_addEquipamentSection,100);
+
+addEquipament_clientSelectList.addEventListener("change",()=>{
+    if(clients_equipaments_array !== ""){
+        showHtmlElement([addEquipamentControl],"block")
+    }else{
+        hideHtmlElement([addEquipamentControl]);
+    }
+})
+
+function addEquipamentProcess(){
+    if(addEquipamentInput.value === ""){
+        showMessagePopup("O campo 'Equipamentos' não pode estar vazio !","errorMsg")
+        return;
+    }
+
+    clients_equipaments_array.forEach((client)=>{
+        for(let i = 0 ; i < client.equipaments.length ; i++){
+            if(client.equipaments[i] === addEquipamentInput.value){
+                showMessagePopup("Este equipamento já existe !","errorMsg");
+                return
+            }
+        }
+    });
+
+    function addEquipament(){
+        clients_equipaments_array.forEach((client)=>{
+            if(client.name === addEquipament_clientSelectList.value){
+                client.equipaments.push(addEquipamentInput.value.toUpperCase());
+            }
+        })
+        console.log(clients_equipaments_array);
+        return clients_equipaments_array;
+    };
+
+    addEquipament();
+}
+
+addEquipamentBtn.addEventListener("click",()=>{
+    addEquipamentProcess();
+})
 
 //to do consult logic
 
