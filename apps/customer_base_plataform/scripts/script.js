@@ -137,14 +137,9 @@ function closeMessagePopup(){
     messagePopup.style.display = "none";
 }
 
-function backHomeProcess(){
-    const allSections = document.querySelectorAll("section");
-
-    allSections.forEach(section => {
-        section.style.display = "none"
-    })
-
-    mainHubSection.style.display = "flex";
+function backHomeProcess([...elementsToHide],[...elementsToShow]){
+    hideHtmlElement([elementsToHide]);
+    showHtmlElement([elementsToShow]);
 }
 
 // customer-base-plataform-container
@@ -239,14 +234,14 @@ addEquipament_clientSelectList.addEventListener("change",()=>{
 
 function addEquipamentProcess(){
     if(addEquipamentInput.value === ""){
-        showMessagePopup("O campo 'Equipamentos' não pode estar vazio !","errorMsg")
+        showMessagePopup("errorMsg","O campo 'Equipamentos' não pode estar vazio !")
         return;
     }
 
     clients_equipaments_array.forEach((client)=>{
         for(let i = 0 ; i < client.equipaments.length ; i++){
             if(client.equipaments[i] === addEquipamentInput.value){
-                showMessagePopup("Este equipamento já existe !","errorMsg");
+                showMessagePopup("errorMsg","Este equipamento já existe !");
                 return
             }
         }
@@ -258,11 +253,11 @@ function addEquipamentProcess(){
                 client.equipaments.push(addEquipamentInput.value.toUpperCase());
             }
         })
-        console.log(clients_equipaments_array);
+        showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
         return clients_equipaments_array;
     };
 
-    addEquipament();
+    confirmationProcess(addEquipament)
 }
 
 addEquipamentBtn.addEventListener("click",()=>{
