@@ -42,26 +42,67 @@ async function getClientsData(){
 
 getClientsData();
 
-//update json file
+//update json 
 
-const fs = require("fs");
+//elements
+const GITHUB_TOKEN = 'SEU_TOKEN_AQUI'; // Substitua pelo seu token de acesso pessoal
+const REPO_OWNER = 'nicholas1front'; // Dono do repositório
+const REPO_NAME = 'emeg_orc'; // Nome do repositório
+const FILE_PATH = 'apps/data/clients_equipaments.json'; // Caminho do arquivo JSON no repositório
+const BRANCH = 'main';
 
-function updateLocalJsonFile(clients_equipaments_array){
-    fs.writeFileSync("../data/clients_equipaments.json","[]", "utf-8", (error)=>{
-        if(error){
-            console.error("Erro ao limpa o arquivo json",error);
-            return;
-        }
+//functions
+
+async function getFileSha() {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`;
+    const response = await fetch(url, {
+        headers: {
+            Authorization: `token ${GITHUB_TOKEN}`,
+            Accept: 'application/vnd.github.v3+json',
+        },
     });
+    
+    if (!response.ok) {
+        throw new Error(`Erro ao buscar SHA: ${response.statusText}`);
+    }
 
-    const jsonData = JSON.stringify(clientsEquipamentsArray, null, 2);
-    fs.writeFileSync("../data/clients_equipaments.json", jsonData, 'utf8', (error) => {
-        if (error) {
-            console.error("Erro ao escrever no arquivo JSON:", error);
-        } else {
-            console.log("Arquivo JSON atualizado com sucesso!");
+    const data = await response.json();
+    return data.sha;
+}
+
+async function updateClientsDataOnGitHub(updatedData) {
+    try {
+        const fileSha = await getFileSha();
+
+        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
+        const content = btoa(JSON.stringify(updatedData, null, 2)); // Codifica o JSON atualizado em base64
+        
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                Authorization: `token ${GITHUB_TOKEN}`,
+                Accept: 'application/vnd.github.v3+json',
+            },
+            body: JSON.stringify({
+                message: 'Atualização dos dados dos clientes e equipamentos',
+                content: content,
+                sha: fileSha,
+                branch: BRANCH,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro ao atualizar o arquivo: ${response.statusText}`);
         }
-    });
+
+        console.log('Arquivo atualizado com sucesso no GitHub!');
+    } catch (error) {
+        console.error(`Falha ao atualizar dados no GitHub: ${error}`);
+    }
+}
+
+async function updateDataOnChange() {
+    await updateClientsDataOnGitHub(clients_equipaments_array);
 }
 
 //show and hide elements functions
@@ -201,10 +242,6 @@ function addClientProcess(){
             clients_equipaments_array.push(newClient);
 
             console.log(clients_equipaments_array);
-
-            updateLocalJsonFile(clients_equipaments_array);
-
-            showMessagePopup("sucessMsg", "Cliente adicionado com sucesso ! ")
             
             return clients_equipaments_array;
     };
