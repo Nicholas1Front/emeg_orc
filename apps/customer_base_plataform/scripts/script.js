@@ -42,6 +42,28 @@ async function getClientsData(){
 
 getClientsData();
 
+//update json file
+
+const fs = require("fs");
+
+function updateLocalJsonFile(clients_equipaments_array){
+    fs.writeFileSync("../data/clients_equipaments.json","[]", "utf-8", (error)=>{
+        if(error){
+            console.error("Erro ao limpa o arquivo json",error);
+            return;
+        }
+    });
+
+    const jsonData = JSON.stringify(clientsEquipamentsArray, null, 2);
+    fs.writeFileSync("../data/clients_equipaments.json", jsonData, 'utf8', (error) => {
+        if (error) {
+            console.error("Erro ao escrever no arquivo JSON:", error);
+        } else {
+            console.log("Arquivo JSON atualizado com sucesso!");
+        }
+    });
+}
+
 //show and hide elements functions
 
 function showHtmlElement([...elements], displayType){
@@ -179,6 +201,8 @@ function addClientProcess(){
             clients_equipaments_array.push(newClient);
 
             console.log(clients_equipaments_array);
+
+            updateLocalJsonFile(clients_equipaments_array);
 
             showMessagePopup("sucessMsg", "Cliente adicionado com sucesso ! ")
             
