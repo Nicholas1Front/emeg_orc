@@ -45,10 +45,10 @@ getClientsData();
 //update json 
 
 //elements
-const GITHUB_TOKEN = 'SEU_TOKEN_AQUI'; // Substitua pelo seu token de acesso pessoal
-const REPO_OWNER = 'nicholas1front'; // Dono do repositório
-const REPO_NAME = 'emeg_orc'; // Nome do repositório
-const FILE_PATH = 'apps/data/clients_equipaments.json'; // Caminho do arquivo JSON no repositório
+const GITHUB_TOKEN = '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'; // Substitua pelo seu token de acesso pessoal
+const REPO_OWNER = 'Nicholas1Front'; // Dono do repositório
+const REPO_NAME = 'test_repo'; // Nome do repositório
+const FILE_PATH = 'clients_equipaments.json'; // Caminho do arquivo JSON no repositório
 const BRANCH = 'main';
 
 //functions
@@ -192,7 +192,7 @@ function showMessagePopup(messageType, messageSpan){
 
     messagePopup.style.display = "block";
 
-    setTimeout(closeConfirmationPopup,4000);
+    setTimeout(closeMessagePopup(),4000);
 }
 
 function closeMessagePopup(){
@@ -204,6 +204,10 @@ function backHomeProcess([...elementsToHide],[...elementsToShow]){
     hideHtmlElement([elementsToHide]);
     showHtmlElement([elementsToShow]);
 }
+
+closeMessagePopupBtn.addEventListener("click", ()=>{
+    closeMessagePopup();
+})  
 
 // customer-base-plataform-container
 
@@ -230,29 +234,33 @@ const addClientBtn = document.querySelector("#add-client-btn");
 
 //functions
 
-function addClientProcess(){
+async function addClientProcess(){
     function addClient(){
         console.log(clients_equipaments_array);
 
-            const newClient = {
-                name : addClientInput.value,
-                equipaments : []
-            }
+        const newClient = {
+            name : addClientInput.value,
+            equipaments : []
+        }
 
-            clients_equipaments_array.push(newClient);
+        clients_equipaments_array.push(newClient);
 
-            console.log(clients_equipaments_array);
+        console.log(clients_equipaments_array);
             
-            return clients_equipaments_array;
+        return clients_equipaments_array;
     };
 
-    confirmationProcess(addClient);
+    addClient();
+
+    //confirmationProcess(addClient);
 }
 
 // event listerner
 
-addClientBtn.addEventListener("click", ()=>{
-    addClientProcess();
+addClientBtn.addEventListener("click", async function(){
+    await addClientProcess();
+    await updateDataOnChange();
+    showMessagePopup("sucessMsg","Cliente adicionado com sucesso!")
 });
 
 //add-equipament-section
