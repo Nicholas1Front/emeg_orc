@@ -45,13 +45,25 @@ getClientsData();
 //update json 
 
 //elements
-const GITHUB_TOKEN = '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'; // Substitua pelo seu token de acesso pessoal
+let GITHUB_TOKEN = null;
 const REPO_OWNER = 'Nicholas1Front'; // Dono do repositório
 const REPO_NAME = 'test_repo'; // Nome do repositório
 const FILE_PATH = 'clients_equipaments.json'; // Caminho do arquivo JSON no repositório
 const BRANCH = 'main';
 
 //functions
+
+async function getTokenLocal(){
+    const response = await fetch("../data/token_json.json");
+
+    const token = await response.json();
+
+    GITHUB_TOKEN = token;
+
+    return GITHUB_TOKEN
+}
+
+getTokenLocal();
 
 async function getFileSha() {
     const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`;
