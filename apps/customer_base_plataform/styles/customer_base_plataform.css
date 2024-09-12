@@ -11,6 +11,37 @@ button{
     border-radius: 25px;
 }
 
+.overlay-for-loading{
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index:1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    cursor:not-allowed;
+}
+
+.overlay-for-loading > .loading-container{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+.overlay-for-loading > .loading-container i{
+    font-size:75px;
+    margin-bottom:0.5rem;
+}
+
+.overlay-for-loading > .loading-container span{
+    font-size: 25px;
+}
+
 .overlay{
     top:0;
     left:0;
@@ -263,6 +294,7 @@ button{
     color: #fff;
     margin-bottom:0.7rem;
     text-decoration:none;
+    cursor: pointer;
     font-size: 19px;
     transition:0.2s;
 }
@@ -351,15 +383,26 @@ button{
     border-radius: 25px;
 }
 
+.add-client-input-control input:focus{
+    outline-color:#d61e1e;
+}
+
 .add-client-input-control button{
     margin-top:1rem;
     padding:8px 0;
     width:20%;
     font-size: 19px;
-    background-color: #0079dc;
+    background-color: #0364b3;
     color: white;
     border-radius: 25px;
     border:none;
+    cursor: pointer;
+    transition:0.2s;
+}
+
+.add-client-input-control button:hover{
+    background-color: #0079dc;
+    transition:0.2s;
 }
 
 .add-client-input-control button > i{

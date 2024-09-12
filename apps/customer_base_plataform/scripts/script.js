@@ -107,17 +107,22 @@ async function updateDataOnChange() {
 
 //show and hide elements functions
 
-function showHtmlElement([...elements], displayType){
+async function showHtmlElement([...elements], displayType){
     elements.forEach(element => {
         element.style.display = displayType;
     });
 }
 
-function hideHtmlElement(...elements){
+async function hideHtmlElement(...elements){
     elements.forEach(element => {
         element.style.display="none";
     })
 };
+
+// loading screen
+
+//elements
+const overlayForLoading = document.querySelector(".overlay-for-loading");
 
 // confirmation popup
 
@@ -235,6 +240,16 @@ const addClientBtn = document.querySelector("#add-client-btn");
 //functions
 
 async function addClientProcess(){
+
+    clients_equipaments_array.forEach((client)=>{
+        if(addClientInput.value === client.name){
+            showMessagePopup("errorMsg","Cliente já existente !");
+            return;
+        }
+    });
+
+    showHtmlElement([overlayForLoading],"flex");
+
     function addClient(){
         console.log(clients_equipaments_array);
 
@@ -260,6 +275,7 @@ async function addClientProcess(){
 addClientBtn.addEventListener("click", async function(){
     await addClientProcess();
     await updateDataOnChange();
+    await hideHtmlElement(overlayForLoading);
     showMessagePopup("sucessMsg","Cliente adicionado com sucesso!")
 });
 
