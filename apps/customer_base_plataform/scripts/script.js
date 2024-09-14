@@ -3,9 +3,11 @@
 let clients_equipaments_array = [];
 
 async function getClientsData(){
-    try{
-        const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
+    clients_equipaments_array = [];
 
+    try{
+        // const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
+        const response = await fetch("../customer_base_plataform/client_control_backend/data/clients_equipaments.json");
         if(!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
         }
@@ -59,11 +61,13 @@ async function updateClientsData() {
         });
 
         if (!response.ok) {
+            await showMessagePopup("errorMsg", "Error ao atualizar dados no servidor !");
             throw new Error('Erro ao atualizar os dados no backend');
         }
 
         console.log('Dados atualizados com sucesso no backend');
     } catch (error) {
+        await showMessagePopup("errorMsg", "Erro ! Recarregue a página e tente novamente !");
         console.error('Erro:', error);
     }
 }
@@ -156,7 +160,7 @@ const messagePopupSpan = document.querySelector(".message-popup-span");
 
 //functions
 
-function showMessagePopup(messageType, messageSpan){
+async function showMessagePopup(messageType, messageSpan){
     if(messageType === "errorMsg"){
         messagePopup.style.backgroundColor = "#000";
         messagePopup.style.color = "#fff";
@@ -169,7 +173,7 @@ function showMessagePopup(messageType, messageSpan){
 
     messagePopupSpan.innerText = messageSpan;
 
-    messagePopup.style.display = "block";
+    await showHtmlElement([messagePopup],"block");
 
     setTimeout(closeMessagePopup(),4000);
 }
@@ -247,7 +251,7 @@ async function addClientProcess(){
 addClientBtn.addEventListener("click", async function(){
     await addClientProcess();
     await updateClientsDataProcess();
-    showMessagePopup("sucessMsg","Cliente adicionado com sucesso !")
+    await showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
 });
 
 //add-equipament-section
@@ -340,3 +344,26 @@ function consultClient(){
 
     console.log(clientConsult);
 }
+
+//to do edit equipament logic
+
+/*  
+edit_clientselect => onchange {
+    clients_equipaments_array.forEach((client)=>{
+        if (edit_clientselect.value === client.name){
+            if(client.equipaments === null array){
+                showMessagePopup(errormsg , Cliente não possui equipamentos para editar);
+                return;
+            }else{
+                show the other select list of equipaments
+            }
+        }
+    })
+}
+
+depois fazer a logica onde teremos um select do equipamento que o user que alterar e um input para 
+alteração do equipamento , logo após um btn para realizar tal função.
+
+Função está que também terá uma validação se o equipamento inputado já existe. Depois da validação pretendo 
+tirar remover do array o equipamento original que estará no select e dar um push no equipamento que está no input
+*/
