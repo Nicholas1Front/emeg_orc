@@ -18,7 +18,7 @@ app.use(express.json());
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = 'Nicholas1Front';
 const REPO_NAME = 'emeg_orc';
-const FILE_PATH = 'clients_equipaments.json';
+const FILE_PATH = 'apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json';
 const BRANCH = 'main';
 
 // Endpoint para atualizar o arquivo JSON no GitHub
