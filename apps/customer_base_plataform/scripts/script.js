@@ -91,7 +91,7 @@ async function showHtmlElement([...elements], displayType){
     });
 }
 
-async function hideHtmlElement(...elements){
+async function hideHtmlElement([...elements]){
     elements.forEach(element => {
         element.style.display="none";
     })
@@ -175,17 +175,11 @@ async function showMessagePopup(messageType, messageSpan){
 
     await showHtmlElement([messagePopup],"block");
 
-    setTimeout(closeMessagePopup(),4000);
 }
 
 function closeMessagePopup(){
     messagePopupSpan.innerText = "";
     messagePopup.style.display = "none";
-}
-
-function backHomeProcess([...elementsToHide],[...elementsToShow]){
-    hideHtmlElement([elementsToHide]);
-    showHtmlElement([elementsToShow]);
 }
 
 closeMessagePopupBtn.addEventListener("click", ()=>{
@@ -212,8 +206,10 @@ const consultInfosLink = document.querySelector("#consult-infos-link");
 //add-client-section
 
 //elements
+const addClientSection = document.querySelector(".add-client-section");
 const addClientInput = document.querySelector("#add-client-input");
 const addClientBtn = document.querySelector("#add-client-btn");
+const backHomeBtn = document.querySelectorAll(".back-home-btn");
 
 //functions
 
@@ -248,15 +244,30 @@ async function addClientProcess(){
 
 // event listerner
 
+addClientLink.addEventListener("click", ()=>{
+    showHtmlElement([addClientSection], "flex");
+
+})
+
 addClientBtn.addEventListener("click", async function(){
     await addClientProcess();
     await updateClientsDataProcess();
     await showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
 });
 
+
+
+for(let i = 0; i < backHomeBtn.length ; i++){
+    backHomeBtn[i].addEventListener("click", ()=>{
+        showHtmlElement([mainHubSection],"flex");
+        hideHtmlElement([addClientSection,addEquipamentSection]);
+    })
+}
+
 //add-equipament-section
 
 //elements
+const addEquipamentSection = document.querySelector(".add-equipament-section")
 const addEquipament_clientSelectList = document.querySelector("#add-equipament_client-select-list")
 const addEquipamentInput = document.querySelector("#add-equipament-input");
 const addEquipamentBtn = document.querySelector("#add-equipament-btn");
@@ -281,8 +292,6 @@ function createSelectList_addEquipamentSection(){
 
     console.log("Lista de clientes criada")
 }
-
-setTimeout(createSelectList_addEquipamentSection,100);
 
 addEquipament_clientSelectList.addEventListener("change",()=>{
     if(clients_equipaments_array !== ""){
@@ -320,9 +329,17 @@ function addEquipamentProcess(){
     confirmationProcess(addEquipament)
 }
 
+//event listeners
+
+addEquipamentLink.addEventListener("click", ()=>{
+    showHtmlElement([addEquipamentSection],"flex");
+    createSelectList_addEquipamentSection();
+})
+
 addEquipamentBtn.addEventListener("click",()=>{
     addEquipamentProcess();
 })
+
 
 //to do consult logic
 
