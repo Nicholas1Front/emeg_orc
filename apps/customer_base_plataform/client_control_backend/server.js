@@ -1,12 +1,15 @@
-// server.js
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors'); // Importando o CORS
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Habilitando CORS para permitir requisições de qualquer origem
+app.use(cors()); 
 
 // Middleware para parsear JSON
 app.use(express.json());

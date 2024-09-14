@@ -48,57 +48,36 @@ getClientsData();
 
 //functions
 
-async function getFileSha() {
-    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`;
-    const response = await fetch(url, {
-        headers: {
-            Authorization: `token ${GITHUB_TOKEN}`,
-            Accept: 'application/vnd.github.v3+json',
-        },
-    });
-    
-    if (!response.ok) {
-        throw new Error(`Erro ao buscar SHA: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data.sha;
-}
-
-async function updateClientsDataOnGitHub(updatedData) {
+async function updateClientsData() {
     try {
-        const fileSha = await getFileSha();
-
-        const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
-        const content = btoa(JSON.stringify(updatedData, null, 2)); // Codifica o JSON atualizado em base64
-        
-        const response = await fetch(url, {
-            method: 'PUT',
+        const response = await fetch('https://emeg-orc.onrender.com/update-data', { // atualize o URL aqui
+            method: 'POST',
             headers: {
-                Authorization: `token ${GITHUB_TOKEN}`,
-                Accept: 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                message: 'Atualização dos dados dos clientes e equipamentos',
-                content: content,
-                sha: fileSha,
-                branch: BRANCH,
-            }),
+            body: JSON.stringify({ clients_equipaments_array }), // envia os dados atualizados
         });
 
         if (!response.ok) {
-            throw new Error(`Erro ao atualizar o arquivo: ${response.statusText}`);
+            throw new Error('Erro ao atualizar os dados no backend');
         }
 
-        console.log('Arquivo atualizado com sucesso no GitHub!');
+        console.log('Dados atualizados com sucesso no backend');
     } catch (error) {
-        console.error(`Falha ao atualizar dados no GitHub: ${error}`);
+        console.error('Erro:', error);
     }
 }
 
-async function updateDataOnChange() {
-    await updateClientsDataOnGitHub(clients_equipaments_array);
+async function updateClientsDataProcess(){
+    showHtmlElement([overlayForLoading],"flex");
+
+    await updateClientsData();
+
+    hideHtmlElement(overlayForLoading);
+
+    await getClientsData();
 }
+
 
 //show and hide elements functions
 
@@ -243,8 +222,6 @@ async function addClientProcess(){
         }
     });
 
-    showHtmlElement([overlayForLoading],"flex");
-
     function addClient(){
         console.log(clients_equipaments_array);
 
@@ -269,9 +246,8 @@ async function addClientProcess(){
 
 addClientBtn.addEventListener("click", async function(){
     await addClientProcess();
-    await updateDataOnChange();
-    await hideHtmlElement(overlayForLoading);
-    showMessagePopup("sucessMsg","Cliente adicionado com sucesso!")
+    await updateClientsDataProcess();
+    showMessagePopup("sucessMsg","Cliente adicionado com sucesso !")
 });
 
 //add-equipament-section
