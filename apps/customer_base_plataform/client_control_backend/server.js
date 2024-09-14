@@ -17,7 +17,7 @@ app.use(express.json());
 // Variáveis de ambiente para GitHub
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = 'Nicholas1Front';
-const REPO_NAME = 'test_repo';
+const REPO_NAME = 'emeg_orc';
 const FILE_PATH = 'clients_equipaments.json';
 const BRANCH = 'main';
 
