@@ -202,6 +202,13 @@ const editEquipamentLink = document.querySelector("#edit-equipament-link");
 const deleteClientLink = document.querySelector("#delete-client-link");
 const deleteEquipamentLink = document.querySelector("#delete-equipament-link");
 const consultInfosLink = document.querySelector("#consult-infos-link");
+const sendToServerBtn = document.querySelector("#send-to-server-btn");
+
+//event listerners
+
+sendToServerBtn.addEventListener("click", ()=>{
+    confirmationProcess(updateClientsDataProcess);
+})
 
 //add-client-section
 
@@ -340,6 +347,45 @@ addEquipamentBtn.addEventListener("click",()=>{
     addEquipamentProcess();
 })
 
+//edit-client-section
+
+//elements
+const editClientSection = document.querySelector("#edit-client-section");
+const editClient_clientSelectList = document.querySelector("#edit-client_client-select-list");
+const editClientInput = document.querySelector("#edit-client-input");
+const editClientBtn = document.querySelector("#edit-client-btn");
+
+//functions
+
+clientTest = [
+    {
+        name : "NOME ALI",
+        equipaments : []
+    },
+    {
+        name : "NAME OP",
+        equipaments : []
+    }
+];
+
+console.log(clientTest);
+
+function editClientTest(){
+
+    clientTest.forEach((client)=>{
+        if(client.name === "NOME ALI"){
+            client.name = editClientInput.value.toUpperCase();
+        }
+    })
+
+    console.log(clientTest);
+
+    return clientTest;
+}
+
+editClientBtn.addEventListener("click", ()=>{
+    editClientTest();
+})
 
 //to do consult logic
 
