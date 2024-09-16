@@ -620,7 +620,7 @@ button{
 }
 
 .edit-client-container > .edit-client-control > .edit-client-input-control input:focus{
-    outline-color:#d61e1e;
+    outline:1px solid #d61e1e;
 }
 
 .edit-client-container > .edit-client-control > .edit-client-input-control button{
@@ -638,4 +638,126 @@ button{
 .edit-client-container > .edit-client-control > .edit-client-input-control button:hover{
     background-color: #0079dc;
     transition: 0.2s;
+}
+
+/* edit-equipament-section */
+
+.edit-equipament-section{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:1.5rem 0;
+}
+
+.edit-equipament-section > div{
+    width:100%;
+}
+
+.edit-equipament-container > .title-container{
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-equipament-container > .title-container h2{
+    font-size:25px;
+}
+
+.edit-equipament-container > .title-container > .line{
+    width:150px;
+    background-color: #d61e1e;
+    height: 2px;
+    margin-top:0.2rem;
+    margin-left:7rem;
+}
+
+.edit-equipament-container > .client-select-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:1.5rem;
+}
+
+.edit-equipament-container > .client-select-control select{
+    border:1px solid #969696;
+    padding:8px 0;
+    font-size:15px;
+    padding-left:4px;
+    width: 45%;
+    border-radius: 25px;
+}
+
+.edit-equipament-container > .client-select-control select:focus{
+    outline: 1px solid #d61e1e;
+}
+
+.edit-equipament-container > .edit-equipament-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-equipament-container > .edit-equipament-control > .title-container{
+    margin-top:2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom:1.5rem;
+}
+
+.edit-equipament-container > .edit-equipament-control > .title-container h2{
+    font-size: 25px;
+}
+
+.edit-equipament-container > .edit-equipament-control > .title-container > .line{
+    width:150px;
+    background-color: #d61e1e;
+    height: 2px;
+    margin-top:0.2rem;
+    margin-left:7rem;
+}
+
+.edit-equipament-container > .edit-equipament-control select{
+    border:1px solid #969696;
+    padding:8px 0;
+    font-size:15px;
+    padding-left:4px;
+    width: 45%;
+    border-radius: 25px;
+} 
+
+.edit-equipament-container > .edit-equipament-control select:focus{
+    outline:1px solid #d61e1e;
+}
+
+.edit-equipament-container > .edit-equipament-control input{
+    border:1px solid #969696;
+    padding:8px 0;
+    font-size:15px;
+    padding-left:4px;
+    width: 45%;
+    border-radius: 25px;
+}
+
+.edit-equipament-container > .edit-equipament-control input:focus{
+    outline:1px solid #d61e1e;
+}
+
+.edit-equipament-container > .edit-equipament-control button{
+    margin-top:1rem;
+    padding:8px 0;
+    width:20%;
+    font-size: 19px;
+    background-color: #0364b3;
+    color: white;
+    border-radius: 25px;
+    border:none;
+    transition: 0.2s;
+}
+
+.edit-equipament-container > .edit-equipament-control button:hover{
+    background-color: #0079dc;
+    transition:0.2s;
 }

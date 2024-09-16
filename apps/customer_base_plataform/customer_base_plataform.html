@@ -218,8 +218,8 @@
                     </div>
     
                     <div class="edit-client-input-control">
-                        <input type="text" name="add-equipament-input" id="edit-client-input" placeholder="Editar cliente selecionado..." autocomplete="off" autocapitalize="on">
-                        <button id="edit-client-btn"><i class="fa-solid fa-truck"></i> Adicionar equipamento </button>      
+                        <input type="text" id="edit-client-input" placeholder="Editar cliente selecionado..." autocomplete="off" autocapitalize="on">
+                        <button id="edit-client-btn"><i class="fa-solid fa-user-pen"></i> Editar cliente</button>      
                     </div>
                 </div>
             </div>
@@ -243,18 +243,25 @@
                 </div>
 
                 <div class="edit-equipament-control">
-                    <div class="input-container">
-                        <div class="input-control">
-
-                        </div>
-
-                        <div class="input-control">
-                            
-                        </div>
+                    <div class="title-container">
+                        <h2>Selecione o equipamento a ser editado</h2>
+                        <div class="line"></div>
                     </div>
-                    <div class="button-control">
 
+                    <select id="edit-equipament_equipament-select-list">
+                        <option value=""></option>
+                    </select>
+                </div>
+
+                <div class="edit-equipament-control">
+                    <div class="title-container">
+                        <h2>Edite o equipamento selecionado</h2>
+                        <div class="line"></div>
                     </div>
+
+                    <input type="text" id="edit-equipament-input" placeholder="Edite o equipamento..."/>
+
+                    <button id="edit-equipament-btn"><i class="fa-solid fa-pen-to-square"></i>Editar equipamento</button>
                 </div>
             </div>
         </section>
