@@ -258,8 +258,7 @@ addClientLink.addEventListener("click", ()=>{
 
 addClientBtn.addEventListener("click", async function(){
     await addClientProcess();
-    await updateClientsDataProcess();
-    await showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
+    showMessagePopup("sucessMsg", "Cliente adicionado com sucesso !");
 });
 
 
@@ -282,7 +281,7 @@ const addEquipamentControl = document.querySelector(".add-equipament-control");
 
 //functions
 
-function createSelectList_addEquipamentSection(){
+function createSelectListHtml_clients(targetList){
     let clientsArray = [];
     clients_equipaments_array.forEach((client)=>{
         clientsArray.push(client.name);  
@@ -294,21 +293,21 @@ function createSelectList_addEquipamentSection(){
         option.value = client;
         option.textContent = client;
 
-        addEquipament_clientSelectList.add(option);
+        targetList.add(option);
     })
 
-    console.log("Lista de clientes criada")
+    console.log(`Lista criada em ${targetList}`);
 }
 
 addEquipament_clientSelectList.addEventListener("change",()=>{
-    if(clients_equipaments_array !== ""){
+    if(addEquipament_clientSelectList.value !== ""){
         showHtmlElement([addEquipamentControl],"block")
     }else{
         hideHtmlElement([addEquipamentControl]);
     }
 })
 
-function addEquipamentProcess(){
+async function addEquipamentProcess(){
     if(addEquipamentInput.value === ""){
         showMessagePopup("errorMsg","O campo 'Equipamentos' não pode estar vazio !")
         return;
@@ -340,51 +339,67 @@ function addEquipamentProcess(){
 
 addEquipamentLink.addEventListener("click", ()=>{
     showHtmlElement([addEquipamentSection],"flex");
-    createSelectList_addEquipamentSection();
+    createSelectListHtml_clients(addEquipament_clientSelectList);
 })
 
-addEquipamentBtn.addEventListener("click",()=>{
-    addEquipamentProcess();
+addEquipamentBtn.addEventListener("click",async ()=>{
+    await addEquipamentProcess();
+    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
 })
 
 //edit-client-section
 
 //elements
-const editClientSection = document.querySelector("#edit-client-section");
+const editClientSection = document.querySelector(".edit-client-section");
 const editClient_clientSelectList = document.querySelector("#edit-client_client-select-list");
+const editClientControl = document.querySelector(".edit-client-control");
 const editClientInput = document.querySelector("#edit-client-input");
 const editClientBtn = document.querySelector("#edit-client-btn");
 
 //functions
 
-clientTest = [
-    {
-        name : "NOME ALI",
-        equipaments : []
-    },
-    {
-        name : "NAME OP",
-        equipaments : []
-    }
-];
-
-console.log(clientTest);
-
-function editClientTest(){
-
-    clientTest.forEach((client)=>{
-        if(client.name === "NOME ALI"){
-            client.name = editClientInput.value.toUpperCase();
+async function editClientProcess(){
+    
+    clients_equipaments_array.forEach((client)=>{
+        if(editClientInput.value = client.name){
+            showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
+            return;
         }
     })
 
-    console.log(clientTest);
+    function editClient(){
+        clientTest.forEach((client)=>{
+            if(client.name === editClient_clientSelectList.value){
+                client.name = editClientInput.value.toUpperCase();
+            }
+        })
+    
+        console.log(clientTest);
+    
+        return clientTest;
+    }
 
-    return clientTest;
+    confirmationProcess(editClient);
+    
 }
 
+//event listeners
+editClientLink.addEventListener("click", ()=>{
+    createSelectListHtml_clients(editClient_clientSelectList);
+    showHtmlElement([editClientSection],"flex");
+})
+
+editClient_clientSelectList.addEventListener("change",()=>{
+    if(editClient_clientSelectList.value !== ""){
+        showHtmlElement([editClientControl],"block");
+        editClientInput.value = editClient_clientSelectList.value;
+    }else{
+        hideHtmlElement([editClientControl]);
+    }
+})
+
 editClientBtn.addEventListener("click", ()=>{
-    editClientTest();
+    editClientProcess();
 })
 
 //to do consult logic

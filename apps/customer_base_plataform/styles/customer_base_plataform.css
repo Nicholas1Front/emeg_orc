@@ -531,7 +531,7 @@ button{
 
 .edit-client-section{
     width:100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin:1.5rem 0;
@@ -578,6 +578,10 @@ button{
 
 .edit-client-container > .client-select-control select:focus{
     outline:1px solid #d61e1e;
+}
+
+.edit-client-container >.edit-client-control{
+    display: none;
 }
 
 .edit-client-container > .edit-client-control > .title-container{
