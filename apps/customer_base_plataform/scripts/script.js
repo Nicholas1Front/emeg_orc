@@ -99,6 +99,21 @@ async function hideHtmlElement([...elements]){
     })
 };
 
+async function backHomeProcess(){
+    clearAllInputs();
+
+    const All_sections = document.querySelectorAll("section");
+
+    for (let i = 0;i < All_sections.length;i++){
+        hideHtmlElement([All_sections[i]]);
+    }
+
+    showHtmlElement([
+        mainHubSection
+    ],"flex");
+
+}    
+
 // clear inputs and selects
 
 function clearAllInputs(){
@@ -113,7 +128,6 @@ function clearAllInputs(){
         select.value = "";
     })
 }
-
 
 // remove element for array
 
@@ -278,6 +292,8 @@ async function addClientProcess(){
     await confirmationProcess(addClient);
 
     showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
+
+    backHomeProcess();
 }
 
 // event listerner
@@ -293,13 +309,7 @@ addClientBtn.addEventListener("click",()=>{
 
 for(let i = 0; i < backHomeBtn.length ; i++){
     backHomeBtn[i].addEventListener("click", ()=>{
-        showHtmlElement([mainHubSection],"flex");
-        hideHtmlElement([
-            addClientSection,
-            addEquipamentSection,
-            editClientSection,
-            editEquipamentSection,
-        ]);
+        backHomeProcess();
     })
 }
 
@@ -359,7 +369,9 @@ async function addEquipamentProcess(){
 
     await confirmationProcess(addEquipament);
 
-    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
+    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
+
+    backHomeProcess();
 }
 
 //event listeners
@@ -421,6 +433,8 @@ async function editClientProcess(){
     await confirmationProcess(editClient);
 
     showMessagePopup("sucessMsg","Cliente editado com sucesso !");
+
+    backHomeProcess();
 }
 
 //event listeners
@@ -536,7 +550,9 @@ async function editEquipamentProcess(){
 
     await confirmationProcess(editEquipament);
 
-    showMessagePopup("sucessMsg", "Equipamento editado com sucesso !")
+    showMessagePopup("sucessMsg", "Equipamento editado com sucesso !");
+
+    backHomeProcess();
 }
 
 // event listerners
