@@ -33,6 +33,8 @@ async function getClientsData(){
             clients_equipaments_array.push(clientToPush);
         })
 
+        clients_equipaments_array.sort();
+
         console.log(clients_equipaments_array);
 
         return clients_equipaments_array;
@@ -96,6 +98,13 @@ async function hideHtmlElement([...elements]){
         element.style.display="none";
     })
 };
+
+// remove element for array
+
+function removeElementforArray(array,index){
+    array.splice(index,1);
+    return array;
+}
 
 // loading screen
 
@@ -401,6 +410,90 @@ editClient_clientSelectList.addEventListener("change",()=>{
 editClientBtn.addEventListener("click", ()=>{
     editClientProcess();
 })
+
+//edit-equipament-section
+
+//elements
+
+const editEquipamentSection = document.querySelector("#edit-equipament-section");
+const All_editEquipamentControl = document.querySelectorAll(".edit-equipament-control");
+const editEquipament_clientSelectList = document.querySelector("#edit-equipament_client-select-list");
+const editEquipament_equipamentSelectList = document.querySelector("#edit-equipament_equipament-select-list");
+const editEquipamentInput = document.querySelector("#edit-equipament-input");
+const editEquipamentBtn = document.querySelector("#edit-equipament-btn");
+
+// functions
+
+function createSelectListHtml_equipaments(targetList){
+    let equipamentsArray = [];
+
+    clients_equipaments_array.forEach((client) => {
+        if(client.name === editEquipament_clientSelectList.value){
+            client.equipaments.forEach((equipament) => {
+                equipamentsArray.push(equipament);
+            })
+        }
+    })
+
+    equipamentsArray.forEach((equipament)=>{
+        let option = document.createElement("option");
+
+        option.value = equipament;
+        option.textContent = equipament;
+
+        targetList.add(option);
+    })
+
+    console.log(targetList);
+}
+
+async function editEquipamentProcess(){
+    let editClient = [clients_equipaments_array[85],clients_equipaments_array[45]];
+
+    //removeElementForArray function can be used
+
+    editClient.sort((a,b)=>{
+        if(a.name < b.name){
+            return -1;
+        }
+
+        if(a.name > b.name){
+            return 1; 
+        }
+
+        return 0;
+    });
+
+    console.log(editClient);
+}
+
+// event listerners
+
+editEquipamentLink.addEventListener("click", ()=>{
+    showHtmlElement([editEquipamentSection],"flex");
+    createSelectListHtml_clients(editEquipament_clientSelectList);
+})
+
+editEquipament_clientSelectList.addEventListener("change", ()=>{
+    if(editEquipament_clientSelectList.value === ""){
+        hideHtmlElement([All_editEquipamentControl]);
+    }else{
+        showHtmlElement([All_editEquipamentControl],"flex");
+        createSelectListHtml_equipaments(editEquipament_equipamentSelectList);
+    }
+});
+
+editEquipament_equipamentSelectList.addEventListener("change", ()=>{
+    if(editEquipament_equipamentSelectList.value!==""){
+        editEquipamentInput.value = editEquipament_equipamentSelectList.value;
+    }else{
+        return;
+    }
+})
+
+editEquipamentBtn.addEventListener("click", ()=>{
+    editEquipamentProcess();
+}) 
 
 //to do consult logic
 
