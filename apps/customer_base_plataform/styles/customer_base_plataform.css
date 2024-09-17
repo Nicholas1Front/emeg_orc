@@ -644,7 +644,7 @@ button{
 
 .edit-equipament-section{
     width:100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin:1.5rem 0;
@@ -694,7 +694,7 @@ button{
 }
 
 .edit-equipament-container > .edit-equipament-control{
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
 }

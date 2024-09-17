@@ -99,8 +99,25 @@ async function hideHtmlElement([...elements]){
     })
 };
 
+// clear inputs and selects
+
+function clearAllInputs(){
+    let All_inputs = document.querySelectorAll("input");
+    let All_selects = document.querySelectorAll("select");
+
+    All_inputs.forEach((input)=>{
+        input.value = "";
+    })
+
+    All_selects.forEach((select)=>{
+        select.value = "";
+    })
+}
+
+
 // remove element for array
 
+// functions
 function removeElementforArray(array,index){
     array.splice(index,1);
     return array;
@@ -132,7 +149,7 @@ function closeConfirmationPopup(){
     customerBasePlataformContainer.style.filter = "blur(0)"
 }
 
-function confirmationProcess(...functionToBeExecuted){
+async function confirmationProcess(...functionToBeExecuted){
     showConfirmationPopup();
 
     confirmationPopupBtn.addEventListener('click',()=>{
@@ -231,6 +248,11 @@ const backHomeBtn = document.querySelectorAll(".back-home-btn");
 
 async function addClientProcess(){
 
+    if(addClientInput.value === ""){
+        showMessagePopup("errorMsg", "O campo 'Cliente' não pode estar vazio !");
+        return;
+    }
+
     clients_equipaments_array.forEach((client)=>{
         if(addClientInput.value === client.name){
             showMessagePopup("errorMsg","Cliente já existente !");
@@ -253,9 +275,9 @@ async function addClientProcess(){
         return clients_equipaments_array;
     };
 
-    addClient();
+    await confirmationProcess(addClient);
 
-    //confirmationProcess(addClient);
+    showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
 }
 
 // event listerner
@@ -265,17 +287,19 @@ addClientLink.addEventListener("click", ()=>{
 
 })
 
-addClientBtn.addEventListener("click", async function(){
-    await addClientProcess();
-    showMessagePopup("sucessMsg", "Cliente adicionado com sucesso !");
+addClientBtn.addEventListener("click",()=>{
+    addClientProcess();
 });
-
-
 
 for(let i = 0; i < backHomeBtn.length ; i++){
     backHomeBtn[i].addEventListener("click", ()=>{
         showHtmlElement([mainHubSection],"flex");
-        hideHtmlElement([addClientSection,addEquipamentSection]);
+        hideHtmlElement([
+            addClientSection,
+            addEquipamentSection,
+            editClientSection,
+            editEquipamentSection,
+        ]);
     })
 }
 
@@ -308,14 +332,6 @@ function createSelectListHtml_clients(targetList){
     console.log(`Lista criada em ${targetList}`);
 }
 
-addEquipament_clientSelectList.addEventListener("change",()=>{
-    if(addEquipament_clientSelectList.value !== ""){
-        showHtmlElement([addEquipamentControl],"block")
-    }else{
-        hideHtmlElement([addEquipamentControl]);
-    }
-})
-
 async function addEquipamentProcess(){
     if(addEquipamentInput.value === ""){
         showMessagePopup("errorMsg","O campo 'Equipamentos' não pode estar vazio !")
@@ -341,7 +357,9 @@ async function addEquipamentProcess(){
         return clients_equipaments_array;
     };
 
-    confirmationProcess(addEquipament)
+    await confirmationProcess(addEquipament);
+
+    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
 }
 
 //event listeners
@@ -349,12 +367,19 @@ async function addEquipamentProcess(){
 addEquipamentLink.addEventListener("click", ()=>{
     showHtmlElement([addEquipamentSection],"flex");
     createSelectListHtml_clients(addEquipament_clientSelectList);
-})
+});
 
-addEquipamentBtn.addEventListener("click",async ()=>{
-    await addEquipamentProcess();
-    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
-})
+addEquipament_clientSelectList.addEventListener("change",()=>{
+    if(addEquipament_clientSelectList.value !== ""){
+        showHtmlElement([addEquipamentControl],"block")
+    }else{
+        hideHtmlElement([addEquipamentControl]);
+    }
+});
+
+addEquipamentBtn.addEventListener("click", ()=>{
+    addEquipamentProcess();
+});
 
 //edit-client-section
 
@@ -368,28 +393,34 @@ const editClientBtn = document.querySelector("#edit-client-btn");
 //functions
 
 async function editClientProcess(){
+
+    if(editClient_clientSelectList.value === ""){
+        showMessagePopup("errorMsg","O campo 'Cliente' não pode estar vazio !");
+        return;
+    }
     
     clients_equipaments_array.forEach((client)=>{
-        if(editClientInput.value = client.name){
+        if(editClientInput.value == client.name){
             showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
             return;
         }
     })
 
-    function editClient(){
-        clientTest.forEach((client)=>{
+    async function editClient(){
+        clients_equipaments_array.forEach((client)=>{
             if(client.name === editClient_clientSelectList.value){
                 client.name = editClientInput.value.toUpperCase();
             }
         })
     
-        console.log(clientTest);
+        console.log(clients_equipaments_array);
     
-        return clientTest;
+        return clients_equipaments_array;
     }
 
-    confirmationProcess(editClient);
-    
+    await confirmationProcess(editClient);
+
+    showMessagePopup("sucessMsg","Cliente editado com sucesso !");
 }
 
 //event listeners
@@ -407,9 +438,8 @@ editClient_clientSelectList.addEventListener("change",()=>{
     }
 })
 
-editClientBtn.addEventListener("click", async ()=>{
-    await editClientProcess();
-    showMessagePopup("sucessMsg", "Cliente editado com sucesso !")
+editClientBtn.addEventListener("click", ()=>{
+    editClientProcess();
 })
 
 //edit-equipament-section
@@ -504,7 +534,9 @@ async function editEquipamentProcess(){
         return clients_equipaments_array;
     }
 
-    confirmationProcess(editEquipament);
+    await confirmationProcess(editEquipament);
+
+    showMessagePopup("sucessMsg", "Equipamento editado com sucesso !")
 }
 
 // event listerners
@@ -531,9 +563,8 @@ editEquipament_equipamentSelectList.addEventListener("change", ()=>{
     }
 })
 
-editEquipamentBtn.addEventListener("click", async()=>{
-    await editEquipamentProcess();
-    showMessagePopup("sucessMsg","Equipamento editado com sucesso !");
+editEquipamentBtn.addEventListener("click", ()=>{
+    editEquipamentProcess();
 }) 
 
 //to do consult logic
