@@ -407,8 +407,9 @@ editClient_clientSelectList.addEventListener("change",()=>{
     }
 })
 
-editClientBtn.addEventListener("click", ()=>{
-    editClientProcess();
+editClientBtn.addEventListener("click", async ()=>{
+    await editClientProcess();
+    showMessagePopup("sucessMsg", "Cliente editado com sucesso !")
 })
 
 //edit-equipament-section
@@ -448,23 +449,62 @@ function createSelectListHtml_equipaments(targetList){
 }
 
 async function editEquipamentProcess(){
-    let editClient = [clients_equipaments_array[85],clients_equipaments_array[45]];
 
-    //removeElementForArray function can be used
+    if(editEquipament_equipamentSelectList.value === editEquipamentInput.value){
+        showMessagePopup("errorMsg","Equipamento não pode ser igual ao anterior !");
+        return;
+    }
 
-    editClient.sort((a,b)=>{
-        if(a.name < b.name){
-            return -1;
+    function  editEquipament(){
+        let editClientObject = null;
+
+        clients_equipaments_array.forEach((client)=>{
+            if(client.name === editEquipament_clientSelectList.value){
+                editClientObject = client;
+                return editClientObject
+            }
+        })
+        console.log(clients_equipaments_array);
+        console.log(editClientObject)
+
+        //delete element in clients_equipaments_array
+        for(let i = 0; i < clients_equipaments_array.length ; i++){
+            if(clients_equipaments_array[i].name  === editClientObject.name){
+                removeElementforArray(clients_equipaments_array,i);
+            }
         }
 
-        if(a.name > b.name){
-            return 1; 
+        //delete specific equipament in editClientObject
+        for(let i = 0; i < editClientObject.equipaments.length ; i++){
+            if(editClientObject.equipaments[i]  === editEquipament_equipamentSelectList.value){
+                removeElementforArray(editClientObject.equipaments,i);
+            }
         }
 
-        return 0;
-    });
+        let editedEquipament = editEquipamentInput.value.trim();
 
-    console.log(editClient);
+        editClientObject.equipaments.push(editedEquipament.toUpperCase());
+
+        clients_equipaments_array.push(editClientObject);
+
+        clients_equipaments_array.sort((a,b)=>{
+            if(a.name < b.name){
+                return -1;
+            }
+
+            if(a.name > b.name){
+                return 1; 
+            }
+
+            return 0;
+        });
+
+        console.log(clients_equipaments_array);
+        
+        return clients_equipaments_array;
+    }
+
+    confirmationProcess(editEquipament);
 }
 
 // event listerners
@@ -491,8 +531,9 @@ editEquipament_equipamentSelectList.addEventListener("change", ()=>{
     }
 })
 
-editEquipamentBtn.addEventListener("click", ()=>{
-    editEquipamentProcess();
+editEquipamentBtn.addEventListener("click", async()=>{
+    await editEquipamentProcess();
+    showMessagePopup("sucessMsg","Equipamento editado com sucesso !");
 }) 
 
 //to do consult logic
