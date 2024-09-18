@@ -307,6 +307,7 @@ addClientBtn.addEventListener("click",()=>{
     addClientProcess();
 });
 
+//back home buttons through the document
 for(let i = 0; i < backHomeBtn.length ; i++){
     backHomeBtn[i].addEventListener("click", ()=>{
         backHomeProcess();
@@ -460,7 +461,7 @@ editClientBtn.addEventListener("click", ()=>{
 
 //elements
 
-const editEquipamentSection = document.querySelector("#edit-equipament-section");
+const editEquipamentSection = document.querySelector(".edit-equipament-section");
 const All_editEquipamentControl = document.querySelectorAll(".edit-equipament-control");
 const editEquipament_clientSelectList = document.querySelector("#edit-equipament_client-select-list");
 const editEquipament_equipamentSelectList = document.querySelector("#edit-equipament_equipament-select-list");
@@ -582,6 +583,38 @@ editEquipament_equipamentSelectList.addEventListener("change", ()=>{
 editEquipamentBtn.addEventListener("click", ()=>{
     editEquipamentProcess();
 }) 
+
+// delete-client-section
+
+// elements
+const deleteClientSection = document.querySelector(".delete-client-section");
+const deleteClient_clientSelectList = document.querySelector("#delete-client_client-select-list");
+const deleteClientBtn = document.querySelector("#delete-client-btn");
+
+// functions
+
+async function deleteClientProcess(){
+    if(deleteClient_clientSelectList.value === ""){
+        showMessagePopup("errorMsg","Um cliente precisa ser selecionado !");
+        return;
+    }
+
+    function deleteClient(){
+        for(let i = 0 ; i < clients_equipaments_array.length ; i++){
+            if(clients_equipaments_array[i].name === deleteClient_clientSelectList.value){
+
+            }
+        }
+    }
+}
+
+// event listerners
+
+deleteClientLink.addEventListener("click", ()=>{
+    showHtmlElement([deleteClientSection],"flex");
+    createSelectListHtml_clients(deleteClient_clientSelectList);
+})
+
 
 //to do consult logic
 
