@@ -163,28 +163,28 @@ function closeConfirmationPopup(){
     customerBasePlataformContainer.style.filter = "blur(0)"
 }
 
-async function confirmationProcess(...functionToBeExecuted){
+async function confirmationProcess(functionToBeExecuted){
     showConfirmationPopup();
 
-    confirmationPopupBtn.addEventListener('click',()=>{
-        if(confirmationPasswordInput.value === confirmationPassword){
-            functionToBeExecuted.forEach(code =>{
-                code();
-            })
-            
+    const confirmationHandler = () => {
+        if (confirmationPasswordInput.value === confirmationPassword) {
+            functionToBeExecuted(); // Executa a função passada
             closeConfirmationPopup();
-        }else{
+            confirmationPopupBtn.removeEventListener('click', confirmationHandler); // Remove o listener após a execução
+        } else {
             wrongPasswordSpan.style.display = "block";
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 wrongPasswordSpan.style.display = "none";
-            },10000);
+            }, 10000);
 
-            confirmationPasswordInput.addEventListener("focus",()=>{
+            confirmationPasswordInput.addEventListener("focus", () => {
                 wrongPasswordSpan.style.display = "none";
-            })
+            });
         }
-    })
+    };
+
+    confirmationPopupBtn.addEventListener('click', confirmationHandler);
 }
 
 closeConfirmationPopupBtn.addEventListener("click", ()=>{
@@ -599,13 +599,27 @@ async function deleteClientProcess(){
         return;
     }
 
-    function deleteClient(){
-        for(let i = 0 ; i < clients_equipaments_array.length ; i++){
-            if(clients_equipaments_array[i].name === deleteClient_clientSelectList.value){
+    function removeClient(){
+        console.log(clients_equipaments_array);
 
+        for(let i = 0 ; i < clients_equipaments_array.length ; i++){
+            let index = i;
+
+            if(clients_equipaments_array[i].name === deleteClient_clientSelectList.value){
+                removeElementforArray(clients_equipaments_array, index);
             }
         }
+
+        console.log(clients_equipaments_array);
+
+        return clients_equipaments_array;
     }
+
+    await confirmationProcess(removeClient);
+
+    showMessagePopup("sucessMsg","O cliente foi deletado com sucesso !");
+
+    backHomeProcess();
 }
 
 // event listerners
@@ -615,6 +629,9 @@ deleteClientLink.addEventListener("click", ()=>{
     createSelectListHtml_clients(deleteClient_clientSelectList);
 })
 
+deleteClientBtn.addEventListener("click", ()=>{
+    deleteClientProcess();
+})
 
 //to do consult logic
 
