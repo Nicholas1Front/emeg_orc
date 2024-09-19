@@ -163,29 +163,32 @@ function closeConfirmationPopup(){
     customerBasePlataformContainer.style.filter = "blur(0)"
 }
 
+async function confirmationLogic(functionToBeExecuted){
+    if (confirmationPasswordInput.value === confirmationPassword) {
+        await functionToBeExecuted(); 
+        closeConfirmationPopup();
+    }else{
+        wrongPasswordSpan.style.display = "block";
+
+        setTimeout(() => {
+            wrongPasswordSpan.style.display = "none";
+        }, 10000);
+
+        confirmationPasswordInput.addEventListener("focus", () => {
+            wrongPasswordSpan.style.display = "none";
+        });
+    };
+}
+
 async function confirmationProcess(functionToBeExecuted){
     showConfirmationPopup();
 
-    const confirmationHandler = () => {
-        if (confirmationPasswordInput.value === confirmationPassword) {
-            functionToBeExecuted(); // Executa a função passada
-            closeConfirmationPopup();
-            confirmationPopupBtn.removeEventListener('click', confirmationHandler); // Remove o listener após a execução
-        } else {
-            wrongPasswordSpan.style.display = "block";
-
-            setTimeout(() => {
-                wrongPasswordSpan.style.display = "none";
-            }, 10000);
-
-            confirmationPasswordInput.addEventListener("focus", () => {
-                wrongPasswordSpan.style.display = "none";
-            });
-        }
-    };
-
-    confirmationPopupBtn.addEventListener('click', confirmationHandler);
+    await confirmationLogic(functionToBeExecuted);
 }
+
+confirmationPopupBtn.addEventListener("click", ()=>{
+    
+})
 
 closeConfirmationPopupBtn.addEventListener("click", ()=>{
     closeConfirmationPopup()
@@ -260,6 +263,21 @@ const backHomeBtn = document.querySelectorAll(".back-home-btn");
 
 //functions
 
+async function addClientLogic(){
+    console.log(clients_equipaments_array);
+
+    const newClient = {
+        name : addClientInput.value,
+        equipaments : []
+    }
+
+    clients_equipaments_array.push(newClient);
+
+    console.log(clients_equipaments_array);
+        
+    return clients_equipaments_array;
+};
+
 async function addClientProcess(){
 
     if(addClientInput.value === ""){
@@ -274,22 +292,7 @@ async function addClientProcess(){
         }
     });
 
-    function addClient(){
-        console.log(clients_equipaments_array);
-
-        const newClient = {
-            name : addClientInput.value,
-            equipaments : []
-        }
-
-        clients_equipaments_array.push(newClient);
-
-        console.log(clients_equipaments_array);
-            
-        return clients_equipaments_array;
-    };
-
-    await confirmationProcess(addClient);
+    await confirmationProcess(addClientLogic);
 
     showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
 
@@ -343,6 +346,16 @@ function createSelectListHtml_clients(targetList){
     console.log(`Lista criada em ${targetList}`);
 }
 
+async function addEquipamentLogic(){
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === addEquipament_clientSelectList.value){
+            client.equipaments.push(addEquipamentInput.value.toUpperCase());
+        }
+    })
+    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
+    return clients_equipaments_array;
+};
+
 async function addEquipamentProcess(){
     if(addEquipamentInput.value === ""){
         showMessagePopup("errorMsg","O campo 'Equipamentos' não pode estar vazio !")
@@ -358,17 +371,7 @@ async function addEquipamentProcess(){
         }
     });
 
-    function addEquipament(){
-        clients_equipaments_array.forEach((client)=>{
-            if(client.name === addEquipament_clientSelectList.value){
-                client.equipaments.push(addEquipamentInput.value.toUpperCase());
-            }
-        })
-        showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
-        return clients_equipaments_array;
-    };
-
-    await confirmationProcess(addEquipament);
+    await confirmationProcess(addEquipamentLogic);
 
     showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
 
@@ -405,6 +408,18 @@ const editClientBtn = document.querySelector("#edit-client-btn");
 
 //functions
 
+async function editClientLogic(){
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === editClient_clientSelectList.value){
+            client.name = editClientInput.value.toUpperCase();
+        }
+    })
+
+    console.log(clients_equipaments_array);
+
+    return clients_equipaments_array;
+};
+
 async function editClientProcess(){
 
     if(editClient_clientSelectList.value === ""){
@@ -417,21 +432,9 @@ async function editClientProcess(){
             showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
             return;
         }
-    })
+    });
 
-    async function editClient(){
-        clients_equipaments_array.forEach((client)=>{
-            if(client.name === editClient_clientSelectList.value){
-                client.name = editClientInput.value.toUpperCase();
-            }
-        })
-    
-        console.log(clients_equipaments_array);
-    
-        return clients_equipaments_array;
-    }
-
-    await confirmationProcess(editClient);
+    await confirmationProcess(editClientLogic);
 
     showMessagePopup("sucessMsg","Cliente editado com sucesso !");
 
@@ -493,6 +496,55 @@ function createSelectListHtml_equipaments(targetList){
     console.log(targetList);
 }
 
+async function  editEquipamentLogic(){
+    let editClientObject = null;
+
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === editEquipament_clientSelectList.value){
+            editClientObject = client;
+            return editClientObject
+        }
+    })
+    console.log(clients_equipaments_array);
+    console.log(editClientObject)
+
+    //delete element in clients_equipaments_array
+    for(let i = 0; i < clients_equipaments_array.length ; i++){
+        if(clients_equipaments_array[i].name  === editClientObject.name){
+            removeElementforArray(clients_equipaments_array,i);
+        }
+    }
+
+    //delete specific equipament in editClientObject
+    for(let i = 0; i < editClientObject.equipaments.length ; i++){
+        if(editClientObject.equipaments[i]  === editEquipament_equipamentSelectList.value){
+            removeElementforArray(editClientObject.equipaments,i);
+        }
+    }
+
+    let editedEquipament = editEquipamentInput.value.trim();
+
+    editClientObject.equipaments.push(editedEquipament.toUpperCase());
+
+    clients_equipaments_array.push(editClientObject);
+
+    clients_equipaments_array.sort((a,b)=>{
+        if(a.name < b.name){
+            return -1;
+        }
+
+        if(a.name > b.name){
+            return 1; 
+        }
+
+        return 0;
+    });
+
+    console.log(clients_equipaments_array);
+    
+    return clients_equipaments_array;
+};
+
 async function editEquipamentProcess(){
 
     if(editEquipament_equipamentSelectList.value === editEquipamentInput.value){
@@ -500,56 +552,7 @@ async function editEquipamentProcess(){
         return;
     }
 
-    function  editEquipament(){
-        let editClientObject = null;
-
-        clients_equipaments_array.forEach((client)=>{
-            if(client.name === editEquipament_clientSelectList.value){
-                editClientObject = client;
-                return editClientObject
-            }
-        })
-        console.log(clients_equipaments_array);
-        console.log(editClientObject)
-
-        //delete element in clients_equipaments_array
-        for(let i = 0; i < clients_equipaments_array.length ; i++){
-            if(clients_equipaments_array[i].name  === editClientObject.name){
-                removeElementforArray(clients_equipaments_array,i);
-            }
-        }
-
-        //delete specific equipament in editClientObject
-        for(let i = 0; i < editClientObject.equipaments.length ; i++){
-            if(editClientObject.equipaments[i]  === editEquipament_equipamentSelectList.value){
-                removeElementforArray(editClientObject.equipaments,i);
-            }
-        }
-
-        let editedEquipament = editEquipamentInput.value.trim();
-
-        editClientObject.equipaments.push(editedEquipament.toUpperCase());
-
-        clients_equipaments_array.push(editClientObject);
-
-        clients_equipaments_array.sort((a,b)=>{
-            if(a.name < b.name){
-                return -1;
-            }
-
-            if(a.name > b.name){
-                return 1; 
-            }
-
-            return 0;
-        });
-
-        console.log(clients_equipaments_array);
-        
-        return clients_equipaments_array;
-    }
-
-    await confirmationProcess(editEquipament);
+    await confirmationProcess(editEquipamentLogic);
 
     showMessagePopup("sucessMsg", "Equipamento editado com sucesso !");
 
@@ -593,29 +596,29 @@ const deleteClientBtn = document.querySelector("#delete-client-btn");
 
 // functions
 
+async function deleteClientLogic(){
+    console.log(clients_equipaments_array);
+
+    for(let i = 0 ; i < clients_equipaments_array.length ; i++){
+        let index = i;
+
+        if(clients_equipaments_array[i].name === deleteClient_clientSelectList.value){
+            removeElementforArray(clients_equipaments_array, index);
+        }
+    }
+
+    console.log(clients_equipaments_array);
+
+    return clients_equipaments_array;
+}
+
 async function deleteClientProcess(){
     if(deleteClient_clientSelectList.value === ""){
         showMessagePopup("errorMsg","Um cliente precisa ser selecionado !");
         return;
     }
-
-    function removeClient(){
-        console.log(clients_equipaments_array);
-
-        for(let i = 0 ; i < clients_equipaments_array.length ; i++){
-            let index = i;
-
-            if(clients_equipaments_array[i].name === deleteClient_clientSelectList.value){
-                removeElementforArray(clients_equipaments_array, index);
-            }
-        }
-
-        console.log(clients_equipaments_array);
-
-        return clients_equipaments_array;
-    }
-
-    await confirmationProcess(removeClient);
+    
+    await confirmationProcess(deleteClientLogic);
 
     showMessagePopup("sucessMsg","O cliente foi deletado com sucesso !");
 
