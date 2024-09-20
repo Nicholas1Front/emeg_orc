@@ -273,37 +273,46 @@ const backHomeBtn = document.querySelectorAll(".back-home-btn");
 async function addClientLogic(){
     console.log(clients_equipaments_array);
 
+    let clientName = addClientInput.value.toUpperCase();
+    clientName.trim()
+
     const newClient = {
-        name : addClientInput.value,
+        name : clientName,
         equipaments : []
     }
 
     clients_equipaments_array.push(newClient);
 
     console.log(clients_equipaments_array);
-        
-    return clients_equipaments_array;
+    
 };
 
 async function addClientProcess(){
+
+    let clientName = addClientInput.value.toUpperCase();
+    clientName.trim();
 
     if(addClientInput.value === ""){
         showMessagePopup("errorMsg", "O campo 'Cliente' não pode estar vazio !");
         return;
     }
 
-    clients_equipaments_array.forEach((client)=>{
-        if(addClientInput.value === client.name){
-            showMessagePopup("errorMsg","Cliente já existente !");
-            return;
-        }
+    let clientsList = [];
+
+    clients_equipaments_array.forEach(client => {
+        clientsList.push(client.name);
     });
 
-    await confirmationProcess(addClientLogic);
+    let includesInArray = clientsList.includes(clientName);
 
-    showMessagePopup("sucessMsg","Cliente adicionado com sucesso !");
-
-    backHomeProcess();
+    if(includesInArray){
+        showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
+        return;
+    }else{
+        await confirmationProcess(addClientLogic);
+        showMessagePopup("sucessMsg", "Cliente adicionado com sucesso !");
+        backHomeProcess();
+    }
 }
 
 // event listerner
@@ -375,21 +384,29 @@ async function addEquipamentProcess(){
         return;
     }
 
-    clients_equipaments_array.forEach((client)=>{
-        
-        if(client.name === addEquipament_clientSelectList.value){
-            client.equipaments.forEach(async (equipament)=>{
-                if(addEquipamentInput.value === equipament){
-                    showMessagePopup("errorMsg","Equipamento já existe ! Tente novamente !")
-                    return;
-                }else{
-                    await confirmationProcess(addEquipamentLogic);
+    let equipamentName = addEquipamentInput.value.toUpperCase();
+    equipamentName.trim();
 
-                    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
-                }
+    let equipamentsArray = [];
+
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === addEquipament_clientSelectList.value){
+            client.equipaments.forEach((equipament)=>{
+                equipamentsArray.push(equipament);
             })
         }
-    })
+    });
+
+    let includesInArray = equipamentsArray.includes(equipamentName);
+
+    if(includesInArray){
+        showMessagePopup("errorMsg","Equipamento já existente ! Tente novamente !");
+        return;
+    }else{
+        await confirmationProcess(addEquipamentLogic);
+        showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
+        backHomeProcess();
+    }
         
 }
 
@@ -442,21 +459,30 @@ async function editClientProcess(){
         showMessagePopup("errorMsg","O campo 'Cliente' não pode estar vazio !");
         return;
     }
+
+    if(clientName === editClient_clientSelectList.value){
+        showMessagePopup("errorMsg","Cliente não pode ser igual a anterior !");
+        return;
+    }
+
+    let clientsList = [];
+
+    clients_equipaments_array.forEach((client)=>{
+        clientsList.push(client.name);
+    })   
     
-    clients_equipaments_array.forEach(async (client)=>{
-        if(client.name === editClient_clientSelectList.value){
-            if(client.name === clientName){
-                showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
-                return;
-            }else if (client.name !== clientName){
-                await confirmationProcess(editClientLogic);
-    
-                showMessagePopup("sucessMsg","Cliente editado com sucesso !");
-    
-                backHomeProcess();
-            }
-        }
-    });
+    let includesInArray = clientsList.includes(clientName);
+
+    if(includesInArray){
+        showMessagePopup("errorMsg","Cliente já existente ! Tente novamente !");
+        return;
+    }else{
+        await confirmationProcess(editClientLogic);
+        showMessagePopup("sucessMsg", "Cliente editado com sucesso !");
+        backHomeProcess();
+    }
+        
+
 };
 
 //event listeners
@@ -540,10 +566,12 @@ async function  editEquipamentLogic(){
         }
     }
 
+    //push edited equipament in editClientObject
     let editedEquipament = editEquipamentInput.value.trim();
 
     editClientObject.equipaments.push(editedEquipament.toUpperCase());
 
+    //push editClientObject in clients_equipaments_array and sort
     clients_equipaments_array.push(editClientObject);
 
     clients_equipaments_array.sort((a,b)=>{
@@ -560,21 +588,41 @@ async function  editEquipamentLogic(){
 
     console.log(clients_equipaments_array);
     
-    return clients_equipaments_array;
 };
 
 async function editEquipamentProcess(){
 
-    if(editEquipament_equipamentSelectList.value === editEquipamentInput.value){
+    let equipamentName = editEquipamentInput.value.toUpperCase();
+    equipamentName.trim()
+
+    if(editEquipament_equipamentSelectList.value === equipamentName){
         showMessagePopup("errorMsg","Equipamento não pode ser igual ao anterior !");
         return;
     }
 
-    await confirmationProcess(editEquipamentLogic);
+    let equipamentsArray = [];
 
-    showMessagePopup("sucessMsg", "Equipamento editado com sucesso !");
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === editEquipament_clientSelectList.value){
+            client.equipaments.forEach((equipament)=>{
+                equipamentsArray.push(equipament);
+            })
+        }
+    });
 
-    backHomeProcess();
+    let includesInArray = equipamentsArray.includes(equipamentName);
+
+    if(includesInArray){
+        showMessagePopup("errorMsg","Equipamento já existente ! Tente novamente !");
+        return;
+    }else{
+        await confirmationProcess(editEquipamentLogic);
+
+        showMessagePopup("sucessMsg", "Equipamento editado com sucesso !");
+
+        backHomeProcess();
+    }
+
 }
 
 // event listerners
