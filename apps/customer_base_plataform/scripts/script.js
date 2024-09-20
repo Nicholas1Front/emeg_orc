@@ -517,11 +517,11 @@ const editEquipamentBtn = document.querySelector("#edit-equipament-btn");
 
 // functions
 
-function createSelectListHtml_equipaments(targetList){
+function createSelectListHtml_equipaments(targetList, targetClientList){
     let equipamentsArray = [];
 
     clients_equipaments_array.forEach((client) => {
-        if(client.name === editEquipament_clientSelectList.value){
+        if(client.name === targetClientList.value){
             client.equipaments.forEach((equipament) => {
                 equipamentsArray.push(equipament);
             })
@@ -637,7 +637,7 @@ editEquipament_clientSelectList.addEventListener("change", ()=>{
         hideHtmlElement([All_editEquipamentControl]);
     }else{
         showHtmlElement([All_editEquipamentControl],"flex");
-        createSelectListHtml_equipaments(editEquipament_equipamentSelectList);
+        createSelectListHtml_equipaments(editEquipament_equipamentSelectList,editEquipament_clientSelectList);
     }
 });
 
@@ -698,6 +698,64 @@ deleteClientBtn.addEventListener("click", ()=>{
     deleteClientProcess();
 })
 
+// delete-equipament-section
+
+// elements
+const deleteElementSection = document.querySelector(".delete-equipament-section");
+const deleteEquipament_clientSelectList = document.querySelector("#delete-equipament_client-select-list");
+const deleteEquipamentControl = document.querySelector(".delete-equipament-control");
+const deleteEquipament_equipamentSelectList = document.querySelector("#delete-equipament_equipament-select-list");
+const deleteEquipamentBtn = document.querySelector("#delete-equipament-btn");
+
+// functions
+
+async function deleteEquipamentLogic(){
+
+    console.log(clients_equipaments_array);
+
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === deleteEquipament_clientSelectList.value){
+            for(let i = 0 ; i < client.equipaments.length ; i++){
+                if(client.equipaments[i] === deleteEquipament_equipamentSelectList.value){
+                    client.equipaments.splice(i, 1);
+                }
+            }
+        }
+    })
+
+    console.log(clients_equipaments_array);
+}
+
+async function deleteEquipamentProcess(){
+    if(deleteEquipament_equipamentSelectList.value === ""){
+        showMessagePopup("errorMsg","Selecione o equipamento que deseja excluir !");
+        return
+    };
+
+    deleteEquipamentLogic();
+}
+
+// event listeners
+
+deleteEquipamentLink.addEventListener("click", ()=>{
+    showHtmlElement([deleteElementSection],"flex");
+    createSelectListHtml_clients(deleteEquipament_clientSelectList)
+})
+
+deleteEquipament_clientSelectList.addEventListener("change", ()=>{
+    if(deleteEquipament_clientSelectList.value !== ""){
+        createSelectListHtml_equipaments(deleteEquipament_equipamentSelectList,deleteEquipament_clientSelectList);
+        showHtmlElement([deleteEquipamentControl],"flex");
+    }else{
+        hideHtmlElement(deleteEquipamentControl);
+        return;
+    }
+});
+
+deleteEquipamentBtn.addEventListener("click", ()=>{
+    deleteEquipamentProcess();
+})
+
 //to do consult logic
 
 let clientNameTest = "AGROPECUÁRIA ANTAS LTDA (presidencia@hospitalsaodomingos.com.br)";
@@ -718,26 +776,3 @@ function consultClient(){
 
     console.log(clientConsult);
 }
-
-//to do edit equipament logic
-
-/*  
-edit_clientselect => onchange {
-    clients_equipaments_array.forEach((client)=>{
-        if (edit_clientselect.value === client.name){
-            if(client.equipaments === null array){
-                showMessagePopup(errormsg , Cliente não possui equipamentos para editar);
-                return;
-            }else{
-                show the other select list of equipaments
-            }
-        }
-    })
-}
-
-depois fazer a logica onde teremos um select do equipamento que o user que alterar e um input para 
-alteração do equipamento , logo após um btn para realizar tal função.
-
-Função está que também terá uma validação se o equipamento inputado já existe. Depois da validação pretendo 
-tirar remover do array o equipamento original que estará no select e dar um push no equipamento que está no input
-*/
