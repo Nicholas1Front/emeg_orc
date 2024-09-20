@@ -435,24 +435,29 @@ async function editClientLogic(){
 
 async function editClientProcess(){
 
+    let clientName = editClientInput.value.toUpperCase();
+    clientName.trim();
+
     if(editClient_clientSelectList.value === ""){
         showMessagePopup("errorMsg","O campo 'Cliente' não pode estar vazio !");
         return;
     }
     
-    clients_equipaments_array.forEach((client)=>{
-        if(editClientInput.value == client.name){
-            showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
-            return;
+    clients_equipaments_array.forEach(async (client)=>{
+        if(client.name === editClient_clientSelectList.value){
+            if(client.name === clientName){
+                showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
+                return;
+            }else if (client.name !== clientName){
+                await confirmationProcess(editClientLogic);
+    
+                showMessagePopup("sucessMsg","Cliente editado com sucesso !");
+    
+                backHomeProcess();
+            }
         }
     });
-
-    await confirmationProcess(editClientLogic);
-
-    showMessagePopup("sucessMsg","Cliente editado com sucesso !");
-
-    backHomeProcess();
-}
+};
 
 //event listeners
 editClientLink.addEventListener("click", ()=>{
