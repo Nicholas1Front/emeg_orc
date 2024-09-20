@@ -169,13 +169,31 @@ async function confirmationProcess(functionToBeExecuted){
             confirmationPasswordInput.addEventListener("focus", () => {
                 wrongPasswordSpan.style.display = "none";
             });
-
-            return;
         }
 
         await functionToBeExecuted();
 
         closeConfirmationPopup();
+    })
+
+    confirmationPasswordInput.addEventListener("keypress", async (event)=>{
+        if (event.key === "Enter"){
+            if(confirmationPasswordInput.value !== confirmationPassword){
+                wrongPasswordSpan.style.display = "block";
+    
+                setTimeout(() => {
+                    wrongPasswordSpan.style.display = "none";
+                }, 10000);
+    
+                confirmationPasswordInput.addEventListener("focus", () => {
+                    wrongPasswordSpan.style.display = "none";
+                });
+            }
+    
+            await functionToBeExecuted();
+    
+            closeConfirmationPopup();
+        }
     })
 }
 
@@ -194,7 +212,7 @@ const messagePopupSpan = document.querySelector(".message-popup-span");
 
 async function showMessagePopup(messageType, messageSpan){
     if(messageType === "errorMsg"){
-        messagePopup.style.backgroundColor = "#000";
+        messagePopup.style.backgroundColor = "#d61e1e";
         messagePopup.style.color = "#fff";
     }
 
@@ -336,13 +354,19 @@ function createSelectListHtml_clients(targetList){
 }
 
 async function addEquipamentLogic(){
+
+    let equipamentName = addEquipamentInput.value.toUpperCase();
+
+    equipamentName.trim();
+
     clients_equipaments_array.forEach((client)=>{
-        if(client.name === addEquipament_clientSelectList.value){
-            client.equipaments.push(addEquipamentInput.value.toUpperCase());
+        if(client.name === equipamentName){
+            client.equipaments.push(equipamentName);
         }
     })
-    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !")
-    return clients_equipaments_array;
+
+    console.log(clients_equipaments_array);
+
 };
 
 async function addEquipamentProcess(){
@@ -352,19 +376,21 @@ async function addEquipamentProcess(){
     }
 
     clients_equipaments_array.forEach((client)=>{
-        for(let i = 0 ; i < client.equipaments.length ; i++){
-            if(client.equipaments[i] === addEquipamentInput.value){
-                showMessagePopup("errorMsg","Este equipamento já existe !");
-                return
-            }
+        
+        if(client.name === addEquipament_clientSelectList.value){
+            client.equipaments.forEach(async (equipament)=>{
+                if(addEquipamentInput.value === equipament){
+                    showMessagePopup("errorMsg","Equipamento já existe ! Tente novamente !")
+                    return;
+                }else{
+                    await confirmationProcess(addEquipamentLogic);
+
+                    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
+                }
+            })
         }
-    });
-
-    await confirmationProcess(addEquipamentLogic);
-
-    showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
-
-    backHomeProcess();
+    })
+        
 }
 
 //event listeners
@@ -405,8 +431,6 @@ async function editClientLogic(){
     })
 
     console.log(clients_equipaments_array);
-
-    return clients_equipaments_array;
 };
 
 async function editClientProcess(){
