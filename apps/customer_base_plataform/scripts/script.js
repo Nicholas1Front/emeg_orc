@@ -732,7 +732,11 @@ async function deleteEquipamentProcess(){
         return
     };
 
-    deleteEquipamentLogic();
+    await confirmationProcess(deleteEquipamentLogic);
+
+    showMessagePopup("sucessMsg","Equipamento deletado com sucesso !")
+
+    backHomeProcess();
 }
 
 // event listeners
@@ -747,7 +751,7 @@ deleteEquipament_clientSelectList.addEventListener("change", ()=>{
         createSelectListHtml_equipaments(deleteEquipament_equipamentSelectList,deleteEquipament_clientSelectList);
         showHtmlElement([deleteEquipamentControl],"flex");
     }else{
-        hideHtmlElement(deleteEquipamentControl);
+        hideHtmlElement([deleteEquipamentControl]);
         return;
     }
 });

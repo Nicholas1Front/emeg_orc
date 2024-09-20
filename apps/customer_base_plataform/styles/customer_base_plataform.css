@@ -836,7 +836,7 @@ button{
 
 .delete-equipament-section{
     width:100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin:1.5rem 0;
