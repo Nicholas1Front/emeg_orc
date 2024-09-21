@@ -350,6 +350,12 @@ function createSelectListHtml_clients(targetList){
         clientsArray.push(client.name);  
     })
 
+    targetList.innerHTML = "";
+
+    let noValueOption = document.createElement("option");
+    noValueOption.value = "";
+    targetList.add(noValueOption);
+
     clientsArray.forEach((client)=>{
         let option = document.createElement("option");
 
@@ -526,7 +532,13 @@ function createSelectListHtml_equipaments(targetList, targetClientList){
                 equipamentsArray.push(equipament);
             })
         }
-    })
+    });
+
+    targetList.innerHTML = "";
+
+    let noValueOption = document.createElement("option");
+    noValueOption.value = "";
+    targetList.add(noValueOption);
 
     equipamentsArray.forEach((equipament)=>{
         let option = document.createElement("option");
@@ -779,12 +791,18 @@ async function displayConsultResultHtml(clientObject){
 
     equipamentsItemsControl_resultConsult.innerHTML = "";
 
-    for(let i = 0 ; i < clientObject.equipaments.length ; i++){
+    if(clientObject.equipaments.length === 0){
         let span = document.createElement("span");
 
-        span.textContent = clientObject.equipaments[i];
-
-        equipamentsItemsControl_resultConsult.appendChild(span);
+        span.textContent = "EQUIPAMENTOS AINDA NÃO ADICIONADOS"
+    }else{
+        for(let i = 0 ; i < clientObject.equipaments.length ; i++){
+            let span = document.createElement("span");
+    
+            span.textContent = clientObject.equipaments[i];
+    
+            equipamentsItemsControl_resultConsult.appendChild(span);
+        }
     }
 
     let allSpans = document.querySelectorAll(".equipaments-items-control_result-consult span");
