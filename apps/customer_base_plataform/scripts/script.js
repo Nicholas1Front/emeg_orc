@@ -794,7 +794,9 @@ async function displayConsultResultHtml(clientObject){
     if(clientObject.equipaments.length === 0){
         let span = document.createElement("span");
 
-        span.textContent = "EQUIPAMENTOS AINDA NÃO ADICIONADOS"
+        span.textContent = "EQUIPAMENTOS AINDA NÃO ADICIONADOS !";
+
+        equipamentsItemsControl_resultConsult.appendChild(span);
     }else{
         for(let i = 0 ; i < clientObject.equipaments.length ; i++){
             let span = document.createElement("span");
