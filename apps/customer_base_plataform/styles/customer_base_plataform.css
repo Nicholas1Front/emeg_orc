@@ -945,7 +945,7 @@ button{
 
 .consult-client-section{
     width:100%;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin:1.5rem 0;
@@ -1014,10 +1014,10 @@ button{
 /* result-consult-container */
 
 .result-consult-container{
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
-    margin:1rem 0;
+    margin:2rem 0;
 }
 
 .result-consult-control{
@@ -1027,7 +1027,7 @@ button{
     flex-direction: column;
     background-color: #d61e1e;
     border-radius:25px;
-    padding:0.5rem;
+    padding:1.5rem 0.5rem;
 }
 
 .result-consult-control > .client-name-control_result-consult{
@@ -1036,10 +1036,23 @@ button{
     flex-direction: column;
 }
 
+.result-consult-control > .client-name-control_result-consult h3{
+    font-size:20px;
+}
+
+.result-consult-control > .client-name-control_result-consult h3 > i{
+    margin-right:5px;
+}
+
+.result-consult-control > .client-name-control_result-consult span{
+    margin-top:1rem;
+    font-size:18px;
+}
+
 .result-consult-control > .line{
-    width:68%;
+    width:45%;
     height:2px;
-    background-color: #fff;
+    background-color: #000;
     margin:1rem 0;
 }
 
@@ -1053,10 +1066,24 @@ button{
 .result-consult-control > .client-equipaments-control_result-consult h3{
     width:100%;
     text-align: center;
+    margin-bottom:0.6rem;
+    font-size:20px;
 }
 
-.result-consult-control > .client-equipaments-control_result-consult span{
+.result-consult-control > .client-equipaments-control_result-consult h3 > i{
+    margin-right:5px;
+}
+
+.result-consult-control > .client-equipaments-control_result-consult > .equipaments-items-control_result-consult{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.result-consult-control > .client-equipaments-control_result-consult > .equipaments-items-control_result-consult span{
     width:23%;
     text-align: center;
     margin:0.4rem 3px;
+    font-size:16px;
 }

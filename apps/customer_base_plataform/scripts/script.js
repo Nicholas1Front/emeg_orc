@@ -251,7 +251,7 @@ const editClientLink = document.querySelector("#edit-client-link");
 const editEquipamentLink = document.querySelector("#edit-equipament-link");
 const deleteClientLink = document.querySelector("#delete-client-link");
 const deleteEquipamentLink = document.querySelector("#delete-equipament-link");
-const consultInfosLink = document.querySelector("#consult-infos-link");
+const consultClientLink = document.querySelector("#consult-client-link");
 const sendToServerBtn = document.querySelector("#send-to-server-btn");
 
 //event listerners
@@ -760,23 +760,82 @@ deleteEquipamentBtn.addEventListener("click", ()=>{
     deleteEquipamentProcess();
 })
 
-//to do consult logic
+// consult-client-section
 
-let clientNameTest = "AGROPECUÁRIA ANTAS LTDA (presidencia@hospitalsaodomingos.com.br)";
+// elements 
+const consultClientSection = document.querySelector(".consult-client-section");
+const consultClient_clientSelecList = document.querySelector("#consult-client_client-select-list");
+const consultClientBtn = document.querySelector("#consult-client-btn");
+const resultConsultContainer = document.querySelector(".result-consult-container");
+const clientNameTitle_resultConsult = document.querySelector(".client-name-title_result-consult");
+const equipamentsItemsControl_resultConsult = document.querySelector(".equipaments-items-control_result-consult");
 
-function consultClient(){
-    let clientConsult = null;
+// functions
 
-    console.log(clients_equipaments_array);
+async function displayConsultResultHtml(clientObject){
+    clientNameTitle_resultConsult.innerHTML = "";
 
-    clients_equipaments_array.forEach(client => {
-        if (clientNameTest == client.name){
-            clientConsult = {
-                name : client.name,
-                equipaments : client.equipaments,
-            }
+    clientNameTitle_resultConsult.innerHTML = clientObject.name;
+
+    equipamentsItemsControl_resultConsult.innerHTML = "";
+
+    for(let i = 0 ; i < clientObject.equipaments.length ; i++){
+        let span = document.createElement("span");
+
+        span.textContent = clientObject.equipaments[i];
+
+        equipamentsItemsControl_resultConsult.appendChild(span);
+    }
+
+    let allSpans = document.querySelectorAll(".equipaments-items-control_result-consult span");
+
+    if(allSpans.length === 1){
+        allSpans[0].style.width = "99%";
+    }else if(allSpans.length === 2){
+        for(let i = 0;i < allSpans.length ; i++){
+            allSpans[i].style.width = "49%"
         }
-    })
-
-    console.log(clientConsult);
+    }else if(allSpans.length === 3){
+        for(let i = 0;i < allSpans.length ; i++){
+            allSpans[i].style.width = "32%"
+        }
+    }else if(allSpans.length >= 4){
+        for(let i = 0;i < allSpans.length ; i++){
+            allSpans[i].style.width = "23%"
+        }
+    };
 }
+
+async function consultClientProcess(){
+    if(consultClient_clientSelecList.value === ""){
+        showMessagePopup("errorMsg", "Selecione um cliente para consulta !");
+        return;
+    }
+
+    let clientObject = {
+        name : null,
+        equipaments : null
+    }
+
+    clients_equipaments_array.forEach((client)=>{
+        if(client.name === consultClient_clientSelecList.value){
+            clientObject.name = client.name;
+            clientObject.equipaments = client.equipaments;
+        }
+    });
+
+    showHtmlElement([resultConsultContainer],"flex");
+
+    await displayConsultResultHtml(clientObject);
+}
+
+// event listeners
+
+consultClientLink.addEventListener("click", ()=>{
+    createSelectListHtml_clients(consultClient_clientSelecList);
+    showHtmlElement([consultClientSection], "flex");
+}) 
+
+consultClientBtn.addEventListener("click", ()=>{
+    consultClientProcess();
+})
