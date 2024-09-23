@@ -11,6 +11,8 @@ button{
     border-radius: 25px;
 }
 
+/* overlay-for-loading */
+
 .overlay-for-loading{
     top:0;
     left:0;
@@ -196,6 +198,12 @@ button{
 .back-hub-apps-control a > span{
     font-size:12px;
     padding-top:6px;
+}
+
+/* help-page-link-control" */
+
+.help-page-link-control{
+    position:absolute;
 }
 
 /* message-popup */
