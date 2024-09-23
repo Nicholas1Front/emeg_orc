@@ -3,8 +3,6 @@
 let clients_equipaments_array = [];
 
 async function getClientsData(){
-    clients_equipaments_array = [];
-
     try{
         // const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
         const response = await fetch("../customer_base_plataform/client_control_backend/data/clients_equipaments.json");
@@ -12,12 +10,12 @@ async function getClientsData(){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
         }
 
-        let clients_equipaments = await response.json();
+        let clientsArray_response = await response.json();
 
-        let clientToPush = null;
+        let clientObject_toPush = null;
 
-        clients_equipaments.forEach((client)=>{
-            clientToPush = {
+        clientsArray_response.forEach((client)=>{
+            clientObject_toPush = {
                 name : client.name.toUpperCase(),
                 equipaments : null, 
             };
@@ -28,9 +26,9 @@ async function getClientsData(){
                 clientEquipamentsArray.push(client.equipaments[i].toUpperCase());
             }
 
-            clientToPush.equipaments = clientEquipamentsArray;
+            clientObject_toPush.equipaments = clientEquipamentsArray;
 
-            clients_equipaments_array.push(clientToPush);
+            clients_equipaments_array.push(clientObject_toPush);
         })
 
         clients_equipaments_array.sort();
@@ -108,10 +106,7 @@ async function backHomeProcess(){
         hideHtmlElement([All_sections[i]]);
     }
 
-    showHtmlElement([
-        mainHubSection
-    ],"flex");
-
+    showHtmlElement([mainHubSection],"flex");
 }    
 
 // clear inputs and selects
@@ -155,7 +150,7 @@ function closeConfirmationPopup(){
     customerBasePlataformContainer.style.filter = "blur(0)"
 }
 
-async function confirmationProcess(functionToBeExecuted){
+async function confirmationProcess(functionToBeExecuted, msgPopupContent){
     showConfirmationPopup();
 
     confirmationPopupBtn.addEventListener("click",async ()=>{
@@ -174,6 +169,8 @@ async function confirmationProcess(functionToBeExecuted){
         await functionToBeExecuted();
 
         closeConfirmationPopup();
+
+        showMessagePopup("sucessMsg", msgPopupContent);
     })
 
     confirmationPasswordInput.addEventListener("keypress", async (event)=>{
@@ -224,6 +221,10 @@ async function showMessagePopup(messageType, messageSpan){
     messagePopupSpan.innerText = messageSpan;
 
     await showHtmlElement([messagePopup],"block");
+
+    setTimeout(()=>{
+        hideHtmlElement([messagePopup]);
+    },5000)
 
 }
 
@@ -309,8 +310,7 @@ async function addClientProcess(){
         showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(addClientLogic);
-        showMessagePopup("sucessMsg", "Cliente adicionado com sucesso !");
+        await confirmationProcess(addClientLogic , "Cliente adicionado com sucesso !");
         backHomeProcess();
     }
 }
@@ -409,8 +409,7 @@ async function addEquipamentProcess(){
         showMessagePopup("errorMsg","Equipamento já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(addEquipamentLogic);
-        showMessagePopup("sucessMsg","Equipamento adicionado com sucesso !");
+        await confirmationProcess(addEquipamentLogic,"Equipamento adicionado com sucesso !");
         backHomeProcess();
     }
         
@@ -483,8 +482,7 @@ async function editClientProcess(){
         showMessagePopup("errorMsg","Cliente já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(editClientLogic);
-        showMessagePopup("sucessMsg", "Cliente editado com sucesso !");
+        await confirmationProcess(editClientLogic,"Cliente editado com sucesso !");
         backHomeProcess();
     }
         
@@ -628,10 +626,7 @@ async function editEquipamentProcess(){
         showMessagePopup("errorMsg","Equipamento já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(editEquipamentLogic);
-
-        showMessagePopup("sucessMsg", "Equipamento editado com sucesso !");
-
+        await confirmationProcess(editEquipamentLogic,"Equipamento editado com sucesso !");
         backHomeProcess();
     }
 
@@ -648,7 +643,9 @@ editEquipament_clientSelectList.addEventListener("change", ()=>{
     if(editEquipament_clientSelectList.value === ""){
         hideHtmlElement([All_editEquipamentControl]);
     }else{
-        showHtmlElement([All_editEquipamentControl],"flex");
+        All_editEquipamentControl.forEach((div)=>{
+            showHtmlElement([div],"flex");
+        })
         createSelectListHtml_equipaments(editEquipament_equipamentSelectList,editEquipament_clientSelectList);
     }
 });
@@ -693,10 +690,8 @@ async function deleteClientProcess(){
         return;
     }
     
-    await confirmationProcess(deleteClientLogic);
-
-    showMessagePopup("sucessMsg", "Cliente excluído com sucesso !")
-
+    await confirmationProcess(deleteClientLogic,"Cliente excluído com sucesso !");
+    backHomeProcess();
 }
 
 // event listerners
@@ -744,9 +739,7 @@ async function deleteEquipamentProcess(){
         return
     };
 
-    await confirmationProcess(deleteEquipamentLogic);
-
-    showMessagePopup("sucessMsg","Equipamento deletado com sucesso !")
+    await confirmationProcess(deleteEquipamentLogic,"Equipamento deletado com sucesso !");
 
     backHomeProcess();
 }
