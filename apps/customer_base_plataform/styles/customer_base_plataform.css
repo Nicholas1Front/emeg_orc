@@ -187,7 +187,12 @@ button{
     flex-direction: column;
     text-align: center;
     text-decoration: none;
-    color:white;
+    color:#dedede;
+    transition:0.2s;
+}
+
+.back-hub-apps-control a:hover{
+    color:#fff;
     transition:0.2s;
 }
 
@@ -204,6 +209,30 @@ button{
 
 .help-page-link-control{
     position:absolute;
+    margin-left: 83%;
+}
+
+.help-page-link-control a{
+    text-decoration:none;
+    color:#dedede;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition:0.2s;
+}
+
+.help-page-link-control a:hover{
+    color:#fff;
+    transition:0.2s;
+}
+
+.help-page-link-control a > i{
+    font-size: 30px;
+}
+
+.help-page-link-control a > span{
+    font-size:12px;
+    padding-top:6px;
 }
 
 /* message-popup */

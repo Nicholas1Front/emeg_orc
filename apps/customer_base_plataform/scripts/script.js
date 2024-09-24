@@ -4,8 +4,7 @@ let clients_equipaments_array = [];
 
 async function getClientsData(){
     try{
-        // const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
-        const response = await fetch("../customer_base_plataform/client_control_backend/data/clients_equipaments.json");
+        const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
         if(!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
         }
@@ -28,21 +27,31 @@ async function getClientsData(){
 
             clientObject_toPush.equipaments = clientEquipamentsArray;
 
-            clients_equipaments_array.push(clientObject_toPush);
-        })
+            clientsArray_response.push(clientObject_toPush);
+        });
 
-        clients_equipaments_array.sort();
+        clientsArray_response.sort((a,b)=>{
+            if(a.name < b.name){
+                return -1;
+            }
+    
+            if(a.name > b.name){
+                return 1; 
+            }
+    
+            return 0;
+        });
 
-        console.log(clients_equipaments_array);
+        console.log(clientsArray_response);
 
-        return clients_equipaments_array;
+        return clientsArray_response;
     }
     catch(error){
         console.error(`Failed to load json : ${error}`);
     }
 }
 
-getClientsData();
+clients_equipaments_array = getClientsData();
 
 //update json 
 
@@ -50,38 +59,37 @@ getClientsData();
 
 //functions
 
-async function updateClientsData() {
+async function updateClientsDataProcess() {
     try {
-        const response = await fetch('https://emeg-orc.onrender.com/update-data', { // atualize o URL aqui
+        showHtmlElement([overlayForLoading],"flex");
+
+        const response = await fetch('https://emeg-orc.onrender.com/update-data', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ clients_equipaments_array }), // envia os dados atualizados
+            body: JSON.stringify({ clients_equipaments_array }),
         });
 
         if (!response.ok) {
-            await showMessagePopup("errorMsg", "Error ao atualizar dados no servidor !");
+            await showMessagePopup("errorMsg", "Erro ao atualizar dados no servidor!");
             throw new Error('Erro ao atualizar os dados no backend');
         }
 
-        console.log('Dados atualizados com sucesso no backend');
+        const result = await response.text();
+
+        console.log('Dados atualizados com sucesso no backend e GitHub Pages:', result);
+        await showMessagePopup("successMsg", "Dados atualizados com sucesso!");
+
+        // Recarrega os dados atualizados do GitHub Pages
+        await getClientsData();
     } catch (error) {
-        await showMessagePopup("errorMsg", "Erro ! Recarregue a página e tente novamente !");
+        await showMessagePopup("errorMsg", "Erro! Recarregue a página e tente novamente.");
         console.error('Erro:', error);
+    } finally {
+        hideHtmlElement(overlayForLoading);
     }
 }
-
-async function updateClientsDataProcess(){
-    showHtmlElement([overlayForLoading],"flex");
-
-    await updateClientsData();
-
-    hideHtmlElement(overlayForLoading);
-
-    await getClientsData();
-}
-
 
 //show and hide elements functions
 

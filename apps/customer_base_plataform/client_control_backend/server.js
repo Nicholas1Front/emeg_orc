@@ -24,13 +24,13 @@ const BRANCH = 'main';
 // Endpoint para atualizar o arquivo JSON no GitHub
 app.post('/update-data', async (req, res) => {
     try {
-        const { clients_equipaments_array } = req.body; // Recebe os dados do frontend
+        const { clients_equipaments_array } = req.body; 
 
         if (!clients_equipaments_array) {
             return res.status(400).send('Nenhum dado recebido.');
         }
 
-        // Busca o arquivo atual do GitHub
+        // 1. Busca o arquivo atual do GitHub
         const response = await axios.get(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`, {
             headers: {
                 Authorization: `Bearer ${GITHUB_TOKEN}`,
@@ -38,20 +38,20 @@ app.post('/update-data', async (req, res) => {
             },
         });
 
-        const fileSha = response.data.sha; // Obtém o SHA atual do arquivo
-        const existingContent = Buffer.from(response.data.content, 'base64').toString('utf8'); // Decodifica o conteúdo existente
+        const fileSha = response.data.sha;
+        const existingContent = Buffer.from(response.data.content, 'base64').toString('utf8');
 
-        // Atualiza o conteúdo com os novos dados
+        // 2. Atualiza o conteúdo com os novos dados
         const updatedContent = Buffer.from(JSON.stringify(clients_equipaments_array, null, 2)).toString('base64');
 
-        // Atualiza o arquivo no GitHub
+        // 3. Atualiza o arquivo no GitHub
         await axios.put(
             `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`,
             {
-                message: 'Update clients data', // Mensagem de commit
-                content: updatedContent, // Novo conteúdo codificado em base64
-                sha: fileSha, // SHA do arquivo anterior
-                branch: BRANCH, // Branch alvo
+                message: 'Update clients data',
+                content: updatedContent,
+                sha: fileSha,
+                branch: BRANCH,
             },
             {
                 headers: {
@@ -61,7 +61,27 @@ app.post('/update-data', async (req, res) => {
             }
         );
 
-        res.send('Dados atualizados com sucesso!');
+        // 4. Verifica se o arquivo foi atualizado no GitHub Pages
+        let isUpdated = false;
+        const maxAttempts = 10;
+        let attempts = 0;
+
+        while (!isUpdated && attempts < maxAttempts) {
+            await new Promise(r => setTimeout(r, 5000)); // Espera 5 segundos antes de verificar novamente
+            const githubPagesResponse = await axios.get(`https://nicholas1front.github.io/emeg_orc/${FILE_PATH}`);
+            const currentContent = await githubPagesResponse.data;
+
+            if (JSON.stringify(currentContent) === JSON.stringify(clients_equipaments_array)) {
+                isUpdated = true; // O arquivo no GitHub Pages foi atualizado
+            }
+            attempts++;
+        }
+
+        if (!isUpdated) {
+            return res.status(500).send('Commit realizado, mas o GitHub Pages não foi atualizado a tempo.');
+        }
+
+        res.send('Dados atualizados com sucesso no GitHub Pages!');
     } catch (error) {
         console.error('Erro ao atualizar o arquivo:', error.response ? error.response.data : error.message);
         res.status(500).send('Erro ao atualizar os dados.');
