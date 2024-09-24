@@ -11,6 +11,8 @@ async function getClientsData(){
 
         let clientsArray_response = await response.json();
 
+        let clientsArray_return = [];
+
         let clientObject_toPush = null;
 
         clientsArray_response.forEach((client)=>{
@@ -27,10 +29,10 @@ async function getClientsData(){
 
             clientObject_toPush.equipaments = clientEquipamentsArray;
 
-            clientsArray_response.push(clientObject_toPush);
+            clientsArray_return.push(clientObject_toPush);
         });
 
-        clientsArray_response.sort((a,b)=>{
+        clientsArray_return.sort((a,b)=>{
             if(a.name < b.name){
                 return -1;
             }
@@ -42,16 +44,22 @@ async function getClientsData(){
             return 0;
         });
 
-        console.log(clientsArray_response);
+        console.log(clientsArray_return);
 
-        return clientsArray_response;
+        return clientsArray_return;
     }
     catch(error){
         console.error(`Failed to load json : ${error}`);
     }
 }
 
-clients_equipaments_array = getClientsData();
+//booting
+async function Initialize_clients_equipaments_array(){
+    clients_equipaments_array = await getClientsData();
+    return clients_equipaments_array;
+}
+
+Initialize_clients_equipaments_array();
 
 //update json 
 
@@ -72,14 +80,14 @@ async function updateClientsDataProcess() {
         });
 
         if (!response.ok) {
-            await showMessagePopup("errorMsg", "Erro ao atualizar dados no servidor!");
+            await showServerMessagePopup("errorMsg", "Erro ao atualizar dados no servidor!");
             throw new Error('Erro ao atualizar os dados no backend');
         }
 
         const result = await response.text();
 
         console.log('Dados atualizados com sucesso no backend e GitHub Pages:', result);
-        await showMessagePopup("successMsg", "Dados atualizados com sucesso!");
+        await showServerMessagePopup("successMsg", "Dados atualizados com sucesso!");
 
         // Recarrega os dados atualizados do GitHub Pages
         await getClientsData();
@@ -206,24 +214,69 @@ closeConfirmationPopupBtn.addEventListener("click", ()=>{
     closeConfirmationPopup()
 })
 
+// server message popup
+
+// elements
+const serverMessagePopup = document.querySelector(".server-message-popup");
+const closeServerMessagePopupBtn = document.querySelector(".close-server-message-popup-btn")
+const serverMessageSymbol = document.querySelector(".server-message-control i");
+const serverMessageSpan = document.querySelector(".server-message-span");
+
+// functions
+
+async function showServerMessagePopup(messageType, messageSpan){
+    serverMessageSymbol.className = "";
+
+    if(messageType === "errorMsg"){
+        serverMessagePopup.style.backgroundColor = "#d61e1e"; //red color
+        serverMessagePopup.style.color = "#fff";
+        serverMessageSymbol.className = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+    }
+
+    if(messageType === "sucessMsg"){
+        serverMessagePopup.style.backgroundColor = "#42f55a"; //green color
+        serverMessagePopup.style.color = "#fff"
+        serverMessageSymbol.className = `<i class="fa-solid fa-circle-check"></i>`;
+    }
+
+    serverMessageSpan.innerText = messageSpan ;
+
+    await showHtmlElement([serverMessagePopup], block);
+
+    setTimeout(()=>{
+        hideHtmlElement([serverMessagePopup]);
+    },5000);
+}
+
+//event listeners
+
+closeServerMessagePopupBtn.addEventListener("click",()=>{
+    hideHtmlElement(serverMessagePopup);
+})
+
 //message popup
 
 //elements
 const messagePopup = document.querySelector(".message-popup");
 const closeMessagePopupBtn= document.querySelector(".close-message-popup-btn");
+const messagePopupSymbol = document.querySelector(".message-popup-control i");
 const messagePopupSpan = document.querySelector(".message-popup-span");
 
 //functions
 
 async function showMessagePopup(messageType, messageSpan){
+    messagePopupSymbol.className = "";
+
     if(messageType === "errorMsg"){
         messagePopup.style.backgroundColor = "#d61e1e";
         messagePopup.style.color = "#fff";
+        messagePopupSymbol.className = `<i class="fa-solid fa-triangle-exclamation"></i>` ;
     }
 
     if(messageType === "sucessMsg"){
         messagePopup.style.backgroundColor = "#42f55a"; //green color
         messagePopup.style.color = "#fff"
+        messagePopupSymbol.className = `<i class="fa-solid fa-circle-check"></i>`;
     }
 
     messagePopupSpan.innerText = messageSpan;
@@ -308,9 +361,9 @@ async function addClientProcess(){
 
     let clientsList = [];
 
-    clients_equipaments_array.forEach(client => {
-        clientsList.push(client.name);
-    });
+    clients_equipaments_array.forEach((client)=>{
+        clientsList.push(client);
+    })
 
     let includesInArray = clientsList.includes(clientName);
 
