@@ -95,7 +95,7 @@ async function updateClientsDataProcess() {
         await showMessagePopup("errorMsg", "Erro! Recarregue a página e tente novamente.");
         console.error('Erro:', error);
     } finally {
-        hideHtmlElement(overlayForLoading);
+        hideHtmlElement([overlayForLoading]);
     }
 }
 
@@ -184,9 +184,23 @@ async function confirmationProcess(functionToBeExecuted, msgPopupContent){
 
         await functionToBeExecuted();
 
+        clients_equipaments_array.sort((a,b)=>{
+            if(a.name < b.name){
+                return -1;
+            }
+    
+            if(a.name > b.name){
+                return 1; 
+            }
+    
+            return 0;
+        });
+
         closeConfirmationPopup();
 
         showMessagePopup("sucessMsg", msgPopupContent);
+
+        backHomeProcess();
     })
 
     confirmationPasswordInput.addEventListener("keypress", async (event)=>{
@@ -202,8 +216,20 @@ async function confirmationProcess(functionToBeExecuted, msgPopupContent){
                     wrongPasswordSpan.style.display = "none";
                 });
             }
-    
+
             await functionToBeExecuted();
+
+            clients_equipaments_array.sort((a,b)=>{
+                if(a.name < b.name){
+                    return -1;
+                }
+        
+                if(a.name > b.name){
+                    return 1; 
+                }
+        
+                return 0;
+            });
     
             closeConfirmationPopup();
         }
@@ -230,18 +256,18 @@ async function showServerMessagePopup(messageType, messageSpan){
     if(messageType === "errorMsg"){
         serverMessagePopup.style.backgroundColor = "#d61e1e"; //red color
         serverMessagePopup.style.color = "#fff";
-        serverMessageSymbol.className = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+        serverMessageSymbol.className = `fa-solid fa-triangle-exclamation`;
     }
 
     if(messageType === "sucessMsg"){
         serverMessagePopup.style.backgroundColor = "#42f55a"; //green color
         serverMessagePopup.style.color = "#fff"
-        serverMessageSymbol.className = `<i class="fa-solid fa-circle-check"></i>`;
+        serverMessageSymbol.className = `fa-solid fa-circle-check`;
     }
 
     serverMessageSpan.innerText = messageSpan ;
 
-    await showHtmlElement([serverMessagePopup], block);
+    await showHtmlElement([serverMessagePopup], "block");
 
     setTimeout(()=>{
         hideHtmlElement([serverMessagePopup]);
@@ -270,13 +296,13 @@ async function showMessagePopup(messageType, messageSpan){
     if(messageType === "errorMsg"){
         messagePopup.style.backgroundColor = "#d61e1e";
         messagePopup.style.color = "#fff";
-        messagePopupSymbol.className = `<i class="fa-solid fa-triangle-exclamation"></i>` ;
+        messagePopupSymbol.className = `fa-solid fa-triangle-exclamation` ;
     }
 
     if(messageType === "sucessMsg"){
         messagePopup.style.backgroundColor = "#42f55a"; //green color
         messagePopup.style.color = "#fff"
-        messagePopupSymbol.className = `<i class="fa-solid fa-circle-check"></i>`;
+        messagePopupSymbol.className = `fa-solid fa-circle-check`;
     }
 
     messagePopupSpan.innerText = messageSpan;
@@ -333,10 +359,8 @@ const backHomeBtn = document.querySelectorAll(".back-home-btn");
 //functions
 
 async function addClientLogic(){
-    console.log(clients_equipaments_array);
-
     let clientName = addClientInput.value.toUpperCase();
-    clientName.trim()
+    clientName.trim();
 
     const newClient = {
         name : clientName,
@@ -345,8 +369,8 @@ async function addClientLogic(){
 
     clients_equipaments_array.push(newClient);
 
+    console.log(newClient);
     console.log(clients_equipaments_array);
-    
 };
 
 async function addClientProcess(){
@@ -372,7 +396,6 @@ async function addClientProcess(){
         return;
     }else{
         await confirmationProcess(addClientLogic , "Cliente adicionado com sucesso !");
-        backHomeProcess();
     }
 }
 
@@ -383,7 +406,7 @@ addClientLink.addEventListener("click", ()=>{
 
 })
 
-addClientBtn.addEventListener("click",()=>{
+addClientBtn.addEventListener("click",async ()=>{
     addClientProcess();
 });
 
@@ -644,18 +667,6 @@ async function  editEquipamentLogic(){
 
     //push editClientObject in clients_equipaments_array and sort
     clients_equipaments_array.push(editClientObject);
-
-    clients_equipaments_array.sort((a,b)=>{
-        if(a.name < b.name){
-            return -1;
-        }
-
-        if(a.name > b.name){
-            return 1; 
-        }
-
-        return 0;
-    });
 
     console.log(clients_equipaments_array);
     
