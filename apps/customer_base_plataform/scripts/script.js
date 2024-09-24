@@ -266,7 +266,7 @@ const sendToServerBtn = document.querySelector("#send-to-server-btn");
 //event listerners
 
 sendToServerBtn.addEventListener("click", ()=>{
-    confirmationProcess(updateClientsDataProcess);
+    confirmationProcess(updateClientsDataProcess, "Dados atualizados com sucesso !");
 })
 
 //add-client-section
