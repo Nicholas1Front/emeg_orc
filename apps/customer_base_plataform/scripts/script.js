@@ -66,7 +66,6 @@ Initialize_clients_equipaments_array();
 //elements
 
 //functions
-
 async function updateClientsData() {
     try {
         const response = await fetch('https://emeg-orc.onrender.com/update-data', { 
@@ -95,6 +94,7 @@ async function updateClientsData() {
 }
 
 async function sendToServerProcess(){
+
     await showHtmlElement([overlayForLoading], "flex");
 
     let result = await updateClientsData();
@@ -141,7 +141,7 @@ async function backHomeProcess(){
 
 // clear inputs and selects
 
-function clearAllInputs(){
+async function clearAllInputs(){
     let All_inputs = document.querySelectorAll("input");
     let All_selects = document.querySelectorAll("select");
 
@@ -169,6 +169,9 @@ const wrongPasswordSpan = document.querySelector(".wrong-password-span");
 const confirmationPopupBtn = document.querySelector("#confirmation-popup-btn");
 const confirmationPassword = "88320940";
 
+let functionToBeExecutedGlobal;
+let msgPopupContentGlobal;
+
 function showConfirmationPopup(){
     overlay.style.display = "flex";
     customerBasePlataformContainer.style.filter = "blur(9px)";
@@ -180,82 +183,93 @@ function closeConfirmationPopup(){
     customerBasePlataformContainer.style.filter = "blur(0)"
 }
 
-async function confirmationProcess(functionToBeExecuted, msgPopupContent){
+async function clickHandleListener(){
+    if(confirmationPasswordInput.value === confirmationPassword){
+        await callFunction(functionToBeExecutedGlobal, msgPopupContentGlobal);
+
+        await backHomeProcess();
+
+        await clearAllInputs();
+    }else{
+        wrongPasswordSpan.style.display = "block";
+        
+        setTimeout(()=>{
+            wrongPasswordSpan.style.display = "none";
+        },10000);
+
+        confirmationPasswordInput.addEventListener("focus",()=>{
+            wrongPasswordSpan.style.display = "none";
+        })
+
+        return;
+    };
+}
+
+async function keyPressHandleListener(event){
+    if(event.key === "Enter"){
+        if(confirmationPasswordInput.value === confirmationPassword){            
+            await callFunction(functionToBeExecutedGlobal, msgPopupContentGlobal);
+
+            await backHomeProcess();
+
+            await clearAllInputs();
+        }else{
+            wrongPasswordSpan.style.display = "block";
+            
+            setTimeout(()=>{
+                wrongPasswordSpan.style.display = "none";
+            },10000);
+
+            confirmationPasswordInput.addEventListener("focus",()=>{
+                wrongPasswordSpan.style.display = "none";
+            })
+
+            return;
+        };  
+    }
+}
+
+async function verifyPasswordProcess(functionToBeExecuted, msgPopupContent){
+
+    functionToBeExecutedGlobal = functionToBeExecuted;
+    msgPopupContentGlobal = msgPopupContent;
+
     showConfirmationPopup();
 
-    // add event listerers on button
-    confirmationPopupBtn.addEventListener("click",async ()=>{
-        if(confirmationPasswordInput.value !== confirmationPassword){
-            wrongPasswordSpan.style.display = "block";
+    confirmationPopupBtn.removeEventListener("click", clickHandleListener);
+    confirmationPasswordInput.removeEventListener("keypress",keyPressHandleListener);
 
-            setTimeout(() => {
-                wrongPasswordSpan.style.display = "none";
-            }, 10000);
+    confirmationPopupBtn.addEventListener("click", clickHandleListener);
+    confirmationPasswordInput.addEventListener("keypress",keyPressHandleListener);
+};
 
-            confirmationPasswordInput.addEventListener("focus", () => {
-                wrongPasswordSpan.style.display = "none";
-            });
+async function callFunction(functionToBeExecuted, msgPopupContent){
+    console.log(functionToBeExecuted);
+    console.log(msgPopupContent);
+    
+    closeConfirmationPopup();
+
+    await functionToBeExecuted();
+
+    clients_equipaments_array.sort((a,b)=>{
+        if(a.name < b.name){
+            return -1;
         }
-
-        await functionToBeExecuted();
-
-        clients_equipaments_array.sort((a,b)=>{
-            if(a.name < b.name){
-                return -1;
-            }
     
-            if(a.name > b.name){
-                return 1; 
-            }
-    
-            return 0;
-        });
-
-        closeConfirmationPopup();
-
-        if(msgPopupContent !== undefined){
-            showMessagePopup("sucessMsg", msgPopupContent);
+        if(a.name > b.name){
+            return 1; 
         }
-
-        backHomeProcess();
-    })
-
-    confirmationPasswordInput.addEventListener("keypress", async (event)=>{
-        if (event.key === "Enter"){
-            if(confirmationPasswordInput.value !== confirmationPassword){
-                wrongPasswordSpan.style.display = "block";
     
-                setTimeout(() => {
-                    wrongPasswordSpan.style.display = "none";
-                }, 10000);
-    
-                confirmationPasswordInput.addEventListener("focus", () => {
-                    wrongPasswordSpan.style.display = "none";
-                });
-            }
-
-            await functionToBeExecuted();
-
-            clients_equipaments_array.sort((a,b)=>{
-                if(a.name < b.name){
-                    return -1;
-                }
-        
-                if(a.name > b.name){
-                    return 1; 
-                }
-        
-                return 0;
-            });
-    
-            closeConfirmationPopup();
-        }
+        return 0;
     });
 
+    if(msgPopupContent !== undefined){
+        showMessagePopup("sucessMsg", msgPopupContent);
+    }
 }
 
 closeConfirmationPopupBtn.addEventListener("click", ()=>{
-    closeConfirmationPopup()
+    closeConfirmationPopup();
 })
 
 // server message popup
@@ -362,8 +376,60 @@ const sendToServerBtn = document.querySelector("#send-to-server-btn");
 
 //event listerners
 
-sendToServerBtn.addEventListener("click", ()=>{
-    confirmationProcess(sendToServerProcess);
+sendToServerBtn.addEventListener("click", async ()=>{
+    let arrayFetched = await getClientsData();
+
+    let arrayFetched_clientsList = [];
+    let clients_equipaments_array_clientsList = [];
+
+    for(let i = 0 ; i < arrayFetched.length ; i++){
+        arrayFetched_clientsList.push(arrayFetched[i].name);
+    }
+
+    for(let i = 0 ; i < clients_equipaments_array.length ; i++){
+        clients_equipaments_array_clientsList.push(clients_equipaments_array[i].name);
+    }
+
+    if(clients_equipaments_array_clientsList > arrayFetched_clientsList ||clients_equipaments_array_clientsList < arrayFetched_clientsList ){
+        await verifyPasswordProcess(sendToServerProcess);
+        return;
+    }
+
+    for(let i = 0 ; i < clients_equipaments_array_clientsList ; i++){
+        if(arrayFetched_clientsList[i] !== clients_equipaments_array_clientsList){
+            await verifyPasswordProcess(sendToServerProcess);
+            return;
+        }
+    }
+
+    let arrayFetched_equipamentsList = [];
+    let clients_equipaments_array_equipamentsList = [];
+
+    arrayFetched.forEach((client)=>{
+        for(let i = 0 ; i < client.equipaments.length; i++){
+            arrayFetched_equipamentsList.push(client.equipaments[i]);
+        }
+    })
+
+    clients_equipaments_array.forEach((client)=>{
+        for(let i = 0 ;i < client.equipaments.length; i++){
+            clients_equipaments_array_equipamentsList.push(client.equipaments[i]);
+        }
+    })
+    
+    if(clients_equipaments_array_equipamentsList > arrayFetched_equipamentsList || clients_equipaments_array_equipamentsList < arrayFetched_equipamentsList){
+        await verifyPasswordProcess(sendToServerProcess);
+        return
+    }
+
+    for(let i = 0 ; i < clients_equipaments_array_equipamentsList ; i++){
+        if(clients_equipaments_array_equipamentsList[i] !== arrayFetched_equipamentsList[i]){
+            await verifyPasswordProcess(sendToServerProcess);
+            return;   
+        }
+    }
+
+    showServerMessagePopup("errorMsg","Dados já existentes ! Tente novamente !");
 })
 
 //add-client-section
@@ -413,15 +479,15 @@ async function addClientProcess(){
         showMessagePopup("errorMsg", "Cliente já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(addClientLogic , "Cliente adicionado com sucesso !");
+        await verifyPasswordProcess(addClientLogic , "Cliente adicionado com sucesso !");
     }
 }
 
 // event listerner
 
 addClientLink.addEventListener("click", ()=>{
+    backHomeProcess();
     showHtmlElement([addClientSection], "flex");
-
 })
 
 addClientBtn.addEventListener("click",async ()=>{
@@ -477,11 +543,12 @@ async function addEquipamentLogic(){
     equipamentName.trim();
 
     clients_equipaments_array.forEach((client)=>{
-        if(client.name === equipamentName){
+        if(client.name === addEquipament_clientSelectList.value){
             client.equipaments.push(equipamentName);
         }
-    })
+    });
 
+    console.log(equipamentName);
     console.log(clients_equipaments_array);
 
 };
@@ -511,8 +578,7 @@ async function addEquipamentProcess(){
         showMessagePopup("errorMsg","Equipamento já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(addEquipamentLogic,"Equipamento adicionado com sucesso !");
-        backHomeProcess();
+        await verifyPasswordProcess(addEquipamentLogic,"Equipamento adicionado com sucesso !");
     }
         
 }
@@ -520,6 +586,7 @@ async function addEquipamentProcess(){
 //event listeners
 
 addEquipamentLink.addEventListener("click", ()=>{
+    backHomeProcess();
     showHtmlElement([addEquipamentSection],"flex");
     createSelectListHtml_clients(addEquipament_clientSelectList);
 });
@@ -584,8 +651,7 @@ async function editClientProcess(){
         showMessagePopup("errorMsg","Cliente já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(editClientLogic,"Cliente editado com sucesso !");
-        backHomeProcess();
+        await verifyPasswordProcess(editClientLogic,"Cliente editado com sucesso !");
     }
         
 
@@ -593,6 +659,7 @@ async function editClientProcess(){
 
 //event listeners
 editClientLink.addEventListener("click", ()=>{
+    backHomeProcess();
     createSelectListHtml_clients(editClient_clientSelectList);
     showHtmlElement([editClientSection],"flex");
 })
@@ -716,8 +783,7 @@ async function editEquipamentProcess(){
         showMessagePopup("errorMsg","Equipamento já existente ! Tente novamente !");
         return;
     }else{
-        await confirmationProcess(editEquipamentLogic,"Equipamento editado com sucesso !");
-        backHomeProcess();
+        await verifyPasswordProcess(editEquipamentLogic,"Equipamento editado com sucesso !");
     }
 
 }
@@ -725,6 +791,7 @@ async function editEquipamentProcess(){
 // event listerners
 
 editEquipamentLink.addEventListener("click", ()=>{
+    backHomeProcess();
     showHtmlElement([editEquipamentSection],"flex");
     createSelectListHtml_clients(editEquipament_clientSelectList);
 })
@@ -780,13 +847,13 @@ async function deleteClientProcess(){
         return;
     }
     
-    await confirmationProcess(deleteClientLogic,"Cliente excluído com sucesso !");
-    backHomeProcess();
+    await verifyPasswordProcess(deleteClientLogic,"Cliente excluído com sucesso !");
 }
 
 // event listerners
 
 deleteClientLink.addEventListener("click", ()=>{
+    backHomeProcess();
     showHtmlElement([deleteClientSection],"flex");
     createSelectListHtml_clients(deleteClient_clientSelectList);
 })
@@ -829,14 +896,13 @@ async function deleteEquipamentProcess(){
         return
     };
 
-    await confirmationProcess(deleteEquipamentLogic,"Equipamento deletado com sucesso !");
-
-    backHomeProcess();
+    await verifyPasswordProcess(deleteEquipamentLogic,"Equipamento deletado com sucesso !");
 }
 
 // event listeners
 
 deleteEquipamentLink.addEventListener("click", ()=>{
+    backHomeProcess();
     showHtmlElement([deleteElementSection],"flex");
     createSelectListHtml_clients(deleteEquipament_clientSelectList)
 })
@@ -935,6 +1001,7 @@ async function consultClientProcess(){
 // event listeners
 
 consultClientLink.addEventListener("click", ()=>{
+    backHomeProcess();
     createSelectListHtml_clients(consultClient_clientSelecList);
     showHtmlElement([consultClientSection], "flex");
 }) 
