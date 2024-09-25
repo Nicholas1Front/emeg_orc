@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+
+/* back-customer-plataform-control */
+
+.back-customer-plataform-control{
+    position:absolute;
+    margin-left:-83%;
+    width:fit-content;
+    display: flex;
+    justify-content: center;
+    padding:8px;
+}
+
+/* header */
+
+header{
+    padding:12px 0;
+    width:100%;
+    background-color: #d61e1e;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:8px;
+}
+
+header img{
+    width:81px;
+    height:70px;
+}
+
+header h2{
+    margin-left:15px;
+    font-size:25px;
+}
