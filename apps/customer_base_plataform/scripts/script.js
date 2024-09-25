@@ -66,6 +66,62 @@ Initialize_clients_equipaments_array();
 //elements
 
 //functions
+async function verifyDataBeforeSend(){
+    let arrayFetched = await getClientsData();
+
+    let arrayFetched_clientsList = [];
+    let clients_equipaments_array_clientsList = [];
+
+    for(let i = 0 ; i < arrayFetched.length ; i++){
+        arrayFetched_clientsList.push(arrayFetched[i].name);
+    }
+
+    for(let i = 0 ; i < clients_equipaments_array.length ; i++){
+        clients_equipaments_array_clientsList.push(clients_equipaments_array[i].name);
+    }
+
+    if(clients_equipaments_array_clientsList > arrayFetched_clientsList ||clients_equipaments_array_clientsList < arrayFetched_clientsList ){
+        await verifyPasswordProcess(sendToServerProcess);
+        return;
+    }
+
+    for(let i = 0 ; i < clients_equipaments_array_clientsList ; i++){
+        if(arrayFetched_clientsList[i] !== clients_equipaments_array_clientsList){
+            await verifyPasswordProcess(sendToServerProcess);
+            return;
+        }
+    }
+
+    let arrayFetched_equipamentsList = [];
+    let clients_equipaments_array_equipamentsList = [];
+
+    arrayFetched.forEach((client)=>{
+        for(let i = 0 ; i < client.equipaments.length; i++){
+            arrayFetched_equipamentsList.push(client.equipaments[i]);
+        }
+    })
+
+    clients_equipaments_array.forEach((client)=>{
+        for(let i = 0 ;i < client.equipaments.length; i++){
+            clients_equipaments_array_equipamentsList.push(client.equipaments[i]);
+        }
+    })
+    
+    if(clients_equipaments_array_equipamentsList > arrayFetched_equipamentsList || clients_equipaments_array_equipamentsList < arrayFetched_equipamentsList){
+        await verifyPasswordProcess(sendToServerProcess);
+        return
+    }
+
+    for(let i = 0 ; i < clients_equipaments_array_equipamentsList ; i++){
+        if(clients_equipaments_array_equipamentsList[i] !== arrayFetched_equipamentsList[i]){
+            await verifyPasswordProcess(sendToServerProcess);
+            return;   
+        }
+    }
+
+    showServerMessagePopup("errorMsg","Dados já existentes ! Tente novamente !");
+}
+
 async function updateClientsData() {
     try {
         const response = await fetch('https://emeg-orc.onrender.com/update-data', { 
@@ -377,59 +433,7 @@ const sendToServerBtn = document.querySelector("#send-to-server-btn");
 //event listerners
 
 sendToServerBtn.addEventListener("click", async ()=>{
-    let arrayFetched = await getClientsData();
-
-    let arrayFetched_clientsList = [];
-    let clients_equipaments_array_clientsList = [];
-
-    for(let i = 0 ; i < arrayFetched.length ; i++){
-        arrayFetched_clientsList.push(arrayFetched[i].name);
-    }
-
-    for(let i = 0 ; i < clients_equipaments_array.length ; i++){
-        clients_equipaments_array_clientsList.push(clients_equipaments_array[i].name);
-    }
-
-    if(clients_equipaments_array_clientsList > arrayFetched_clientsList ||clients_equipaments_array_clientsList < arrayFetched_clientsList ){
-        await verifyPasswordProcess(sendToServerProcess);
-        return;
-    }
-
-    for(let i = 0 ; i < clients_equipaments_array_clientsList ; i++){
-        if(arrayFetched_clientsList[i] !== clients_equipaments_array_clientsList){
-            await verifyPasswordProcess(sendToServerProcess);
-            return;
-        }
-    }
-
-    let arrayFetched_equipamentsList = [];
-    let clients_equipaments_array_equipamentsList = [];
-
-    arrayFetched.forEach((client)=>{
-        for(let i = 0 ; i < client.equipaments.length; i++){
-            arrayFetched_equipamentsList.push(client.equipaments[i]);
-        }
-    })
-
-    clients_equipaments_array.forEach((client)=>{
-        for(let i = 0 ;i < client.equipaments.length; i++){
-            clients_equipaments_array_equipamentsList.push(client.equipaments[i]);
-        }
-    })
-    
-    if(clients_equipaments_array_equipamentsList > arrayFetched_equipamentsList || clients_equipaments_array_equipamentsList < arrayFetched_equipamentsList){
-        await verifyPasswordProcess(sendToServerProcess);
-        return
-    }
-
-    for(let i = 0 ; i < clients_equipaments_array_equipamentsList ; i++){
-        if(clients_equipaments_array_equipamentsList[i] !== arrayFetched_equipamentsList[i]){
-            await verifyPasswordProcess(sendToServerProcess);
-            return;   
-        }
-    }
-
-    showServerMessagePopup("errorMsg","Dados já existentes ! Tente novamente !");
+    await verifyDataBeforeSend();
 })
 
 //add-client-section
