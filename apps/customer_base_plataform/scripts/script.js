@@ -67,10 +67,8 @@ Initialize_clients_equipaments_array();
 
 //functions
 
-async function updateClientsDataProcess() {
+async function updateClientsData() {
     try {
-        showHtmlElement([overlayForLoading],"flex");
-
         const response = await fetch('https://emeg-orc.onrender.com/update-data', { 
             method: 'POST',
             headers: {
@@ -87,16 +85,32 @@ async function updateClientsDataProcess() {
         const result = await response.text();
 
         console.log('Dados atualizados com sucesso no backend e GitHub Pages:', result);
-        await showServerMessagePopup("successMsg", "Dados atualizados com sucesso!");
 
-        // Recarrega os dados atualizados do GitHub Pages
-        await getClientsData();
+        return true;
+
     } catch (error) {
-        await showMessagePopup("errorMsg", "Erro! Recarregue a página e tente novamente.");
         console.error('Erro:', error);
-    } finally {
-        hideHtmlElement([overlayForLoading]);
+        return false;
     }
+}
+
+async function sendToServerProcess(){
+    await showHtmlElement([overlayForLoading], "flex");
+
+    let result = await updateClientsData();
+
+    if(!result){
+        await hideHtmlElement([overlayForLoading]);
+        await showServerMessagePopup("errorMsg", "Erro ao enviar dados ! Tente novamente !")
+        return;
+    }
+
+    await hideHtmlElement([overlayForLoading]);
+    await showServerMessagePopup("sucessMsg", "Dados enviados com sucesso !");
+
+    clients_equipaments_array = await getClientsData();
+
+    await showMessagePopup("sucessMsg", "Dados atualizados com sucesso !");
 }
 
 //show and hide elements functions
@@ -169,6 +183,7 @@ function closeConfirmationPopup(){
 async function confirmationProcess(functionToBeExecuted, msgPopupContent){
     showConfirmationPopup();
 
+    // add event listerers on button
     confirmationPopupBtn.addEventListener("click",async ()=>{
         if(confirmationPasswordInput.value !== confirmationPassword){
             wrongPasswordSpan.style.display = "block";
@@ -198,7 +213,9 @@ async function confirmationProcess(functionToBeExecuted, msgPopupContent){
 
         closeConfirmationPopup();
 
-        showMessagePopup("sucessMsg", msgPopupContent);
+        if(msgPopupContent !== undefined){
+            showMessagePopup("sucessMsg", msgPopupContent);
+        }
 
         backHomeProcess();
     })
@@ -233,7 +250,8 @@ async function confirmationProcess(functionToBeExecuted, msgPopupContent){
     
             closeConfirmationPopup();
         }
-    })
+    });
+
 }
 
 closeConfirmationPopupBtn.addEventListener("click", ()=>{
@@ -345,7 +363,7 @@ const sendToServerBtn = document.querySelector("#send-to-server-btn");
 //event listerners
 
 sendToServerBtn.addEventListener("click", ()=>{
-    confirmationProcess(updateClientsDataProcess, "Dados atualizados com sucesso !");
+    confirmationProcess(sendToServerProcess);
 })
 
 //add-client-section
