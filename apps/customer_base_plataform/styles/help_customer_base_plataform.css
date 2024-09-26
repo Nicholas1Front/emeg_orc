@@ -13,6 +13,11 @@ div,section,header,footer{
     width:100%;
 }
 
+.container{
+    margin: 0 auto;
+    padding:0 2%;
+}
+
 /* back-customer-plataform-control */
 
 .back-customer-plataform-control{
@@ -101,6 +106,43 @@ header h2{
 .introduction-container > .title-container h4{
     font-size: 17px;
     font-weight: normal;
-    opacity:0.9;
     margin-top:4px;
+}
+
+/* system-summary-section */
+
+.system-summary-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.system-summary-section > .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.system-summary-section > .container > .title-container h2{
+    font-size:25px;
+}
+
+.system-summary-section > .container > .title-container h2 > .line{
+    width:11rem;
+    margin:2px 0;
+    margin-left:15%;
+    height:1.5px;
+    background-color: #d61e1e;
+}
+
+.system-summary-section > .container > .introduction-text-container{
+    margin:1rem 0;
+}
+
+.system-summary-section > .container > .introduction-text-container p{
+    font-size:17px;
+}
+
+.system-summary-section > .container > .introduction-text-container p > strong{
+    color:#d61e1e;
 }
