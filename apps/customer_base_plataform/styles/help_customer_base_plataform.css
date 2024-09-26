@@ -5,6 +5,14 @@
     font-family: "Roboto", sans-serif;
 }
 
+body{
+    max-width: 1920px;
+}
+
+div,section,header,footer{
+    width:100%;
+}
+
 /* back-customer-plataform-control */
 
 .back-customer-plataform-control{
@@ -12,15 +20,38 @@
     margin-left:-83%;
     width:fit-content;
     display: flex;
+    align-items: center;
     justify-content: center;
     padding:8px;
+}
+
+.back-customer-plataform-control a{
+    text-decoration: none;
+    color:#dedede;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.back-customer-plataform-control a:hover{
+    transition: 0.2s;
+    color:#fff;
+}
+
+.back-customer-plataform-control a > i {
+    font-size:30px;
+}
+
+.back-customer-plataform-control a > span{
+    font-size:12px;
+    padding-top:6px;
 }
 
 /* header */
 
 header{
     padding:12px 0;
-    width:100%;
     background-color: #d61e1e;
     color: #fff;
     display: flex;
@@ -37,4 +68,39 @@ header img{
 header h2{
     margin-left:15px;
     font-size:25px;
+}
+
+/* introduction-section */
+
+.introduction-section{
+    width:100%;
+    margin:5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.introduction-container > .title-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.introduction-container > .title-container h2{
+    font-size: 35px;
+}
+
+.introduction-container > .title-container h2 > .line{
+    width:11rem;
+    margin:2px 0;
+    margin-left:75%;
+    height:1.5px;
+    background-color: #d61e1e;
+}
+
+.introduction-container > .title-container h4{
+    font-size: 17px;
+    font-weight: normal;
+    opacity:0.9;
+    margin-top:4px;
 }
