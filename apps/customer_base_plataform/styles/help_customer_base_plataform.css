@@ -13,6 +13,11 @@ div,section,header,footer{
     width:100%;
 }
 
+p{
+    font-size: 17px;
+    font-weight:300;
+}
+
 .container{
     margin: 0 auto;
     padding:0 2%;
@@ -75,9 +80,9 @@ header h2{
     font-size:25px;
 }
 
-/* introduction-section */
+/* title-section */
 
-.introduction-section{
+.title-section{
     width:100%;
     margin:5rem 0;
     display: flex;
@@ -85,17 +90,17 @@ header h2{
     align-items: center;
 }
 
-.introduction-container > .title-container{
+.title-section > .container > .title-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.introduction-container > .title-container h2{
+.title-section > .container > .title-container h2{
     font-size: 35px;
 }
 
-.introduction-container > .title-container h2 > .line{
+.title-section > .container > .title-container h2 > .line{
     width:11rem;
     margin:2px 0;
     margin-left:75%;
@@ -103,31 +108,32 @@ header h2{
     background-color: #d61e1e;
 }
 
-.introduction-container > .title-container h4{
+.title-section > .container > .title-container h4{
     font-size: 17px;
     font-weight: normal;
     margin-top:4px;
 }
 
-/* system-summary-section */
+/* introduction-usage-system-section */
 
-.system-summary-section{
+.introduction-usage-system-section{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom:1.5rem;
 }
 
-.system-summary-section > .container{
+.introduction-usage-system-section > .container{
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.system-summary-section > .container > .title-container h2{
+.introduction-usage-system-section > .container > .title-container h2{
     font-size:25px;
 }
 
-.system-summary-section > .container > .title-container h2 > .line{
+.introduction-usage-system-section > .container > .title-container h2 > .line{
     width:11rem;
     margin:2px 0;
     margin-left:15%;
@@ -135,14 +141,56 @@ header h2{
     background-color: #d61e1e;
 }
 
-.system-summary-section > .container > .introduction-text-container{
+.introduction-usage-system-section > .container > p{
     margin:1rem 0;
 }
 
-.system-summary-section > .container > .introduction-text-container p{
-    font-size:17px;
+.introduction-usage-system-section > .container > p > strong{
+    color:#d61e1e;
 }
 
-.system-summary-section > .container > .introduction-text-container p > strong{
-    color:#d61e1e;
+/* actions-system-section */
+
+.actions-system-section{
+    background-color: #d61e1e;
+    color: #fff;
+}
+
+.actions-system-section > .container > .items-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:3rem 0;
+}
+
+.actions-system-section > .container h3{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    padding-top:2rem;
+}
+
+.actions-system-section > .container > .items-container > .item-control{
+    width:25%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.actions-system-section > .container > .items-container > .item-control i{
+    font-size:60px;
+}
+
+.actions-system-section > .container > .items-container > .item-control h3{
+    padding:10px 0;
+    font-size:23px;
+}
+
+.actions-system-section > .container > .items-container > .item-control p{
+    text-align: center;
+}
+
+.actions-system-section > .container > .items-container > .item-control p > subline{
+    text-decoration: underline;
 }
