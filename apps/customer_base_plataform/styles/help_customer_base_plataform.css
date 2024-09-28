@@ -243,3 +243,64 @@ header h2{
 }
 
 /* basic-steps-section */
+
+.basic-steps-section{
+    margin: 4rem 0;
+}
+
+.basic-steps-section > .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.basic-steps-section > .container > .step-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:1rem 0;
+}
+
+.basic-steps-section > .container > .step-container > .step-control{
+    width:55%;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000;
+    border-radius:15px;
+}
+
+.basic-steps-section > .container > .step-container > .step-control h3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    border-radius:50px;
+    padding:6px 2rem;
+    margin:1.5rem 0;
+    background-color: #d61e1e;
+    color:#000;
+}
+
+.basic-steps-section > .container > .step-container > .step-control h3 > i{
+    font-size:30px;
+}
+
+.basic-steps-section > .container > .step-container > .step-control p{
+    margin-bottom:1.5rem;
+    color:#fff;
+    text-align: center;
+}
+
+.basic-steps-section > .container > .arrow-symbol-container{
+    margin:1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.basic-steps-section > .container > .arrow-symbol-container i{
+    font-size:35px;
+    color: #d61e1e;
+}
