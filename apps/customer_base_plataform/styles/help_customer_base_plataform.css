@@ -200,58 +200,32 @@ header h2{
     text-decoration: underline;
 }
 
-/* password-system-section */
-
-.password-system-section{
-    margin:4rem 0;
-}
-
-.password-system-section > .container {
-    display: flex;
-    justify-content: center;
-    align-items:center;
-}
-
-.password-system-section > .container > .text-container{
-    width:50%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.password-system-section > .container > .text-container h3{
-    font-size:25px;
-    padding: 5px 16px 5px 2px;
-    margin-bottom:1rem;
-    background-color: #d61e1e;
-}
-
-.password-system-section > .container > .text-container p{
-    margin-bottom:1rem;
-}
-
-.password-system-section > .container > .image-container{
-    width:50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.password-system-section > .container > .image-container img{
-    width:75%;
-    border-radius: 15px;
-}
-
 /* basic-steps-section */
 
 .basic-steps-section{
-    margin: 4rem 0;
+    margin: 3rem 0;
 }
 
 .basic-steps-section > .container{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.basic-steps-section > .container > .text-container h2{
+    font-size: 25px;
+}
+
+.basic-steps-section > .container > .text-container h2 > .line{
+    width:11rem;
+    margin:2px 0;
+    margin-left:15%;
+    height:1.5px;
+    background-color: #d61e1e;
+}
+
+.basic-steps-section > .container > .text-container p{
+    margin:1rem 0;
 }
 
 .basic-steps-section > .container > .step-container{
@@ -303,4 +277,62 @@ header h2{
 .basic-steps-section > .container > .arrow-symbol-container i{
     font-size:35px;
     color: #d61e1e;
+}
+
+/* password-system-section */
+
+.password-system-section{
+    padding:4rem 0;
+    background-color: #dedede;
+}
+
+.password-system-section > .container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.password-system-section > .container > .text-container{
+    width:50%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.password-system-section > .container > .text-container h3{
+    font-size:25px;
+    padding: 5px 16px 5px 2px;
+    margin-bottom:1rem;
+    background-color: #d61e1e;
+}
+
+.password-system-section > .container > .text-container p{
+    margin-bottom:1rem;
+}
+
+.password-system-section > .container > .image-container{
+    width:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-system-section > .container > .image-container img{
+    width:75%;
+    border-radius: 15px;
+    box-shadow: 0px 1px 13px 8px #000000;
+}
+
+/* error-msg-section */
+
+.error-msg-section > .container > .text-container h3{
+    font-size:25px;
+    padding: 5px 16px 5px 2px;
+    margin-bottom:1rem;
+    background-color: #d61e1e;
+    width:fit-content;
+}
+
+.error-msg-section > .container > .text-container p{
+    margin:1rem 0;
 }
