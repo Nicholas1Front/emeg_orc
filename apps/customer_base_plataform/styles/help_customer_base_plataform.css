@@ -325,14 +325,45 @@ header h2{
 
 /* error-msg-section */
 
-.error-msg-section > .container > .text-container h3{
+.error-msg-section{
+    margin-top:2rem;
+}
+
+.error-msg-section > .container > .title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-msg-section > .container > .title-container h3{
     font-size:25px;
-    padding: 5px 16px 5px 2px;
+    padding: 8px 3rem;
     margin-bottom:1rem;
+    border-radius:50px;
     background-color: #d61e1e;
     width:fit-content;
 }
 
 .error-msg-section > .container > .text-container p{
     margin:1rem 0;
+    text-align: center;
+}
+
+.error-msg-section > .container > .image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:1rem 0;
+}
+
+.error-msg-section > .container > .image-container > .image-control{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-msg-section > .container > .image-container > .image-control img{
+    width:85%;
 }

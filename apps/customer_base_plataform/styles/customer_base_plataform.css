@@ -279,7 +279,7 @@ button{
 /* message-popup */
 
 .message-popup{
-    background-color: #000;
+    background-color: #d61e1e;
     position: fixed;
     display:none;
     width:30%;
