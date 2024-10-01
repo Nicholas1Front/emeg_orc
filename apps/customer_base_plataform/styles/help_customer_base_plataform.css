@@ -354,7 +354,7 @@ header h2{
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin:1rem 0;
+    margin:2rem 0;
 }
 
 .error-msg-section > .container > .image-container > .image-control{
@@ -366,4 +366,13 @@ header h2{
 
 .error-msg-section > .container > .image-container > .image-control img{
     width:85%;
+    border-radius:25px;
+}
+
+#msg-popup-screenshot-img{
+    box-shadow: 0px 1px 13px 8px #d61e1e;
+}
+
+#server-message-screenshot-img{
+    box-shadow: 0px 1px 13px 8px #0364b3;
 }
