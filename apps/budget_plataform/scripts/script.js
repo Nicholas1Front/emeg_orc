@@ -2,7 +2,7 @@
 // clients_equipaments.json
 async function getClientsData(){
     try{
-        const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/data/clients_equipaments.json");
+        const response = await fetch("https://nicholas1front.github.io/emeg_orc/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
 
         if (!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
@@ -19,15 +19,6 @@ async function getClientsData(){
 }
 
 //budget-production
-
-//popup
-
-//event listeners
-
-/*window.addEventListener('beforeunload' , (event)=>{
-    event.preventDefault();
-    event.returnValue = '';
-}); */
 
 //header
 

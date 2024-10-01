@@ -7,7 +7,7 @@
 #budget-finished{
     max-width: 210mm; 
     margin : 0 auto;
-    display: block;
+    display: none;
     font-size: 12pt;
 }
 

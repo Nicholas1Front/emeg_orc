@@ -414,6 +414,8 @@ button{
 
 .back-home-control{
     margin-left:1rem;
+    display: flex;
+    align-items: center;
 }
 
 .back-home-control > button{
@@ -435,6 +437,10 @@ button{
 
 .back-home-control > button > i{
     margin-right:7px;
+}
+
+.back-home-control > h3{
+    margin-left:5px;
 }
 
 .add-client-container > .title-container{

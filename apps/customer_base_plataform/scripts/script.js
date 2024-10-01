@@ -365,7 +365,7 @@ async function showServerMessagePopup(messageType, messageSpan){
 //event listeners
 
 closeServerMessagePopupBtn.addEventListener("click",()=>{
-    hideHtmlElement(serverMessagePopup);
+    hideHtmlElement([serverMessagePopup]);
 })
 
 //message popup
@@ -1007,6 +1007,7 @@ async function consultClientProcess(){
 consultClientLink.addEventListener("click", ()=>{
     backHomeProcess();
     createSelectListHtml_clients(consultClient_clientSelecList);
+    hideHtmlElement([resultConsultContainer]);
     showHtmlElement([consultClientSection], "flex");
 }) 
 
