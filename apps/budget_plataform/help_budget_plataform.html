@@ -100,7 +100,7 @@
             <div class="text-container">
                 <p>Basicamente o conjunto de itens mais importantes em um orçamento, e neste sistema esta dividido da seguinte forma : Peças que serão ou que foram aplicadas e Serviços que serão ou foram executados.</p>
 
-                <p>Neste sistema tanto as peças quanto os serviços são adicionados em forma de itens pelo sistema, no qual esses itens precisam ter obrigatoriamente : </p>
+                <p>Neste sistema tanto as peças quanto os serviços são adicionados em forma de itens pelo sistema, no qual esses mesmos itens precisam ter Quantidade , Descrição e Valor Unitário</p>
             </div>
 
             <div class="steps-container">
@@ -110,7 +110,7 @@
                         Quantidade
                     </h3>
 
-                    <p>Seja para adicionar uma peça ou um serviço é estritamente necessário descrever a quantidade de peças ou de serviços que estão sendo ou foram aplicados</p>
+                    <p>Seja para adicionar uma peça ou um serviço é estritamente necessário descrever a quantidade de peças ou de serviços que estão sendo ou foram aplicados. O formato aceito pelo campo de Quantidade são somente números inteiros.</p>
                 </div>
                 <div class="arrow-control">
                     <i class="fa-regular fa-circle-right"></i>
@@ -132,10 +132,41 @@
                 <div class="step-control">
                     <h3>
                         <i class="fa-solid fa-money-check-dollar"></i>
-                        Preço
+                        Valor unitário
                     </h3>
                 
-                    <p>No quesito preço o sistema irá esperar somente o formato monetário no campo "Valor Unitário", ou seja, o sistema irá aceitar somente o formato com números e virgula. O valor Total é calculado a partir da multiplação da quantidade pelo valor unitário </p>
+                    <p>No campo Valor Unitário o sistema irá por um dado em formato monetário, ou seja, o sistema irá aceitar somente o formato com números e virgula. O Valor Total é calculado a partir da multiplação da quantidade pelo valor unitário </p>
+                </div>
+            </div>
+
+            <div class="text-container">
+                <p>Se todos os dados estão corretos ao clicar no botão "Adicionar item" o sistema adicionará as informações sejam de peças aplicadas ou de serviços executados, entretanto se algum dado esitver faltando o sistema não irá prosseguir devido a falta de informações e será apresentada uma mensagem de erro.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="added-items-section">
+        <div class="container">
+            <div class="text-container">
+                <h3>
+                    Controle de itens
+                </h3>
+
+                <p>Após o botão "Adicionar item" ser clicado , sejam para Peças ou para Serviços, o sistema irá adiocionar essa informações em um item, onde o mesmo ficará a mostra no orçamento.</p>
+                <p>Dentro de cada item irão existir dois botões de controle que servem para o manuseio e edição de cada item. A função de cada um desses botões está especificada ao lado.</p>
+            </div>
+
+            <div class="edit-or-delete-container">
+                <div class="edit-control">
+
+                    <span>
+                        <i class="fa-solid fa-pen"></i>
+                    </span>
+
+                </div>
+
+                <div class="delete-control">
+
                 </div>
             </div>
         </div>

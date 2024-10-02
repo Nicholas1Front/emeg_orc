@@ -234,15 +234,37 @@ header h2{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin:0.5rem 0;
+    padding:3rem 0;
 }
 
 .parts-services-section > .container > .steps-container > .step-control{
     width:30%;
+    padding:1rem 1.5rem;
+    border-radius:25px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #d61e1e;
+}
+
+.parts-services-section > .container > .steps-container > .step-control h3{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    background-color: #000;
+    color: #d61e1e;
+    padding:5px 3rem;
+    border-radius:50px;
+    font-size:20px;
+}
+
+.parts-services-section > .container > .steps-container > .step-control h3 > i {
+    font-size:30px;
+    padding-bottom:2px;
+}
+
+.parts-services-section > .container > .steps-container > .step-control p{
+    padding-top:1rem;
 }
 
 .parts-services-section > .container > .steps-container > .arrow-control{
@@ -250,4 +272,34 @@ header h2{
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 30px;
+}
+
+/* added-items-section */
+
+.added-items-section{
+    margin:4rem 0;
+}
+
+.added-items-section > .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.added-items-section > .container > .text-container{
+    width:50%;
+}
+
+.added-items-section > .container > .text-container h3{
+    width: fit-content;
+    font-size: 25px;
+    padding: 5px 16px;
+    margin-bottom:1rem;
+    background-color: #d61e1e;
+}
+
+.added-items-section > .container > .edit-or-delete-container{
+    width:50%;
 }
