@@ -201,3 +201,53 @@ header h2{
     padding: 6px 2rem;
     margin:1.5rem 0;
 }
+
+.data-fill-section > .container > .field-usage-container > .field-usage-control h3 > i{
+    font-size:30px;
+    padding-bottom:2px;
+}
+
+/* parts-services-section */
+
+.parts-services-section{
+    margin:2rem 0;
+}
+
+.parts-services-section > .container > .title-container{
+    display: flex;
+    justify-content: center;
+}
+
+.parts-services-section > .container > .title-container h3{
+    font-size:25px;
+}
+
+.parts-services-section > .container > .title-container h3 > .line{
+    width:7rem;
+    margin:2px 0;
+    margin-left:70%;
+    height:1.5px;
+    background-color: #d61e1e;
+}
+
+.parts-services-section > .container > .steps-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:0.5rem 0;
+}
+
+.parts-services-section > .container > .steps-container > .step-control{
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #d61e1e;
+}
+
+.parts-services-section > .container > .steps-container > .arrow-control{
+    width:5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
