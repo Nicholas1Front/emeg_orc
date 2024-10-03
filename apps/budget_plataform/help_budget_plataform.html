@@ -101,6 +101,8 @@
                 <p>Basicamente o conjunto de itens mais importantes em um orçamento, e neste sistema esta dividido da seguinte forma : Peças que serão ou que foram aplicadas e Serviços que serão ou foram executados.</p>
 
                 <p>Neste sistema tanto as peças quanto os serviços são adicionados em forma de itens pelo sistema, no qual esses mesmos itens precisam ter Quantidade , Descrição e Valor Unitário</p>
+
+                <p>Se todos os dados estão corretos ao clicar no botão "Adicionar item" o sistema adicionará as informações sejam de peças aplicadas ou de serviços executados, entretanto se algum dado esitver faltando o sistema não irá prosseguir devido a falta de informações e será apresentada uma mensagem de erro.</p>
             </div>
 
             <div class="steps-container">
@@ -139,18 +141,17 @@
                 </div>
             </div>
 
-            <div class="text-container">
-                <p>Se todos os dados estão corretos ao clicar no botão "Adicionar item" o sistema adicionará as informações sejam de peças aplicadas ou de serviços executados, entretanto se algum dado esitver faltando o sistema não irá prosseguir devido a falta de informações e será apresentada uma mensagem de erro.</p>
-            </div>
         </div>
     </section>
 
     <section class="added-items-section">
         <div class="container">
             <div class="text-container">
-                <h3>
-                    Controle de itens
-                </h3>
+                <div class="title-container">
+                    <h3>
+                        Controle de itens
+                    </h3>
+                </div>
 
                 <p>Após o botão "Adicionar item" ser clicado , sejam para Peças ou para Serviços, o sistema irá adiocionar essa informações em um item, onde o mesmo ficará a mostra no orçamento.</p>
                 <p>Dentro de cada item irão existir dois botões de controle que servem para o manuseio e edição de cada item. A função de cada um desses botões está especificada ao lado.</p>
@@ -163,11 +164,43 @@
                         <i class="fa-solid fa-pen"></i>
                     </span>
 
+                    <p>Quando clicado o <b>botão Editar <i class="fa-solid fa-pen"></i> </b>  pegará os dados do respectivo item e colocará de volta nos campos de dados a saber Quantidade, Descrição e Valor unitário. </p>
+
                 </div>
 
                 <div class="delete-control">
+                    <span>
+                        <i class="fa-solid fa-trash"></i>
+                    </span>
 
+                    <p>Como esperado quando o <b>botão Excluir <i class="fa-solid fa-trash"></i></b> é clicado as informações que existem no item em questão são deletadas, por isso o uso desta funcionalidade exige atenção redobrada.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="all-totals-section">
+        <div class="container">
+            <div class="text-container">
+                <h3>
+                    Valores totais do orçamento
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </h3>
+
+                <p>Na adição, remoção ou edição de um item o valor total do orçamento é alterado e atualizado em sua exibição. Tendo em vista a estrutura de produção de orçamento este sistema possui algumas sessões que exibem valores totais sendo estas : Valor total das peças aplicadas , Valor total dos serviços executados e por fim Valor total do orçamento sendo que esta ultima engloba os serviços executados e as peças aplicadas.</p>
+            </div>
+
+            <div class="image-container">
+                <img src="../../assets/images/total-value-screenshot.png" />
+            </div>
+
+            <div class="text-container">
+                <h3>
+                    Observações gerais
+                    <i class="fa-solid fa-file-lines"></i>
+                </h3>
+
+                <p>A parte de Observações gerais do sistema de criação de orçamentos se dedica a exibir observações adicionais que podem ser colocadas neste campo. Não é obrigatório seu preenchimento porém é sempre importante manter o orçamento mais preciso e especificado possivel</p>
             </div>
         </div>
     </section>

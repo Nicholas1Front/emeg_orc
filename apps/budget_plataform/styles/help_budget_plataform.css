@@ -290,9 +290,18 @@ header h2{
 
 .added-items-section > .container > .text-container{
     width:50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.added-items-section > .container > .text-container h3{
+.added-items-section > .container > .text-container > .title-container{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.added-items-section > .container > .text-container > .title-container h3{
     width: fit-content;
     font-size: 25px;
     padding: 5px 16px;
@@ -300,6 +309,100 @@ header h2{
     background-color: #d61e1e;
 }
 
+.added-items-section > .container > .text-container p{
+    margin:0.8rem 0;
+}
+
 .added-items-section > .container > .edit-or-delete-container{
     width:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.added-items-section > .container > .edit-or-delete-container > div{
+    width:70%;
+    border-radius:25px;
+    text-align: center;
+    padding:1rem 2rem;
+}
+
+.added-items-section > .container > .edit-or-delete-container > div > span{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom:1rem;
+}
+
+.added-items-section > .container > .edit-or-delete-container > .edit-control{
+    background-color: #0079dc;
+    color: #fff;
+    margin:1rem 0;
+}
+
+.added-items-section > .container > .edit-or-delete-container > .edit-control span > i{
+    background-color: #fff;
+    color:#0079dc;
+    border-radius:50px;
+    font-size:20px;
+    padding:10px 20px;
+}
+
+.added-items-section > .container > .edit-or-delete-container > .delete-control{
+    background-color: #d61e1e;
+    color:#fff;
+    margin:1rem 0;
+}
+
+.added-items-section > .container > .edit-or-delete-container > .delete-control span > i{
+    background-color: #fff;
+    color:#d61e1e;
+    border-radius:50px;
+    font-size:20px;
+    padding:10px 20px;
+}
+
+/* all-totals-section */
+
+.all-totals-section{
+    padding-bottom:4rem;
+    background-color: #d61e1e;
+    color: #fff;
+}
+
+.all-totals-section > .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.all-totals-section > .container > .text-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.all-totals-section > .container > .text-container h3{
+    font-size: 25px;
+    margin:2rem 0; 
+    width: fit-content;
+    font-size: 25px;
+    padding: 5px 16px;
+    background-color: #fff;
+    color:#d61e1e;  
+}
+
+.all-totals-section > .container > .image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:3rem 0;
+}
+
+.all-totals-section > .container > .image-container img{
+    width:80%;
+    border-radius:25px;
 }
