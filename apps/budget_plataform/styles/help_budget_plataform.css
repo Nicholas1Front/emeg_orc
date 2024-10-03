@@ -410,7 +410,7 @@ header h2{
 /* generate-budget-section */
 
 .generate-budget-section{
-    margin:4rem 0;
+    margin-bottom:4rem;
 }
 
 .generate-budget-section > .container{
@@ -418,3 +418,80 @@ header h2{
     flex-direction: column;
     align-items: center;
 }
+
+.generate-budget-section > .container > .title-container{
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:25px;
+}
+
+.generate-budget-section > .container > .title-container > .line{
+    width:5rem;
+    height:1px;
+    background-color: #d61e1e;
+    margin:0 0.5rem;
+}
+
+.generate-budget-section > .container > .text-container p{
+    margin:1rem 0;
+}
+
+.generate-budget-section > .container > .steps-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap:wrap;
+    margin:2rem 0;
+}
+
+.generate-budget-section > .container > .steps-container > .step-control{
+    width:40%;
+    border-radius:25px;
+    padding:0 1.5rem; 
+    margin:1rem 1.5rem;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+.generate-budget-section > .container > .steps-container > .step-control > .title-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding-top:1rem;
+}
+
+.generate-budget-section > .container > .steps-container > .step-control > .title-container h3{
+    font-size:20px;
+    padding:10px 20px;
+    border-radius:50px;
+    background-color: #d61e1e;
+    color:#fff;
+    width:fit-content;
+}
+
+.generate-budget-section > .container > .steps-container > .step-control > .line-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:1rem 0;
+}
+
+.generate-budget-section > .container > .steps-container > .step-control > .line-container > .line{
+    width:75%;
+    height:1px;
+    background-color: #d61e1e;
+}
+
+.generate-budget-section > .container > .steps-container > .step-control > .text-container{
+    padding-bottom:1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
