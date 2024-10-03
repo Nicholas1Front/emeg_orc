@@ -406,3 +406,15 @@ header h2{
     width:80%;
     border-radius:25px;
 }
+
+/* generate-budget-section */
+
+.generate-budget-section{
+    margin:4rem 0;
+}
+
+.generate-budget-section > .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
