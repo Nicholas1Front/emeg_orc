@@ -17,7 +17,7 @@ app.use(cors());
 // Variáveis de ambiente para GitHub
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = 'Nicholas1Front';
-const REPO_NAME = 'emeg_orc';
+const REPO_NAME = 'emeg_system';
 const FILE_PATH = 'apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json'; // Caminho correto do arquivo no repositório
 const BRANCH = 'main';
 
@@ -68,7 +68,7 @@ app.post('/update-data', async (req, res) => {
 
         while (!isUpdated && attempts < maxAttempts) {
             await new Promise(r => setTimeout(r, 5000)); // Espera 5 segundos antes de verificar novamente
-            const githubPagesResponse = await axios.get(`https://nicholas1front.github.io/emeg_orc/${FILE_PATH}`);
+            const githubPagesResponse = await axios.get(`https://nicholas1front.github.io/emeg_system/${FILE_PATH}`);
             const currentContent = await githubPagesResponse.data;
 
             if (JSON.stringify(currentContent) === JSON.stringify(clients_equipaments_array)) {

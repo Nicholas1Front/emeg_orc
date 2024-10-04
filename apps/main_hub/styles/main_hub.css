@@ -90,6 +90,11 @@
     transition: 0.2s;
 }
 
+.coming-soon{
+    opacity: 0.8;
+    cursor:not-allowed;
+}
+
 .app-link-container:hover{
     background-color: #d61e1e;
     transition:0.2s;
