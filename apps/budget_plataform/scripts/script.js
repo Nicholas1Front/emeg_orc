@@ -159,7 +159,7 @@ function showPopupMsg(message , messageType ){
     msgSpan.innerText = message;
 
     if(messageType === "errorMsg"){
-        msgControl.style.backgroundColor = "#000";//black color
+        msgControl.style.backgroundColor = "##d61e1e";//red color
         msgControl.style.color = "white"; 
         closeMsgBtn.style.color = "white";
     }else if (messageType === "adviceMsg"){
@@ -178,7 +178,7 @@ function showPopupMsg(message , messageType ){
 
     setTimeout(() => {
         closePopupMsg();
-    }, 4000);
+    }, 6000);
 
 }
 
