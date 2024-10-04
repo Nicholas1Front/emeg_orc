@@ -18,8 +18,7 @@ p{
     font-weight:300;
 }
 
-redbold{
-    color: #d61e1e;
+strong{
     font-weight: 700;
 }
 
@@ -230,6 +229,10 @@ header h2{
     background-color: #d61e1e;
 }
 
+.parts-services-section > .container > .text-container p{
+    margin:1rem 0;
+}
+
 .parts-services-section > .container > .steps-container{
     display:flex;
     justify-content: center;
@@ -409,10 +412,6 @@ header h2{
 
 /* generate-budget-section */
 
-.generate-budget-section{
-    margin-bottom:4rem;
-}
-
 .generate-budget-section > .container{
     display: flex;
     flex-direction: column;
@@ -495,3 +494,43 @@ header h2{
     text-align: center;
 }
 
+/* error-msg-section */
+
+.error-msg-section{
+    background-color: #dedede;
+    padding:3rem 0;
+}
+
+.error-msg-section > .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-msg-section > .container > .text-container{
+    width:50%;
+}
+
+.error-msg-section > .container > .text-container h3{
+    margin-bottom:1rem;
+    width: fit-content;
+    font-size: 25px;
+    padding: 5px 16px;
+    background-color: #d61e1e;
+}
+
+.error-msg-section > .container > .text-container p{
+    padding:0.7rem 0;
+}
+
+.error-msg-section > .container > .image-container{
+    width:50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding:1rem 0;
+}
+
+.error-msg-section > .container > .image-container img{
+    border-radius:25px;
+}
