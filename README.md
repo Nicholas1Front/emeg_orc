@@ -1,2 +1,6 @@
 # emeg_orc
-Web application created to make quotes, running locally, using HTML, CSS and Javascript.
+Todo este repositorio se trata de um conjunto de sistemas que são ferramentas da empresa EMEG Guindaste. Em suma planejam desenvolver 5 projetos dentro deste repositório :
+
+    - Criação de orçamentos (já desenvolvido)
+    - Controle de clientes (já desenvolvido)
+    - 
