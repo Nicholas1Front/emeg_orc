@@ -1,44 +1,71 @@
-# emeg_system
-Todo este repositorio se trata de um conjunto de sistemas que são ferramentas da empresa EMEG Guindaste. Em suma planeja-se desenvolver 5 projetos dentro deste repositório :
+# Emeg System
 
-## Hub principal de apps (já desenvolvido)
-Apenas um hub que concentra todos os apps / sistemas deste repositório
+Este repositório contém um conjunto de sistemas desenvolvidos como ferramentas para a empresa **EMEG Guindaste**. Ao todo, planeja-se desenvolver 5 projetos dentro deste repositório, voltados para diferentes necessidades operacionais da empresa.
 
-## Criação de orçamentos (já desenvolvido)
-Sistema desenvolvido para criar orçamentos usando informações dos clientes cadastrados, controle de itens e outras funcionalidades como salvamento em HTML ou PDF. Para mais informações acessar [Ajuda com criação de orçamentos](https://nicholas1front.github.io/emeg_system/apps/budget_plataform/help_budget_plataform.html).
+## Projetos Desenvolvidos
 
-## Controle de clientes (já desenvolvido)
-Sistema desenvolvido para controle da informações dos clientes cadastrados , onde esse controle inclui **adição, edição e exclusão de dados**. Este sistema conta com um servidor web que atuando em conjunto com o Render atualiza os dados em `clients_equipaments.json` fazendo commit e push dos novos dados através da API do Github.
+### 1. **Hub Principal de Apps** (já desenvolvido)
+Um sistema simples que funciona como um **hub** para concentrar todos os sistemas e ferramentas deste repositório.
 
-Para mais informações acessar [Ajuda com controle de clientes](https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/help_customer_base_plataform.html)
+### 2. **Criação de Orçamentos** (já desenvolvido)
+Ferramenta destinada à criação de orçamentos, utilizando informações dos clientes cadastrados. Ela oferece funcionalidades como controle de itens, geração de orçamentos em formato HTML ou PDF.
 
+- [Ajuda com Criação de Orçamentos](https://nicholas1front.github.io/emeg_system/apps/budget_plataform/help_budget_plataform.html)
 
-    - Controle de estoque (em breve)
-    - Controle de funcionários (em breve)
-    - Tabela de preços (em breve)
+### 3. **Controle de Clientes** (já desenvolvido)
+Sistema para gerenciar as informações dos clientes. As funcionalidades incluem a **adição, edição e exclusão de dados de clientes**. Através de um servidor web integrado ao **Render**, o sistema faz commit e push dos dados no arquivo `clients_equipaments.json` usando a API do GitHub.
 
-# Como instalar e como usar
-Em suma estes sistema foram e estão sendo projetados para serem usados através de download pelo menos das páginas em HTML, porém também existe uma outra maneira de acessar que é pelo Github Pages através dos links abaixo :
-    
-- [Hub principal de apps](https://nicholas1front.github.io/emeg_system/apps/main_hub/main_hub.html)
-- [Criação de orçamentos](https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/customer_base_plataform.html)
-- [Controle de clientes](https://nicholas1front.github.io/emeg_system/apps/budget_plataform/budget_plataform.html)
+- [Ajuda com Controle de Clientes](https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/help_customer_base_plataform.html)
 
-# Como foi desenvolvido e projetado ?
-Este conjunto de sistemas projetado para atender a demanda especifica de serviços e clientes da empresa EMEG Guindaste, sendo um sistema relativamente simples de entender. Cada sistema foi desenvolvido com auxilio dessas tecnologias :
+### 4. **Controle de Estoque** (em breve)
+Um sistema para gerenciar o estoque de equipamentos e materiais.
 
-- HTML
-- CSS
-- Javascript
-- Axios
-- Github API e Github Pages
-- Render (para o servidor backend Controle de clientes)
-- Photoshop (para edição de imagens)
+### 5. **Controle de Funcionários** (em breve)
+Sistema para gerenciar o cadastro e informações dos funcionários da empresa.
 
-Fora essas, outras ferramentas foram usadas como **Font Awesome e Google Fonts**
+### 6. **Tabela de Preços** (em breve)
+Sistema para manter e consultar uma tabela de preços dos serviços e equipamentos oferecidos.
 
-# Como Contribuir
-1. Faça o fork do projeto.
-2. Crie um branch para suas alterações: `git checkout -b feature/nova-funcionalidade`.
-3. Envie suas mudanças: `git push origin feature/nova-funcionalidade`.
-4. Abra um pull request.
+## Como Instalar e Usar
+
+Esses sistemas foram projetados para serem utilizados por meio de download das páginas em HTML, ou diretamente pelos links hospedados no GitHub Pages:
+
+- [Hub Principal de Apps](https://nicholas1front.github.io/emeg_system/apps/main_hub/main_hub.html)
+- [Criação de Orçamentos](https://nicholas1front.github.io/emeg_system/apps/budget_plataform/budget_plataform.html)
+- [Controle de Clientes](https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/customer_base_plataform.html)
+
+### Requisitos
+Para usar o sistema, você só precisa de um navegador moderno.
+
+## Como foi Desenvolvido?
+
+Este conjunto de sistemas foi desenvolvido para atender às necessidades específicas da **EMEG Guindaste**. As ferramentas foram criadas com o uso de tecnologias simples e acessíveis, facilitando a manutenção e a compreensão do código.
+
+### Tecnologias Utilizadas:
+- **Frontend**:
+  - HTML, CSS, JavaScript
+  - Axios (para requisições HTTP)
+  - GitHub Pages (para hospedagem das páginas)
+- **Backend**:
+  - GitHub API (para manipulação dos dados do sistema de clientes)
+  - Render (para hospedar o backend do sistema de controle de clientes)
+- **Outras ferramentas**:
+  - Font Awesome (ícones)
+  - Google Fonts (tipografia)
+  - Photoshop (edição de imagens)
+
+## Como Contribuir
+
+Se você deseja contribuir com o desenvolvimento deste projeto, siga os passos abaixo:
+
+1. Faça o **fork** deste repositório.
+2. Crie um **branch** para suas alterações:  
+   `git checkout -b feature/nova-funcionalidade`
+3. Envie suas mudanças:  
+   `git push origin feature/nova-funcionalidade`
+4. Abra um **pull request** para análise e integração.
+
+## Licença
+
+Este projeto está sob a licença [MIT](LICENSE), permitindo que você use, modifique e distribua o código livremente.
+
