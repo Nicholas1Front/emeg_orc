@@ -1171,3 +1171,21 @@ button{
     margin:0.4rem 3px;
     font-size:16px;
 }
+
+/* footer */
+
+footer{
+    background-color: #d61e1e;
+    position:absolute;
+    margin-top:16.5rem;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h3{
+    font-size:14px;
+    font-weight: normal;
+    padding:0.9rem 0;
+}

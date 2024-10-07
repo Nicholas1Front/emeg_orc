@@ -534,3 +534,20 @@ header h2{
 .error-msg-section > .container > .image-container img{
     border-radius:25px;
 }
+
+/* footer */
+
+footer{
+    background-color: #d61e1e;
+    position:absolute;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h3{
+    font-size:14px;
+    font-weight: normal;
+    padding:0.9rem 0;
+}

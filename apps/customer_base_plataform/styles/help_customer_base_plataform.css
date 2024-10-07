@@ -488,3 +488,19 @@ header h2{
     border-radius:25px;
     box-shadow: 0px 1px 10px 7px #d61e1e;
 }
+
+/* footer */
+
+footer{
+    background-color: #d61e1e;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h3{
+    font-size:14px;
+    font-weight: normal;
+    padding:0.9rem 0;
+}
