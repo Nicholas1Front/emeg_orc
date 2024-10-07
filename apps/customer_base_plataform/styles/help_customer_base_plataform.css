@@ -9,7 +9,7 @@ body{
     max-width: 1920px;
 }
 
-div,section,header,footer{
+div,section,header{
     width:100%;
 }
 
@@ -492,6 +492,7 @@ header h2{
 /* footer */
 
 footer{
+    width:100%;
     background-color: #d61e1e;
     position:absolute;
     display: flex;

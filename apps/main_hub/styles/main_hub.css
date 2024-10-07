@@ -104,3 +104,21 @@
     margin-right:5px;
     font-size: 22px;
 }
+
+/* footer */
+
+footer{
+    width:100%;
+    background-color: #d61e1e;
+    margin-top:6.2rem;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h3{
+    font-size:14px;
+    font-weight: normal;
+    padding:0.9rem 0;
+}
