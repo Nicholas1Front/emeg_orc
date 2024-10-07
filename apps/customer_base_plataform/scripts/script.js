@@ -164,9 +164,12 @@ async function sendToServerProcess(){
     await hideHtmlElement([overlayForLoading]);
     await showServerMessagePopup("sucessMsg", "Dados enviados com sucesso !");
 
-    clients_equipaments_array = await getClientsData();
-
     await showMessagePopup("sucessMsg", "Dados atualizados com sucesso !");
+
+    setTimeout(async () => {
+        clients_equipaments_array = await getClientsData();
+        window.location.reload();
+    },1000);
 }
 
 //show and hide elements functions
@@ -300,8 +303,6 @@ async function verifyPasswordProcess(functionToBeExecuted, msgPopupContent){
 };
 
 async function callFunction(functionToBeExecuted, msgPopupContent){
-    console.log(functionToBeExecuted);
-    console.log(msgPopupContent);
     
     closeConfirmationPopup();
 
