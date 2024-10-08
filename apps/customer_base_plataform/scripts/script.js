@@ -4,7 +4,7 @@ let clients_equipaments_array = [];
 
 async function getClientsData(){
     try{
-        const response = await fetch("https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json");
+        const response = await fetch(`https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json?timestamp=${new Date().getTime()}`);
         if(!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
         }
@@ -43,8 +43,6 @@ async function getClientsData(){
     
             return 0;
         });
-
-        console.log(clientsArray_return);
 
         return clientsArray_return;
     }
@@ -120,6 +118,8 @@ async function verifyDataBeforeSend(){
     }
 
     showServerMessagePopup("errorMsg","Dados já existentes ! Tente novamente !");
+
+    getClientsData();
 }
 
 async function updateClientsData() {
@@ -167,8 +167,7 @@ async function sendToServerProcess(){
     await showMessagePopup("sucessMsg", "Dados atualizados com sucesso !");
 
     setTimeout(async () => {
-        clients_equipaments_array = await getClientsData();
-        window.location.reload();
+        getClientsData();
     },1000);
 }
 
@@ -458,8 +457,6 @@ async function addClientLogic(){
 
     clients_equipaments_array.push(newClient);
 
-    console.log(newClient);
-    console.log(clients_equipaments_array);
 };
 
 async function addClientProcess(){
@@ -538,7 +535,6 @@ function createSelectListHtml_clients(targetList){
         targetList.add(option);
     })
 
-    console.log(`Lista criada em ${targetList}`);
 }
 
 async function addEquipamentLogic(){
@@ -552,9 +548,6 @@ async function addEquipamentLogic(){
             client.equipaments.push(equipamentName);
         }
     });
-
-    console.log(equipamentName);
-    console.log(clients_equipaments_array);
 
 };
 
@@ -626,7 +619,6 @@ async function editClientLogic(){
         }
     })
 
-    console.log(clients_equipaments_array);
 };
 
 async function editClientProcess(){
@@ -721,7 +713,6 @@ function createSelectListHtml_equipaments(targetList, targetClientList){
         targetList.add(option);
     })
 
-    console.log(targetList);
 }
 
 async function  editEquipamentLogic(){
@@ -733,8 +724,6 @@ async function  editEquipamentLogic(){
             return editClientObject
         }
     })
-    console.log(clients_equipaments_array);
-    console.log(editClientObject)
 
     //delete element in clients_equipaments_array
     for(let i = 0; i < clients_equipaments_array.length ; i++){
@@ -757,8 +746,6 @@ async function  editEquipamentLogic(){
 
     //push editClientObject in clients_equipaments_array and sort
     clients_equipaments_array.push(editClientObject);
-
-    console.log(clients_equipaments_array);
     
 };
 
@@ -834,15 +821,12 @@ const deleteClientBtn = document.querySelector("#delete-client-btn");
 // functions
 
 async function deleteClientLogic(){
-    console.log(clients_equipaments_array);
 
     for(let i = 0 ; i < clients_equipaments_array.length ; i++){
         if(clients_equipaments_array[i].name === deleteClient_clientSelectList.value){
             clients_equipaments_array.splice(i,1);
         }
     };
-
-    console.log(clients_equipaments_array);
 
 }
 
@@ -880,8 +864,6 @@ const deleteEquipamentBtn = document.querySelector("#delete-equipament-btn");
 
 async function deleteEquipamentLogic(){
 
-    console.log(clients_equipaments_array);
-
     clients_equipaments_array.forEach((client)=>{
         if(client.name === deleteEquipament_clientSelectList.value){
             for(let i = 0 ; i < client.equipaments.length ; i++){
@@ -892,7 +874,6 @@ async function deleteEquipamentLogic(){
         }
     })
 
-    console.log(clients_equipaments_array);
 }
 
 async function deleteEquipamentProcess(){
