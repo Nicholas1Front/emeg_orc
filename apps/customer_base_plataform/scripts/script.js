@@ -4,7 +4,7 @@ let clients_equipaments_array = [];
 
 async function getClientsData(){
     try{
-        const response = await fetch(`https://nicholas1front.github.io/emeg_system/apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json?timestamp=${new Date().getTime()}`);
+        const response = await fetch(`https://nicholas1front.github.io/emeg_system/apps/backend/data/clients_equipaments.json?timestamp=${new Date().getTime()}`);
         if(!response.ok){
             throw new Error(`HTTP Error ! Status : ${response.status}`);
         }
