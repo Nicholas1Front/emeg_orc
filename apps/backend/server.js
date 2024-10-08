@@ -18,7 +18,7 @@ app.use(cors());
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const REPO_OWNER = 'Nicholas1Front';
 const REPO_NAME = 'emeg_system';
-const FILE_PATH = 'apps/customer_base_plataform/client_control_backend/data/clients_equipaments.json'; // Caminho correto do arquivo no repositório
+const FILE_PATH = 'apps/backend/data/clients_equipaments.json'; // Caminho correto do arquivo no repositório
 const BRANCH = 'main';
 
 // Endpoint para atualizar o arquivo JSON no GitHub
