@@ -67,5 +67,5 @@ Se você deseja contribuir com o desenvolvimento deste projeto, siga os passos a
 
 ## Licença
 
-Este projeto está sob a licença [MIT](LICENSE), permitindo que você use, modifique e distribua o código livremente.
+Este projeto está sob a licença [GNU GENERAL PUBLIC LICENSE](LICENSE), permitindo que você use, modifique e distribua o código livremente.
 
