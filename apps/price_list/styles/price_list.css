@@ -149,3 +149,105 @@ header h2{
 .consult-price-list-section{
     margin-top:1.5rem;
 }
+
+/* back-home-control */
+
+.back-home-control{
+    display: flex;
+    align-items:center;
+    justify-content: left;
+    margin-bottom:1rem;
+}
+
+.back-home-control > button{
+    width:15%;
+    margin-left:1rem;
+    font-size: 14px;
+    padding:8px 0;
+    background-color: #a91818;
+    color: #fff;
+    border-radius: 25px;
+    border:none;
+    transition:0.2s;
+    cursor:pointer;
+}
+
+.back-home-control > button:hover{
+    background-color: #d61e1e;
+    transition: 0.2s;
+}
+
+.back-home-control > button > i{
+    margin-right:7px;
+}
+
+.back-home-control > h3{
+    margin-left:10px;
+}
+
+.consult-price-list-section > .search-input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.consult-price-list-section > .search-input-container > *{
+    margin:0 8px;
+    padding:8px 0;
+    border-radius:25px;
+}
+
+.consult-price-list-section > .search-input-container > #equipament-type_select-list,
+.consult-price-list-section > .search-input-container > #service-type_select-list{
+    width:20%;
+}
+
+.consult-price-list-section > .search-input-container > .service-name-input-control{
+    width:45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consult-price-list-section > .search-input-container > .service-name-input-control input{
+    width:100%;
+    padding:8px 0;
+    padding-left:8px;
+    border-radius:25px;
+    border: 1px solid #969696;
+}
+
+.consult-price-list-section > .search-input-container > .service-name-input-control > .service-name-options-control{
+    border: 1px solid #969696;
+    background-color: transparent;
+    width: 45%;
+    border-radius:25px;
+    margin-top:33px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1000;
+}
+
+.consult-price-list-section > .search-input-container > .service-name-input-control > .service-name-options-control > .service-name-option{
+    padding:8px 0;
+    padding-left:8px;    
+    transition:0.2s;
+    cursor:pointer;
+}
+
+.consult-price-list-section > .search-input-container > .service-name-input-control > .service-name-options-control > .service-name-option:hover{
+    background-color: #d2d2d2;
+    transition:0.2s;
+}
+
+.consult-price-list-section > .search-input-container > #consult-price-list_search-btn{
+    width:10%;
+    cursor:pointer;
+    background-color: #a91818;
+    transition:0.2s;
+}
+
+.consult-price-list-section > .search-input-container > #consult-price-list_search-btn:hover{
+    background-color: #d61e1e;
+    transition:0.2s;
+}
