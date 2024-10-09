@@ -23,7 +23,7 @@
 
         <img src="https://nicholas1front.github.io/emeg_system/assets/images/emeg_symbol_white.png">
 
-        <h2>Sistema de controle de clientes</h2>
+        <h2>Tabela de preços</h2>
 
         <div class="help-page-link-control">
             <a href="">
@@ -35,11 +35,45 @@
 
     <section class="main-hub-section">
         <div class="main-hub-container">
-            <a href="">
+            <button id="consult-price-list">
                 Consultar tabela de preços
-                
-            </a>
+                <i class="fa-solid fa-magnifying-glass-dollar"></i>
+            </button>
+
+            <button id="edit-price-list">
+                Editar tabela de preços
+                <i class="fa-solid fa-pen-to-square"></i>
+            </button>
         </div>
+    </section>
+
+    <section class="consult-price-list-section">
+
+        <div class="back-home-control">
+            <button class="back-home-btn"><i class="fa-solid fa-arrow-left-long"></i> Voltar para a página inicial</button>
+            <h3>// Consultar tabela de preços</h3>
+        </div>
+
+        <div class="search-input-container">
+            <div class="container">
+
+                <div class="search-input-control">
+                    <select id="equipament-type_select-list"></select>
+                    <select id="service-type_select-list"></select>
+                    <div class="service-name-input-control">
+                        <input type="text" id="service-name-input" autocomplete="off"/>
+                        <div class="service-name-options-control">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="result-section">
+
+        </section>
+        
     </section>
 </body>
 </html>
