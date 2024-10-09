@@ -112,6 +112,7 @@ header h2{
 
 .main-hub-section{
     margin:1.5rem 0;
+    display:none;
 }
 
 .main-hub-section > .main-hub-container{
@@ -185,6 +186,8 @@ header h2{
     margin-left:10px;
 }
 
+/* consult-price-list-section -> search-input-container */
+
 .consult-price-list-section > .search-input-container{
     display: flex;
     justify-content: center;
@@ -197,13 +200,12 @@ header h2{
     border-radius:25px;
 }
 
-.consult-price-list-section > .search-input-container > #equipament-type_select-list,
 .consult-price-list-section > .search-input-container > #service-type_select-list{
-    width:20%;
+    width:25%;
 }
 
 .consult-price-list-section > .search-input-container > .service-name-input-control{
-    width:45%;
+    width:55%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -218,14 +220,16 @@ header h2{
 }
 
 .consult-price-list-section > .search-input-container > .service-name-input-control > .service-name-options-control{
+    display:none;
     border: 1px solid #969696;
-    background-color: transparent;
-    width: 45%;
+    background-color: #fff;
+    width: 55%;
     border-radius:25px;
     margin-top:33px;
     overflow-y: auto;
     position: absolute;
     z-index: 1000;
+    font-size:15px;
 }
 
 .consult-price-list-section > .search-input-container > .service-name-input-control > .service-name-options-control > .service-name-option{
@@ -250,4 +254,10 @@ header h2{
 .consult-price-list-section > .search-input-container > #consult-price-list_search-btn:hover{
     background-color: #d61e1e;
     transition:0.2s;
+}
+
+/* consult-price-list-section -> price-list-show-container */
+
+.consult-price-list-section > .price-list-show-container{
+    margin-top:3rem;
 }

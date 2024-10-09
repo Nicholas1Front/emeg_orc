@@ -35,15 +35,21 @@
 
     <section class="main-hub-section">
         <div class="main-hub-container">
-            <button id="consult-price-list">
+            <button id="consult-price-list-btn">
                 Consultar tabela de preços
                 <i class="fa-solid fa-magnifying-glass-dollar"></i>
             </button>
 
-            <button id="edit-price-list">
+            <button id="price-list-show-btn">
+                Mostrar toda a tabela de preços
+                <i class="fa-solid fa-clipboard-list"></i>
+            </button>
+
+            <button id="edit-price-list-btn">
                 Editar tabela de preços
                 <i class="fa-solid fa-pen-to-square"></i>
             </button>
+
         </div>
     </section>
 
@@ -55,21 +61,29 @@
         </div>
 
         <div class="search-input-container">
-            <select id="equipament-type_select-list"></select>
             <select id="service-type_select-list"></select>
             <div class="service-name-input-control">
                 <input type="text" id="service-name-input" autocomplete="off"/>
                 <div class="service-name-options-control">
                     <div class="service-name-option">TROCA REPARO</div>
+                    <div class="service-name-option">MONTAGEM E USINAGEM MOTOR</div>
                 </div>
             </div>
             <button id="consult-price-list_search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
+    </section>
 
-        <section class="result-section">
+    <section class="price-list-show-section">
+        <div class="price-list-show-container">
+            <div class="title-container">
+                <h3>Tabela de preços completa</h3>
+                <h5>Todos os serviços presentes nesta tabela de preço estão disponíveis abaixo</h5>
+            </div>
 
-        </section>
-        
+            <div class="price-list-show-control">
+                <div class="price-list-show-item"></div>
+            </div>
+        </div>
     </section>
 </body>
 </html>
