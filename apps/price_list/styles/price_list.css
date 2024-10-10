@@ -112,7 +112,7 @@ header h2{
 
 .main-hub-section{
     margin:1.5rem 0;
-    display:none;
+    display:block;
 }
 
 .main-hub-section > .main-hub-container{
@@ -261,6 +261,7 @@ header h2{
 
 .price-list-show-section{
     margin:1.5rem 0;
+    display: none;
 }
 
 .price-list-show-container > .title-container{
@@ -326,4 +327,28 @@ header h2{
 
 .price-list-show-container > .price-list-show-control > .price-list-show-label > .service-price-label{
     width:30%;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-item{
+    display: flex;
+    width:90%;
+    justify-content: center;
+    align-items: center;
+    padding:1rem 0;
+    background-color: #ececec;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-item > .price-list-item_service-type{
+    width:20%;
+    text-align: center;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-item > .price-list-item_service-description{
+    width:50%;
+    text-align: center;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-item > .price-list-item_service-price{
+    width:30%;
+    text-align: center;
 }
