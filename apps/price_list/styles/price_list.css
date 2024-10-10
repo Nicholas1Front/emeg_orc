@@ -149,6 +149,7 @@ header h2{
 
 .consult-price-list-section{
     margin-top:1.5rem;
+    display: none;
 }
 
 /* back-home-control */
@@ -256,8 +257,73 @@ header h2{
     transition:0.2s;
 }
 
-/* consult-price-list-section -> price-list-show-container */
+/* price-list-show-section */
 
-.consult-price-list-section > .price-list-show-container{
-    margin-top:3rem;
+.price-list-show-section{
+    margin:1.5rem 0;
+}
+
+.price-list-show-container > .title-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.price-list-show-container > .title-container > .line{
+    width:10%;
+    background-color: #d61e1e;
+    height:1px;
+}
+
+.price-list-show-container > .title-container >.title-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:fit-content;
+    margin:0 1rem;
+}
+
+.price-list-show-container > .title-container >.title-control h3{
+    font-size: 35px;
+}
+
+.price-list-show-container > .title-container h5{
+    font-size:15px;
+    font-weight:300;
+}
+
+.price-list-show-container > .price-list-show-control{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-label{
+    margin-top:2rem;
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d61e1e;
+    color: #fff;
+    padding:0.7rem 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-label h3{
+    font-size:18px;
+    text-align: center;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-label > .service-type-label{
+    width:20%;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-label > .service-description-label{
+    width:50%;
+}
+
+.price-list-show-container > .price-list-show-control > .price-list-show-label > .service-price-label{
+    width:30%;
 }
