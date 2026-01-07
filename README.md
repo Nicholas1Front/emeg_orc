@@ -1,6 +1,8 @@
-# Emeg System
+# Emeg System - Legado
 
 Este repositório contém um conjunto de sistemas desenvolvidos como ferramentas para a empresa **EMEG Guindaste**. Ao todo, planeja-se desenvolver 5 projetos dentro deste repositório, voltados para diferentes necessidades operacionais da empresa.
+
+Este repositório entrará em desuso daqui alguns meses, e será usado a partir de agora para pequenas atualizações e como legado.
 
 ## Projetos Desenvolvidos
 
